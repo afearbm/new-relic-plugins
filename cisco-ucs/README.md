@@ -9,8 +9,8 @@ This guide includes instructions for installing and configuring the Blue Medora 
 ## Obtaining the Plugin
 You can find the New Relic Cisco UCS plugin in the following locations:
 
-- New Relic Storefront [Here](<link TBD>)
-- Plugin Central
+- [New Relic Storefront](http://newrelic.com/plugins/blue-medora/427)
+- [Plugin Central](https://rpm.newrelic.com/accounts/890835/plugins/directory/427)
 
 ## System Requirements
 
