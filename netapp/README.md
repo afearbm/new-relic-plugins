@@ -1,25 +1,25 @@
-# Blue Medora NetApp Plugin for New Relic
+# Blue Medora NetApp Storage Plugin for New Relic
 
-The **Blue Medora NetApp Plugin for New Relic** allows you to monitor your NetApp performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.						
+The **Blue Medora NetApp Storage Plugin for New Relic** allows you to monitor your NetApp Storage performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.						
 
-This guide includes instructions for installing and configuring the Blue Medora NetApp Plugin for New Relic.
+This guide includes instructions for installing and configuring the Blue Medora NetApp Storage Plugin for New Relic.
 
 ----
 
 ## Obtaining the Plugin
-You can find the New Relic NetApp plugin in the following locations:
+You can find the New Relic NetApp Storage Plugin in the following locations:
 
 - New Relic Storefront [Here](<link TBD>)
 - Plugin Central
 
 ## System Requirements
 
-The NetApp plugin collects data by making REST calls to OnCommand API Services.  Before installing and configuring the plugin, ensure your system meets the following requirements:
+The NetApp Storage plugin collects data by making REST calls to OnCommand API Services.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 - A New Relic account
 
-**NetApp Plugin Requirements**
+**NetApp Storage Plugin Requirements**
 - **NetApp OnCommand ApiServices:** NetApp OnCommand API Services version 1.0 or 1.1 is required to collect data.  
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
 
@@ -141,7 +141,7 @@ The second file, `plugin.template.json`, contains data specific to each plugin (
 
 Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-**NOTE:** You can add multiple objects to the “agents” array to monitor multiple NetApp instances.
+**NOTE:** You can add multiple objects to the “agents” array to monitor multiple NetApp Storage instances.
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -149,9 +149,9 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | The name of your New Relic NetApp instance that will appear in the User Interface |
-| username | User name to log into NetApp API Services |
-| password | Password to log into NetApp API Services |
+| instance_name | The name of your New Relic NetApp Storage instance that will appear in the User Interface |
+| username | User name to log into NetApp Storage API Services |
+| password | Password to log into NetApp Storage API Services |
 | server | The hostname or ip address of the server |
 | protocol | Either `http` or `https` |
 | port | Optional parameter, port to connect to NetApp API Services |
@@ -163,14 +163,14 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 {
   "agents": [
     {
-      "instance_name": "Your NetApp Instance",
+      "instance_name": "Your NetApp Storage Instance",
       "username": "your_value_here",
       "password": "your_value_here",
       "server": "your_value_here",
       "protocol": "http or https"
     },
     {
-      "instance_name": "Your NetApp Instance",
+      "instance_name": "Your NetApp Storage Instance",
       "username": "your_value_here",
       "password": "your_value_here",
       "server": "your_value_here",
@@ -185,7 +185,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Support Resources
-For questions or issues regarding the Blue Medora NetApp Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the Blue Medora NetApp Storage Plugin for New Relic, visit http://support.bluemedora.com. 
 
 ## Metrics Source Documentation
 
