@@ -1,4 +1,4 @@
-# Blue Medora Nimble Plugin for New Relic
+# Blue Medora Nimble Storage Plugin for New Relic
 
 The **Blue Medora Nimble Storage Plugin for New Relic** allows you to monitor your Nimble performance data from within the New Relic platform by pulling in metrics from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.           
 
@@ -15,14 +15,14 @@ You can find the New Relic Nimble Storage plugin in the following locations:
 
 ## System Requirements
 
-The Nimble Storage plugin connects to the Nimble hardware using REST and optionally SNMP v2c for additional group metrics.  Before installing and configuring the plugin, ensure your system meets the following requirements:
+The Nimble Storage plugin connects to the Nimble hardware using REST and optionally SNMP v2 for additional group metrics.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 - A New Relic account
 
 **Nimble Storage Plugin Requirements**
 - The plugin supports **Nimble 2.3+** through REST
-- SNMP v2c can be used for additional group metrics 
+- **SNMP v2** can be used for additional group metrics 
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
 
 
@@ -161,10 +161,10 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | instance_name | The name of your New Relic Nimble Storage instance that will appear in the User Interface |
 | username | 'username' to make REST calls to your Nimble Storage device |
 | password | 'password' to make REST calls to your Nimble Storage device |
-| hostname | IP address of Nimble Storage device |
-| rest_port | Optional.  If not specified, default port '5392' will be used |
-| community_string | Optional.  Specifying this enables SNMP.  The SNMP community string required to connect |
-| snmp_port | Optional.  If not specified and 'community_string' is specified, default port '161' will be used |
+| hostname | IP address or fully qualified host name of Nimble Storage device |
+| rest_port | Optional: if not specified, default port '5392' will be used |
+| community_string | Optional: the community string required to connect to SNMP (not including this disables SNMP metrics) |
+| snmp_port | Optional: if not specified and 'community_string' is specified, default port '161' will be used |
 
 **Example:**
 
@@ -222,16 +222,16 @@ For questions or issues regarding the Blue Medora Nimble Storage Plugin for New 
 |:------------- |:-------------|
 | Capacity (TB) |  The total, free, and used capacity of each Nimble pool |
 | Associated Objects  | The number of child objects on each Nimble pool |
-| Cache Capacity (TB)  | The pinable, pinned, and total cache capacity of a Nimble pool |
+| Cache Capacity (TB)  | The pinable, pinned, and total cache capacity of each Nimble pool |
 
 **Folders**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Capacity (TB) | The capacity of each Nimble folder |
-| Compression Ratios  | The compression ratio of each Nimble folder |
-| Volume Usage (GB)  | The space used by each Nimble folder for volumes |
-| Snapshot Usage (GB) | The space used by each Nimble folder for snapshots|
+| Capacity (TB) | The free, used, and unuseed reserve capacity of each Nimble folder |
+| Compression Ratios  | The snapshot, volume, and folder compression ratio for each Nimble folder |
+| Volume Usage (GB)  | The space used by volumes for each Nimble folder |
+| Snapshot Usage (GB) | The space used by snapshots for each Nimble folder|
 | Snapshots | The number of snapshots on each Nimble folder |
 
 **Volumes**
@@ -239,7 +239,7 @@ For questions or issues regarding the Blue Medora Nimble Storage Plugin for New 
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Capacity (TB) | The total, usable, and free capacity of each Nimble volume |
-| Compression Ratio | The compression ratio of each Nimble volume |
+| Compression Ratio | The compression ratio of folders and volume for each Nimble volume |
 | Pinned Cache Capacity (GB)  | The pinned cache capacity of each Nimble volume |
 | Snapshot Capacity (GB) | The snapshot capacity of each Nimble volume |
 | Connections | The number of connections on each Nimble volume |
@@ -250,9 +250,9 @@ For questions or issues regarding the Blue Medora Nimble Storage Plugin for New 
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Capacity (TB) | The used, usable, and free capacity of each Nimble array |
-| Compression Ratio  | The compression ratio of each Nimble array |
-| Usage (TB)  | The space used by each Nimble array |
-| Space Saved (TB) | The space saved by each Nimble array |
+| Compression Ratio  | The compression ratio of volumes and snapshots on each Nimble array |
+| Usage (TB)  | The space used by volumes and snapshots for each Nimble array |
+| Space Saved (TB) | The space saved by volumes and snapshots for each Nimble array |
 
 **Summary**
 
