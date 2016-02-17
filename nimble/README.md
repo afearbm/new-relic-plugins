@@ -253,3 +253,13 @@ For questions or issues regarding the Blue Medora Nimble Storage Plugin for New 
 | Compression Ratio  | The compression ratio of each Nimble array |
 | Usage (TB)  | The space used by each Nimble array |
 | Space Saved (TB) | The space saved by each Nimble array |
+
+**Summary**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Cache Hit (%) | The cache hit percent of the Nimble group |
+| Read Latency (ms)  | The average read latency of the Nimble group |
+| Write Latency (ms)  | The average write latency Nimble group |
+| Read Throghput (bytes/sec) | The read throughput of the Nimble group |
+| Write Throghput (bytes/sec) | The write throughput of the Nimble group |
