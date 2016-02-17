@@ -150,7 +150,7 @@ The second file, `plugin.template.json`, contains data specific to each plugin (
 
 Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-**NOTE:** You can add multiple objects to the “agents” array to monitor multiple Cisco Nexus instances. 
+**NOTE:** You can add multiple objects to the “agents” array to monitor multiple Nimble Storage instances. 
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
