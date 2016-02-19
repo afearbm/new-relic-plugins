@@ -1,13 +1,13 @@
-# Blue Medora Dell Compute Plugin for New Relic
+# Blue Medora Dell PowerEdge Plugin for New Relic
 
-The **Blue Medora Dell Compute Plugin for New Relic** allows you to monitor your Dell Compute performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
+The **Blue Medora Dell PowerEdge Plugin for New Relic** allows you to monitor your Dell PowerEdge performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
 
-This guide includes instructions for installing and configuring the Blue Medora Dell Compute Plugin for New Relic.
+This guide includes instructions for installing and configuring the Blue Medora Dell PowerEdge Plugin for New Relic.
 
 ----
 
 ## Obtaining the Plugin
-You can find the New Relic Dell Compute plugin in the following locations:
+You can find the New Relic Dell PowerEdge plugin in the following locations:
 
 - [New Relic Storefront](http://newrelic.com/plugins/blue-medora/429)
 - [Plugin Central](https://rpm.newrelic.com/accounts/890835/plugins/directory/429)
@@ -19,7 +19,7 @@ The Dell plugin connects to the supported Dell server(s) via iDRAC IP address us
 **New Relic Requirements**
 - A New Relic account
 
-**Dell Compute Plugin Requirements**
+**Dell PowerEdge Plugin Requirements**
 - **Hardware:** The plugin supports the following R-, M-, and T-series generation Dell server types: **12g** and **13g**
 - **iDRAC Firmware:** Servers must be equipped with **iDRAC v7** or **v8** with **firmware version 1.57.57+**
 - **SNMP 1, 2c, or 3** must be configured on all Dell servers
@@ -145,7 +145,7 @@ The second file, `plugin.template.json`, contains data specific to each plugin (
 
 Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-**NOTE:** You can add multiple objects to the “agents” array to monitor multiple Dell Compute instances.
+**NOTE:** You can add multiple objects to the “agents” array to monitor multiple Dell PowerEdge instances.
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -153,9 +153,9 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | The name of your Dell Compute instance that will appear in the User Interface |
+| instance_name | The name of your Dell PowerEdge instance that will appear in the User Interface |
 | version | SNMP version acceptable values `v1`, `v2c` or `v3` for SNMP Version 1, Version 2, or Version 3 respectively |
-| management_ip | IP address of Dell Compute device |
+| management_ip | IP address of Dell PowerEdge device |
 | snmp_port | Optional field, port SNMP communicates over. Defaults to `161` |
 | community_string | Only applicable if `version` is `v2c`. The SNMP community string required to connect |
 | security_level | Only applicable if `version` is `v3`. Acceptable values are `auth_priv`, `auth_nopriv`, or `noauth_nopriv` |
@@ -195,7 +195,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Support Resources
-For questions or issues regarding the Blue Medora Dell Compute Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the Blue Medora Dell PowerEdge Plugin for New Relic, visit http://support.bluemedora.com. 
 
 ## Metrics Source Documentation
 
