@@ -1,28 +1,28 @@
-# Blue Medora Nimble Storage Plugin for New Relic
+# Blue Medora Citrix NetScaler Plugin for New Relic
 
-The **Blue Medora Nimble Storage Plugin for New Relic** allows you to monitor your Nimble performance data from within the New Relic platform by pulling in metrics from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.           
+The **Blue Medora Citrix NetScaler Plugin for New Relic** allows you to monitor your Citrix NetScaler load balancing performance data from within the New Relic platform by pulling in metrics from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.           
 
-This guide includes instructions for installing and configuring the Blue Medora Nimble Storage Plugin for New Relic.
+This guide includes instructions for installing and configuring the Blue Medora Citrix NetScaler Plugin for New Relic.
 
 ----
 
 
 ## Obtaining the Plugin
-You can find the New Relic Nimble Storage plugin in the following locations:
+You can find the New Relic Citrix NetScaler plugin in the following locations:
 
 - [New Relic Storefront]()
 - [Plugin Central]()
 
 ## System Requirements
 
-The Nimble Storage plugin connects to the Nimble hardware using REST and optionally SNMP v2 for additional group metrics.  Before installing and configuring the plugin, ensure your system meets the following requirements:
+The Citrix NetScaler plugin connects to the Citrix NetScaler Appliance using REST.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 - A New Relic account
 
-**Nimble Storage Plugin Requirements**
-- The plugin supports **Nimble 2.3+** through REST
-- **SNMP v2** can be used for additional group metrics 
+**Citrix NetScaler Plugin Requirements**
+- **NetScaler Version:** The plugin requires Citrix NetScaler MPX or VPX, Version 10.x+
+- In the NetScaler user interface, you must create a user account for monitoring purposes that has a **System Command Policy** of read-only.
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
 
 
@@ -46,7 +46,7 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-  ./npi install com.bluemedora.nimble.storage
+  ./npi install com.bluemedora.citrix.netscaler
 ``` 
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
@@ -150,7 +150,7 @@ The second file, `plugin.template.json`, contains data specific to each plugin (
 
 Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-**NOTE:** You can add multiple objects to the “agents” array to monitor multiple Nimble Storage instances. 
+**NOTE:** You can add multiple objects to the “agents” array to monitor multiple Citrix NetScaler instances. 
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -158,13 +158,11 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | The name of your New Relic Nimble Storage instance that will appear in the User Interface |
-| username | Username to make REST calls to your Nimble Storage device |
-| password | Password to make REST calls to your Nimble Storage device |
-| hostname | IP address or fully qualified host name of your Nimble Storage device |
-| rest_port | Optional: if not specified, default port '5392' will be used |
-| community_string | Optional: community string required to connect to SNMP (not including disables SNMP metrics) |
-| snmp_port | Optional: if not specified and 'community_string' is specified, default port '161' will be used |
+| instance_name | The name of your New Relic Citrix NetScaler instance that will appear in the User Interface |
+| username | Username to make REST calls to your Citrix NetScaler Appliance |
+| password | Password to make REST calls to your Citrix NetScaler Appliance |
+| protocol | Protocol ("http" or "https") used to make REST calls to your Citrix NetScaler Appliance |
+| netscaler_ip | IP address or fully qualified host name of your Citrix NetScaler Appliance |
 
 **Example:**
 
@@ -172,26 +170,18 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 {
   "agents": [
     {
-      "instance_name": "Your SNMP Disabled Instance",
+      "instance_name": "Your Citrix NetScaler Appliance collecting data via http",
       "username": "your_value_here",
       "password": "your_value_here",
-      "hostname": "your_value_here"
+      "protocol": "http"
+      "netscaler_ip": "your_value_here",
     },
     {
-      "instance_name": "Your SNMP Enabled Instance",
+      "instance_name": "Your Citrix NetScaler Appliance collecting data via https",
       "username": "your_value_here",
       "password": "your_value_here",
-      "hostname": "your_value_here",
-      "community_string": "your_value_here"
-    },
-    {
-      "instance_name": "Your SNMP Enabled Custom Port Instance",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "hostname": "your_value_here",
-      "rest_port": "your_value_here",
-      "community_string": "your_value_here",
-      "snmp_port": "your_value_here"
+      "protocol": "https"
+      "netscaler_ip": "your_value_here",
     }
   ]
 }
@@ -201,65 +191,49 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Support Resources
-For questions or issues regarding the Blue Medora Nimble Storage Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the Blue Medora Citrix NetScaler Plugin for New Relic, visit http://support.bluemedora.com. 
 
 ## Metrics Source Documentation
 
-**Group Overview**
+**Summary Metrics**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Capacity (TB) |  The free, usable, used, and unused reserve capacity of the Nimble group |
-| Disk Usage (GB)  | The disk used in the Nimble group by volumes and snapshots |
-| Latency (ms)  | The read and write latency of the Nimble group |
-| Cache Hit (%)  | The percentage of non-sequential read cache hits to non-sequential reads for the Nimble group  |
-| Throughput (MB/sec)  | The read and write throughput for the Nimble group |
-| IOPS (ops/sec)  | The read and write IOPs for the Nimble group |
+| Rx Data Rate (bps) | Number of bits per second received by the NetScaler appliance |
+| Tx Data Rate (bps) | Number of bits per second sent by the NetScaler appliance |
+| Management CPU Usage (%) | Management CPU utilization percentage |
+| Memory Usage (%) | Percentage of memory utilization on NetScaler |
 
-**Pools**
+**Appliance Overview**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Capacity (TB) |  The total, free, and used capacity of each Nimble pool |
-| Associated Objects  | The number of child objects on each Nimble pool |
-| Cache Capacity (TB)  | The pinable, pinned, and total cache capacity of each Nimble pool |
+| Tx Throughput (bps) | Number of bits per second sent by the NetScaler appliance |
+| Rx Throughput (bps) | Number of bits per second received by the NetScaler appliance |
+| HTTP Compression Ratio | Ratio of the compressible data received from the server to the compressed data sent to the client |
+| Resident CPU Load (%) | Average CPU utilization percentage if more than 1 CPU is present |
+| Packet Engines CPU Load (%) | Average CPU utilization percentage for all packet engines excluding management PE |
+| Management CPU Load (%) | Management CPU utilization percentage |
+| Memory Load (%) | Percentage of memory utilization on NetScaler |
 
-**Folders**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Capacity (TB) | The free, used, and unused reserve capacity of each Nimble folder |
-| Compression Ratios  | The snapshot, volume, and folder compression ratio for each Nimble folder |
-| Volume Usage (GB)  | The space used by volumes for each Nimble folder |
-| Snapshot Usage (GB) | The space used by snapshots for each Nimble folder|
-| Snapshots | The number of snapshots on each Nimble folder |
-
-**Volumes**
+**Virtual Servers**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Capacity (TB) | The total, free, and usable capacity of each Nimble volume |
-| Compression Ratio | The compression ratio of folders and volume for each Nimble volume |
-| Pinned Cache Capacity (GB)  | The pinned cache capacity of each Nimble volume |
-| Snapshot Capacity (GB) | The snapshot capacity of each Nimble volume |
-| Connections | The number of connections on each Nimble volume |
-| Snapshots | The number of snapshots on each Nimble volume |
+| Hits (per sec) | Number of times that the service has been provided per second |
+| Request Data Rate (bytes/sec) | Number of request bytes received per second by this virtual server |
+| Response Data Rate (bytes/sec) | Number of response bytes received per second by this virtual server |
+| Services Up (%) | Percentage of weights of active Services divided by all Services on this virtual server |
+| Surge Queue Length (requests) | Number of requests in the surge queue |
 
-**Arrays**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Capacity (TB) | The free, usable, and used capacity of each Nimble array |
-| Compression Ratio  | The compression ratio of volumes and snapshots on each Nimble array |
-| Usage (TB)  | The space used by volumes and snapshots for each Nimble array |
-| Space Saved (TB) | The space saved by volumes and snapshots for each Nimble array |
-
-**Summary**
+**Services**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Cache Hit (%) | The cache hit percent of the Nimble group |
-| Read Latency (ms)  | The average read latency of the Nimble group |
-| Write Latency (ms)  | The average write latency Nimble group |
-| Read Throghput (bytes/sec) | The read throughput of the Nimble group |
-| Write Throghput (bytes/sec) | The write throughput of the Nimble group |
+| Throughput (bps) | Number of bytes received or sent by this service (Mbps) |
+| Request Data Rate (bytes/sec) | Number of request bytes received per second by this service |
+| Response Data Rate (bytes/sec) | Number of response bytes received per second by this service |
+| Client Connections | Number of current client connections |
+| Server Connections | Number of current connections to the actual servers behind the Virtual Server |
+| Latency (ms)  | Average time to first byte between the NetScaler appliance and the server |
+| Surge Queue Length (requests) | Number of requests in the surge queue |
