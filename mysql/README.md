@@ -1,27 +1,27 @@
-# New Relic Plugin for F5 BIG-IP
+# New Relic Plugin for MySQL
 
-The **Blue Medora New Relic Plugin for F5 BIG-IP** allows you to monitor your F5 BIG-IP performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
+The **Blue Medora New Relic Plugin for MySQL** allows you to monitor your MySQL performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
 				
-This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for F5 BIG-IP.
+This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for MySQL.
 
 ----
 
 ## Obtaining the Plugin
-You can find the New Relic Plugin for F5 BIG-IP in the following locations:
+You can find the New Relic Plugin for MySQL in the following locations:
 
 - [New Relic Storefront](//TODO Update)
 - [Plugin Central](//TODO Update)					
 
 ## System Requirements
 
-The F5 BIG-IP plugin connects to the supported F5 BIG-IP System via a management IP address. Before installing and configuring the plugin, ensure your system meets the following requirements:
+The MySQL plugin connects to a supported MySQL Instance via a hostname or IP address. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 
 - A New Relic account. Sign up for a free account [here](http://newrelic.com)
 
-**F5 BIG-IP Plugin Requirements**
-- The plugin supports **F5 BIG-IP Version 11.5.0+** through REST
+**MySQL Plugin Requirements**
+- The plugin supports **MySQL Versions 5.6 and 5.7** and **MariaDB Versions 10.0 and 10.1**?
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
 
 ----
@@ -42,7 +42,7 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-  ./npi install com.bluemedora.f5.bigip
+  ./npi install com.bluemedora.mysql
 ``` 
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
@@ -142,7 +142,7 @@ The second file, plugin.template.json, contains data specific to each plugin (e.
 
 Make a copy of this template and rename it to plugin.json. Shown below is an example of the plugin.json file’s contents.
 
-**NOTE** - You can add multiple objects to the “agents” array to monitor multiple F5 BIG-IP instances.
+**NOTE** - You can add multiple objects to the “agents” array to monitor multiple MySQL instances.
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -150,11 +150,13 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | Alias for the name of your F5 BIG-IP instance that will appear in the User Interface |
-| host | IP address or hostname of F5 BIG-IP Management IP |
-| port | Port used to connect to the F5 BIG-IP REST API. Default is `443` |
-| username | User Name for F5 BIG-IP login. |
-| password | Password for F5 BIG-IP login. |
+| instance_name | Alias for the name of your MySQL instance that will appear in the User Interface |
+| host | IP address or hostname of MySQL Management IP |
+| port | Port used to connect to the MySQL Instance. Default is `5432` |
+| username | User Name for MySQL login. |
+| password | Password for MySQL login. |
+| ssl_enabled | Signals if SSL should be used. Acceptable values are `true` or `false`. |
+| ssl_cert_path | Only applicable if `ssl_enabled` is `true`. Path to the SSL certificate on system. |
 
 **Example:**
 
@@ -166,7 +168,17 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
       "username": "YOUR_VALUE_HERE",
       "password": "YOUR_VALUE_HERE",
       "host": "YOUR_VALUE_HERE",
-      "port": "YOUR_VALUE_HERE"
+      "port": "YOUR_VALUE_HERE",
+      "ssl_enabled": false
+    },
+    {
+      "instance_name": "YOUR_VALUE_HERE",
+      "username": "YOUR_VALUE_HERE",
+      "password": "YOUR_VALUE_HERE",
+      "host": "YOUR_VALUE_HERE",
+      "port": "YOUR_VALUE_HERE",
+      "ssl_enabled": true
+      "ssl_cert_path" : "PATH_TO_CRT_FILE"
     }
   ]
 }
@@ -176,7 +188,7 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Support Resources
-For questions or issues regarding the F5 BIG-IP Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the MySQL Plugin for New Relic, visit http://support.bluemedora.com. 
 
 ## Metrics Source Documentation
 
@@ -184,74 +196,70 @@ For questions or issues regarding the F5 BIG-IP Plugin for New Relic, visit http
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Memory (GB) |  The Used and Total memory of the F5 BIG-IP system |
-| Node Received Throughput (MB/sec) |  Received throughput for Nodes |
-| Node Transmitted Throughput (MB/sec) |  Transmitted throughput for Nodes  |
-| Node Received Packets (Packets/sec) |  Received packets for Nodes  |
-| Node Transmitted Packets (Packets/sec) |  Transmitted packets for Nodes  |
-| Disk Total Space (GB)  |  Total space across disks in system  |
-| Disk Used Space (GB)  |  Total used space across disks in system  |
+| Instance Size (GB) |  The size allocated to MySQL instance |
+| Instance Connections (connection/minute) |  Rate at which connections are made to MySQL instance |
+| Database IO Read (MB/sec) |  Read IO across databases  |
+| Database IO Write (MB/sec) |  Write IO across databases  |
+| Database Size (MB) |  Size of databases in instance  |
+| Tablespace Size (GB) |  Size of tablespaces in instance  |
 
-**Disks**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Total Space (GB)  |  Total space across disks in system  |
-| Used Space (GB)  |  Total used space across disks in system  |
-| Free Space (GB)  |  Total free space across disks in system  |
-| Reserved Space (GB)  |  Total reserved space across disks in system  |
-
-**Modules**
+**Instance**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Provisioned CPU (%)  |  Provisioned CPU across modules |
-| Provisioned Disk Space (GB) |  Provisioned disk space across modules  |
-| Provisioned Memory (GB)  |  Provisioned memory across modules |
-| Provisioned Host Memory (GB) |  Provisioned host memory across modules  |
+| Size (GB) |  The size allocated to MySQL instance |
+| Connections (connection/minute) |  Rate at which connections are made to MySQL instance |
+| Data Reads (reads/sec) |  Read rate of MySQL instance |
+| Data Writes (writes/sec) |  Write rate of MySQL instance |
+| Deadlocks (deadlocks/minute) |  Deadlock rate of MySQL instance |
+| OS Waits (waits/minute) |  The number of OS waits per minute of MySQL instance |
+| Spin Waits (waits/minute) |  The number of spin waits per minute of MySQL instance |
+| Waits (waits/minute) |  The number of non-os and non-spin waits per minute of MySQL instance |
 
-**Virtual Servers**
+**Tablespaces**
 
-| Metric Name | Description |
+| Metric Name  |  Description |
 |:------------- |:-------------|
-| Requests (Requests/sec) | Requests over time |
-| Connections (Connections) | Connections per virtual server |
-| Received Throughput (MB/sec) | Received Throughput for virtual server |
-| Transmitted Throughput (MB/sec) | Transmitted Throughput for virtual server |
-| Received Packets (Packets/sec) | Received Packets for virtual server |
-| Transmitted Packets (Packets/sec) | Transmitted Packets for virtual server |
+| Size (GB) |  Size of tablespaces  |
+| Max File Size (GB) |  Maximum file size of tablespaces  |
 
-**Nodes**
+**Databases**
 
-| Metric Name | Description |
+| Metric Name  |  Description |
 |:------------- |:-------------|
-| Requests (Requests/sec) | Requests over time |
-| Connections (connections) | Connections per node |
-| Received Throughput (MB/sec) | Received Throughput for node |
-| Transmitted Throughput (MB/sec) | Transmitted Throughput for node |
-| Received Packets (Packets/sec) | Received Packets for node |
-| Transmitted Packets (Packets/sec) | Transmitted Packets for node |
+| Size (MB) | Size of databases |
+| Data Size (MB) | Size of the data stored in databases |
+| Index Size (MB) | Size of the indexes stored in databases |
+| Wait Time (sec/minute) | How many seconds for every minute a database is spent waiting |
+| IO Read (MB/sec) | Database read rate |
+| IO Write (MB/sec) | Database write rate |
+| IO Read Latency (ms) | Database read Latency |
+| IO Write Latency (ms) | Database write Latency |
 
-**Pools**
+**Tables**
 
-| Metric Name | Description |
+| Metric Name  |  Description |
 |:------------- |:-------------|
-| Requests (Requests/sec) | Requests over time |
-| Active Members (members) | Currently active members |
-| Connections (connections) | Connections per pools |
-| Received Throughput (MB/sec) | Received Throughput for pools |
-| Transmitted Throughput (MB/sec) | Transmitted Throughput for pools |
-| Received Packets (Packets/sec) | Received Packets for pools |
-| Transmitted Packets (Packets/sec) | Transmitted Packets for pools |
+| Top 10 Size (MB) | The 10 tables with the largest size |
+| Top 10 Wait Time (ms) | The 10 tables with the largest wait time |
+| Top 10 IO Read (KB/sec) | The 10 tables with the largest read rate |
+| Top 10 IO Write (KB/sec) | The 10 tables with the largest write rate |
+| Top 10 IO Read Latency (ms) | The 10 tables with the largest read Latency |
+| Top 10 IO Write Latency (ms) | The 10 tables with the largest write Latency |
 
-**Pools Members**
+**Indexes**
 
-| Metric Name | Description |
+| Metric Name  |  Description |
 |:------------- |:-------------|
-| Requests (Requests/sec) | Requests over time |
-| Connections (connections) | Connections per pool members |
-| Sessions (sessions) | Currently active session |
-| Received Throughput (MB/sec) | Received Throughput for pool members |
-| Transmitted Throughput (MB/sec) | Transmitted Throughput for pool members |
-| Received Packets (Packets/sec) | Received Packets for pool members |
-| Transmitted Packets (Packets/sec) | Transmitted Packets for pool members |
+| Row Operations (rows/minute) | The number of operations done on rows per minute by an index |
+| Latency (ms) | Latency of an index |
+
+**Queries**
+
+Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall calls.
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Execution Time (ms) | Time that a specific query takes to execute |
+| Average Execution Time (ms) | Average time that a specific query takes to execute |
+| Calls (calls) | Number of overall calls made to a query |
