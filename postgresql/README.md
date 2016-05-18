@@ -1,0 +1,250 @@
+# New Relic Plugin for PostgreSQL
+
+The **Blue Medora New Relic Plugin for PostgreSQL** allows you to monitor your PostgreSQL performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
+				
+This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for PostgreSQL.
+
+----
+
+## Obtaining the Plugin
+You can find the New Relic Plugin for PostgreSQL in the following locations:
+
+- [New Relic Storefront](//TODO Update)
+- [Plugin Central](//TODO Update)					
+
+## System Requirements
+
+The PostgreSQL plugin connects to the supported PostgreSQL instance via a host or IP address. Before installing and configuring the plugin, ensure your system meets the following requirements:
+
+**New Relic Requirements**
+
+- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+
+**PostgreSQL Plugin Requirements**
+- The plugin supports **PostgreSQL Version 9.0+**
+- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+
+----
+
+## Installing the Plugin
+
+This plugin can be installed one of the following ways:
+
+- Using the New Relic Platform Installer
+- Installing the Plugin Manually
+
+### Using the New Relic Platform Installer
+
+The New Relic Platform Installer (NPI) is a command line tool that helps you easily download, configure and manage New Relic Platform Plugins.  For more information, visit the [Getting Started with the Platform Installer section of New Relic’s Community Forum](https://discuss.newrelic.com/t/getting-started-with-the-platform-installer/842).
+
+**NOTE:** We recommend using the New Relic Platform Installer for installing and running your Blue Medora plugins for New Relic. Issues can arise by running a plugin directly in the foreground (e.g., when the machine reboots, the process will not be started again). The NPI automates much of these processes.
+
+Once the NPI tool has been installed, run the following command:
+
+```
+  ./npi install com.bluemedora.f5.bigip
+``` 
+
+**NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
+
+### Installing the Plugin Manually
+
+#### Downloading and Extracting the Plugin
+
+The latest version of the plugin can be downloaded from the locations listed in the [Obtaining the Plugin](#obtaining-the-plugin) section.  Once the plugin is on your box, extract it to your preferred directory location.
+
+#### Configuring the Plugin
+
+Refer to the [Configuring the Plugin](#Configuring-the-Plugin) section, for details on setting up the plugin. 
+
+#### Running the Plugin
+
+To run the plugin, navigate to the directory where the plugin was extracted, then execute the following command from your terminal or command line window:
+
+```
+  java -jar plugin.jar
+```
+
+----     
+## Configuring the Plugin
+From the extracted plugin folder you receive when downloading your plugin, you will find the following files: 
+
+```
+  plugin.jar
+  eula.txt
+  oss_attribution.txt
+  [config folder]
+    newrelic.template.json
+    plugin.template.json 
+    plugin_license.json
+```
+
+The "template" .json files found in the config folder must be modified (i.e., customized) and renamed prior to setting up the plugin for monitoring.
+
+### Configuring the `newrelic.template.json` file
+
+The first file, `newrelic.template.json`, contains configurations used by all Platform plugins (e.g., license key, logging information, proxy settings) and can be shared across your plugins.
+Make a copy of this template and rename it to `newrelic.json`. Listed below are the configurable fields within the `newrelic.json` file:
+
+**New Relic License Key** - The only required field in the newrelic.json file is the License Key. This unique identifier informs New Relic about the specific account tied to the plugin. For more information on the License Key, [refer to the New Relic License key documentation](https://docs.newrelic.com/docs/accounts-partnerships/accounts/account-setup/license-key).
+
+```
+{
+   “license_key”: “YOUR_LICENSE_KEY_HERE”
+}
+```
+
+**Logging Configuration** - By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
+
+`log\_level` - The log level. Valid values: [debug, info, warn, error, fatal]. Defaults to info.
+
+`log\_file\_name` - The log file name. Defaults to newrelic_plugin.log.
+
+`log\_file\_path` - The log file path. Defaults to logs.
+
+`log\_limit\_in\_kbytes` - The log file limit in kilobytes. Defaults to 25600 (25 MB). If limit is set to 0, the log file size would not be limited.
+
+```
+{
+  "license_key": "YOUR_LICENSE_KEY_HERE",
+  "log_level": "debug",
+
+  "log_file_path": "log_file_path": “logs"
+}
+```
+
+**Proxy Configuration** - If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in your newrelic.json file:
+
+`proxy\_host` - The proxy host (e.g. webcache.example.com)
+
+`proxy\_port` - The proxy port (e.g. 8080). Defaults to 80 if a proxy_host is set
+
+`proxy\_username` - The proxy username
+
+`proxy\_password` - The proxy password
+
+
+**Example:**
+
+```
+{
+  "license_key": "YOUR_LICENSE_KEY_HERE",
+
+  "proxy_host": "proxy.mycompany.com",
+
+  "proxy_port": 9000
+}
+```
+
+#### Configuring the plugin.template.json file: 
+
+The second file, plugin.template.json, contains data specific to each plugin (e.g., a list of hosts and port combinations for what you are monitoring). Templates for both of these files should be located in the ‘config’ directory in your extracted plugin folder.
+
+Make a copy of this template and rename it to plugin.json. Shown below is an example of the plugin.json file’s contents.
+
+**NOTE** - You can add multiple objects to the “agents” array to monitor multiple PostgreSQL instances.
+
+**NOTE:** Each object in the "agents" array should have a unique "instance_name".
+
+**Fields**
+
+| Field Name  |  Description |
+|:------------- |:-------------|
+| instance_name | Alias for the name of your PostgreSQL instance that will appear in the User Interface |
+| host | IP address or hostname of PostgreSQL instance |
+| port | Port used to connect to the PostgreSQL instance. Default is `443` |
+| username | User Name for PostgreSQL login. |
+| password | Password for PostgreSQL login. |
+| ssl_mode | Indicates if you wish to connect while using ssl. Acceptable values are `disable` and `require` |
+
+**Example:**
+
+```
+{
+  "agents": [
+    {
+      "instance_name": "YOUR_VALUE_HERE",
+      "username": "YOUR_VALUE_HERE",
+      "password": "YOUR_VALUE_HERE",
+      "host": "YOUR_VALUE_HERE",
+      "port": "YOUR_VALUE_HERE",
+      "ssl_mode" : "disable"
+    },
+    {
+      "instance_name": "YOUR_VALUE_HERE",
+      "username": "YOUR_VALUE_HERE",
+      "password": "YOUR_VALUE_HERE",
+      "host": "YOUR_VALUE_HERE",
+      "port": "YOUR_VALUE_HERE",
+      "ssl_mode" : "require"
+    }
+  ]
+}
+```
+
+## Using the Plugin
+For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
+
+## Support Resources
+For questions or issues regarding the PostgreSQL Plugin for New Relic, visit http://support.bluemedora.com. 
+
+## Metrics Source Documentation
+
+**System Overview**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Database Sessions (session) |  Active, Waiting, Idle in Transactions, Idle in Abort Transactions, Fastpath Function Call sessions for all databases in instance |
+| Database Size (MB) |  Size across all databases |
+| Query Execution Time (ms/minute) |  The time in milliseconds for every minute a query takes to execute  |
+| Function Execution Time (sec/minute) |  The time in seconds for every minute a query takes to execute  |
+| Table Size (MB) | Size across all tables |
+| Tablespace Size (MB)  | Size across all tablesapces |
+
+**Databases**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Size (MB)  |  Size across all databases  |
+| Sessions (sessions)  |  Active, Waiting, Idle in Transactions, Idle in Abort Transactions, Fastpath Function Call sessions for all databases in instance  |
+| Buffer Hit Ratio (%)  |  Percentage of time buffer is hit  |
+| Active Connections (connections)  | Number of active connections per database |
+| Deadlocks (deadlocks/minute)  | Number of deadlocks per minute across databases |
+
+**Tables**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Size (MB)  | Size across of tables |
+| Buffer Reads (Reads/sec) | Number of buffer reads per second for a table |
+| Sequential Scans (Scans/sec)  | Sequential scans per second for a table |
+| Index Scans (Scans/sec) | Index scans per second for a table |
+| Index Buffer Hits (Hits/sec) | Buffer hits per second for an index in a table |
+
+**Indexes**
+
+| Metric Name | Description |
+|:------------- |:-------------|
+| Scans (Scans/sec) | Scans per second for an index |
+| Buffer hits (Hits/sec) | Buffer hits per second for an index |
+| Block Reads (Reads/sec) | Block reads per second for an index |
+
+**Queries**
+
+Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall calls.
+
+| Metric Name | Description |
+|:------------- |:-------------|
+| Execution Time (ms/minute) | The time in milliseconds for every minute a query takes to execute |
+| Average Execution Time (ms) | The average time in milliseconds a query takes to execute |
+| Calls (Calls/minute) | The number of calls per minute to a query |
+
+**Functions**
+
+Only 20 functions are displayed at a time. The 20 that are displayed are the functions that have the highest number of overall calls.
+
+| Metric Name | Description |
+|:------------- |:-------------|
+| Execution Time (ms/minute) | The time in milliseconds for every minute a function takes to execute |
+| Average Execution Time (ms) | The average time in milliseconds a function takes to execute |
+| Calls (Calls/minute) | The number of calls per minute to a function |
