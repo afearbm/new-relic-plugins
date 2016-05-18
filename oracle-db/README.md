@@ -1,27 +1,27 @@
-# New Relic Plugin for PostgreSQL
+# New Relic Plugin for Oracle Database
 
-The **Blue Medora New Relic Plugin for PostgreSQL** allows you to monitor your PostgreSQL performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
+The **Blue Medora New Relic Plugin for Oracle Database** allows you to monitor your Oracle Database performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
 				
-This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for PostgreSQL.
+This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for Oracle Database.
 
 ----
 
 ## Obtaining the Plugin
-You can find the New Relic Plugin for PostgreSQL in the following locations:
+You can find the New Relic Plugin for Oracle Database in the following locations:
 
 - [New Relic Storefront](//TODO Update)
 - [Plugin Central](//TODO Update)					
 
 ## System Requirements
 
-The PostgreSQL plugin connects to the supported PostgreSQL instance via a host or IP address. Before installing and configuring the plugin, ensure your system meets the following requirements:
+The Oracle Database plugin connects to a single Oracle Database Instance via a host or IP address. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 
 - A New Relic account. Sign up for a free account [here](http://newrelic.com)
 
-**PostgreSQL Plugin Requirements**
-- The plugin supports **PostgreSQL Version 9.0+**
+**Oracle Database Plugin Requirements**
+- The plugin supports **Oracle Database Version 11.2+**
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
 
 ----
@@ -42,7 +42,7 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-  ./npi install com.bluemedora.Postgres
+  ./npi install com.bluemedora.oracle.database
 ``` 
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
@@ -142,7 +142,7 @@ The second file, plugin.template.json, contains data specific to each plugin (e.
 
 Make a copy of this template and rename it to plugin.json. Shown below is an example of the plugin.json file’s contents.
 
-**NOTE** - You can add multiple objects to the “agents” array to monitor multiple PostgreSQL instances.
+**NOTE** - You can add multiple objects to the “agents” array to monitor multiple Oracle Database instances.
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -150,12 +150,15 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | Alias for the name of your PostgreSQL instance that will appear in the User Interface. |
-| host | IP address or hostname of PostgreSQL instance. |
-| port | Port used to connect to the PostgreSQL instance. Default is `443`. |
-| username | User Name for PostgreSQL login. |
-| password | Password for PostgreSQL login. |
-| ssl_mode | Indicates if you wish to connect while using ssl. Acceptable values are `disable` and `require`. |
+| instance_name | Alias for the name of your Oracle Database instance that will appear in the User Interface |
+| host | IP address or hostname of Oracle Database instance. |
+| port | Port used to connect to the Oracle Database instance. Default is `1521` for when `ssl_enabled` is `false`, and `2484` for when `ssl_enabled` is `true`. |
+| username | User Name for Oracle Database login. |
+| password | Password for Oracle Database login. |
+| sid | SID or Service Name. |
+| ssl_enabled | Indicates if you wish to connect while using ssl. Acceptable values are `true` and `false`. |
+| truststore_path | Only used if `ssl_enabled` is `true`. Location of truststore. |
+| truststore_password | Only used if `ssl_enabled` is `true`. Password for the truststore. |
 
 **Example:**
 
@@ -168,7 +171,10 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
       "password": "YOUR_VALUE_HERE",
       "host": "YOUR_VALUE_HERE",
       "port": "YOUR_VALUE_HERE",
-      "ssl_mode" : "disable"
+      "sid": "YOUR_VALUE_HERE",
+      "ssl_enable": false,
+      "truststore_path": "",
+      "truststore_password": ""
     },
     {
       "instance_name": "YOUR_VALUE_HERE",
@@ -176,7 +182,10 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
       "password": "YOUR_VALUE_HERE",
       "host": "YOUR_VALUE_HERE",
       "port": "YOUR_VALUE_HERE",
-      "ssl_mode" : "require"
+      "sid": "YOUR_VALUE_HERE",
+      "ssl_enable": true,
+      "truststore_path": "PATH_TO_TRUSTSTORE",
+      "truststore_password": "YOUR_TRUSTSTORE_PASSWORD"
     }
   ]
 }
@@ -186,7 +195,7 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Support Resources
-For questions or issues regarding the PostgreSQL Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the Oracle Database Plugin for New Relic, visit http://support.bluemedora.com. 
 
 ## Metrics Source Documentation
 
@@ -194,57 +203,55 @@ For questions or issues regarding the PostgreSQL Plugin for New Relic, visit htt
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Database Sessions (session) |  Active, Waiting, Idle in Transactions, Idle in Abort Transactions, Fastpath Function Call sessions for all databases in instance |
-| Database Size (MB) |  Size across all databases |
-| Query Execution Time (ms/minute) |  The time in milliseconds for every minute a query takes to execute  |
-| Function Execution Time (sec/minute) |  The time in seconds for every minute a query takes to execute  |
-| Table Size (MB) | Size across all tables |
-| Tablespace Size (MB)  | Size across all tablesapces |
+| Instance Waits (Waits/sec) |  The number of waits per second on the instance |
+| Instance Sessions (sessions) |  Inactive, Killed, No Wait, Sniped, Unblocked, Waiting, Active, Blocked, and Cached sessions on the instance |
+| Instance CPU Usage (centiseconds/sec) | CPU usage of an instance |
+| Tablespace Size (GB) | Size across tablespaces |
+| Query Execution Time (sec/minute) | The number of seconds every minute that a query takes to execute |
+| Query Wait Time (ms/minute) | The number of milliseconds every minute that a query spends waiting |
+| Database File Size (GB) | File size across databases of an instance |
+| Control File Size (MB) | Size of control files across an instance |
 
-**Databases**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Size (MB)  |  Size across all databases  |
-| Sessions (sessions)  |  Active, Waiting, Idle in Transactions, Idle in Abort Transactions, Fastpath Function Call sessions for all databases in instance  |
-| Buffer Hit Ratio (%)  |  Percentage of time buffer is hit  |
-| Active Connections (connections)  | Number of active connections per database |
-| Deadlocks (deadlocks/minute)  | Number of deadlocks per minute across databases |
-
-**Tables**
+**Instance**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Size (MB)  | Size across tables |
-| Buffer Reads (Reads/sec) | Number of buffer reads per second for a table |
-| Sequential Scans (Scans/sec)  | Sequential scans per second for a table |
-| Index Scans (Scans/sec) | Index scans per second for a table |
-| Index Buffer Hits (Hits/sec) | Buffer hits per second for an index in a table |
+| Waits (Waits/sec) |  The number of waits per second on the instance |
+| Time Waited (sec/minute) | The number of seconds every minute that the instance is spent waiting  |
+| CPU Usage (centiseconds/sec) | CPU usage of an instance |
+| Sessions (sessions) |  Inactive, Killed, No Wait, Sniped, Unblocked, Waiting, Active, Blocked, and Cached sessions on the instance |
+| Cache Hit Ratio (%) | The hit precentage of instance on the cache  |
+| Cache Size (GB) | The size of the instance cache  |
+| Read Time (ms/minute) | The number of milliseconds every minute that the instance spends reading |
+| Write Time (ms/minute) | The number of milliseconds every minute that the instance spends writing |
 
-**Indexes**
+**Tablespaces**
 
-| Metric Name | Description |
+| Metric Name  |  Description |
 |:------------- |:-------------|
-| Scans (Scans/sec) | Scans per second for an index |
-| Buffer hits (Hits/sec) | Buffer hits per second for an index |
-| Block Reads (Reads/sec) | Block reads per second for an index |
+| Size (GB)  | Size across tablespaces |
+| Free Space (GB)  | Free Space available across tablespaces |
+
+**Database Files**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Size (GB)  | Size across database files |
+| Max Size (GB)  | Max size allowed across database files |
+| IO Time (ms)  | Time taken for IO operations |
+| Read Time (ms/minute) | The number of milliseconds every minute across database files spent reading |
+| Write Time (ms/minute) | The number of milliseconds every minute across database files spent writing |
+| Reads (Reads/sec) | The read rate across database files |
+| Write (Writes/sec) | The write rate across database files |
 
 **Queries**
 
-Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall calls.
+Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall executions.
 
-| Metric Name | Description |
+| Metric Name  |  Description |
 |:------------- |:-------------|
-| Execution Time (ms/minute) | The time in milliseconds for every minute a query takes to execute |
-| Average Execution Time (ms) | The average time in milliseconds a query takes to execute |
-| Calls (Calls/minute) | The number of calls per minute to a query |
-
-**Functions**
-
-Only 20 functions are displayed at a time. The 20 that are displayed are the functions that have the highest number of overall calls.
-
-| Metric Name | Description |
-|:------------- |:-------------|
-| Execution Time (ms/minute) | The time in milliseconds for every minute a function takes to execute |
-| Average Execution Time (ms) | The average time in milliseconds a function takes to execute |
-| Calls (Calls/minute) | The number of calls per minute to a function |
+| Execution Time (sec/minute)  | The number of seconds every minute that a query takes to execute |
+| Wait Time (ms/minute)  | The number of milliseconds every minute that a query spends waiting |
+| CPU Time (ms/minute)  | The number of milliseconds every minute that a query spends on the cpu |
+| Memory (KB/sec)  | The memory usage every second of a query |
+| Executions (Executions/sec)  | The number of executions per second of a query |
