@@ -1,27 +1,26 @@
-# New Relic Plugin for PostgreSQL
+# New Relic Plugin for Amazon DynamoDB
 
-The **Blue Medora New Relic Plugin for PostgreSQL** allows you to monitor your PostgreSQL performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
+The **Blue Medora New Relic Plugin for Amazon DynamoDB** allows you to monitor your Amazon DynamoDB performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
 				
-This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for PostgreSQL.
+This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for Amazon DynamoDB.
 
 ----
 
 ## Obtaining the Plugin
-You can find the New Relic Plugin for PostgreSQL in the following locations:
+You can find the New Relic Plugin for Amazon DynamoDB in the following locations:
 
 - [New Relic Storefront](//TODO Update)
 - [Plugin Central](//TODO Update)					
 
 ## System Requirements
 
-The PostgreSQL plugin connects to the supported PostgreSQL instance via a host or IP address. Before installing and configuring the plugin, ensure your system meets the following requirements:
+The Amazon DynamoDB plugin connects to a DynamoDB Region via account access keys. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 
 - A New Relic account. Sign up for a free account [here](http://newrelic.com)
 
-**PostgreSQL Plugin Requirements**
-- The plugin supports **PostgreSQL Version 9.0+**
+**Amazon DynamoDB Plugin Requirements**
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
 
 ----
@@ -42,7 +41,7 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-  ./npi install com.bluemedora.Postgres
+  ./npi install com.bluemedora.amazon.dynamodb
 ``` 
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
@@ -142,7 +141,7 @@ The second file, plugin.template.json, contains data specific to each plugin (e.
 
 Make a copy of this template and rename it to plugin.json. Shown below is an example of the plugin.json file’s contents.
 
-**NOTE** - You can add multiple objects to the “agents” array to monitor multiple PostgreSQL instances.
+**NOTE** - You can add multiple objects to the “agents” array to monitor multiple Amazon DynamoDB instances.
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -150,12 +149,10 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | Alias for the name of your PostgreSQL instance that will appear in the User Interface. |
-| host | IP address or hostname of PostgreSQL instance. |
-| port | Port used to connect to the PostgreSQL instance. Default is `443`. |
-| username | User Name for PostgreSQL login. |
-| password | Password for PostgreSQL login. |
-| ssl_mode | Indicates if you wish to connect while using ssl. Acceptable values are `disable` and `require`. |
+| instance_name | Alias for the name of your Amazon DynamoDB instance that will appear in the User Interface |
+| access_key_id | Amazon AWS Access Key ID can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
+| secret_access_key | Amazon AWS Secret Access Key can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
+| region | Amazon AWS region where DynamoDB instance resides. Acceptable values are `U_WEST_1`, `SA_EAST_1`, `AP_NORTHEAST_2`, `US_EAST_1`, `AP_NORTHEAST_1`, `CN_NORTH_1`, `EU_CENTRAL_1`, `AP_SOUTHEAST_1`, `AP_SOUTHEAST_2`, `US_WEST_2`, `GovCloud`, `US_WEST_1` |
 
 **Example:**
 
@@ -164,19 +161,9 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
   "agents": [
     {
       "instance_name": "YOUR_VALUE_HERE",
-      "username": "YOUR_VALUE_HERE",
-      "password": "YOUR_VALUE_HERE",
-      "host": "YOUR_VALUE_HERE",
-      "port": "YOUR_VALUE_HERE",
-      "ssl_mode" : "disable"
-    },
-    {
-      "instance_name": "YOUR_VALUE_HERE",
-      "username": "YOUR_VALUE_HERE",
-      "password": "YOUR_VALUE_HERE",
-      "host": "YOUR_VALUE_HERE",
-      "port": "YOUR_VALUE_HERE",
-      "ssl_mode" : "require"
+      "access_key_id": "YOUR_VALUE_HERE",
+      "secret_access_key": "YOUR_VALUE_HERE",
+      "region": "YOUR_VALUE_HERE"
     }
   ]
 }
@@ -186,7 +173,7 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Support Resources
-For questions or issues regarding the PostgreSQL Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the Amazon DynamoDB Plugin for New Relic, visit http://support.bluemedora.com. 
 
 ## Metrics Source Documentation
 
@@ -194,57 +181,36 @@ For questions or issues regarding the PostgreSQL Plugin for New Relic, visit htt
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Database Sessions (session) |  Active, Waiting, Idle in Transactions, Idle in Abort Transactions, Fastpath Function Call sessions for all databases in instance |
-| Database Size (MB) |  Size across all databases |
-| Query Execution Time (ms/minute) |  The time in milliseconds for every minute a query takes to execute  |
-| Function Execution Time (sec/minute) |  The time in seconds for every minute a query takes to execute  |
-| Table Size (MB) | Size across all tables |
-| Tablespace Size (MB)  | Size across all tablesapces |
-
-**Databases**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Size (MB)  |  Size across all databases  |
-| Sessions (sessions)  |  Active, Waiting, Idle in Transactions, Idle in Abort Transactions, Fastpath Function Call sessions for all databases in instance  |
-| Buffer Hit Ratio (%)  |  Percentage of time buffer is hit  |
-| Active Connections (connections)  | Number of active connections per database |
-| Deadlocks (deadlocks/minute)  | Number of deadlocks per minute across databases |
+| Table Read Throttle Events (Events) | The number of read throttle events across DynamoDB tables |
+| Table Write Throttle Events (Events) | The number of write throttle events across DynamoDB tables |
+| Table Read Capacity Usage (%) | Percent usage of Provisioned Read capacity per DynamoDB table |
+| Table Write Capacity Usage (%) | Percent usage of Provisioned Write capacity per DynamoDB table |
+| Global Secondary Index Size (KB) | Size across global secondary indexes |
+| Local Secondary Index Size (KB) | Size across local secondary indexes |
 
 **Tables**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Size (MB)  | Size across tables |
-| Buffer Reads (Reads/sec) | Number of buffer reads per second for a table |
-| Sequential Scans (Scans/sec)  | Sequential scans per second for a table |
-| Index Scans (Scans/sec) | Index scans per second for a table |
-| Index Buffer Hits (Hits/sec) | Buffer hits per second for an index in a table |
+| Read Throttle Events (Events) | The number of read throttle events per DynamoDB tables |
+| Write Throttle Events (Events) | The number of write throttle events per DynamoDB tables |
+| Read Capacity Usage (%) | Percent usage of Provisioned Read capacity per DynamoDB table |
+| Write Capacity Usage (%) | Percent usage of Provisioned Write capacity per DynamoDB table |
+| Read Capacity Remaining (Units) | The number of Read capacity units that are free per DynamoDB table |
+| Write Capacity Remaining (Units) | The number of Write capacity units that are free per DynamoDB table |
 
-**Indexes**
+**Global Secondary Index**
 
-| Metric Name | Description |
+| Metric Name  |  Description |
 |:------------- |:-------------|
-| Scans (Scans/sec) | Scans per second for an index |
-| Buffer hits (Hits/sec) | Buffer hits per second for an index |
-| Block Reads (Reads/sec) | Block reads per second for an index |
+| Size (KB) | Size per global secondary index |
+| Item Count (Items) | The number of items per global secondary index |
+| Provisioned Read Capacity (Units) | Provisioned Read Capacity per global secondary index |
+| Provisioned Write Capacity (Units) | Provisioned Write Capacity per global secondary index |
 
-**Queries**
+**Local Secondary Index**
 
-Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall calls.
-
-| Metric Name | Description |
+| Metric Name  |  Description |
 |:------------- |:-------------|
-| Execution Time (ms/minute) | The time in milliseconds for every minute a query takes to execute |
-| Average Execution Time (ms) | The average time in milliseconds a query takes to execute |
-| Calls (Calls/minute) | The number of calls per minute to a query |
-
-**Functions**
-
-Only 20 functions are displayed at a time. The 20 that are displayed are the functions that have the highest number of overall calls.
-
-| Metric Name | Description |
-|:------------- |:-------------|
-| Execution Time (ms/minute) | The time in milliseconds for every minute a function takes to execute |
-| Average Execution Time (ms) | The average time in milliseconds a function takes to execute |
-| Calls (Calls/minute) | The number of calls per minute to a function |
+| Size (KB) | Size per local secondary index |
+| Item Count (Items) | The number of items per local secondary index |
