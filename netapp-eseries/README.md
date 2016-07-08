@@ -1,8 +1,8 @@
-# Blue Medora NetApp Storage Plugin for New Relic
+# Blue Medora NetApp E-Series Plugin for New Relic
 
-The **Blue Medora NetApp Storage Plugin for New Relic** allows you to monitor your NetApp Storage performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.						
+The **Blue Medora NetApp E-Series Plugin for New Relic** allows you to monitor performance data from your NetApp E-Series arrays from within the New Relic platform by pulling in metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.						
 
-This guide includes instructions for installing and configuring the Blue Medora NetApp Storage Plugin for New Relic.
+This guide includes instructions for installing and configuring the Blue Medora NetApp E-Series Plugin for New Relic.
 
 ----
 
@@ -14,13 +14,14 @@ You can find the New Relic NetApp Storage Plugin in the following locations:
 
 ## System Requirements
 
-The NetApp Storage plugin collects data by making REST calls to OnCommand API Services.  Before installing and configuring the plugin, ensure your system meets the following requirements:
+The NetApp Storage plugin collects data using the SANtricity Web Service for E-Series.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 - A New Relic account
 
 **NetApp Storage Plugin Requirements**
-- **NetApp OnCommand ApiServices:** NetApp OnCommand API Services version 1.0 or 1.1 is required to collect data.  
+- **A NetApp E- or EF-Series storage system:**
+- **API:** SANtricity Web Service for E-Series Proxy v1.3+.  
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
 
 ----
