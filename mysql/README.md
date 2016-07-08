@@ -1,26 +1,27 @@
-# New Relic Plugin for Amazon DynamoDB
+# New Relic Plugin for MySQL
 
-The **Blue Medora New Relic Plugin for Amazon DynamoDB** allows you to monitor your Amazon DynamoDB performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
+The **Blue Medora New Relic Plugin for MySQL** allows you to monitor your Amazon DynamoDB performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
 				
-This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for Amazon DynamoDB.
+This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for MySQL.
 
 ----
 
 ## Obtaining the Plugin
-You can find the New Relic Plugin for Amazon DynamoDB in the following locations:
+You can find the New Relic Plugin for MySQL in the following locations:
 
 - [New Relic Storefront](//TODO Update)
 - [Plugin Central](//TODO Update)					
 
 ## System Requirements
 
-The Amazon DynamoDB plugin connects to a DynamoDB Region via account access keys. Before installing and configuring the plugin, ensure your system meets the following requirements:
+The MySQL plugin connects to a MySQL or MariaDB instance via JDBC connection. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 
 - A New Relic account. Sign up for a free account [here](http://newrelic.com)
 
-**Amazon DynamoDB Plugin Requirements**
+**MySQL Plugin Requirements**
+- **MySQL and Maria DB versions.** The plugin is compatible with MySQL versions 5.6 & 5.7 and MariaDB versions 10.0 and 10.1.
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
 
 ----
@@ -173,7 +174,7 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Support Resources
-For questions or issues regarding the Amazon DynamoDB Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the MySQL Plugin for New Relic, visit http://support.bluemedora.com. 
 
 ## Metrics Source Documentation
 
