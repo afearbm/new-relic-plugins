@@ -82,16 +82,31 @@ The "template" .json files found in the config folder must be modified (i.e., cu
 
 ### Configuring the `newrelic.template.json` file
 
-The first file, `newrelic.template.json`, contains configurations used by all Platform plugins (e.g., license key, logging information, proxy settings) and can be shared across your plugins.
-Make a copy of this template and rename it to `newrelic.json`. Listed below are the configurable fields within the newrelic.json file:
+The first file, `newrelic.template.json`, contains configurations used by all Platform plugins (e.g., license key, Insights info., logging information, proxy settings) and can be shared across your plugins. Make a copy of this template and rename it to `newrelic.json`.
 
-**New Relic License Key** - The only required field in the `newrelic.json` file is the License Key. This unique identifier informs New Relic about the specific account tied to the plugin. For more information on the License Key, [refer to the New Relic License key documentation](https://docs.newrelic.com/docs/accounts-partnerships/accounts/account-setup/license-key).
+**Example:**
 
 ```
 {
-   “license_key”: “YOUR_LICENSE_KEY_HERE”
+   “license_key”: “YOUR_LICENSE_KEY_HERE”,
+   "log_level": "info",
+   "log_file_name": "newrelic_plugin.log",
+   "log_file_path": "logs",
+   "insights_api_key": "YOUR INSIGHTS API KEY",
+   "insights_account_id": "YOUR INSIGHTS ACCOUNT ID"
+   "insights_use_ssl": true
 }
 ```
+
+Listed below are the **required** configurable fields within the newrelic.json file:
+
+**New Relic License Key** - The first required field in the `newrelic.json` file is the License Key. This unique identifier informs New Relic about the specific account tied to the plugin. For more information on the License Key, [refer to the New Relic License key documentation](https://docs.newrelic.com/docs/accounts-partnerships/accounts/account-setup/license-key).
+
+**New Relic Insights API Key** - The second required field in the `newrelic.json` file is the Insights API Key. This unique identifier allows the plugin to pull data into New Relic Insights. For more information on Insights, [refer to the New Relic Insights documentation](https://docs.newrelic.com/docs/insights/new-relic-insights).
+
+**New Relic Insights Account ID** - The third required field in the `newrelic.json` file is the Insights Account ID. This ID also allows the plugin to pull data into New Relic Insights. For more information on Insights, [refer to the New Relic Insights documentation](https://docs.newrelic.com/docs/insights/new-relic-insights).
+
+Listed below are the **optional** configurable fields within the newrelic.json file:
 
 **Logging Configuration** - By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
 
@@ -103,14 +118,7 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 `log\_limit\_in\_kbytes` - The log file limit in kilobytes. Defaults to 25600 (25 MB). If limit is set to 0, the log file size would not be limited.
 
-```
-{
-  "license_key": "YOUR_LICENSE_KEY_HERE",
-  "log_level": "debug",
-
-  "log_file_path": "log_file_path": “logs"
-}
-```
+**Insights Use SSL** - Defaults to `true` for added data security, you may want to change whether to use the SSL setting.
 
 **Proxy Configuration** - If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in your `newrelic.json` file:
 
@@ -139,7 +147,7 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 The second file, `plugin.template.json`, contains data specific to each plugin (e.g., a list of hosts and port combinations for what you are monitoring). Templates for both of these files should be located in the ‘config’ directory in your extracted plugin folder.
 
-Make a copy of this template and rename it to plugin.json. Shown below is an example of the `plugin.json` file’s contents.
+Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
 Each Vblock instance can be made up of several different components. Component objects in the "agents" array should share an "instance_name" if they are part of the same Vblock system. Each component within a Vblock system should have a unique "component_name", as well as a "component_type" that indicates the type of component. The following component types are recognized by the Vblock plugin:
 
@@ -338,7 +346,7 @@ Each Vblock instance can be made up of several different components. Component o
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Support Resources
-For questions or issues regarding the Blue Medora VCE Vblock plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the Blue Medora IBM DB2 plugin for New Relic, visit http://support.bluemedora.com. 
 
 ## Metrics Source Documentation
 
