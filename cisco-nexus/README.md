@@ -87,7 +87,7 @@ The "template" .json files found in the config folder must be modified (i.e., cu
 ### Configuring the `newrelic.template.json` file
 
 The first file, `newrelic.template.json`, contains configurations used by all Platform plugins (e.g., license key, logging information, proxy settings) and can be shared across your plugins.
-Make a copy of this template and rename it to `newrelic.json`. Listed below are the configurable fields within the `newrelic.json file`:
+Make a copy of this template and rename it to `newrelic.json`. Listed below are the configurable fields within the newrelic.json file:
 
 **New Relic License Key** - The only required field in the `newrelic.json` file is the License Key. This unique identifier informs New Relic about the specific account tied to the plugin. For more information on the License Key, [refer to the New Relic License key documentation](https://docs.newrelic.com/docs/accounts-partnerships/accounts/account-setup/license-key).
 
@@ -97,9 +97,17 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 }
 ```
 
-**Logging Configuration**
+**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`. For more information on where to find these fields, [refer to the New Relic Insights documentation]
+(https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/insert-custom-events-insights-api#register). Below are the fields needed to configure Insights access.
 
-By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
+`insights_api_key` - The api key associated with your Insights account.
+
+`insights_account_id` - The ID associated with your Insights account.
+
+`insights_use_ssl` - Signals whether to connect to Insights via SSL. Acceptable values are `true` or `false`.
+
+
+**Logging Configuration** - By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
 
 `log\_level` - The log level. Valid values: [debug, info, warn, error, fatal]. Defaults to info.
 
@@ -111,16 +119,17 @@ By default Platform plugins will have their logging turned on; however, you can 
 
 ```
 {
-  "license_key": "YOUR_LICENSE_KEY_HERE",
-  "log_level": "debug",
-
-  "log_file_path": "log_file_path": “logs"
+    "license_key": "YOUR LICENSE KEY",
+    "log_level": "info",
+    "log_file_name": "newrelic_plugin.log",
+    "log_file_path": "logs",
+    "insights_api_key": "YOUR INSIGHTS API KEY",
+    "insights_account_id": "YOUR INSIGHTS ACCOUNT ID",
+    "insights_use_ssl": true
 }
 ```
 
-**Proxy Configuration**
-
-If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in your newrelic.json file:
+**Proxy Configuration** - If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in your `newrelic.json` file:
 
 `proxy\_host` - The proxy host (e.g. webcache.example.com)
 
@@ -157,6 +166,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your New Relic Cisco Nexus instance that will appear in the User Interface |
 | version | SNMP version acceptable values `v2c` or `v3` for SNMP Version 2 or Version 3 respectively |
 | management_ip | IP address of Nexus Switch |
@@ -167,18 +177,21 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | auth_password | Only applicable if `version` is `v3`. SNMP Authentication password. Only needed if `security_level` is `auth_priv` or `auth_nopriv` |
 | privacy_password | Only applicable if `version` is `v3`. SNMP privacy password, Only needed if `security_level` is `auth_priv` |
 | privacy_type | Only applicable if `version` is `v3`. SNMP encryption type. Acceptable values are `privAES256`, `privAES192`, `privAES128`, `privDES`, or `priv3DES` for  256 bit AES, 192 bit AES, 128 bit AES, DES, or 3-DES respectively |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": "60",
   "agents": [
     {
       "instance_name": "Your SNMP Version 2 Instance",
       "version": "v2 or v2c",
       "management_ip": "your_value_here",
       "community_string": "your_value_here",
-      "snmp_port": 161
+      "snmp_port": 161,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your SNMP Version 3 Instance",
@@ -189,7 +202,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "privacy_password": "your_value_here",
       "authentication_type": "authSHA or authMD5",
       "privacy_type": "privAES256 or privAES192 or privAES128 or privDES or priv3DES",
-      "security_level": "auth_priv or auth_nopriv or noauth_nopriv"
+      "security_level": "auth_priv or auth_nopriv or noauth_nopriv",
+      "enable_insights": "true"
     }
   ]
 }
@@ -211,7 +225,7 @@ For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Rel
 | Total Packets (Packets/sec)  | The total amount of packets per second |
 | Port Status Count  | The number of ports per status (Down, Up, or In Error) |
 
-**Ports**
+**Port**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
@@ -219,6 +233,15 @@ For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Rel
 | Outbound Throughput (MB/sec)  | The outbound throughput of a port in megabytes per second |
 | Inbound Packets (Packets/sec)  | The amount of inbound packets per second of a port  |
 | Outbound Packets (Packets/sec) | The amount of outbound packets per second of a port |
+
+**L3 Interface**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Inbound Throughput (MB/sec) | The inbound throughput of an L3 Interface in megabytes per second  |
+| Outbound Throughput (MB/sec)  | The outbound throughput of an L3 Interface in megabytes per second |
+| Inbound Packets (Packets/sec)  | The amount of inbound packets per second of an L3 Interface  |
+| Outbound Packets (Packets/sec) | The amount of outbound packets per second of an L3 Interface |
 
 **Summary**
 

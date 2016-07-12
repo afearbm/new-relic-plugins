@@ -87,15 +87,25 @@ The "template" .json files found in the config folder must be modified (i.e., cu
 ### Configuring the `newrelic.template.json` file
 
 The first file, `newrelic.template.json`, contains configurations used by all Platform plugins (e.g., license key, logging information, proxy settings) and can be shared across your plugins.
-Make a copy of this template and rename it to `newrelic.json`. Listed below are the configurable fields within the `newrelic.json` file:
+Make a copy of this template and rename it to `newrelic.json`. Listed below are the configurable fields within the newrelic.json file:
 
-**New Relic License Key** - The only required field in the newrelic.json file is the License Key. This unique identifier informs New Relic about the specific account tied to the plugin. For more information on the License Key, [refer to the New Relic License key documentation](https://docs.newrelic.com/docs/accounts-partnerships/accounts/account-setup/license-key).
+**New Relic License Key** - The only required field in the `newrelic.json` file is the License Key. This unique identifier informs New Relic about the specific account tied to the plugin. For more information on the License Key, [refer to the New Relic License key documentation](https://docs.newrelic.com/docs/accounts-partnerships/accounts/account-setup/license-key).
 
 ```
 {
    “license_key”: “YOUR_LICENSE_KEY_HERE”
 }
 ```
+
+**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`. For more information on where to find these fields, [refer to the New Relic Insights documentation]
+(https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/insert-custom-events-insights-api#register). Below are the fields needed to configure Insights access.
+
+`insights_api_key` - The api key associated with your Insights account.
+
+`insights_account_id` - The ID associated with your Insights account.
+
+`insights_use_ssl` - Signals whether to connect to Insights via SSL. Acceptable values are `true` or `false`.
+
 
 **Logging Configuration** - By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
 
@@ -116,7 +126,7 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 }
 ```
 
-**Proxy Configuration** - If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in your newrelic.json file:
+**Proxy Configuration** - If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in your `newrelic.json` file:
 
 `proxy\_host` - The proxy host (e.g. webcache.example.com)
 

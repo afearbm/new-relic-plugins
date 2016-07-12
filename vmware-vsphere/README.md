@@ -21,8 +21,8 @@ The VMware vSphere Plugin connects to VMware vSphere using <?>. Before installin
 
 **VMware vSphere Plugin Requirements**
 
-- **VMware vSphere Version:** This plugin requires VMware vSphere Version <X.XX?>
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period. 
+- **VMware vSphere:** This plugin requires VMware vSphere Version 5.0 or later
+- **A Blue Medora License:** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period. 
 
 ----
 
