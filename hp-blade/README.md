@@ -1,3 +1,4 @@
+
 # New Relic Plugin for HP Blade Servers
 
 The **Blue Medora New Relic Plugin for HP Blade Servers** allows you to monitor your HP Blade Servers performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
@@ -202,7 +203,7 @@ For questions or issues regarding the HP Blade Servers Plugin for New Relic, vis
 | Memory Temperature (C) |  Temperature readings of the memory in celsius |
 | Power Consumed (watts) |  Power reading throughout system in watts  |
 | Fan Status (%) |  Percentage of fans in a certain state  |
-| Network Adapters Status (%) |  Percentage of network adapters in a certain state  |
+| Network Adapter Status (%) |  Percentage of network adapters in a certain state  |
 | Port Status (%)  |  Percentage of ports in a certain state  |
 
 **Network Adapters**

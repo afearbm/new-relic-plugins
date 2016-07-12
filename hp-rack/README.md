@@ -151,11 +151,13 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | Alias for the name of your HP iLO instance that will appear in the User Interface |
 | username | HP iLO REST API Username used to connect to HP ProLiant device. |
 | password | HP iLO REST API Password used to connect to HP ProLiant device. |
 | host | IP address or hostname of HP iLO device |
 | port | Port used to connect to the HP iLO REST API.  |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
 **Example:**
 
@@ -168,6 +170,7 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
       "password": "YOUR_VALUE_HERE",
       "host": "YOUR_VALUE_HERE",
       "port": "YOUR_VALUE_HERE",
+      "enable_insights": "true"
     }
   ]
 }
@@ -188,25 +191,26 @@ For questions or issues regarding the HP Rack Servers Plugin for New Relic, visi
 | CPU Temperature (C)  |  Temperature readings of the CPU in celsius |
 | Memory Temperature (C) |  Temperature readings of the memory in celsius |
 | Power Consumed (watts) |  Power reading throughout system in watts  |
-| Healthy Power Supplies (%) |  Percentage of power supplies in an "Ok" state  |
-| Healthy Fans (%) |  Percentage of fans in an "Ok" state  |
-| Healthy Ports (%)  |  Percentage of ports in an "Ok" state  |
+| Fan Status (%) |  Percentage of fans in a certain state  |
+| Network Adapter Status (%) |  Percentage of network adapters in a certain state  |
+| Port Status (%)  |  Percentage of ports in a certain state  |
 
 **Network Adapters**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Healthy Ports (%)  |  Percentage of ports in an "Ok" state |
-| Good Receives (frames) |  Number of frames successfully received  |
-| Bad Receives (frames) |  Number of frames unsuccessfully received  |
-| Good Transmits (frames) |  Number of frames successfully transmitted  |
-| Bad Transmits (frames) |  Number of frames unsuccessfully transmitted  |
+| Port Status (%)  |  Percentage of ports in a certain state  |
+| Good Receives (frames/sec) |  Number of frames successfully received  |
+| Bad Receives (frames/sec) |  Number of frames unsuccessfully received  |
+| Good Transmits (frames/sec) |  Number of frames successfully transmitted  |
+| Bad Transmits (frames/sec) |  Number of frames unsuccessfully transmitted  |
 
 **Summary**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| CPU Temperature (C)  |  Temperature readings of the CPU in celsius |
-| Memory Temperature (C) |  Temperature readings of the memory in celsius  |
+| Max CPU Temperature (celsius)  |  Max Temperature readings of the CPU in celsius |
+| Max Memory Temperature (celsius) |  Max Temperature readings of the memory in celsius  |
 | Healthy Ports (%)  |  Percentage of ports in an "Ok" state  |
-| Total Throughput (frames) |  Total number of frames transmitted and received  |
+| Total Good Receives (frames/sec) |  Total number of Good Received frames received  |
+| Total Good Transmits (frames/sec) |  Total number of Good Transmits frames transmitted |
