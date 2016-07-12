@@ -214,11 +214,11 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 | Aggregate Used Capacity (%) | Percentage of aggregate capacity used |
 | Volume Used Capacity (%) |  Percentage of volume capacity used  |
 | LUN Used Capacity (%) |  Percentage of LUN capacity used  |
-| System Latency (µs) |   The average latency for systems |
+| System Latency (ms) |   The average latency for systems |
 | System IOPS (ops/sec) |  The total IOPS for systems  |
-| Volume Latency (µs) |  The average latency for volumes |
+| Volume Latency (ms) |  The average latency for volumes |
 | Volume IOPS (ops/sec) |  The total IOPS for volumes  |
-| LUN Latency (µs) |  The average latency for LUNs  |
+| LUN Latency (ms) |  The average latency for LUNs  |
 | LUN IOPS (ops/sec) |  The total IOPS for LUNs  |
 
 **SVMs**
@@ -228,8 +228,8 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 | Volume Used Capacity (%)  | Percentage of capacity used by volumes on each svm |
 | Volume Used Capacity (TB) |  Terabytes of capacity used by volumes on each svm |
 | Volume Total Capacity (TB) |  The total terabytes of volumes on each svm  |
-| Volume Read Latency (µs) |  Average read latency for volumes on each svm |
-| Volume Write Latency (µs) |  Average write latency for volumes on each svm |
+| Volume Read Latency (ms) |  Average read latency for volumes on each svm |
+| Volume Write Latency (ms) |  Average write latency for volumes on each svm |
 | Volume Read IOPS (ops/sec) |  Total IOPS for volumes on each svm |
 | Volume Write IOPS (ops/sec) |  Total write IOPS for volumes on each svm |
 | Inbound Network Throughput (MB/sec) |  The inbound network throughput for svms |
@@ -244,8 +244,8 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 | CPU Utilization (%)  | Percentage of cpu utilized by each system |
 | Processors |  Number of processors on each system  |
 | Data Disks |  Number of data disks on each system  |
-| Read Latency (µs) |  Read latency for each system  |
-| Write Latency (µs) |  Write latency for each system  |
+| Read Latency (ms) |  Read latency for each system  |
+| Write Latency (ms) |  Write latency for each system  |
 | Read IOPS (ops/sec) |  Total read IOPS for each system  |
 | Write IOPS (ops/sec) |  Total write IOPS for each system |
 | Inbound Network Throughput (MB/sec) |  Inbound network throughput for each system  |
@@ -270,8 +270,8 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 | Used Capacity (%)  |  Percentage of capacity used for each aggregate  |
 | Used Capacity (TB) |  Terabytes of capacity used for each aggregate  |
 | Total Capacity (TB) |  The total capacity of each aggregate in terabytes  |
-| Volume Read Latency (µs) |  Average read latency for volumes on each aggregate  |
-| Volume Write Latency (µs) |  Average write latency for volumes on each aggregate  |
+| Volume Read Latency (ms) |  Average read latency for volumes on each aggregate  |
+| Volume Write Latency (ms) |  Average write latency for volumes on each aggregate  |
 | Volume Read IOPS (ops/sec) |  Total IOPS for volumes on each aggregate  |
 | Volume Write IOPS (ops/sec) |  Total write IOPS for volumes on each aggregate  |
 | Volume Deduplication Space Savings (GB) |  Space saved by deduplication on volumes on each aggregate  |
@@ -284,8 +284,8 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 | Used Capacity (%)  |  Percentage of capacity used for each volume  |
 | Used Capacity (TB) |  Terabytes of capacity used for each volume  |
 | Total Capacity (TB) |  The total capacity of each volume in terabytes  |
-| Read Latency (µs) |  Read latency for each volume  |
-| Write Latency (µs) |  Write latency for each volume  |
+| Read Latency (ms) |  Read latency for each volume  |
+| Write Latency (ms) |  Write latency for each volume  |
 | Read IOPS (ops/sec) |  Read IOPS for each volume  |
 | Write IOPS (ops/sec) |  Write IOPS for each volume  |
 | Deduplication Space Savings (GB) |  Space saved by deduplication on each volume  |
@@ -298,8 +298,8 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 | Used Capacity (%)  |  Percentage of capacity used for each LUN  |
 | Used Capacity (TB) |  Terabytes of capacity used for each LUN  |
 | Total Capacity (TB) |  The total capacity of each LUN in terabytes  |
-| Read Latency (µs) |  Read latency for each LUN  |
-| Write Latency (µs) |  Write latency for each LUN  |
+| Read Latency (ms) |  Read latency for each LUN  |
+| Write Latency (ms) |  Write latency for each LUN  |
 | Read IOPS (ops/sec) |  Read IOPS for each LUN  |
 | Write IOPS (ops/sec) |  Write IOPS for each LUN  |
 | Read Throughput (MB/sec) |  Read throughput for each LUN  |
@@ -311,6 +311,6 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 |:------------- |:-------------|
 | SVM Used Capacity (%)  | The percentage of svm capacity used |
 | System IOPS (ops/sec) |  Total IOPS for systems  |
-| System Latency (µs) |  Average Latency of systems  |
+| System Latency (ms) |  Average Latency of systems  |
 
 
