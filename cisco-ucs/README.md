@@ -160,24 +160,37 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your New Relic Cisco UCS instance that will appear in the User Interface |
 | username | User name to log into UCS Manager |
 | password | Password to log into UCS Manager |
 | host | The hostname or ip address of UCS Manager |
 | protocol | Either `http` or `https` |
 | port | Optional parameter, port to connect to UCS Manager |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "Your Cisco UCS Instance",
+      "instance_name": "no_port",
       "username": "your_value_here",
       "password": "your_value_here",
       "host": "your_value_here",
-      "protocol": "http or https"
+      "protocol": "http or https",
+      "enable_insights": "true"
+    },
+    {
+      "instance_name": "port",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "protocol": "http or https",
+      "port": "443",
+      "enable_insights": "true"
     }
   ]
 }
@@ -197,78 +210,97 @@ For questions or issues regarding the Blue Medora Cisco UCS Plugin for New Relic
 |:------------- |:-------------|
 | Fabric Interconnect Load (%) | The average load percentage of the fabric interconnect |
 | Chassis Power (watts) | The power in watts of the chassis |
-| Rack Unit Memory Used Capacity (%) | The memory used capacity percentage of the rack unit |
-| Blade Memory Used Capacity (%) | The memory used capacity percentage of the blade |
-| Rack Unit Temperature (C) | The temperature of the rack unit in celsius |
+| Blade Total Memory (GB) | The total memory per blade |
+| Blade Available Memory (GB) | The memory available on a blade |
+| Blade Memory Speed (MHz) | The speed of memory on a blade |
 | IO Module Temperature (C) | The temperature of the IO module in celsius |
-| IO Module Inbound Throughput (MB/sec)| The inbound throughput in megabytes per second of the IO module |
-| IO Module Outbound Throughput (MB/sec)| The outbound throughput in megabytes per second of the IO module |
-| Fabric Interconnect Inbound Throughput (MB/sec)| The inbound throughput in megabytes per second of the fabric interconnect |
-| Fabric Interconnect Outbound Throughput (MB/sec)| The outbound throughput in megabytes per second of the fabric interconnect |
+| IO Module Inbound Throughput (bits/sec)| The inbound throughput of the IO module |
+| IO Module Outbound Throughput (bits/sec)| The outbound throughput of the IO module |
+| Fabric Interconnect Inbound Throughput (bits/sec)| The inbound throughput of the fabric interconnect |
+| Fabric Interconnect Outbound Throughput (bits/sec)| The outbound throughput of the fabric interconnect |
 
 **Fabric Interconnects**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Load (%)    | The load percentage of the fabric interconnect   |
-| Memory Available (GB) | The available memory in gigabytes   |
-| Memory Cached (GB) | The cached memory in gigabytes  |
-| Ethernet Port Inbound Throughput (MB/sec) | The inbound throughput in megabytes per second of the ethernet port |
-| Ethernet Port Outbound Throughput (MB/sec)  | The outbound throughput in megabytes per second of the ethernet port  |
-| Ethernet Port Inbound Packets (packets/sec) | The inbound packets per second of the ethernet port  |
-| Ethernet Port Outbound Packets (packets/sec) | The outbound packets per second of the ethernet port  |
-| Fiber Channel Inbound Throughput (KB/sec)  | The inbound throughput in kilobytes per second of the fiber channel  |
-| Fiber Channel Outbound Throughput (KB/sec)  | The outbound throughput in kilobytes per second of the fiber channel  |
-| Fiber Channel Inbound Packets (packets/sec)  | The inbound packets per second of the fiber channel |
-| Fiber Channel Outbound Packets (packets/sec)  | The outbound packets per second of the fiber channel  |
+| Load (%) | The load percentage of the fabric interconnect   |
+| Effective Memory (GB) | The amount of effective memory   |
+| Cached Memory (GB) | The cached memory  |
+| Top 10 Ethernet Port Inbound Throughput (bits/sec) | The 10 ethernet ports with the highest inbound throughput  |
+| Top 10 Ethernet Port Outbound Throughput (bits/sec)  | The 10 ethernet ports with the highest outbound throughput  |
+| Top 10 Ethernet Port Inbound Packets (packets/sec) | The 10 ethernet ports with the highest inbound packets  |
+| Top 10 Ethernet Port Outbound Packets (packets/sec) | The 10 ethernet ports with the highest outbound packets  |
+| Top 10 Fiber Channel Inbound Throughput (bits/sec)  | The 10 fiber channels with the highest inbound throughput  |
+| Top 10 Fiber Channel Outbound Throughput (bits/sec)  | The 10 fiber channels with the highest outbound throughput |
+| Top 10 Fiber Channel Inbound Packets (packets/sec)  | The 10 fiber channels with the highest inbound packets |
+| Top 10 Fiber Channel Outbound Packets (packets/sec)  | The 10 fiber channels with the highest outbound packets  |
+
+
+
+**Chassis**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Top 10 Fan Speed (RPM)     | The 10 fans with the highest speed |
+| Input Power (watts) | The input power of a chassis   |
+| Output Power (watts) | The output power of a chassis   |
+| PSU Output Power (watts) | The power supply units power output  |
+| PSU Voltage (volts)  | The power supply units voltage |
+| PSU Output Current (amps)  | The power supply units output current  |
+| PSU Ambient Temperature (C) | The power supply units ambient temperature |
+
+**Port Channels**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Top 10 Bandwidth (bits/sec) | The 10 port channels with the highest bandwidth |
+| Top 10 Admin Speed (bits/sec) | The 10 port channels with the highest admin speed |
+| Top 10 Operating Speed (bits/sec) | The 10 port channels with the highest operating speed |
+| Top 10 Inbound Throughput (bits/sec) | The 10 port channels with the highest inbound throughput |
+| Top 10 Outbound Throughput (bits/sec) | The 10 port channels with the highest outbound throughput |
+| Top 10 Inbound Packets (packets/sec) | The 10 port channels with the highest inbound packets |
+| Top 10 Outbound Packets (packets/sec) | The 10 port channels with the highest outbound packets |
+
+**IO Modules**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Ambient Temperature (C)     | The ambient temperature of the IO module |
+| Internal Temperature (C) | The internal temperature of the IO module  |
+| Top 10 Ethernet Port Inbound Throughput (bits/sec) | The 10 ethernet ports with the highest inbound throughput |
+| Top 10 Ethernet Port Outbound Throughput (bits/sec) | The 10 ethernet ports with the highest outbound throughput  |
+| Top 10 Ethernet Port Inbound Packets (packets/sec)  | The 10 ethernet ports with the highest inbound packets  |
+| Top 10 Ethernet Port Outbound Packets (packets/sec)  | The 10 ethernet ports with the highest outbound packets |
+
+**Blades**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Available Memory (GB)  | The available memory of a blade |
+| Total Memory (GB) | The total memory of a blade |
 
 **Rack Units**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Temperature (C)     | The temperature in celsius of a rack unit  |
-| Available Memory (GB) | The available memory of a rack unit in gigabytes  |
-| Total Memory (GB) | The total memory of a rack unit in gigabytes  |
-
-**Chassis**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Fan Speed (RPM)     | The fan speed of a given fan |
-| Input Power (watts) | The input power in watts of a chassis   |
-| Output Power (watts) | The output power in watts of a chassis   |
-| PSU Output Power (watts) | The power supply units power output in watts   |
-| PSU Voltage (volts)  | The power supply units voltage in volts  |
-| PSU Output Current (amps)  | The power supply units output current in amps   |
-| PSU Ambient Temperature (C) | The power supply units ambient temperature in celsius  |
-
-**IO Modules**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Ambient Temperature (C)     | The ambient temperature of the IO module in celsius |
-| Internal Temperature (C) | The internal temperature of the IO module in celsius  |
-| Inbound Throughput (MB/sec) | The inbound throughput in megabytes per second of the IO module |
-| Outbound Throughput (MB/sec) | The outbound throughput in megabytes per second of the IO module  |
-| Inbound Packets (packets/sec)  | The inbound packets per second of the IO module  |
-| Outbound Packets (packets/sec)  | The outbound packets per second of the IO module |
-
-**Blades**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Available Memory (GB)  | The available memory of a blade in gigabytes |
-| Total Memory (GB) | The total memory of a blade in gigabytes   |
-| Inbound Throughput (MB/sec) | The inbound throughput in megabytes per second of the blade   |
-| Outbound Throughput (MB/sec) | The outbound throughput in megabytes per second of the blade   |
-| Inbound Packets (packets/sec) | The amount of inbound packets per second of the blade   |
-| Outbound Packets (packets/sec) | The amount of outbound packets per second of the blade |
+| Available Memory (GB) | The available memory of a rack unit  |
+| Total Memory (GB) | The total memory of a rack unit  |
+| Top 10 vHBA Inbound Throughput (bits/sec) | The 10 vHBAs with the highest inbound throughput |
+| Top 10 vHBA Outbound Throughput (bits/sec) | The 10 vHBAs with the highest outbound throughput  |
+| Top 10 vHBA Inbound Packets (packets/sec)  | The 10 vHBAs with the highest inbound packets  |
+| Top 10 vHBA Outbound Packets (packets/sec)  | The 10 vHBAs with the highest outbound packets |
+| Top 10 vHBA Inbound Dropped Packets (packets/sec)  | The 10 vHBAs with the highest inbound dropped packets  |
+| Top 10 vHBA Outbound Dropped Packets (packets/sec)  | The 10 vHBAs with the highest outbound dropped packets |
+| Top 10 vHBA Inbound Errors (errors/sec)  | The 10 vHBAs with the highest inbound errors  |
+| Top 10 vHBA Outbound Errors (errors/sec)  | The 10 vHBAs with the highest outbound errors |
 
 **Summary**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Load (%) | The average load percentage of the fabric interconnect |
-| Blade Memory Used Capacity (%) | The average memory used capacity percentage of the blade |
-| Inbound per IO Module (bytes) | The average IO module inbound throughput |
-| Outbound per IO Module (bytes) | The average IO module outbound throughput |
+| Average Load (%) | The average load percentage across fabric interconnects |
+| Average Inbound per IO Module (bits/sec) | The average IO module inbound throughput |
+| Average Outbound per IO Module (bits/sec) | The average IO module outbound throughput |
+| Average Inbound per Fabric Interconnect (bits/sec) | The average Fabric Interconnect inbound throughput |
+| Average Outbound per Fabric Interconnect (bits/sec) | The average Fabric Interconnect outbound throughput |
