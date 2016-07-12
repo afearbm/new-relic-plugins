@@ -119,10 +119,13 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 ```
 {
-  "license_key": "YOUR_LICENSE_KEY_HERE",
-  "log_level": "debug",
-
-  "log_file_path": "log_file_path": “logs"
+    "license_key": "YOUR LICENSE KEY",
+    "log_level": "info",
+    "log_file_name": "newrelic_plugin.log",
+    "log_file_path": "logs",
+    "insights_api_key": "YOUR INSIGHTS API KEY",
+    "insights_account_id": "YOUR INSIGHTS ACCOUNT ID",
+    "insights_use_ssl": true
 }
 ```
 
@@ -163,6 +166,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your New Relic Cisco Nexus instance that will appear in the User Interface |
 | version | SNMP version acceptable values `v2c` or `v3` for SNMP Version 2 or Version 3 respectively |
 | management_ip | IP address of Nexus Switch |
@@ -173,18 +177,21 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | auth_password | Only applicable if `version` is `v3`. SNMP Authentication password. Only needed if `security_level` is `auth_priv` or `auth_nopriv` |
 | privacy_password | Only applicable if `version` is `v3`. SNMP privacy password, Only needed if `security_level` is `auth_priv` |
 | privacy_type | Only applicable if `version` is `v3`. SNMP encryption type. Acceptable values are `privAES256`, `privAES192`, `privAES128`, `privDES`, or `priv3DES` for  256 bit AES, 192 bit AES, 128 bit AES, DES, or 3-DES respectively |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": "60",
   "agents": [
     {
       "instance_name": "Your SNMP Version 2 Instance",
       "version": "v2 or v2c",
       "management_ip": "your_value_here",
       "community_string": "your_value_here",
-      "snmp_port": 161
+      "snmp_port": 161,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your SNMP Version 3 Instance",
@@ -195,7 +202,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "privacy_password": "your_value_here",
       "authentication_type": "authSHA or authMD5",
       "privacy_type": "privAES256 or privAES192 or privAES128 or privDES or priv3DES",
-      "security_level": "auth_priv or auth_nopriv or noauth_nopriv"
+      "security_level": "auth_priv or auth_nopriv or noauth_nopriv",
+      "enable_insights": "true"
     }
   ]
 }
@@ -217,7 +225,7 @@ For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Rel
 | Total Packets (Packets/sec)  | The total amount of packets per second |
 | Port Status Count  | The number of ports per status (Down, Up, or In Error) |
 
-**Ports**
+**Port**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
@@ -225,6 +233,15 @@ For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Rel
 | Outbound Throughput (MB/sec)  | The outbound throughput of a port in megabytes per second |
 | Inbound Packets (Packets/sec)  | The amount of inbound packets per second of a port  |
 | Outbound Packets (Packets/sec) | The amount of outbound packets per second of a port |
+
+**L3 Interface**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Inbound Throughput (MB/sec) | The inbound throughput of an L3 Interface in megabytes per second  |
+| Outbound Throughput (MB/sec)  | The outbound throughput of an L3 Interface in megabytes per second |
+| Inbound Packets (Packets/sec)  | The amount of inbound packets per second of an L3 Interface  |
+| Outbound Packets (Packets/sec) | The amount of outbound packets per second of an L3 Interface |
 
 **Summary**
 
