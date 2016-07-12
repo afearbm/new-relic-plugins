@@ -168,13 +168,14 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
-| instance_name | The name of your New Relic Nimble Storage instance that will appear in the User Interface |
-| username | Username to make REST calls to your Nimble Storage device |
-| password | Password to make REST calls to your Nimble Storage device |
-| hostname | IP address or fully qualified host name of your Nimble Storage device |
-| rest_port | Optional: if not specified, default port '5392' will be used |
-| community_string | Optional: community string required to connect to SNMP (not including disables SNMP metrics) |
-| snmp_port | Optional: if not specified and 'community_string' is specified, default port '161' will be used |
+| instance_name | The name of your New Relic Nimble Storage instance that will appear in the User Interface. |
+| username | Username to make REST calls to your Nimble Storage device. |
+| password | Password to make REST calls to your Nimble Storage device. |
+| hostname | IP address or fully qualified host name of your Nimble Storage device. |
+| rest_port | Optional: if not specified, default port '5392' will be used. |
+| community_string | Optional: community string required to connect to SNMP (not including disables SNMP metrics). |
+| snmp_port | Optional: if not specified and 'community_string' is specified, default port '161' will be used. |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
 **Example:**
 
