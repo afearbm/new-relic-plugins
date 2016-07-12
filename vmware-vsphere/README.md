@@ -285,3 +285,12 @@ For questions or issues regarding the Blue Medora VMware vSphere plugin for New 
 | Available CPU (GHz) | The available CPU on the vSphere |
 | Total Space (TB) | The total disk space on the vSphere |
 | Available Memory (TB) | The memory available to the vSphere |
+
+**Summary**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Distressed Hosts | The number of hosts that are in a `Warning` or `Critical` state |
+| Distressed VMs | The number of virtual machines that are in a `Warning` or `Critical` state |
+| Distressed Clusters | The number of clusters that are in a `Warning` or `Critical` state |
+| Distressed Datastores | The number of datastores that are in a `Warning` or `Critical` state |

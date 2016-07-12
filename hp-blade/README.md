@@ -95,6 +95,15 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 }
 ```
 
+**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`. For more information on where to find these fields, [refer to the New Relic Insights documentation]
+(https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/insert-custom-events-insights-api#register). Below are the fields needed to configure Insights access.
+
+`insights_api_key` - The api key associated with your Insights account.
+
+`insights_account_id` - The ID associated with your Insights account.
+
+`insights_use_ssl` - Signals whether to connect to Insights via SSL. Acceptable values are `true` or `false`.
+
 **Logging Configuration** - By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
 
 `log\_level` - The log level. Valid values: [debug, info, warn, error, fatal]. Defaults to info.
@@ -151,16 +160,19 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | Alias for the name of your HP iLO instance that will appear in the User Interface |
 | username | HP iLO REST API Username used to connect to HP ProLiant device. |
 | password | HP iLO REST API Password used to connect to HP ProLiant device. |
 | host | IP address or hostname of HP iLO device |
 | port | Port used to connect to the HP iLO REST API.  |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
       "instance_name": "YOUR_VALUE_HERE",
@@ -168,6 +180,7 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
       "password": "YOUR_VALUE_HERE",
       "host": "YOUR_VALUE_HERE",
       "port": "YOUR_VALUE_HERE",
+      "enable_insights": "true"
     }
   ]
 }
@@ -188,25 +201,26 @@ For questions or issues regarding the HP Blade Servers Plugin for New Relic, vis
 | CPU Temperature (C)  |  Temperature readings of the CPU in celsius |
 | Memory Temperature (C) |  Temperature readings of the memory in celsius |
 | Power Consumed (watts) |  Power reading throughout system in watts  |
-| Healthy Network Adapters (%) |  Percentage of network adapters in an "Ok" state  |
-| Healthy Fans (%) |  Percentage of fans in an "Ok" state  |
-| Healthy Ports (%)  |  Percentage of ports in an "Ok" state  |
+| Fan Status (%) |  Percentage of fans in a certain state  |
+| Network Adapters Status (%) |  Percentage of network adapters in a certain state  |
+| Port Status (%)  |  Percentage of ports in a certain state  |
 
 **Network Adapters**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Healthy Ports (%)  |  Percentage of ports in an "Ok" state |
-| Good Receives (frames) |  Number of frames successfully received  |
-| Bad Receives (frames) |  Number of frames unsuccessfully received  |
-| Good Transmits (frames) |  Number of frames successfully transmitted  |
-| Bad Transmits (frames) |  Number of frames unsuccessfully transmitted  |
+| Port Status (%)  |  Percentage of ports in a certain state  |
+| Good Receives (frames/sec) |  Number of frames successfully received  |
+| Bad Receives (frames/sec) |  Number of frames unsuccessfully received  |
+| Good Transmits (frames/sec) |  Number of frames successfully transmitted  |
+| Bad Transmits (frames/sec) |  Number of frames unsuccessfully transmitted  |
 
 **Summary**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| CPU Temperature (C)  |  Temperature readings of the CPU in celsius |
-| Memory Temperature (C) |  Temperature readings of the memory in celsius  |
+| Max CPU Temperature (celsius)  |  Max Temperature readings of the CPU in celsius |
+| Max Memory Temperature (celsius) |  Max Temperature readings of the memory in celsius  |
 | Healthy Ports (%)  |  Percentage of ports in an "Ok" state  |
-| Total Throughput (frames) |  Total number of frames transmitted and received  |
+| Total Good Receives (frames/sec) |  Total number of Good Received frames received  |
+| Total Good Transmits (frames/sec) |  Total number of Good Transmits frames transmitted |
