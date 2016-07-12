@@ -119,10 +119,13 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 ```
 {
-  "license_key": "YOUR_LICENSE_KEY_HERE",
-  "log_level": "debug",
-
-  "log_file_path": "log_file_path": “logs"
+    "license_key": "YOUR LICENSE KEY",
+    "log_level": "info",
+    "log_file_name": "newrelic_plugin.log",
+    "log_file_path": "logs",
+    "insights_api_key": "YOUR INSIGHTS API KEY",
+    "insights_account_id": "YOUR INSIGHTS ACCOUNT ID",
+    "insights_use_ssl": true
 }
 ```
 
@@ -163,6 +166,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your Dell PowerEdge instance that will appear in the User Interface |
 | version | SNMP version acceptable values `v1`, `v2c` or `v3` for SNMP Version 1, Version 2, or Version 3 respectively |
 | management_ip | IP address of Dell PowerEdge device |
@@ -173,29 +177,34 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | auth_password | Only applicable if `version` is `v3`. SNMP Authentication password. Only needed if `security_level` is `auth_priv` or `auth_nopriv` |
 | privacy_password | Only applicable if `version` is `v3`. SNMP privacy password, Only needed if `security_level` is `auth_priv` |
 | privacy_type | Only applicable if `version` is `v3`. SNMP encryption type. Acceptable values are `privAES256`, `privAES192`, `privAES128`, `privDES`, or `priv3DES` for  256 bit AES, 192 bit AES, 128 bit AES, DES, or 3-DES respectively |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
       "instance_name": "Your SNMP Version 2 Instance",
-      "version": "v2 or v2c",
+      "snmp_version": "v2 or v2c",
       "management_ip": "your_value_here",
       "community_string": "your_value_here",
-      "snmp_port": 161
+      "snmp_port": 161,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your SNMP Version 3 Instance",
-      "version": "v3",
+      "snmp_version": "v3",
       "management_ip": "your_value_here",
       "user": "your_value_here",
       "auth_password": "your_value_here",
       "privacy_password": "your_value_here",
       "authentication_type": "authSHA or authMD5",
       "privacy_type": "privAES256 or privAES192 or privAES128 or privDES or priv3DES",
-      "security_level": "auth_priv or auth_nopriv or noauth_nopriv"
+      "security_level": "auth_priv or auth_nopriv or noauth_nopriv",
+      "enable_insights": "true"
     }
   ]
 }
