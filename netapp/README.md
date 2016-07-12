@@ -115,10 +115,13 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 ```
 {
-  "license_key": "YOUR_LICENSE_KEY_HERE",
-  "log_level": "debug",
-
-  "log_file_path": "log_file_path": “logs"
+    "license_key": "YOUR LICENSE KEY",
+    "log_level": "info",
+    "log_file_name": "newrelic_plugin.log",
+    "log_file_path": "logs",
+    "insights_api_key": "YOUR INSIGHTS API KEY",
+    "insights_account_id": "YOUR INSIGHTS ACCOUNT ID",
+    "insights_use_ssl": true
 }
 ```
 
@@ -159,33 +162,37 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your New Relic NetApp Storage instance that will appear in the User Interface |
 | username | User name to log into NetApp Storage API Services |
 | password | Password to log into NetApp Storage API Services |
 | server | The hostname or ip address of the server |
 | protocol | Either `http` or `https` |
 | port | Optional parameter, port to connect to NetApp API Services |
-
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": "400",
   "agents": [
     {
-      "instance_name": "Your NetApp Storage Instance",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "server": "your_value_here",
-      "protocol": "http or https"
-    },
-    {
-      "instance_name": "Your NetApp Storage Instance",
+      "instance_name": "Your Netapp Instance",
       "username": "your_value_here",
       "password": "your_value_here",
       "server": "your_value_here",
       "protocol": "http or https",
-      "port": "your_custom_port"
+      "enable_insights": "true"
+    },
+    {
+      "instance_name": "Your Netapp Instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "server": "your_value_here",
+      "protocol": "http or https",
+      "port": "your_custom_port",
+      "enable_insights": "true"
     }
   ]
 }
@@ -281,8 +288,6 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 | Write Latency (µs) |  Write latency for each volume  |
 | Read IOPS (ops/sec) |  Read IOPS for each volume  |
 | Write IOPS (ops/sec) |  Write IOPS for each volume  |
-| LUN Read Throughput (MB/sec) |  Read throughput for LUNs on each volume  |
-| LUN Write Throughput (MB/sec) |  Write throughput for LUNs on each volume |
 | Deduplication Space Savings (GB) |  Space saved by deduplication on each volume  |
 | Compression Space Savings (GB) |  Space saved by compression on each volume  |
 
