@@ -93,6 +93,16 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 }
 ```
 
+**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`. For more information on where to find these fields, [refer to the New Relic Insights documentation]
+(https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/insert-custom-events-insights-api#register). Below are the fields needed to configure Insights access.
+
+`insights_api_key` - The api key associated with your Insights account.
+
+`insights_account_id` - The ID associated with your Insights account.
+
+`insights_use_ssl` - Signals whether to connect to Insights via SSL. Acceptable values are `true` or `false`.
+
+
 **Logging Configuration** - By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
 
 `log\_level` - The log level. Valid values: [debug, info, warn, error, fatal]. Defaults to info.
