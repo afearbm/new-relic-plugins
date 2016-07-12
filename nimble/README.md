@@ -112,10 +112,13 @@ By default Platform plugins will have their logging turned on; however, you can 
 
 ```
 {
-  "license_key": "YOUR_LICENSE_KEY_HERE",
-  "log_level": "debug",
-
-  "log_file_path": "log_file_path": “logs"
+    "license_key": "YOUR LICENSE KEY",
+    "log_level": "info",
+    "log_file_name": "newrelic_plugin.log",
+    "log_file_path": "logs",
+    "insights_api_key": "YOUR INSIGHTS API KEY",
+    "insights_account_id": "YOUR INSIGHTS ACCOUNT ID",
+    "insights_use_ssl": true
 }
 ```
 
@@ -158,6 +161,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your New Relic Nimble Storage instance that will appear in the User Interface |
 | username | Username to make REST calls to your Nimble Storage device |
 | password | Password to make REST calls to your Nimble Storage device |
@@ -170,19 +174,22 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 ```
 {
+  "polling_interval_seconds": "60",
   "agents": [
     {
       "instance_name": "Your SNMP Disabled Instance",
       "username": "your_value_here",
       "password": "your_value_here",
-      "hostname": "your_value_here"
+      "hostname": "your_value_here",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your SNMP Enabled Instance",
       "username": "your_value_here",
       "password": "your_value_here",
       "hostname": "your_value_here",
-      "community_string": "your_value_here"
+      "community_string": "your_value_here",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your SNMP Enabled Custom Port Instance",
@@ -191,7 +198,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "hostname": "your_value_here",
       "rest_port": "your_value_here",
       "community_string": "your_value_here",
-      "snmp_port": "your_value_here"
+      "snmp_port": "your_value_here",
+      "enable_insights": "true"
     }
   ]
 }
