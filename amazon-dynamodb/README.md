@@ -160,21 +160,35 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | Alias for the name of your Amazon DynamoDB instance that will appear in the User Interface |
 | access_key_id | Amazon AWS Access Key ID can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
 | secret_access_key | Amazon AWS Secret Access Key can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
 | region | Amazon AWS region where DynamoDB instance resides. Acceptable values are `U_WEST_1`, `SA_EAST_1`, `AP_NORTHEAST_2`, `US_EAST_1`, `AP_NORTHEAST_1`, `CN_NORTH_1`, `EU_CENTRAL_1`, `AP_SOUTHEAST_1`, `AP_SOUTHEAST_2`, `US_WEST_2`, `GovCloud`, `US_WEST_1` |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_dynamo_connection`
+* `enable_insights_for_table`
+* `enable_insights_for_global_secondary_index`
+* `enable_insights_for_local_secondary_index`
+* `enable_insights_for_key_schema`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "YOUR_VALUE_HERE",
-      "access_key_id": "YOUR_VALUE_HERE",
-      "secret_access_key": "YOUR_VALUE_HERE",
-      "region": "YOUR_VALUE_HERE"
+      "instance_name": "your_value_here",
+      "access_key_id": "your_value_here",
+      "secret_access_key": "your_value_here",
+      "region": "U_WEST_1 or SA_EAST_1 or AP_NORTHEAST_2 or US_EAST_1 or AP_NORTHEAST_1 or CN_NORTH_1 or EU_CENTRAL_1 or AP_SOUTHEAST_1 or AP_SOUTHEAST_2 or US_WEST_2 or GovCloud or US_WEST_1",
+      "is_dev": "your_value_here",
+      "enable_insights": "true"
     }
   ]
 }
@@ -205,8 +219,8 @@ For questions or issues regarding the Amazon DynamoDB Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Table Read Throttle Events (Events) | The number of read throttle events across DynamoDB tables |
-| Table Write Throttle Events (Events) | The number of write throttle events across DynamoDB tables |
+| Table Read Throttle Events (events) | The number of read throttle events across DynamoDB tables |
+| Table Write Throttle Events (events) | The number of write throttle events across DynamoDB tables |
 | Table Read Capacity Usage (%) | Percent usage of Provisioned Read capacity per DynamoDB table |
 | Table Write Capacity Usage (%) | Percent usage of Provisioned Write capacity per DynamoDB table |
 | Global Secondary Index Size (KB) | Size across global secondary indexes |
@@ -216,8 +230,8 @@ For questions or issues regarding the Amazon DynamoDB Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Read Throttle Events (Events) | The number of read throttle events per DynamoDB tables |
-| Write Throttle Events (Events) | The number of write throttle events per DynamoDB tables |
+| Read Throttle Events (events) | The number of read throttle events per DynamoDB tables |
+| Write Throttle Events (events) | The number of write throttle events per DynamoDB tables |
 | Read Capacity Usage (%) | Percent usage of Provisioned Read capacity per DynamoDB table |
 | Write Capacity Usage (%) | Percent usage of Provisioned Write capacity per DynamoDB table |
 | Read Capacity Remaining (Units) | The number of Read capacity units that are free per DynamoDB table |
@@ -228,13 +242,23 @@ For questions or issues regarding the Amazon DynamoDB Plugin for New Relic, visi
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Size (KB) | Size per global secondary index |
-| Item Count (Items) | The number of items per global secondary index |
-| Provisioned Read Capacity (Units) | Provisioned Read Capacity per global secondary index |
-| Provisioned Write Capacity (Units) | Provisioned Write Capacity per global secondary index |
+| Item Count (items) | The number of items per global secondary index |
+| Provisioned Read Capacity (units) | Provisioned Read Capacity per global secondary index |
+| Provisioned Write Capacity (units) | Provisioned Write Capacity per global secondary index |
 
 **Local Secondary Index**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Size (KB) | Size per local secondary index |
-| Item Count (Items) | The number of items per local secondary index |
+| Item Count (items) | The number of items per local secondary index |
+
+**Summary**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Total Size (bytes) | Total size of all tables within region |
+| Total Provisioned Read Capacity (units) | Total provisioned read capacity across all tables within region |
+| Total Remaining Read Capacity (units) | Total remaining read capacity across all tables within region |
+| Total Provisioned Write Capacity (units) | Total provisioned write capacity across all tables within region |
+| Total Remaining Write Capacity (units) | Total remaining write capacity across all tables within region |
