@@ -147,23 +147,24 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 **NOTE:** When running a plugin, if a `java.lang.OutOfMemoryError` occurs, it means that too much data is being processed for the system to handle. You will need to modify the `java_args` field of the “master” `newrelic.json` file.
 
-`java_args` - "-Xmx128m" (-Xmxn specifies the maximum size, in bytes, of the memory allocation pool. This value must a multiple of 1024 greater than 2 MB. Append the letter k or K to indicate kilobytes, or m or M to indicate megabytes. The default value is chosen at runtime based on system configuration.)
+`java_args` - `-Xmx128m` (-Xmxn specifies the maximum size, in bytes, of the memory allocation pool. This value must a multiple of 1024 greater than 2 MB. Append the letter k or K to indicate kilobytes, or m or M to indicate megabytes. The default value is chosen at runtime based on system configuration.)
 
 **EXAMPLES:**
-```
+
 `-Xmx83886080`
 `-Xmx81920k`
 `-Xmx80m`
 
-#### Configuring the plugin.template.json file: 
 
-The second file, plugin.template.json, contains data specific to each plugin (e.g., a list of hosts and port combinations for what you are monitoring). Templates for both of these files should be located in the ‘config’ directory in your extracted plugin folder.
+### Configuring the plugin.template.json file: 
 
-Make a copy of this template and rename it to plugin.json. Shown below is an example of the plugin.json file’s contents.
+The second file, `plugin.template.json`, contains data specific to each plugin (e.g., a list of hosts and port combinations for what you are monitoring). Templates for both of these files should be located in the `config` directory in your extracted plugin folder.
 
-**NOTE** - You can add multiple objects to the “agents” array to monitor multiple Amazon DynamoDB instances.
+Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-**NOTE:** Each object in the "agents" array should have a unique "instance_name".
+**NOTE** You can add multiple objects to the “agents” array to monitor multiple Amazon DynamoDB instances.
+
+**NOTE:** Each object in the "agents" array should have a unique `instance_name`.
 
 **Fields**
 
