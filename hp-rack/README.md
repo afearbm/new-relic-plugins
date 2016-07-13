@@ -169,6 +169,15 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 | port | Port used to connect to the HP iLO REST API.  |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_port`
+* `enable_insights_for_rack`
+* `enable_insights_for_system`
+* `enable_insights_for_fan`
+* `enable_insights_for_power_supply`
+
 **Example:**
 
 ```

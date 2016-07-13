@@ -170,6 +170,17 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 | database | Optional parameter, comma separated list of databases to monitor |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_postgresql_query`
+* `enable_insights_for_postgresql_database`
+* `enable_insights_for_postgresql_function`
+* `enable_insights_for_postgresql_index`
+* `enable_insights_for_postgresql_tablespace`
+* `enable_insights_for_postgresql_table`
+* `enable_insights_for_postgresql_instance`
+
 **Example:**
 
 ```

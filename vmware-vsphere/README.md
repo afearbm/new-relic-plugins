@@ -168,6 +168,17 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 | useSSL | Indicate wether to connect via ssl. Valid values are `Yes` or `No`. |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_cluster`
+* `enable_insights_for_datacenter`
+* `enable_insights_for_datastore`
+* `enable_insights_for_host_system`
+* `enable_insights_for_resource_pool`
+* `enable_insights_for_virtual_machine`
+* `enable_insights_for_vsphere`
+
 **Example:**
 
 ```

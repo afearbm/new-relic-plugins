@@ -172,6 +172,17 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 | truststore_password | Optional parameter, only used if `ssl_enabled` is `true`. Password for the truststore. |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_cache_advice_entry`
+* `enable_insights_for_database_file`
+* `enable_insights_for_database`
+* `enable_insights_for_control_file`
+* `enable_insights_for_instance`
+* `enable_insights_for_query`
+* `enable_insights_for_tablespace`
+
 **Example:**
 
 ```

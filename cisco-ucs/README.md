@@ -169,6 +169,23 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | port | Optional parameter, port to connect to UCS Manager |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_ucs_manager`
+* `enable_insights_for_blade`
+* `enable_insights_for_fabric_interconnect`
+* `enable_insights_for_ethernet_port`
+* `enable_insights_for_chassis`
+* `enable_insights_for_fan`
+* `enable_insights_for_fiber_channel_port`
+* `enable_insights_for_io_module`
+* `enable_insights_for_port_channel`
+* `enable_insights_for_psu`
+* `enable_insights_for_rack`
+* `enable_insights_for_vhba`
+* `enable_insights_for_vnic`
+
 **Example:**
 
 ```
