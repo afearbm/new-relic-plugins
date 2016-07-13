@@ -179,6 +179,21 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | privacy_type | Only applicable if `version` is `v3`. SNMP encryption type. Acceptable values are `privAES256`, `privAES192`, `privAES128`, `privDES`, or `priv3DES` for  256 bit AES, 192 bit AES, 128 bit AES, DES, or 3-DES respectively |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_dell_system`
+* `enable_insights_for_dell_amperage_probe`
+* `enable_insights_for_dell_power_unit`
+* `enable_insights_for_dell_power_supply`
+* `enable_insights_for_dell_system_battery`
+* `enable_insights_for_dell_voltage_probe`
+* `enable_insights_for_dell_temperature_probe`
+* `enable_insights_for_dell_memory_device`
+* `enable_insights_for_dell_chassis`
+* `enable_insights_for_dell_processor_device`
+* `enable_insights_for_dell_fan`
+* `enable_insights_for_dell_physical_disk`
 
 **Example:**
 

@@ -177,6 +177,19 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | snmp_port | Optional: if not specified and 'community_string' is specified, default port '161' will be used. |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_group`
+* `enable_insights_for_array`
+* `enable_insights_for_volume`
+* `enable_insights_for_volume_collection`
+* `enable_insights_for_folder`
+* `enable_insights_for_pool`
+* `enable_insights_for_protection_schedule`
+* `enable_insights_for_performance_policy`
+* `enable_insights_for_replication`
+
 **Example:**
 
 ```

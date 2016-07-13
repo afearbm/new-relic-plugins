@@ -174,6 +174,18 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | sample_seconds | Query interval parameter.  Must be an integer 1 or greater |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_data_mover`
+* `enable_insights_for_disk`
+* `enable_insights_for_network_intreface`
+* `enable_insights_for_pool`
+* `enable_insights_for_file_system`
+* `enable_insights_for_virtual_data_mover`
+* `enable_insights_for_vnx_file`
+* `enable_insights_for_volume`
+
 **Example:**
 
 ```
@@ -269,8 +281,8 @@ For questions or issues regarding the Blue Medora EMC VNX File Plugin for New Re
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Used Capacity (%) |The utilization percentage of a volume  |             
-| Used Capacity (GB) |The used capacity of a volume in terabytes | 
-| Total Capacity (GB) |The total capacity of a volume in terabytes |
+| Used Capacity (TB) |The used capacity of a volume in terabytes | 
+| Total Capacity (TB) |The total capacity of a volume in terabytes |
 
 **Summary**
 
@@ -278,5 +290,5 @@ For questions or issues regarding the Blue Medora EMC VNX File Plugin for New Re
 |:------------- |:-------------|
 | CPU (%) | The average cpu utilization for Data Movers |
 | Memory (%) | The average memory utilization for Data Movers |
-| Latency (µs) | The average latency for Data Movers in micro seconds |
+| Latency (ms) | The average latency for Data Movers in micro seconds |
 | High Temp (C) | The highest temperature detected in celsius |
