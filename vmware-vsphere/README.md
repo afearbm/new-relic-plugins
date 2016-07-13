@@ -35,7 +35,7 @@ This plugin can be installed one of the following ways:
 
 ### Using the New Relic Platform Installer
 
-The New Relic Platform Installer (NPI) is a command line tool that helps you easily download, configure, and manage New Relic Platform Plugins.  For more information, visit the [Getting Started with the Platform Installer section of New Relic’s Community Forum](https://discuss.newrelic.com/t/getting-started-with-the-platform-installer/842).
+The New Relic Platform Installer (NPI) is a command line tool that helps you easily download, configure, and manage New Relic Platform Plugins.  For more information, refer to the [Installing an NPI-compatible plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/installing-plugins/installing-npi-compatible-plugin).
 
 **NOTE:** We recommend using the New Relic Platform Installer for installing and running your Blue Medora plugins for New Relic. Issues can arise by running a plugin directly in the foreground (e.g., when the machine reboots, the process will not be started again). The NPI automates much of these processes.
 
@@ -167,6 +167,17 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 | port | Port to connect to vSphere. |
 | useSSL | Indicate wether to connect via ssl. Valid values are `Yes` or `No`. |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_cluster`
+* `enable_insights_for_datacenter`
+* `enable_insights_for_datastore`
+* `enable_insights_for_host_system`
+* `enable_insights_for_resource_pool`
+* `enable_insights_for_virtual_machine`
+* `enable_insights_for_vsphere`
 
 **Example:**
 

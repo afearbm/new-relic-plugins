@@ -35,7 +35,7 @@ This plugin can be installed one of the following ways:
 
 ### Using the New Relic Platform Installer
 
-The New Relic Platform Installer (NPI) is a command line tool that helps you easily download, configure and manage New Relic Platform Plugins.  For more information, visit the [Getting Started with the Platform Installer section of New Relic’s Community Forum](https://discuss.newrelic.com/t/getting-started-with-the-platform-installer/842).
+The New Relic Platform Installer (NPI) is a command line tool that helps you easily download, configure and manage New Relic Platform Plugins.  For more information, refer to the [Installing an NPI-compatible plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/installing-plugins/installing-npi-compatible-plugin).
 
 **NOTE:** We recommend using the New Relic Platform Installer for installing and running your Blue Medora plugins for New Relic. Issues can arise by running a plugin directly in the foreground (e.g., when the machine reboots, the process will not be started again). The NPI automates much of these processes.
 
@@ -160,42 +160,66 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | Alias for the name of your Oracle Database instance that will appear in the User Interface |
 | host | IP address or hostname of Oracle Database instance. |
 | port | Port used to connect to the Oracle Database instance. Default is `1521` for when `ssl_enabled` is `false`, and `2484` for when `ssl_enabled` is `true`. |
 | username | User Name for Oracle Database login. |
 | password | Password for Oracle Database login. |
-| sid | SID or Service Name. |
 | ssl_enabled | Indicates if you wish to connect while using ssl. Acceptable values are `true` and `false`. |
-| truststore_path | Only used if `ssl_enabled` is `true`. Location of truststore. |
-| truststore_password | Only used if `ssl_enabled` is `true`. Password for the truststore. |
+| sid | Optional parameter, SID or Service Name. |
+| truststore_path | Optional parameter, only used if `ssl_enabled` is `true`. Location of truststore. |
+| truststore_password | Optional parameter, only used if `ssl_enabled` is `true`. Password for the truststore. |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_cache_advice_entry`
+* `enable_insights_for_database_file`
+* `enable_insights_for_database`
+* `enable_insights_for_control_file`
+* `enable_insights_for_instance`
+* `enable_insights_for_query`
+* `enable_insights_for_tablespace`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "YOUR_VALUE_HERE",
-      "username": "YOUR_VALUE_HERE",
-      "password": "YOUR_VALUE_HERE",
-      "host": "YOUR_VALUE_HERE",
-      "port": "YOUR_VALUE_HERE",
-      "sid": "YOUR_VALUE_HERE",
-      "ssl_enable": false,
-      "truststore_path": "",
-      "truststore_password": ""
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "port": "your_value_here",
+      "ssl_enable": "your_value_here",
+      "enable_insights": "true"
     },
     {
-      "instance_name": "YOUR_VALUE_HERE",
-      "username": "YOUR_VALUE_HERE",
-      "password": "YOUR_VALUE_HERE",
-      "host": "YOUR_VALUE_HERE",
-      "port": "YOUR_VALUE_HERE",
-      "sid": "YOUR_VALUE_HERE",
-      "ssl_enable": true,
-      "truststore_path": "PATH_TO_TRUSTSTORE",
-      "truststore_password": "YOUR_TRUSTSTORE_PASSWORD"
+      "instance_name": "your_trust_store_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "port": "your_value_here",
+      "ssl_enable": "your_value_here",
+      "truststore_path": "path_to_truststore",
+      "truststore_password": "password_for_truststore",
+      "enable_insights": "true"
+    },
+    {
+      "instance_name": "your_sid_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "port": "your_value_here",
+      "sid": "your_value_here",
+      "ssl_enable": "your_value_here",
+      "truststore_path": "path_to_truststore",
+      "truststore_password": "password_for_truststore",
+      "enable_insights": "true"
     }
   ]
 }
@@ -213,7 +237,7 @@ For questions or issues regarding the Oracle Database Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Instance Waits (Waits/sec) |  The number of waits per second on the instance |
+| Instance Waits (waits/sec) |  The number of waits per second on the instance |
 | Instance Sessions (sessions) |  Inactive, Killed, No Wait, Sniped, Unblocked, Waiting, Active, Blocked, and Cached sessions on the instance |
 | Instance CPU Usage (centiseconds/sec) | CPU usage of an instance |
 | Tablespace Size (GB) | Size across tablespaces |
@@ -226,7 +250,7 @@ For questions or issues regarding the Oracle Database Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Waits (Waits/sec) |  The number of waits per second on the instance |
+| Waits (waits/sec) |  The number of waits per second on the instance |
 | Time Waited (sec/minute) | The number of seconds every minute that the instance is spent waiting  |
 | CPU Usage (centiseconds/sec) | CPU usage of an instance |
 | Sessions (sessions) |  Inactive, Killed, No Wait, Sniped, Unblocked, Waiting, Active, Blocked, and Cached sessions on the instance |
@@ -251,8 +275,8 @@ For questions or issues regarding the Oracle Database Plugin for New Relic, visi
 | IO Time (ms)  | Time taken for IO operations |
 | Read Time (ms/minute) | The number of milliseconds every minute across database files spent reading |
 | Write Time (ms/minute) | The number of milliseconds every minute across database files spent writing |
-| Reads (Reads/sec) | The read rate across database files |
-| Write (Writes/sec) | The write rate across database files |
+| Reads (reads/sec) | The read rate across database files |
+| Write (writes/sec) | The write rate across database files |
 
 **Queries**
 
@@ -264,4 +288,12 @@ Only 10 queries are displayed at a time. The 10 that are displayed are the queri
 | Wait Time (ms/minute)  | The number of milliseconds every minute that a query spends waiting |
 | CPU Time (ms/minute)  | The number of milliseconds every minute that a query spends on the cpu |
 | Memory (KB/sec)  | The memory usage every second of a query |
-| Executions (Executions/sec)  | The number of executions per second of a query |
+| Executions (executions/sec)  | The number of executions per second of a query |
+
+**Summary**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Waits (waits/sec)  | The total number of waits per second across all instances  |
+| Average CPU Usage (centiseconds/sec)  | The average CPU usage across all instaces  |
+| Active Sessions (sessions)  | The total number of active sessions across all instaces  |
