@@ -117,10 +117,13 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 ```
 {
-  "license_key": "YOUR_LICENSE_KEY_HERE",
-  "log_level": "debug",
-
-  "log_file_path": "log_file_path": “logs"
+    "license_key": "YOUR LICENSE KEY",
+    "log_level": "info",
+    "log_file_name": "newrelic_plugin.log",
+    "log_file_path": "logs",
+    "insights_api_key": "YOUR INSIGHTS API KEY",
+    "insights_account_id": "YOUR INSIGHTS ACCOUNT ID",
+    "insights_use_ssl": true
 }
 ```
 
@@ -161,6 +164,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your New Relic VNX File instance that will appear in the User Interface |
 | primary_control_station  | The IP or domain name of the Primary Control Station for VNX File |
 | secondary_control_station | The IP or domain name of the Secondary Control Station for VNX File |
@@ -168,6 +172,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | password | Password to log into the Control Stations |
 | nas_path | Path to the NAS_DB configuration files location.  Usually `/nas`. |
 | sample_seconds | Query interval parameter.  Must be an integer 1 or greater |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
 **Example:**
 
@@ -223,16 +228,18 @@ For questions or issues regarding the Blue Medora EMC VNX File Plugin for New Re
 |:------------- |:-------------|
 | CPU Utilization (%)     | The CPU utilization percentage of a data mover  |
 | Memory Utilization (%) | The percentage of memory utilized by a data mover  |
-| Latency | The latency of a data mover  |
+| Latency (ms) | The latency of a data mover  |
 | Total IOPS (ops/sec) | The total IOPS of a data mover  |
-| Network Throughput (Bps)  | The network throughput of a data mover  |
+| Network Throughput (MB/sec)  | The network throughput of a data mover  |
+| Total Disk Throughput (MB/sec)  | The disk throughput of a data mover  |
+
 
 **Network Interfaces**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Inbound Network Throughput (Bps)  | The inbound network throughput of the network interfaces |
-| Outbound Network Throughput (Bps)  |The outbound network throughput of the network interfaces |
+| Inbound Network Throughput (MB/sec)  | The inbound network throughput of the network interfaces |
+| Outbound Network Throughput (MB/sec)  |The outbound network throughput of the network interfaces |
 | Inbound Network Errors (errors/sec) |The inbound network errors per second of the network interfaces  |
 | Outbound Network Errors (errors/sec)  | The outbound network errors per second of the network interfaces |
 
@@ -240,21 +247,30 @@ For questions or issues regarding the Blue Medora EMC VNX File Plugin for New Re
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Utilization (%) | The utilization percentage of a file system   |
+| Used Capacity (%) | The utilization percentage of a file system   |
 | Used Capacity (GB)  | The used capacity of a file system in gigabytes |
 | Total Capacity (GB)  | The total capacity of a file system in gigabytes |
 | Read IOPS (ops/sec) | The read IOPS of a file system |
 | Write IOPS (ops/sec) |  The write IOPS of a file system  |
-| Read Throughput (Bps) | The read throughput of a file system  |
-| Write Throughput (Bps) | The write throughput of a file system  |
+| Read Throughput (MB/sec) | The read throughput of a file system  |
+| Write Throughput (MB/sec) | The write throughput of a file system  |
 
 **Storage Pools**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Utilization (%) |The utilization percentage of a storage pool  |             
+| Used Capacity (%) |The utilization percentage of a storage pool  |             
 | Used Capacity (GB) |The used capacity of a storage pool in gigabytes | 
 | Total Capacity (GB) |The total capacity of a storage pool in gigabytes |
+
+
+**Volumes**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Used Capacity (%) |The utilization percentage of a volume  |             
+| Used Capacity (GB) |The used capacity of a volume in terabytes | 
+| Total Capacity (GB) |The total capacity of a volume in terabytes |
 
 **Summary**
 
