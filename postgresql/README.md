@@ -26,7 +26,7 @@ The PostgreSQL plugin connects to the supported PostgreSQL instance via a host o
 
 **PostgreSQL Query Tracking Prerequisites**
 
-To track queries, these settings need to be added to the `postgresql.conf` `shared_preload_libraries settings`:
+To track queries, these settings need to be added to the `postgresql.conf` `shared_preload_libraries` settings:
 
 ```
 shared_preload_libraries = ‘pg_stat_statements' 
