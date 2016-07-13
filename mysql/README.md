@@ -42,7 +42,7 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-  ./npi install com.bluemedora.amazon.dynamodb
+  ./npi install com.bluemedora.mysql
 ``` 
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
@@ -152,7 +152,7 @@ The second file, plugin.template.json, contains data specific to each plugin (e.
 
 Make a copy of this template and rename it to plugin.json. Shown below is an example of the plugin.json file’s contents.
 
-**NOTE** - You can add multiple objects to the “agents” array to monitor multiple Amazon DynamoDB instances.
+**NOTE** - You can add multiple objects to the “agents” array to monitor multiple MySQL instances.
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -160,28 +160,90 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | Alias for the name of your Amazon DynamoDB instance that will appear in the User Interface |
-| access_key_id | Amazon AWS Access Key ID can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
-| secret_access_key | Amazon AWS Secret Access Key can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
-| region | Amazon AWS region where DynamoDB instance resides. Acceptable values are `U_WEST_1`, `SA_EAST_1`, `AP_NORTHEAST_2`, `US_EAST_1`, `AP_NORTHEAST_1`, `CN_NORTH_1`, `EU_CENTRAL_1`, `AP_SOUTHEAST_1`, `AP_SOUTHEAST_2`, `US_WEST_2`, `GovCloud`, `US_WEST_1` |
+| polling_interval_seconds | The number of seconds between each data collection. |
+| instance_name | Alias for the name of your MySQL instance that will appear in the User Interface |
+| username | User name to log into MySQL |
+| password | Password to log into MySQL |
+| host | The hostname or ip address of MySQL |
+| port | Port to connect to MySQL |
+| ssl_enable | Indicates whether ssl certification should be used to connect, valid values are `true` or `false` |
+| ssl_cert_path | Optional parameter, ff `ssl_enable` is `true` this should be the path to your MySQL cert |
+| database | Optional parameter, comma separated list of databases to monitor |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_mysql_instance`
+* `enable_insights_for_mysql_tablespace`
+* `enable_insights_for_mysql_table`
+* `enable_insights_for_mysql_database`
+* `enable_insights_for_mysql_index`
+* `enable_insights_for_mysql_query`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "YOUR_VALUE_HERE",
-      "access_key_id": "YOUR_VALUE_HERE",
-      "secret_access_key": "YOUR_VALUE_HERE",
-      "region": "YOUR_VALUE_HERE"
-    }
+      "instance_name": "ssl_disabled_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": "your_value_here",
+      "host": "your_value_here",
+      "ssl_enable": "false",
+      "enable_insights": "true"
+    },
+    {
+      "instance_name": "ssl_enabled_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": "your_value_here",
+      "host": "your_value_here",
+      "ssl_enable": "true",
+      "ssl_cert_path": "path_to_ssl_certificate"
+      "enable_insights": "true"
+    },
+    {
+      "instance_name": "single_database_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": "your_value_here",
+      "host": "your_value_here",
+      "ssl_enable": "false",
+      "database": "db_1"
+      "enable_insights": "true"
+    },
+    {
+      "instance_name": "mutli_database_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": "your_value_here",
+      "host": "your_value_here",
+      "ssl_enable": "false",
+      "database": "db_1,db_2"
+      "enable_insights": "true"
+    },
   ]
 }
 ```
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
+
+**NOTE** The plugin will attempt to monitor queries by default. If query data is not populating, you must enable slow queries to be written to the `mysql.slow_log` table. 
+The size of this table must be limited or monitoring queries may severely affect system performance.
+
+**NOTE:** MySQL queries are given an ID calculated from a MD5 hash of the query text. To match a query ID to the text the follow query can be run.
+
+```
+SELECT 
+CAST(sql_text AS CHAR(10000) CHARACTER SET utf8) AS sql_text, 
+MD5(CAST(sql_text AS CHAR(10000) CHARACTER SET utf8)) AS sql_id 
+from mysql.slow_log
+```
 
 ## Support Resources
 For questions or issues regarding the MySQL Plugin for New Relic, visit http://support.bluemedora.com. 
@@ -192,36 +254,77 @@ For questions or issues regarding the MySQL Plugin for New Relic, visit http://s
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Table Read Throttle Events (Events) | The number of read throttle events across DynamoDB tables |
-| Table Write Throttle Events (Events) | The number of write throttle events across DynamoDB tables |
-| Table Read Capacity Usage (%) | Percent usage of Provisioned Read capacity per DynamoDB table |
-| Table Write Capacity Usage (%) | Percent usage of Provisioned Write capacity per DynamoDB table |
-| Global Secondary Index Size (KB) | Size across global secondary indexes |
-| Local Secondary Index Size (KB) | Size across local secondary indexes |
+| Instance Size (GB) | The size of the MySQL instance |
+| Instance Connections (connections/minute) | The number of connections per minute to the MySQL instance |
+| Database IO Read (MB/sec) | The IO read rate per database |
+| Database IO Write (MB/sec) | The IO write rate per database |
+| Database Size (MB) | Size per database |
+
+**Instance**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Size (GB) | The size of the MySQL instance |
+| Connections (connections/minute) | The number of connections per minute to the MySQL instance |
+| Data Reads (reads/sec) | The number of reads across the MySQL instance |
+| Data Writes (writes/sec) | The number of writes across the MySQL instance |
+| Deadlocks (deadlocks/minutes) | The number of deadlocks per minutes across the MySQL instance |
+| OS Waits (waits/minutes) | The number of operating system related waits per minutes across the MySQL instance |
+| Spin Waits (waits/minutes) | The number of spin waits per minutes across the MySQL instance |
+| Waits (waits/minutes) | The number of miscellaneous waits per minutes across the MySQL instance |
+
+**Tablespaces**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Size (GB) | The size per tablespace |
+| Max File Size (GB) | The maximum size of a file per tablespace |
+
+**Databases**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Size (MB) | The size per databases |
+| Data Size (MB) | The size of data stored in a database |
+| Index Size (MB) | The size of indexes in a database |
+| Wait Time (sec/minute) | The number of seconds for each minute that is spent waiting for a database |
+| IO Read (MB/sec) | The read rate per database |
+| IO Write (MB/sec) | The write rate per database |
+| IO Read Latency (ms) | The read latency per database |
+| IO Write Latency (ms) | The write latency per database |
 
 **Tables**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Read Throttle Events (Events) | The number of read throttle events per DynamoDB tables |
-| Write Throttle Events (Events) | The number of write throttle events per DynamoDB tables |
-| Read Capacity Usage (%) | Percent usage of Provisioned Read capacity per DynamoDB table |
-| Write Capacity Usage (%) | Percent usage of Provisioned Write capacity per DynamoDB table |
-| Read Capacity Remaining (Units) | The number of Read capacity units that are free per DynamoDB table |
-| Write Capacity Remaining (Units) | The number of Write capacity units that are free per DynamoDB table |
+| Top 10 Size (MB) | The 10 tables with the largest size |
+| Top 10 Wait Time (ms) | The 10 tables with the longest wait time |
+| Top 10 Read (KB/sec) | The 10 tables with the highest read rate |
+| Top 10 Write (KB/sec) | The 10 tables with the highest write rate |
+| Top 10 Read Latency (ms) | The 10 tables with the highest read latency |
+| Top 10 Write Latency (ms) | The 10 tables with the highest write latency |
 
-**Global Secondary Index**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Size (KB) | Size per global secondary index |
-| Item Count (Items) | The number of items per global secondary index |
-| Provisioned Read Capacity (Units) | Provisioned Read Capacity per global secondary index |
-| Provisioned Write Capacity (Units) | Provisioned Write Capacity per global secondary index |
-
-**Local Secondary Index**
+**Indexes**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Size (KB) | Size per local secondary index |
-| Item Count (Items) | The number of items per local secondary index |
+| Row Operations (rows/minutes) | The number of rows operated on per minutes by an index |
+| Latency (ms) | The latency of per index |
+
+**Queries**
+
+Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall calls.
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Execution Time (ms) | The execution time of a query |
+| Average Execution Time (ms) | The average execution time of a query |
+| Calls (calls) | The number of calls to a query |
+
+**Summary**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Instance Size (GB) | The size of the MySQL instance |
+| Connections (connections/minute) | The number of connections per minute to the MySQL instance |
+| Deadlocks (deadlocks/minute) | The number of deadlocks per minute to the MySQL instance |
