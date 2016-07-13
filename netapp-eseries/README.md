@@ -20,7 +20,7 @@ The NetApp Storage plugin collects data using the SANtricity Web Service for E-S
 - A New Relic account
 
 **NetApp Storage Plugin Requirements**
-- **A NetApp E- or EF-Series storage system:**
+- **A NetApp E- or EF-Series storage system**
 - **API:** SANtricity Web Service for E-Series Proxy v1.3+.  
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
 
