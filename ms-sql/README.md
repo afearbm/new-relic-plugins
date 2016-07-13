@@ -42,7 +42,7 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-  ./npi install com.bluemedora.amazon.dynamodb
+  ./npi install com.bluemedora.microsoft.sqlserver
 ``` 
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
@@ -152,7 +152,7 @@ The second file, `plugin.template.json`, contains data specific to each plugin (
 
 Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-**NOTE:** You can add multiple objects to the “agents” array to monitor multiple Amazon DynamoDB instances.
+**NOTE:** You can add multiple objects to the “agents” array to monitor multiple Microsoft SQL Server instances.
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -160,21 +160,36 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | Alias for the name of your Amazon DynamoDB instance that will appear in the User Interface |
-| access_key_id | Amazon AWS Access Key ID can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
-| secret_access_key | Amazon AWS Secret Access Key can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
-| region | Amazon AWS region where DynamoDB instance resides. Acceptable values are `U_WEST_1`, `SA_EAST_1`, `AP_NORTHEAST_2`, `US_EAST_1`, `AP_NORTHEAST_1`, `CN_NORTH_1`, `EU_CENTRAL_1`, `AP_SOUTHEAST_1`, `AP_SOUTHEAST_2`, `US_WEST_2`, `GovCloud`, `US_WEST_1` |
+| polling_interval_seconds | The number of seconds between each data collection. |
+| instance_name | Alias for the name of your Microsoft SQL Server instance that will appear in the User Interface |
+| username | User name to log into Microsoft SQL Server |
+| password | Password to log into Microsoft SQL Server |
+| host | The hostname or ip address of Microsoft SQL Server |
+| port | Port to connect to Microsoft SQL Server |
+| instance | Microsoft SQL Server instance to monitor |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_MsSqlQuery`
+* `enable_insights_for_MsSqlDatabase`
+* `enable_insights_for_MsSqlInstance`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "YOUR_VALUE_HERE",
-      "access_key_id": "YOUR_VALUE_HERE",
-      "secret_access_key": "YOUR_VALUE_HERE",
-      "region": "YOUR_VALUE_HERE"
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "port": "your_value_here",
+      "instance": "your_value_here",
+      "enable_insights": "true"
     }
   ]
 }
@@ -205,36 +220,63 @@ For questions or issues regarding the MS SQL Plugin for New Relic, visit http://
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Table Read Throttle Events (Events) | The number of read throttle events across DynamoDB tables |
-| Table Write Throttle Events (Events) | The number of write throttle events across DynamoDB tables |
-| Table Read Capacity Usage (%) | Percent usage of Provisioned Read capacity per DynamoDB table |
-| Table Write Capacity Usage (%) | Percent usage of Provisioned Write capacity per DynamoDB table |
-| Global Secondary Index Size (KB) | Size across global secondary indexes |
-| Local Secondary Index Size (KB) | Size across local secondary indexes |
+| Instance Buffer Pool Hit (%) | The percentage of buffer pools hits on the instance |
+| Total Wait Time Across Instance (ms/sec) | The number of milliseconds spent ever second waiting across the instance |
+| Database Top 10 Read Throughput (MB/sec) | The 10 databases with the highest read throughput |
+| Database Top 10 Write Throughput (MB/sec) | The 10 databases with the highest write throughput |
+| Database Top 10 Read IOPS (operations/sec) | The 10 databases with the highest read IOPS |
+| Database Top 10 Write IOPS (operations/sec) | The 10 databases with the highest write IOPS |
+| Query Top 10 Execution Time (sec/minute) | The 10 queries that spent the most seconds per every minute executing |
+| Query Top 10 Execution Count (executions/minute) | The 10 queries with the highest number of executions per minute |
 
-**Tables**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Read Throttle Events (Events) | The number of read throttle events per DynamoDB tables |
-| Write Throttle Events (Events) | The number of write throttle events per DynamoDB tables |
-| Read Capacity Usage (%) | Percent usage of Provisioned Read capacity per DynamoDB table |
-| Write Capacity Usage (%) | Percent usage of Provisioned Write capacity per DynamoDB table |
-| Read Capacity Remaining (Units) | The number of Read capacity units that are free per DynamoDB table |
-| Write Capacity Remaining (Units) | The number of Write capacity units that are free per DynamoDB table |
-
-**Global Secondary Index**
+**Instance**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Size (KB) | Size per global secondary index |
-| Item Count (Items) | The number of items per global secondary index |
-| Provisioned Read Capacity (Units) | Provisioned Read Capacity per global secondary index |
-| Provisioned Write Capacity (Units) | Provisioned Write Capacity per global secondary index |
+| Compilations (compilations/sec) | The number of compilations per second on the instance |
+| Recompilations (compilations/sec) | The number of re-compilations per second on the instance |
+| Processes (processes) | The number of `Preconnect`, `Background`, `Dormant`, `Runnable`, `Suspended`, `Running`, `Blocked`, and `Sleeping` processes on the instance |
+| Total Wait Time Across Instance (ms/sec) | The number of milliseconds spent ever second waiting across the instance |
+| Runnable Tasks (tasks) | The number of runnable tasks on the instance |
+| Transactions (transactions/sec) | The number of transactions per second on the instance |
+| Page Splits (splits/sec) | The number of page splits per second on the instance |
+| Forced Parameterizations (parameterizations/sec) | The number of forced parameterizations per second on the instance |
 
-**Local Secondary Index**
+**Instance Buffer Pool**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Size (KB) | Size per local secondary index |
-| Item Count (Items) | The number of items per local secondary index |
+| Hit (%) | The percentage of hits on the buffer pool |
+| Size (GB) | The size of the buffer pool |
+| Page Life Expectancy (sec) | The life expectancy of a page in the buffer pool |
+| Batch Requests (requests/sec) | The number of batch requests per second on the buffer pool |
+
+**Databases**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Buffer Pool Size (GB) | The size of the buffer pool per database |
+| Read Delay (ms/sec) | The number of milliseconds per second that a read is delayed per database |
+| Write Delay (ms/sec) | The number of milliseconds per second that a write is delayed per database |
+| Read Throughput (MB/sec) | The read throughput per database |
+| Write Throughput (MB/sec) | The write throughput per database |
+| Read IOPS (operations/sec) | The number of read operations per second on a database |
+| Write IOPS (operations/sec) | The number of write operations per second on a database |
+
+**Queries**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Top 10 Execution Time (sec/minute) | The 10 queries that spent the most seconds per every minute executing |
+| Top 10 Average Execution Time (ms) | The 10 queries with the highest execution time on average |
+| Top 10 Execution Count (executions/minute) | The 10 queries with the highest number of executions per minute |
+
+**Summary**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Buffer Pool Hit (%) | The percentage of buffer pools hits on the instance |
+| Compilations (compilations/sec) | The number of compilations per second on the instance |
+| Recompilations (compilations/sec) | The number of re-compilations per second on the instance |
+| Total IOPS (operations/sec) | The total number of IOPS across the instance |
+| Total Throughput (bytes/sec) | The total throughput across the instance |
