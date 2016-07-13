@@ -14,7 +14,7 @@ You can find the New Relic VMware vSphere plugin in the following locations:
 
 ## System Requirements
 
-The VMware vSphere Plugin connects to VMware vSphere using <?>. Before installing and configuring the plugin, ensure your system meets the following requirements:
+The VMware vSphere Plugin connects to VMware vSphere using the vSphere API. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 - A New Relic account
