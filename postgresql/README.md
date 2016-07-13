@@ -21,8 +21,31 @@ The PostgreSQL plugin connects to the supported PostgreSQL instance via a host o
 - A New Relic account. Sign up for a free account [here](http://newrelic.com)
 
 **PostgreSQL Plugin Requirements**
-- The plugin supports **PostgreSQL Version 9.0+**
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- The plugin supports **PostgreSQL Version 9.0+**
+
+**NOTE:** PostgreSQL Query Tracking Prerequisite
+To track queries, these settings need to be added to the `postgresql.conf` `shared_preload_libraries settings`:
+
+```
+shared_preload_libraries = ‘pg_stat_statements’, 
+pg_stat_statements.max = 10000,
+pg_stat_statements.track = all
+
+```
+You also need to create the extension in the database. The extension is database bound and must be created for each database, even though it pulls data from each:
+
+```
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements
+```
+
+You can check if it is installed on the database by calling:
+
+```
+SELECT *
+```
+FROM pg_available_extensions
+WHERE name = ‘pg_stat_statements’ AND installed_version IS NOT NULL
 
 ----
 
