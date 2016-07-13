@@ -42,7 +42,7 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-	./npi install com.bluemedora.vce.vblock
+	./npi install com.bluemedora.ibm.db2
 ```	
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
@@ -151,194 +151,42 @@ The second file, `plugin.template.json`, contains data specific to each plugin (
 
 Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-Each Vblock instance can be made up of several different components. Component objects in the "agents" array should share an "instance_name" if they are part of the same Vblock system. Each component within a Vblock system should have a unique "component_name", as well as a "component_type" that indicates the type of component. The following component types are recognized by the Vblock plugin:
-
-`nexus` - Cisco Nexus
-
-`ucs` - Cisco UCS
-
-`vnxblock` - EMC VNX Block
-
-`vnxfile` - EMC VNX File
-
 **Fields**
 
-**EMC VNX File Fields**
-
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | The name of your New Relic VNX File instance that will appear in the User Interface |
-| primary_control_station  | The IP or domain name of the Primary Control Station for VNX File |
-| secondary_control_station | The IP or domain name of the Secondary Control Station for VNX File |
-| username | User name to log into the Control Stations |
-| password | Password to log into the Control Stations |
-| nas_path | Path to the NAS_DB configuration files location.  Usually `/nas`. |
-| sample_seconds | Query interval parameter.  Must be an integer 1 or greater | |
+| polling_interval_seconds | The number of seconds between each data collection. |
+| instance_name | Alias for the name of your IBM DB2 instance that will appear in the User Interface |
+| username | User name to log into DB2 instance |
+| password | Password to log into DB2 instance |
+| host | The hostname or ip address of DB2 instance |
+| port | Port to connect to DB2 instance |
+| database_name | Name of DB2 database to monitor |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
-**EMC VNX Block Fields**
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
 
-| Field Name  |  Description |
-|:------------- |:-------------|
-| instance_name | The name of your New Relic VNX Block instance that will appear in the User Interface |
-| spa_host | The IP or domain name of storage processor A for the VNX Block array |
-| spb_host | The IP or domain name of storage processor B for the VNX Block array |
-| username | User name to connect to NaviSecCLI |
-| password | Password to connect to NaviSecCLI |
-| naviseccli_path | Full path to NaviSecCLI executable on the host where this target is being installed |
-| scope | An integer of `0` for global or `1` for local |
-
-**Cisco UCS Fields**
-
-| Field Name  |  Description |
-|:------------- |:-------------|
-| instance_name | The name of your New Relic Cisco UCS instance that will appear in the User Interface |
-| username | User name to log into UCS Manager |
-| password | Password to log into UCS Manager |
-| host | The hostname or ip address of UCS Manager |
-| protocol | Either `http` or `https` |
-| port | Optional parameter, port to connect to UCS Manager |
-
-**Cisco Nexus Fields**
-
-| Field Name  |  Description |
-|:------------- |:-------------|
-| instance_name | The name of your New Relic Cisco Nexus instance that will appear in the User Interface |
-| version | SNMP version acceptable values `v2c` or `v3` for SNMP Version 2 or Version 3 respectively |
-| management_ip | IP address of Nexus Switch |
-| snmp_port | Optional field, port SNMP communicates over. Defaults to `161` |
-| community_string | Only applicable if `version` is `v2c`. The SNMP community string required to connect |
-| security_level | Only applicable if `version` is `v3`. Acceptable values are `auth_priv`, `auth_nopriv`, or `noauth_nopriv` |
-| user | Only applicable if `version` is `v3`. SNMP user name |
-| auth_password | Only applicable if `version` is `v3`. SNMP Authentication password. Only needed if `security_level` is `auth_priv` or `auth_nopriv` |
-| privacy_password | Only applicable if `version` is `v3`. SNMP privacy password, Only needed if `security_level` is `auth_priv` |
-| privacy_type | Only applicable if `version` is `v3`. SNMP encryption type. Acceptable values are `privAES256`, `privAES192`, `privAES128`, `privDES`, or `priv3DES` for  256 bit AES, 192 bit AES, 128 bit AES, DES, or 3-DES respectively |
+* `enable_insights_for_db2_instance`
+* `enable_insights_for_db2_bufferpool`
+* `enable_insights_for_db2_database`
+* `enable_insights_for_db2_memory_pool`
+* `enable_insights_for_db2_tablespace`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "Your Vblock Instance",
-      "component_type": "nexus",
-      "component_name": "Nexus Component Using SNMP Version 2",
-      "version": "v2 or v2c",
-      "management_ip": "your_value_here",
-      "community_string": "your_value_here",
-      "snmp_port": 161
-    },
-    {
-      "instance_name": "Your Vblock Instance",
-      "component_type": "ucs",
-      "component_name": "Your UCS Component",
+      "instance_name": "your_value_here",
       "username": "your_value_here",
       "password": "your_value_here",
+      "port": "your_value_here",
       "host": "your_value_here",
-      "protocol": "http or https"
-    },
-    {
-      "instance_name": "Your Vblock Instance",
-      "component_type": "vnxblock",
-      "component_name": "Your VNX Block Component",
-      "spa_host": "your_value_here",
-      "spb_host": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "naviseccli_path": "/opt/Navisphere/bin",
-      "scope": 0
-    },
-    {
-      "instance_name": "Your Vblock Instance",
-      "component_type": "vnxfile",
-      "component_name": "Your VNX File Component",
-      "primary_control_station": "your_value_here",
-      "secondary_control_station": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "nas_path": "/nas",
-      "sample_seconds": 3
-    },
-
-    {
-      "instance_name": "Your Big Vblock Instance",
-      "component_type": "nexus",
-      "component_name": "Nexus Component Using SNMP Version 2",
-      "version": "v2 or v2c",
-      "management_ip": "your_value_here",
-      "community_string": "your_value_here",
-      "snmp_port": 161
-    },
-    {
-      "instance_name": "Your Big Vblock Instance",
-      "component_type": "nexus",
-      "component_name": "Another Nexus Component Using SNMP Version 3",
-      "user": "your_value_here",
-      "auth_password": "your_value_here",
-      "privacy_password": "your_value_here",
-      "authentication_type": "authSHA or authMD5",
-      "privacy_type": "privAES256 or privAES192 or privAES128 or privDES or priv3DES",
-      "security_level": "auth_priv or auth_nopriv or noauth_nopriv"
-    },
-    {
-      "instance_name": "Your Big Vblock Instance",
-      "component_type": "ucs",
-      "component_name": "Your UCS Component",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "host": "your_value_here",
-      "protocol": "http or https"
-    },
-    {
-      "instance_name": "Your Big Vblock Instance",
-      "component_type": "ucs",
-      "component_name": "Another UCS Component",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "host": "your_value_here",
-      "protocol": "http or https"
-    },
-    {
-      "instance_name": "Your Big Vblock Instance",
-      "component_type": "vnxblock",
-      "component_name": "Your VNX Block Component",
-      "spa_host": "your_value_here",
-      "spb_host": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "naviseccli_path": "/opt/Navisphere/bin",
-      "scope": 0
-    },
-    {
-      "instance_name": "Your Big Vblock Instance",
-      "component_type": "vnxblock",
-      "component_name": "Another VNX Block Component",
-      "spa_host": "your_value_here",
-      "spb_host": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "naviseccli_path": "/opt/Navisphere/bin",
-      "scope": 0
-    },
-    {
-      "instance_name": "Your Big Vblock Instance",
-      "component_type": "vnxfile",
-      "component_name": "Your VNX File Component",
-      "primary_control_station": "your_value_here",
-      "secondary_control_station": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "nas_path": "/nas",
-      "sample_seconds": 3
-    },
-    {
-      "instance_name": "Your Big Vblock Instance",
-      "component_type": "vnxfile",
-      "component_name": "Another VNX File Component",
-      "primary_control_station": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "nas_path": "/nas",
-      "sample_seconds": 3
+      "database_name": "your_value_here",
+      "enable_insights": "true"
     }
   ]
 }
@@ -369,65 +217,93 @@ For questions or issues regarding the Blue Medora IBM DB2 plugin for New Relic, 
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Nexus Total Throughput (MB/sec)  | The total throughput of the system in megabytes per second |
-| Nexus Port Status (%) | Percentage of the systems port statuses (Up or Down) |
-| UCS Fabric Interconnect Load (%) | Load percentage of the fabric interconnect     |
-| UCS Chassis Power (watts) | Power of the chassis in watts    |
-| UCS Blade Memory Used Capacity (%) | Percentage of memory used capacity of the blade    |
-| UCS Rack Unit Memory Used Capacity (%) | Percentage of memory used capacity of the rack unit  |
-| VNX Block LUN Used Capacity (%) | Percentage of used capacity of the VNX Block LUN  |
-| VNX Block LUN IOPS (ops/sec) | IOPS of the VNX Block IOPS  |
-| VNX Block LUN Throughput (MB/sec) | Throughput of the VNX Block LUN in megabytes per second  |
-| VNX File Latency | Latency of the VNX File |
+| Database Buffer Pool Hit Ratio (%)  | The buffer pool hit percentage on the database |
+| Memory Pool Utilization (%) | The utilization percentage of a memory pool |
+| Database Average Direct Read Rate (ms) | The average direct read rate of the database |
+| Database Average Direct Write Rate (ms) | The average direct write rate of the database |
+| Database Read Time (ms) | The time of a read from the database |
+| Database Write Time (ms) | The time of a write from the database |
+| Buffer Pool Read Time (ms) | The time of a read per buffer pool |
+| Buffer Pool Write Time (ms) | The time of a write per buffer pool |
+| Tablespace Utilization (%) | The utilization percentage per tablespace |
+| Tablespace Free Pages (pages) | The number of free pages per tablespace |
 
-**Nexus Overview**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Port Status (%)  | Percentage of the port status (Up or Down)  |
-| Inbound Packets (packets/sec) | Inbound packets per second    |
-| Outbound Packets (packets/sec) | Outbound packets per second   |
-| Inbound Throughput (MB/sec) | Inbound throughput in megabytes per second   |
-| Outbound Throughput (MB/sec) | Outbound throughput in megabytes per second    |
-
-**UCS Overview**
+**Database**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Fabric Interconnect Load (%)  | Load percentage of the fabric interconnect  |
-| Chassis Input Power (watts) | Input power of the chassis in watts    |
-| Chassis Output Power (watts) | Output power of the chassis in watts   |
-| Rack Memory Used Capacity (%) | Percentage of memory used capacity of the rack   |
-| Blade Memory Used Capacity (%) | Percentage of memory used capacity of the blade    |
-| Fabric Interconnect Inbound Throughput (MB/sec) | Inbound throughput of the fabric interconnect in megabytes per second    |
-| Fabric Interconnect Outbound Throughput (MB/sec) | Outbound throughput of the fabric interconnect in megabytes per second    |
-| IO Module Inbound Throughput (MB/sec) | Inbound throughput of the IO module in megabytes per second    |
-| IO Module Outbound Throughput (MB/sec) | Outbound throughput of the IO module in megabytes per second   |
-| IO Module Temperature (C) | Temperature of the IO module in celsius   |
-| Rack Unit Temperature (C) | Temperature of the rack unit in celsius   |
+| Active Connections (connections)  | The number of active connections on the database |
+| Applications (applications)  | The number of active connections on the database |
+| Allocated Sort Heap Memory (pages)  | The sort heap memory allocated to the database |
+| Applications Waiting on Locks (%)  | The percentage of applications on the database that are waiting on locks |
+| Deadlocks (deadlocks/minute)  | The deadlocks per minute on the database |
+| Lock Waits (waits)  | The number of waits for a lock on the database |
+| Catalog Cache Inserts (inserts)  | The number of catalog cache inserts on the database |
+| Package Cache Inserts (inserts)  | The number of package cache inserts on the database |
+| Catalog Cache Lookups (lookups)  | The number of catalog cache lookups on the database |
+| Package Cache Lookups (lookups)  | The number of package cache lookups on the database |
+| Catalog Cache Overflows (overflows)  | The number of catalog cache overflows on the database |
+| Package Cache Overflows (overflows)  | The number of package cache overflows on the database |
 
-**VNX Block Overview**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| LUN Utilization (%)  | Percentage of LUN utilization  |
-| Power (watts) | Power of the VNX Block in watts    |
-| LUN IOPS (ops/sec) | IOPS of the LUN    |
-| LUN Throughput (MB/sec) | Throughput of the LUN in megabytes per second |
-| Storage Pool Used Capacity (%) | Percentage of used capacity of the Storage Pool    |
-| Storage Processor Throughput (MB/sec) | Throughput of the Storage Processor in megabytes per second    |
-| Read Hit Ratio (%) | Read hit ratio percentage    |
-| Storage Processor Write Hit Ratio (%) | Write hit ratio percentage of the Storage Processor |
-
-**VNX File Overview**
+**Database IO**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Latency (ms)  | Latency of the VNX File in milliseconds  |
-| Network Throughput (MB/sec) | Network throughput in megabytes per second    |
-| Disk IOPS (ops/sec) | IOPS of the VNX File disk    |
-| Disk Throughput (MB/sec) | Throughput of the disk in megabytes per second    |
-| CPU Utilization (%) | Percentage of CPU utilization    |
-| Memory Utilization (%) | Percentage of memory utilization   |
-| Highest Component Temperature (C) | Highest component temperature in celsius   |
-| Average Component Temperature (C) | Average component temperature in celsius   |
+| Buffer Pool Hit Ratio (%)  | The buffer pool hit percentage on the database |
+| Read Time (ms) | The time of a read from the database |
+| Write Time (ms) | The time of a write from the database |
+| Average Direct Read Rate (ms) | The average direct read rate of the database |
+| Average Direct Write Rate (ms) | The average direct write rate of the database |
+| Direct Reads (reads) | The number of direct reads from the database |
+| Direct Writes (writes) | The number of direct writes to the database |
+| Direct Reads Requests (requests) | The number of direct read requests from the database |
+| Direct Writes Requests (requests) | The number of direct write requests to the database |
+| Physical Data Reads (reads/minute) | The number of physical data reads from per minute the database |
+| Physical Index Reads (reads/minute) | The number of physical index reads from per minute the database |
+| Logical Data Reads (reads/minute) | The number of logical data reads from per minute the database |
+| Logical Index Reads (reads/minute) | The number of logical index reads from per minute the database |
+
+**Database Log**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Utilization (%)  | The utilization percentage of the database log |
+| Used Space (KB)  | The used space of the database log |
+| Reads (reads)  | The reads from the database log |
+| Writes (writes)  | The writes to the database log |
+
+**Buffer Pools**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Hit Ratio (%)  | The percentage of hits to the buffer pool |
+| Read Time (ms)  | The time to read from a buffer pool |
+| Write Time (ms)  | The time to write to a buffer pool |
+| Logical Data Reads (reads) | The number of logical data reads from the buffer pool |
+| Logical Index Reads (reads) | The number of logical index reads from the buffer pool |
+| Physical Data Reads (reads) | The number of physical data reads from the buffer pool |
+| Physical Index Reads (reads) | The number of physical index reads from the buffer pool |
+| Data Writes (writes) | The number of data writes to the buffer pool |
+| Index Writes (writes) | The number of index writes to the buffer pool |
+| Asynchronous Read Time (ms) | The time asynchronous reads take from the buffer pool |
+| Asynchronous Write Time (ms) | The time asynchronous writes take to the buffer pool |
+| Asynchronous Data Reads (reads) | The number of asynchronous data reads from the buffer pool |
+| Asynchronous Index Reads (reads) | The number of asynchronous index reads from the buffer pool |
+| Asynchronous Data Writes (writes) | The number of asynchronous data writes to the buffer pool |
+| Asynchronous Index Writes (writes) | The number of asynchronous index writes to the buffer pool |
+
+**Tablespaces**
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Utilization (%) | The utilization percentage per tablespace |
+| Total Pages (pages) | The total pages per tablespace |
+| Free Pages (pages) | The number of free pages per tablespace |
+| Used Pages (pages) | The number of used pages per tablespace |
+| Usable Pages (pages) | The number of usable pages per tablespace |
+
+**Summary**
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Average Buffer Pool Hit Ratio (%) | The average hit ratio across all buffer pools on the instance |
+| Total Connections (connections) | The total number of connections to the instance |
+| Total Deadlocks (deadlocks/minute) | The total number of deadlocks per minutes on the instance |
