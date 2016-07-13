@@ -150,7 +150,7 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 `java_args` - `-Xmx128m` (-Xmxn specifies the maximum size, in bytes, of the memory allocation pool. This value must a multiple of 1024 greater than 2 MB. Append the letter k or K to indicate kilobytes, or m or M to indicate megabytes. The default value is chosen at runtime based on system configuration.)
 
-**EXAMPLES:**
+**Examples:**
 
 `-Xmx83886080`
 
