@@ -160,23 +160,41 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | Alias for the name of your F5 BIG-IP instance that will appear in the User Interface |
 | host | IP address or hostname of F5 BIG-IP Management IP |
 | port | Port used to connect to the F5 BIG-IP REST API. Default is `443` |
 | username | User Name for F5 BIG-IP login. |
 | password | Password for F5 BIG-IP login. |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_application`
+* `enable_insights_for_device`
+* `enable_insights_for_device_group`
+* `enable_insights_for_big_ip_system`
+* `enable_insights_for_disk`
+* `enable_insights_for_module`
+* `enable_insights_for_node`
+* `enable_insights_for_pool`
+* `enable_insights_for_pool_member`
+* `enable_insights_for_virtual_server`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "YOUR_VALUE_HERE",
-      "username": "YOUR_VALUE_HERE",
-      "password": "YOUR_VALUE_HERE",
-      "host": "YOUR_VALUE_HERE",
-      "port": "YOUR_VALUE_HERE"
+      "instance_name": "your_value_here",
+      "host": "your_value_here",
+      "port": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "enable_insights": "true"
     }
   ]
 }
@@ -210,8 +228,8 @@ For questions or issues regarding the F5 BIG-IP Plugin for New Relic, visit http
 | Memory (GB) |  The Used and Total memory of the F5 BIG-IP system |
 | Node Received Throughput (MB/sec) |  Received throughput for Nodes |
 | Node Transmitted Throughput (MB/sec) |  Transmitted throughput for Nodes  |
-| Node Received Packets (Packets/sec) |  Received packets for Nodes  |
-| Node Transmitted Packets (Packets/sec) |  Transmitted packets for Nodes  |
+| Node Received Packets (packets/sec) |  Received packets for Nodes  |
+| Node Transmitted Packets (packets/sec) |  Transmitted packets for Nodes  |
 | Disk Total Space (GB)  |  Total space across disks in system  |
 | Disk Used Space (GB)  |  Total used space across disks in system  |
 
@@ -237,12 +255,12 @@ For questions or issues regarding the F5 BIG-IP Plugin for New Relic, visit http
 
 | Metric Name | Description |
 |:------------- |:-------------|
-| Requests (Requests/sec) | Requests over time |
-| Connections (Connections) | Connections per virtual server |
+| Requests (requests/sec) | Requests over time |
+| Connections (connections) | Connections per virtual server |
 | Received Throughput (MB/sec) | Received Throughput for virtual server |
 | Transmitted Throughput (MB/sec) | Transmitted Throughput for virtual server |
-| Received Packets (Packets/sec) | Received Packets for virtual server |
-| Transmitted Packets (Packets/sec) | Transmitted Packets for virtual server |
+| Received Packets (packets/sec) | Received Packets for virtual server |
+| Transmitted Packets (packets/sec) | Transmitted Packets for virtual server |
 
 **Nodes**
 
@@ -259,22 +277,30 @@ For questions or issues regarding the F5 BIG-IP Plugin for New Relic, visit http
 
 | Metric Name | Description |
 |:------------- |:-------------|
-| Requests (Requests/sec) | Requests over time |
+| Requests (requests/sec) | Requests over time |
 | Active Members (members) | Currently active members |
 | Connections (connections) | Connections per pools |
 | Received Throughput (MB/sec) | Received Throughput for pools |
 | Transmitted Throughput (MB/sec) | Transmitted Throughput for pools |
-| Received Packets (Packets/sec) | Received Packets for pools |
-| Transmitted Packets (Packets/sec) | Transmitted Packets for pools |
+| Received Packets (packets/sec) | Received Packets for pools |
+| Transmitted Packets (packets/sec) | Transmitted Packets for pools |
 
 **Pools Members**
 
 | Metric Name | Description |
 |:------------- |:-------------|
-| Requests (Requests/sec) | Requests over time |
+| Requests (requests/sec) | Requests over time |
 | Connections (connections) | Connections per pool members |
 | Sessions (sessions) | Currently active session |
 | Received Throughput (MB/sec) | Received Throughput for pool members |
 | Transmitted Throughput (MB/sec) | Transmitted Throughput for pool members |
-| Received Packets (Packets/sec) | Received Packets for pool members |
-| Transmitted Packets (Packets/sec) | Transmitted Packets for pool members |
+| Received Packets (packets/sec) | Received Packets for pool members |
+| Transmitted Packets (packets/sec) | Transmitted Packets for pool members |
+
+**Summary**
+
+| Metric Name | Description |
+|:------------- |:-------------|
+| Memory Usage (%) | Total memory usage across BIG-IP System |
+| Total Received Throughput (bytes/sec) | Total received throughput across BIG-IP System |
+| Total Transmitted Throughput (bytes/sec) | Total transmitted throughput across BIG-IP System |
