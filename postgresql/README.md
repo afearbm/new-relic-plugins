@@ -160,34 +160,51 @@ Make a copy of this template and rename it to plugin.json. Shown below is an exa
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | Alias for the name of your PostgreSQL instance that will appear in the User Interface. |
 | host | IP address or hostname of PostgreSQL instance. |
 | port | Port used to connect to the PostgreSQL instance. Default is `443`. |
 | username | User Name for PostgreSQL login. |
 | password | Password for PostgreSQL login. |
-| ssl_mode | Indicates if you wish to connect while using ssl. Acceptable values are `disable` and `require`. |
+| ssl_mode | Indicates if you wish to connect while using ssl. Acceptable values are `disable`, `verify-full`, `verify-ca`, or `require`. |
+| database | Optional parameter, comma separated list of databases to monitor |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "YOUR_VALUE_HERE",
-      "username": "YOUR_VALUE_HERE",
-      "password": "YOUR_VALUE_HERE",
-      "host": "YOUR_VALUE_HERE",
-      "port": "YOUR_VALUE_HERE",
-      "ssl_mode" : "disable"
+      "instance_name": "all_database_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": "your_value_here",
+      "host": "your_value_here",
+      "ssl_mode": "verify-full, require, disable, or verify-ca",
+      "enable_insights": "true"
     },
     {
-      "instance_name": "YOUR_VALUE_HERE",
-      "username": "YOUR_VALUE_HERE",
-      "password": "YOUR_VALUE_HERE",
-      "host": "YOUR_VALUE_HERE",
-      "port": "YOUR_VALUE_HERE",
-      "ssl_mode" : "require"
-    }
+      "instance_name": "single_database_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": "your_value_here",
+      "host": "your_value_here",
+      "ssl_mode": "verify-full, require, disable, or verify-ca",
+      "database": "database_1"
+      "enable_insights": "true"
+    },
+    { 
+      "instance_name": "multi_database_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": "your_value_here",
+      "host": "your_value_here",
+      "ssl_mode": "verify-full, require, disable, or verify-ca",
+      "database": "database_1,database_2,database_3"
+      "enable_insights": "true"
+    },
   ]
 }
 ```
@@ -226,18 +243,18 @@ For questions or issues regarding the PostgreSQL Plugin for New Relic, visit htt
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Size (MB)  | Size across tables |
-| Buffer Reads (Reads/sec) | Number of buffer reads per second for a table |
-| Sequential Scans (Scans/sec)  | Sequential scans per second for a table |
-| Index Scans (Scans/sec) | Index scans per second for a table |
-| Index Buffer Hits (Hits/sec) | Buffer hits per second for an index in a table |
+| Buffer Reads (reads/sec) | Number of buffer reads per second for a table |
+| Sequential Scans (scans/sec)  | Sequential scans per second for a table |
+| Index Scans (scans/sec) | Index scans per second for a table |
+| Index Buffer Hits (hits/sec) | Buffer hits per second for an index in a table |
 
 **Indexes**
 
 | Metric Name | Description |
 |:------------- |:-------------|
-| Scans (Scans/sec) | Scans per second for an index |
-| Buffer hits (Hits/sec) | Buffer hits per second for an index |
-| Block Reads (Reads/sec) | Block reads per second for an index |
+| Scans (scans/sec) | Scans per second for an index |
+| Buffer hits (hits/sec) | Buffer hits per second for an index |
+| Block Reads (reads/sec) | Block reads per second for an index |
 
 **Queries**
 
@@ -257,4 +274,13 @@ Only 20 functions are displayed at a time. The 20 that are displayed are the fun
 |:------------- |:-------------|
 | Execution Time (ms/minute) | The time in milliseconds for every minute a function takes to execute |
 | Average Execution Time (ms) | The average time in milliseconds a function takes to execute |
-| Calls (Calls/minute) | The number of calls per minute to a function |
+| Calls (calls/minute) | The number of calls per minute to a function |
+
+**Summary**
+
+| Metric Name | Description |
+|:------------- |:-------------|
+| Total Database Size (bytes) | The sum of the size of all databases being monitored |
+| Active Sessions (sessions) | The sum of active sessions across all databases being monitored |
+| Waiting Sessions (sessions) | The sum of waiting sessions across all databases being monitored |
+| Total Deadlocks (deadlocks/minute) | The sum of deadlocks across all databases being monitored |
