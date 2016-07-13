@@ -233,7 +233,8 @@ Theses fields are listed below and valid values are `true` or `false`:
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
-**NOTE:** MySQL queries are given an ID calculated from a MD5 hash of the query text. To match a query ID to the text the follow query can be run.
+
+**NOTE:** MySQL queries are given an ID calculated from a MD5 hash of the query text. To match a query ID to the text the following query can be run.
 
 ```
 SELECT 
