@@ -147,13 +147,13 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 }
 ```
 
-#### Configuring the plugin.template.json file: 
+### Configuring the `plugin.template.json` file: 
 
-The second file, plugin.template.json, contains data specific to each plugin (e.g., a list of hosts and port combinations for what you are monitoring). Templates for both of these files should be located in the ‘config’ directory in your extracted plugin folder.
+The second file, `plugin.template.json`, contains data specific to each plugin (e.g., a list of hosts and port combinations for what you are monitoring). Templates for both of these files should be located in the ‘config’ directory in your extracted plugin folder.
 
-Make a copy of this template and rename it to plugin.json. Shown below is an example of the plugin.json file’s contents.
+Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-**NOTE** - You can add multiple objects to the “agents” array to monitor multiple HP Blade Servers instances.
+**NOTE:** You can add multiple objects to the “agents” array to monitor multiple HP Blade Servers instances.
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -201,6 +201,19 @@ Theses fields are listed below and valid values are `true` or `false`:
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
+
+## Troubleshooting/Known Issues
+When running a plugin, a `java.lang.OutOfMemoryError` may occur if too much data is being processed for the system to handle. If that issues arises, you will need to modify the `java_args` field of the “master” `newrelic.json` file located in the npi base `config` directory.
+
+`java_args` - `-Xmx128m` (-Xmxn specifies the maximum size, in bytes, of the memory allocation pool. This value must a multiple of 1024 greater than 2 MB. Append the letter k or K to indicate kilobytes, or m or M to indicate megabytes. The default value is chosen at runtime based on system configuration.)
+
+**Examples:**
+
+`-Xmx83886080`
+
+`-Xmx81920k`
+
+`-Xmx80m`
 
 ## Support Resources
 For questions or issues regarding the HP Blade Servers Plugin for New Relic, visit http://support.bluemedora.com. 

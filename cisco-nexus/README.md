@@ -178,6 +178,13 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | privacy_type | Only applicable if `version` is `v3`. SNMP encryption type. Acceptable values are `privAES256`, `privAES192`, `privAES128`, `privDES`, or `priv3DES` for  256 bit AES, 192 bit AES, 128 bit AES, DES, or 3-DES respectively |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_cisco_nexus_switch`
+* `enable_insights_for_cisco_nexus_port`
+* `enable_insights_for_cisco_nexus_l3_interface`
+
 **Example:**
 
 ```
@@ -210,6 +217,19 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
+
+## Troubleshooting/Known Issues
+When running a plugin, a `java.lang.OutOfMemoryError` may occur if too much data is being processed for the system to handle. If that issues arises, you will need to modify the `java_args` field of the “master” `newrelic.json` file located in the npi base `config` directory.
+
+`java_args` - `-Xmx128m` (-Xmxn specifies the maximum size, in bytes, of the memory allocation pool. This value must a multiple of 1024 greater than 2 MB. Append the letter k or K to indicate kilobytes, or m or M to indicate megabytes. The default value is chosen at runtime based on system configuration.)
+
+**Examples:**
+
+`-Xmx83886080`
+
+`-Xmx81920k`
+
+`-Xmx80m`
 
 ## Support Resources
 For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Relic, visit http://support.bluemedora.com. 
