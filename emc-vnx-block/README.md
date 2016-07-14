@@ -14,15 +14,15 @@ You can find the New Relic EMC VNX Block plugin in the following locations:
 
 ## System Requirements
 
-The VNX Block plugin connects to VNX using NaviSecCLI(Navisphere Secure Command Line Interface).  This allows a network connection to the VNX storage processors to be made.  Before installing and configuring the plugin, ensure your system meets the following requirements:
+The VNX Block plugin connects to VNX using NaviSecCLI (Navisphere Secure Command Line Interface).  This allows a network connection to the VNX storage processors to be made.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **EMC VNX Block Plugin Requirements**
 - **Block Software Version:** This plugin requires Block Software Version 5.33+
-- **NaviSecCLI:** The host must have NaviCLI software installed
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period. 
+- **NaviSecCLI:** The host must have NaviSecCLI software installed
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com. 
 
 ----
 
