@@ -17,7 +17,7 @@ You can find the New Relic EMC VNX Block plugin in the following locations:
 The VNX Block plugin connects to VNX using NaviSecCLI(Navisphere Secure Command Line Interface).  This allows a network connection to the VNX storage processors to be made.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account.
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **EMC VNX Block Plugin Requirements**
 - **Block Software Version:** This plugin requires Block Software Version 5.33+
