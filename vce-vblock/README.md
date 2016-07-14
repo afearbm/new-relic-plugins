@@ -166,6 +166,10 @@ Each Vblock instance can be made up of several different components. Component o
 
 **Fields**
 
+| Field Name  |  Description |
+|:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
+
 **EMC VNX File Fields**
 
 | Field Name  |  Description |
@@ -176,7 +180,20 @@ Each Vblock instance can be made up of several different components. Component o
 | username | User name to log into the Control Stations |
 | password | Password to log into the Control Stations |
 | nas_path | Path to the NAS_DB configuration files location.  Usually `/nas`. |
-| sample_seconds | Query interval parameter.  Must be an integer 1 or greater | |
+| sample_seconds | Query interval parameter.  Must be an integer 1 or greater |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_data_mover`
+* `enable_insights_for_disk`
+* `enable_insights_for_network_intreface`
+* `enable_insights_for_pool`
+* `enable_insights_for_file_system`
+* `enable_insights_for_virtual_data_mover`
+* `enable_insights_for_vnx_file`
+* `enable_insights_for_volume`
 
 **EMC VNX Block Fields**
 
@@ -188,7 +205,21 @@ Each Vblock instance can be made up of several different components. Component o
 | username | User name to connect to NaviSecCLI |
 | password | Password to connect to NaviSecCLI |
 | naviseccli_path | Full path to NaviSecCLI executable on the host where this target is being installed |
-| scope | An integer of `0` for global or `1` for local |
+| scope | Optional parameter, an integer of `0` for global or `1` for local |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_vnx_block`
+* `enable_insights_for_logical_unit`
+* `enable_insights_for_environment`
+* `enable_insights_for_disk`
+* `enable_insights_for_fast_cache`
+* `enable_insights_for_hba`
+* `enable_insights_for_port`
+* `enable_insights_for_storage_pool`
+* `enable_insights_for_storage_processor`
 
 **Cisco UCS Fields**
 
@@ -200,6 +231,25 @@ Each Vblock instance can be made up of several different components. Component o
 | host | The hostname or ip address of UCS Manager |
 | protocol | Either `http` or `https` |
 | port | Optional parameter, port to connect to UCS Manager |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_ucs_manager`
+* `enable_insights_for_blade`
+* `enable_insights_for_fabric_interconnect`
+* `enable_insights_for_ethernet_port`
+* `enable_insights_for_chassis`
+* `enable_insights_for_fan`
+* `enable_insights_for_fiber_channel_port`
+* `enable_insights_for_io_module`
+* `enable_insights_for_port_channel`
+* `enable_insights_for_psu`
+* `enable_insights_for_rack`
+* `enable_insights_for_vhba`
+* `enable_insights_for_vnic`
 
 **Cisco Nexus Fields**
 
@@ -215,11 +265,20 @@ Each Vblock instance can be made up of several different components. Component o
 | auth_password | Only applicable if `version` is `v3`. SNMP Authentication password. Only needed if `security_level` is `auth_priv` or `auth_nopriv` |
 | privacy_password | Only applicable if `version` is `v3`. SNMP privacy password, Only needed if `security_level` is `auth_priv` |
 | privacy_type | Only applicable if `version` is `v3`. SNMP encryption type. Acceptable values are `privAES256`, `privAES192`, `privAES128`, `privDES`, or `priv3DES` for  256 bit AES, 192 bit AES, 128 bit AES, DES, or 3-DES respectively |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_cisco_nexus_switch`
+* `enable_insights_for_cisco_nexus_port`
+* `enable_insights_for_cisco_nexus_l3_interface`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 300,
   "agents": [
     {
       "instance_name": "Your Vblock Instance",
@@ -228,7 +287,8 @@ Each Vblock instance can be made up of several different components. Component o
       "version": "v2 or v2c",
       "management_ip": "your_value_here",
       "community_string": "your_value_here",
-      "snmp_port": 161
+      "snmp_port": 161,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Vblock Instance",
@@ -237,7 +297,8 @@ Each Vblock instance can be made up of several different components. Component o
       "username": "your_value_here",
       "password": "your_value_here",
       "host": "your_value_here",
-      "protocol": "http or https"
+      "protocol": "http or https",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Vblock Instance",
@@ -248,7 +309,7 @@ Each Vblock instance can be made up of several different components. Component o
       "username": "your_value_here",
       "password": "your_value_here",
       "naviseccli_path": "/opt/Navisphere/bin",
-      "scope": 0
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Vblock Instance",
@@ -256,10 +317,14 @@ Each Vblock instance can be made up of several different components. Component o
       "component_name": "Your VNX File Component",
       "primary_control_station": "your_value_here",
       "secondary_control_station": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
+      "primary_username": "your_value_here",
+      "primary_password": "your_value_here",
+      "secondary_username": "your_value_here",
+      "secondary_password": "your_value_here",
       "nas_path": "/nas",
-      "sample_seconds": 3
+      "sample_seconds": 3,
+      "max_events_per_resource": 1,
+      "enable_insights": "true"
     },
 
     {
@@ -269,7 +334,8 @@ Each Vblock instance can be made up of several different components. Component o
       "version": "v2 or v2c",
       "management_ip": "your_value_here",
       "community_string": "your_value_here",
-      "snmp_port": 161
+      "snmp_port": 161,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big Vblock Instance",
@@ -280,7 +346,8 @@ Each Vblock instance can be made up of several different components. Component o
       "privacy_password": "your_value_here",
       "authentication_type": "authSHA or authMD5",
       "privacy_type": "privAES256 or privAES192 or privAES128 or privDES or priv3DES",
-      "security_level": "auth_priv or auth_nopriv or noauth_nopriv"
+      "security_level": "auth_priv or auth_nopriv or noauth_nopriv",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big Vblock Instance",
@@ -289,7 +356,8 @@ Each Vblock instance can be made up of several different components. Component o
       "username": "your_value_here",
       "password": "your_value_here",
       "host": "your_value_here",
-      "protocol": "http or https"
+      "protocol": "http or https",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big Vblock Instance",
@@ -298,10 +366,12 @@ Each Vblock instance can be made up of several different components. Component o
       "username": "your_value_here",
       "password": "your_value_here",
       "host": "your_value_here",
-      "protocol": "http or https"
+      "port": "your_custom_port"
+      "protocol": "http or https",
+      "enable_insights": "true"
     },
     {
-      "instance_name": "Your Big Vblock Instance",
+      "instance_name": "Your Big Vblock Instance With Local Scope",
       "component_type": "vnxblock",
       "component_name": "Your VNX Block Component",
       "spa_host": "your_value_here",
@@ -309,7 +379,8 @@ Each Vblock instance can be made up of several different components. Component o
       "username": "your_value_here",
       "password": "your_value_here",
       "naviseccli_path": "/opt/Navisphere/bin",
-      "scope": 0
+      "scope": 1,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big Vblock Instance",
@@ -320,7 +391,8 @@ Each Vblock instance can be made up of several different components. Component o
       "username": "your_value_here",
       "password": "your_value_here",
       "naviseccli_path": "/opt/Navisphere/bin",
-      "scope": 0
+      "scope": 0,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big Vblock Instance",
@@ -328,23 +400,30 @@ Each Vblock instance can be made up of several different components. Component o
       "component_name": "Your VNX File Component",
       "primary_control_station": "your_value_here",
       "secondary_control_station": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
+      "primary_username": "your_value_here",
+      "primary_password": "your_value_here",
+      "secondary_username": "your_value_here",
+      "secondary_password": "your_value_here",
       "nas_path": "/nas",
-      "sample_seconds": 3
+      "sample_seconds": 3,
+      "max_events_per_resource": 1,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big Vblock Instance",
       "component_type": "vnxfile",
       "component_name": "Another VNX File Component",
       "primary_control_station": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
+      "primary_username": "your_value_here",
+      "primary_password": "your_value_here",
       "nas_path": "/nas",
-      "sample_seconds": 3
+      "sample_seconds": 3,
+      "max_events_per_resource": 1,
+      "enable_insights": "true"
     }
   ]
 }
+
 ```
 
 ## Using the Plugin
@@ -376,38 +455,44 @@ For questions or issues regarding the Blue Medora VCE Vblock plugin for New Reli
 | Nexus Port Status (%) | Percentage of the systems port statuses (Up or Down) |
 | UCS Fabric Interconnect Load (%) | Load percentage of the fabric interconnect     |
 | UCS Chassis Power (watts) | Power of the chassis in watts    |
-| UCS Blade Memory Used Capacity (%) | Percentage of memory used capacity of the blade    |
-| UCS Rack Unit Memory Used Capacity (%) | Percentage of memory used capacity of the rack unit  |
+| UCS Blade Available Memory (GB)) | The memory available on a blade |
+| UCS Blade Memory Speed (MHz) | The speed of memory on a blade |
 | VNX Block LUN Used Capacity (%) | Percentage of used capacity of the VNX Block LUN  |
 | VNX Block LUN IOPS (ops/sec) | IOPS of the VNX Block IOPS  |
 | VNX Block LUN Throughput (MB/sec) | Throughput of the VNX Block LUN in megabytes per second  |
-| VNX File Latency | Latency of the VNX File |
+| VNX File Latency (ms) | Latency of the VNX File |
 
 **Nexus Overview**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Port Status (%)  | Percentage of the port status (Up or Down)  |
-| Inbound Packets (packets/sec) | Inbound packets per second    |
-| Outbound Packets (packets/sec) | Outbound packets per second   |
-| Inbound Throughput (MB/sec) | Inbound throughput in megabytes per second   |
-| Outbound Throughput (MB/sec) | Outbound throughput in megabytes per second    |
+| Port Status (%)  | The percentage of port statuses (Up or Down) |
+| Top 10 Port Inbound Packets (packets/sec) | The 10 ports with the highest inbound packets per second |
+| Top 10 Port Outbound Packets (packets/sec) | The 10 ports with the highest outbound packets per second |
+| Top 10 Port Inbound Throughput (MB/sec) | The 10 ports with the highest inbound throughput in megabytes per second |
+| Top 10 Port Outbound Throughput (MB/sec) | The 10 ports with the highest outbound throughput in megabytes per second   |
+| Top 10 L3 Interface Inbound Throughput (MB/sec) | The 10 L3 interfaces with the highest inbound throughput in megabytes per second |
+| Top 10 L3 Interface Outbound Throughput (MB/sec) | The 10 L3 interfaces with the highest outbound throughput in megabytes per second   |
+| Top 10 L3 Interface Inbound Packets (packets/sec) | The 10 L3 interfaces with the highest inbound packets per second |
+| Top 10 L3 Interface Outbound Packets (packets/sec) | The 10 L3 interfaces with the highest outbound packets per second |
 
 **UCS Overview**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Fabric Interconnect Load (%)  | Load percentage of the fabric interconnect  |
-| Chassis Input Power (watts) | Input power of the chassis in watts    |
-| Chassis Output Power (watts) | Output power of the chassis in watts   |
-| Rack Memory Used Capacity (%) | Percentage of memory used capacity of the rack   |
-| Blade Memory Used Capacity (%) | Percentage of memory used capacity of the blade    |
-| Fabric Interconnect Inbound Throughput (MB/sec) | Inbound throughput of the fabric interconnect in megabytes per second    |
-| Fabric Interconnect Outbound Throughput (MB/sec) | Outbound throughput of the fabric interconnect in megabytes per second    |
-| IO Module Inbound Throughput (MB/sec) | Inbound throughput of the IO module in megabytes per second    |
-| IO Module Outbound Throughput (MB/sec) | Outbound throughput of the IO module in megabytes per second   |
-| IO Module Temperature (C) | Temperature of the IO module in celsius   |
-| Rack Unit Temperature (C) | Temperature of the rack unit in celsius   |
+| Fabric Interconnect Load (%)  | The load percentage of the fabric interconnect |
+| Chassis Input Power (watts) | The input power of the chassis in watts   |
+| Chassis Output Power (watts) | The output power of the chassis in watts   |
+| Blade Available Memory (GB)) | The memory available on a blade |
+| Blade Memory Speed (MHz) | The speed of memory on a blade |
+| Top 10 Ethernet Port Inbound Throughput (bits/sec) | The 10 ethernet ports with the highest inbound throughput  |
+| Top 10 Ethernet Port Outbound Throughput (bits/sec)  | The 10 ethernet ports with the highest outbound throughput  |
+| Top 10 Fiber Channel Inbound Throughput (bits/sec)  | The 10 fiber channels with the highest inbound throughput  |
+| Top 10 Fiber Channel Outbound Throughput (bits/sec)  | The 10 fiber channels with the highest outbound throughput |
+| IO Module Ambient Temperature (C)     | The ambient temperature of the IO module |
+| IO Module Internal Temperature (C) | The internal temperature of the IO module  |
+| Rack Unit Temperature (C) | The temperature of the rack unit in celsius |
+| Rack Available Memory (GB) | The available memory of a rack unit  |
 
 **VNX Block Overview**
 
@@ -419,7 +504,7 @@ For questions or issues regarding the Blue Medora VCE Vblock plugin for New Reli
 | LUN Throughput (MB/sec) | Throughput of the LUN in megabytes per second |
 | Storage Pool Used Capacity (%) | Percentage of used capacity of the Storage Pool    |
 | Storage Processor Throughput (MB/sec) | Throughput of the Storage Processor in megabytes per second    |
-| Read Hit Ratio (%) | Read hit ratio percentage    |
+| Storage Processor Read Hit Ratio (%) | Read hit ratio percentage of the Storage Processor |
 | Storage Processor Write Hit Ratio (%) | Write hit ratio percentage of the Storage Processor |
 
 **VNX File Overview**
@@ -436,4 +521,11 @@ For questions or issues regarding the Blue Medora VCE Vblock plugin for New Reli
 | Average Component Temperature (C) | Average component temperature in celsius   |
 
 
+**Summary**
 
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Nexus Ports in Error (%)  | The average percentage of nexus ports that are in an error state across all nexus switches |
+| UCS Average Load (%)  | The average load percentage across fabric interconnects on all ucs connections |
+| VNX Block Average LUN Utilization (%)  | The average LUN Utilization across all VNX Blocks |
+| VNX Block Average LUN Throughput (bytes/second)  | The average LUN throughput across all VNX Blocks |
