@@ -19,7 +19,7 @@ The HP Blade plugin connects to the supported HP ProLiant server(s) via an HP iL
 
 **New Relic Requirements**
 
-- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+- A New Relic account. (Sign up for a free account [here](http://newrelic.com).)
 
 **HP Blade Plugin Requirements**
 
