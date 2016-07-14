@@ -18,11 +18,11 @@ The Oracle Database plugin connects to a single Oracle Database Instance via a h
 
 **New Relic Requirements**
 
-- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Oracle Database Plugin Requirements**
 - The plugin supports **Oracle Database Version 11.2+**
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 
@@ -293,7 +293,7 @@ For questions or issues regarding the Oracle Database Plugin for New Relic, visi
 
 **Queries**
 
-Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall executions.
+**NOTE:** Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall executions.
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
