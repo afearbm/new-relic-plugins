@@ -166,6 +166,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | password | Password to log into MySQL |
 | host | The hostname or ip address of MySQL |
 | port | Port to connect to MySQL |
+| monitor_queries | Indicates whether or not to monitor queries, valid values are `true` or `false`. If `false` the `Queries` will not be populated |
 | ssl_enable | Indicates whether ssl certification should be used to connect, valid values are `true` or `false` |
 | ssl_cert_path | Optional parameter, ff `ssl_enable` is `true` this should be the path to your MySQL cert |
 | database | Optional parameter, comma separated list of databases to monitor |
@@ -194,6 +195,7 @@ Theses fields are listed below and valid values are `true` or `false`:
       "port": "your_value_here",
       "host": "your_value_here",
       "ssl_enable": "false",
+      "monitor_queries": "true",
       "enable_insights": "true"
     },
     {
@@ -203,17 +205,19 @@ Theses fields are listed below and valid values are `true` or `false`:
       "port": "your_value_here",
       "host": "your_value_here",
       "ssl_enable": "true",
-      "ssl_cert_path": "path_to_ssl_certificate"
+      "ssl_cert_path": "path_to_ssl_certificate",
+      "monitor_queries": "true",
       "enable_insights": "true"
     },
     {
-      "instance_name": "single_database_instance",
+      "instance_name": "single_database_no_queries_instance",
       "username": "your_value_here",
       "password": "your_value_here",
       "port": "your_value_here",
       "host": "your_value_here",
       "ssl_enable": "false",
-      "database": "db_1"
+      "database": "db_1",
+      "monitor_queries": "false",
       "enable_insights": "true"
     },
     {
@@ -223,7 +227,8 @@ Theses fields are listed below and valid values are `true` or `false`:
       "port": "your_value_here",
       "host": "your_value_here",
       "ssl_enable": "false",
-      "database": "db_1,db_2"
+      "database": "db_1,db_2",
+      "monitor_queries": "true",
       "enable_insights": "true"
     },
   ]
