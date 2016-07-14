@@ -18,7 +18,7 @@ The F5 BIG-IP plugin connects to the supported F5 BIG-IP System via a management
 
 **New Relic Requirements**
 
-- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **F5 BIG-IP Plugin Requirements**
 - The plugin supports **F5 BIG-IP Version 11.5.0+** through REST
