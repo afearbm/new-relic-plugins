@@ -164,16 +164,32 @@ Each FlexPod instance can be made up of several different components. Component 
 
 **Fields**
 
+| Field Name  |  Description |
+|:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
+
 **NetApp Fields**
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | The name of your New Relic NetApp instance that will appear in the User Interface |
-| username | User name to log into NetApp API Services |
-| password | Password to log into NetApp API Services |
+| instance_name | The name of your New Relic NetApp Storage instance that will appear in the User Interface |
+| username | User name to log into NetApp Storage API Services |
+| password | Password to log into NetApp Storage API Services |
 | server | The hostname or ip address of the server |
 | protocol | Either `http` or `https` |
 | port | Optional parameter, port to connect to NetApp API Services |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_disk`
+* `enable_insights_for_aggregate`
+* `enable_insights_for_volume`
+* `enable_insights_for_lun`
+* `enable_insights_for_vserver`
+* `enable_insights_for_cluster`
+* `enable_insights_for_system`
 
 **Cisco UCS Fields**
 
@@ -185,6 +201,25 @@ Each FlexPod instance can be made up of several different components. Component 
 | host | The hostname or ip address of UCS Manager |
 | protocol | Either `http` or `https` |
 | port | Optional parameter, port to connect to UCS Manager |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_ucs_manager`
+* `enable_insights_for_blade`
+* `enable_insights_for_fabric_interconnect`
+* `enable_insights_for_ethernet_port`
+* `enable_insights_for_chassis`
+* `enable_insights_for_fan`
+* `enable_insights_for_fiber_channel_port`
+* `enable_insights_for_io_module`
+* `enable_insights_for_port_channel`
+* `enable_insights_for_psu`
+* `enable_insights_for_rack`
+* `enable_insights_for_vhba`
+* `enable_insights_for_vnic`
 
 **Cisco Nexus Fields**
 
@@ -200,11 +235,20 @@ Each FlexPod instance can be made up of several different components. Component 
 | auth_password | Only applicable if `version` is `v3`. SNMP Authentication password. Only needed if `security_level` is `auth_priv` or `auth_nopriv` |
 | privacy_password | Only applicable if `version` is `v3`. SNMP privacy password, Only needed if `security_level` is `auth_priv` |
 | privacy_type | Only applicable if `version` is `v3`. SNMP encryption type. Acceptable values are `privAES256`, `privAES192`, `privAES128`, `privDES`, or `priv3DES` for  256 bit AES, 192 bit AES, 128 bit AES, DES, or 3-DES respectively |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_cisco_nexus_switch`
+* `enable_insights_for_cisco_nexus_port`
+* `enable_insights_for_cisco_nexus_l3_interface`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 600,
   "agents": [
     {
       "instance_name": "Your FlexPod Instance",
@@ -213,7 +257,8 @@ Each FlexPod instance can be made up of several different components. Component 
       "version": "v2 or v2c",
       "management_ip": "your_value_here",
       "community_string": "your_value_here",
-      "snmp_port": 161
+      "snmp_port": 161,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your FlexPod Instance",
@@ -222,7 +267,8 @@ Each FlexPod instance can be made up of several different components. Component 
       "username": "your_value_here",
       "password": "your_value_here",
       "host": "your_value_here",
-      "protocol": "http or https"
+      "protocol": "http or https",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your FlexPod Instance",
@@ -231,7 +277,8 @@ Each FlexPod instance can be made up of several different components. Component 
       "username": "your_value_here",
       "password": "your_value_here",
       "server": "your_value_here",
-      "protocol": "http or https"
+      "protocol": "http or https",
+      "enable_insights": "true"
     },
 
     {
@@ -241,7 +288,8 @@ Each FlexPod instance can be made up of several different components. Component 
       "version": "v2 or v2c",
       "management_ip": "your_value_here",
       "community_string": "your_value_here",
-      "snmp_port": 161
+      "snmp_port": 161,
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big FlexPod Instance",
@@ -252,7 +300,8 @@ Each FlexPod instance can be made up of several different components. Component 
       "privacy_password": "your_value_here",
       "authentication_type": "authSHA or authMD5",
       "privacy_type": "privAES256 or privAES192 or privAES128 or privDES or priv3DES",
-      "security_level": "auth_priv or auth_nopriv or noauth_nopriv"
+      "security_level": "auth_priv or auth_nopriv or noauth_nopriv",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big FlexPod Instance",
@@ -261,7 +310,9 @@ Each FlexPod instance can be made up of several different components. Component 
       "username": "your_value_here",
       "password": "your_value_here",
       "host": "your_value_here",
-      "protocol": "http or https"
+      "port": "your_custom_port",
+      "protocol": "http or https",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big FlexPod Instance",
@@ -270,7 +321,8 @@ Each FlexPod instance can be made up of several different components. Component 
       "username": "your_value_here",
       "password": "your_value_here",
       "host": "your_value_here",
-      "protocol": "http or https"
+      "protocol": "http or https",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big FlexPod Instance",
@@ -279,7 +331,8 @@ Each FlexPod instance can be made up of several different components. Component 
       "username": "your_value_here",
       "password": "your_value_here",
       "server": "your_value_here",
-      "protocol": "http or https"
+      "protocol": "http or https",
+      "enable_insights": "true"
     },
     {
       "instance_name": "Your Big FlexPod Instance",
@@ -289,10 +342,12 @@ Each FlexPod instance can be made up of several different components. Component 
       "password": "your_value_here",
       "server": "your_value_here",
       "protocol": "http or https",
-      "port": "your_custom_port"
+      "port": "your_custom_port",
+      "enable_insights": "true"
     }
   ]
 }
+
 ```
 
 ## Using the Plugin
@@ -324,11 +379,11 @@ For questions or issues regarding the Blue Medora FlexPod Plugin for New Relic, 
 | Nexus Port Status (%) | Percentage of systems port statuses (Up or Down) |
 | UCS Fabric Interconnect Load (%) | The load percentage of the fabric interconnect |
 | UCS Chassis Power (watts) | The power of the chassis in watts |
-| UCS Blade Memory Used Capacity (%) | Percentage of memory used capacity for the blade |
-| UCS Rack Unit Memory Used Capacity (%) | Percentage of memory used capacity for the rack unit |
+| UCS Blade Available Memory (GB)) | The memory available on a blade |
+| UCS Blade Memory Speed (MHz) | The speed of memory on a blade |
 | NetApp SVM Used Capacity (%) | Percentage of SVM used capacity |
 | NetApp Aggregate Used Capacity (%) | Percentage of NetApp aggregate used capacity |
-| NetApp System Latency  | The latency of the system |
+| NetApp System Latency (ms)  | The latency of the system |
 | NetApp System IOPS (ops/sec)  | The iops per second of the system |
 
 **Nexus Overview**
@@ -336,10 +391,14 @@ For questions or issues regarding the Blue Medora FlexPod Plugin for New Relic, 
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Port Status (%)  | The percentage of port statuses (Up or Down) |
-| Inbound Packets (packets/sec) | The inbound packets per second |
-| Outbound Packets (packets/sec) | The outbound packets per second |
-| Inbound Throughput (MB/sec) | The inbound throughput in megabytes per second |
-| Outbound Throughput (MB/sec) | The outbound throughput in megabytes per second   |
+| Top 10 Port Inbound Packets (packets/sec) | The 10 ports with the highest inbound packets per second |
+| Top 10 Port Outbound Packets (packets/sec) | The 10 ports with the highest outbound packets per second |
+| Top 10 Port Inbound Throughput (MB/sec) | The 10 ports with the highest inbound throughput in megabytes per second |
+| Top 10 Port Outbound Throughput (MB/sec) | The 10 ports with the highest outbound throughput in megabytes per second   |
+| Top 10 L3 Interface Inbound Throughput (MB/sec) | The 10 L3 interfaces with the highest inbound throughput in megabytes per second |
+| Top 10 L3 Interface Outbound Throughput (MB/sec) | The 10 L3 interfaces with the highest outbound throughput in megabytes per second   |
+| Top 10 L3 Interface Inbound Packets (packets/sec) | The 10 L3 interfaces with the highest inbound packets per second |
+| Top 10 L3 Interface Outbound Packets (packets/sec) | The 10 L3 interfaces with the highest outbound packets per second |
 
 **UCS Overview**
 
@@ -348,14 +407,16 @@ For questions or issues regarding the Blue Medora FlexPod Plugin for New Relic, 
 | Fabric Interconnect Load (%)  | The load percentage of the fabric interconnect |
 | Chassis Input Power (watts) | The input power of the chassis in watts   |
 | Chassis Output Power (watts) | The output power of the chassis in watts   |
-| Rack Memory Used Capacity (%) | Percentage of the memory used capacity of the rack |
-| Blade Memory Used Capacity (%) | Percentage of the memory used capacity of the blade |
-| Fabric Interconnect Inbound Throughput (MB/sec) | The inbound throughput of the fabric interconnect in megabytes per second |
-| Fabric Interconnect Outbound Throughput (MB/sec) | The outbound throughput of the fabric interconnect in megabytes per second     |
-| IO Module Inbound Throughput (MB/sec) | The inbound throughput of the IO module in megabytes per second     |
-| IO Module Outbound Throughput (MB/sec) | The outbound throughput of the IO module in megabytes per second   |
-| IO Module Temperature (C) | The temperature of the IO module in celsius |
+| Blade Available Memory (GB)) | The memory available on a blade |
+| Blade Memory Speed (MHz) | The speed of memory on a blade |
+| Top 10 Ethernet Port Inbound Throughput (bits/sec) | The 10 ethernet ports with the highest inbound throughput  |
+| Top 10 Ethernet Port Outbound Throughput (bits/sec)  | The 10 ethernet ports with the highest outbound throughput  |
+| Top 10 Fiber Channel Inbound Throughput (bits/sec)  | The 10 fiber channels with the highest inbound throughput  |
+| Top 10 Fiber Channel Outbound Throughput (bits/sec)  | The 10 fiber channels with the highest outbound throughput |
+| IO Module Ambient Temperature (C)     | The ambient temperature of the IO module |
+| IO Module Internal Temperature (C) | The internal temperature of the IO module  |
 | Rack Unit Temperature (C) | The temperature of the rack unit in celsius |
+| Rack Available Memory (GB) | The available memory of a rack unit  |
 
 **NetApp Overview**
 
@@ -373,3 +434,11 @@ For questions or issues regarding the Blue Medora FlexPod Plugin for New Relic, 
 | LUN Latency (ms) | Latency of the LUN in milliseconds |
 | LUN IOPS (ops/sec) | IOPS of the LUN   |
 
+**Summary**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Nexus Ports in Error (%)  | The average percentage of nexus ports that are in an error state across all nexus switches |
+| UCS Average Load (%)  | The average load percentage across fabric interconnects on all ucs connections |
+| Netapp Average SVM Used Capacity (%)  | The average average SVM capacity used across all netapp systems |
+| Netapp Average System latency (µs)  | The average average latency used across all netapp systems |
