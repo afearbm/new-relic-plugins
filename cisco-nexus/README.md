@@ -22,7 +22,7 @@ The Cisco Nexus plugin connects to the Cisco Nexus hardware (switch) using SNMP 
 
 **Cisco Nexus Plugin Requirements**
 - SNMP v2, v2c, or v3 enabled **Cisco Nexus switch(es) 1k, 3k, 4k, 5k, 7k, and/or 9k**
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 
 ----
