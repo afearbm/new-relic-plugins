@@ -17,11 +17,11 @@ You can find the New Relic NetApp Storage Plugin in the following locations:
 The NetApp Storage plugin collects data by making REST calls to OnCommand API Services.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **NetApp Storage Plugin Requirements**
 - **NetApp OnCommand ApiServices:** NetApp OnCommand API Services version 1.0 or 1.1 is required to collect data.  
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 
@@ -163,7 +163,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
-| instance_name | The name of your New Relic NetApp Storage instance that will appear in the User Interface |
+| instance_name | The name of your New Relic NetApp Storage instance that will appear in the user interface |
 | username | User name to log into NetApp Storage API Services |
 | password | Password to log into NetApp Storage API Services |
 | server | The hostname or ip address of the server |
