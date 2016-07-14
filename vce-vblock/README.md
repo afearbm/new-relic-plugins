@@ -17,7 +17,7 @@ You can find the New Relic VCE Vblock plugin in the following locations:
 The VCE Vblock Plugin connects to VNX Block using NaviSecCLI (Navisphere Secure Command Line Interface). This allows a connection to VNX sotrage processors to be made.  It connects to VNX File using SSH protocol to connect to the VNX File Control Station. It collects data from Cisco UCS by making REST calls to the Cisco UCS Manager, and connects to Cisco Nexus hardware via SNMP v2, v2c, or v3.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **VCE Vblock Plugin Requirements**
 
@@ -25,7 +25,7 @@ The VCE Vblock Plugin connects to VNX Block using NaviSecCLI (Navisphere Secure 
 - **NaviSecCLI:** The host must have NaviSecCLI software installed
 - The plugin supports **Cisco UCS Manager 2.2+**
 - The plugin supports SNMP v2, v2c, or v3 enabled **Cisco Nexus switch(es) 1k, 3k, 4k, 5k, 7k, and/or 9k**
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period. 
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com. 
 
 ----
 
