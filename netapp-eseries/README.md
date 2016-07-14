@@ -17,12 +17,12 @@ You can find the New Relic NetApp E-Series Storage Plugin in the following locat
 The NetApp E-Series Storage plugin collects data using the SANtricity Web Service for E-Series.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **NetApp E-Series Storage Plugin Requirements**
 - **A NetApp E- or EF-Series storage system**
 - **API:** SANtricity Web Service for E-Series Proxy v1.3+.  
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 
