@@ -17,8 +17,7 @@ You can find the New Relic Cisco UCS plugin in the following locations:
 The Cisco UCS plugin collects data by making REST calls to the Cisco UCS Manager.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
-- Network access to New Relic
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Cisco UCS Plugin Requirements**
 - The plugin supports **Cisco UCS Manager 2.2+**
