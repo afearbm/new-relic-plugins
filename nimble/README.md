@@ -1,6 +1,6 @@
 # Blue Medora Nimble Storage Plugin for New Relic
 
-The **Blue Medora Nimble Storage Plugin for New Relic** allows you to monitor your Nimble performance data from within the New Relic platform by pulling in metrics from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.           
+The **Blue Medora Nimble Storage Plugin for New Relic** allows you to monitor your Nimble Storage performance data from within the New Relic platform by pulling in metrics from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.           
 
 This guide includes instructions for installing and configuring the Blue Medora Nimble Storage Plugin for New Relic.
 
