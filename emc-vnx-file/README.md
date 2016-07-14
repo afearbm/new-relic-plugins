@@ -22,7 +22,7 @@ The VNX File plugin uses the SSH protocol to connect to the VNX File Control Sta
 **EMC VNX File Plugin Requirements**
 - **File Software Version:** The plugin requires VNX File Software Version 8.1.3
 - **Permissions:** The plugin requires permissions to run Control Station commands
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period. 
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com. 
 
 ----
 
