@@ -293,6 +293,7 @@ For questions or issues regarding the Blue Medora IBM DB2 plugin for New Relic, 
 | Asynchronous Index Writes (writes) | The number of asynchronous index writes to the buffer pool |
 
 **Tablespaces**
+
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Utilization (%) | The utilization percentage per tablespace |
@@ -302,6 +303,7 @@ For questions or issues regarding the Blue Medora IBM DB2 plugin for New Relic, 
 | Usable Pages (pages) | The number of usable pages per tablespace |
 
 **Summary**
+
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Average Buffer Pool Hit Ratio (%) | The average hit ratio across all buffer pools on the instance |
