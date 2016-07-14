@@ -162,8 +162,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | Alias for the name of your Amazon DynamoDB instance that will appear in the User Interface |
-| access_key_id | Amazon AWS Access Key ID can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
-| secret_access_key | Amazon AWS Secret Access Key can be found by following [this](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) guide |
+| access_key_id | Amazon AWS Access Key ID can be found by following [this guide](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) |
+| secret_access_key | Amazon AWS Secret Access Key can be found by following [this guide](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) |
 | region | Amazon AWS region where DynamoDB instance resides. Acceptable values are `U_WEST_1`, `SA_EAST_1`, `AP_NORTHEAST_2`, `US_EAST_1`, `AP_NORTHEAST_1`, `CN_NORTH_1`, `EU_CENTRAL_1`, `AP_SOUTHEAST_1`, `AP_SOUTHEAST_2`, `US_WEST_2`, `GovCloud`, `US_WEST_1` |
 | enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
 
