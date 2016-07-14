@@ -7,19 +7,19 @@ This guide includes instructions for installing and configuring the Blue Medora 
 ----
 
 ## Obtaining the Plugin
-You can find the New Relic NetApp Storage Plugin in the following locations:
+You can find the New Relic NetApp E-Series Storage Plugin in the following locations:
 
 - [New Relic Storefront](http://newrelic.com/plugins/blue-medora/430)
 - [Plugin Central](https://rpm.newrelic.com/accounts/890835/plugins/directory/430)
 
 ## System Requirements
 
-The NetApp Storage plugin collects data using the SANtricity Web Service for E-Series.  Before installing and configuring the plugin, ensure your system meets the following requirements:
+The NetApp E-Series Storage plugin collects data using the SANtricity Web Service for E-Series.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 - A New Relic account
 
-**NetApp Storage Plugin Requirements**
+**NetApp E-Series Storage Plugin Requirements**
 - **A NetApp E- or EF-Series storage system**
 - **API:** SANtricity Web Service for E-Series Proxy v1.3+.  
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
@@ -42,7 +42,7 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-	./npi install com.bluemedora.netapp.apiservices
+	./npi install com.bluemedora.netapp.eseries
 ```	
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
@@ -152,7 +152,7 @@ The second file, `plugin.template.json`, contains data specific to each plugin (
 
 Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-**NOTE:** You can add multiple objects to the “agents” array to monitor multiple NetApp Storage instances.
+**NOTE:** You can add multiple objects to the “agents” array to monitor multiple NetApp E-Series Storage instances.
 
 **NOTE:** Each object in the "agents" array should have a unique "instance_name".
 
@@ -160,33 +160,60 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| instance_name | The name of your New Relic NetApp Storage instance that will appear in the User Interface |
-| username | User name to log into NetApp Storage API Services |
-| password | Password to log into NetApp Storage API Services |
-| server | The hostname or ip address of the server |
-| protocol | Either `http` or `https` |
-| port | Optional parameter, port to connect to NetApp API Services |
+| polling_interval_seconds | The number of seconds between each data collection. |
+| instance_name | The name of your New Relic NetApp E-Series Storage instance that will appear in the User Interface |
+| username | User name to log into NetApp E-Series Storage |
+| password | Password to log into NetApp E-Series Storage  |
+| host | The hostname or ip address of the server |
+| protocol | Optional parameter, either `http` or `https`. Defaults to `http` if not present |
+| port | Optional parameter, port to connect to NetApp E-Series |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_array`
+* `enable_insights_for_controller`
+* `enable_insights_for_drive`
+* `enable_insights_for_dynamic_disk_pool`
+* `enable_insights_for_environment_overview`
+* `enable_insights_for_host_interface`
+* `enable_insights_for_lun`
+* `enable_insights_for_network_interface`
+* `enable_insights_for_tray`
+* `enable_insights_for_volume`
+* `enable_insights_for_volume_group`
 
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "Your NetApp Storage Instance",
+      "instance_name": "http_basic_instance",
+      "host": "your_value_here",
       "username": "your_value_here",
       "password": "your_value_here",
-      "server": "your_value_here",
-      "protocol": "http or https"
+      "enable_insights": "true"
     },
     {
-      "instance_name": "Your NetApp Storage Instance",
+      "instance_name": "https_instance",
+      "host": "your_value_here",
       "username": "your_value_here",
       "password": "your_value_here",
-      "server": "your_value_here",
-      "protocol": "http or https",
-      "port": "your_custom_port"
+      "protocol": "https",
+      "enable_insights": "true"
+    },
+    {
+      "instance_name": "custom_port_instance",
+      "host": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "protocol": "https or http",
+      "port": "your_custom_port",
+      "enable_insights": "true"
     }
   ]
 }
@@ -209,7 +236,7 @@ When running a plugin, a `java.lang.OutOfMemoryError` may occur if too much data
 `-Xmx80m`
 
 ## Support Resources
-For questions or issues regarding the Blue Medora NetApp Storage Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the Blue Medora NetApp E-Series Storage Plugin for New Relic, visit http://support.bluemedora.com. 
 
 ## Metrics Source Documentation
 
@@ -217,109 +244,64 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| SVM Used Capacity (%)  | Percentage of svm capacity used |
-| Aggregate Used Capacity (%) | Percentage of aggregate capacity used |
-| Volume Used Capacity (%) |  Percentage of volume capacity used  |
-| LUN Used Capacity (%) |  Percentage of LUN capacity used  |
-| System Latency (µs) |   The average latency for systems |
-| System IOPS (ops/sec) |  The total IOPS for systems  |
-| Volume Latency (µs) |  The average latency for volumes |
-| Volume IOPS (ops/sec) |  The total IOPS for volumes  |
-| LUN Latency (µs) |  The average latency for LUNs  |
-| LUN IOPS (ops/sec) |  The total IOPS for LUNs  |
+| Resource Utilization (%)  |  |
+| Array IOPS (ops/sec)  |  |
+| Array Latency (ms)  |  |
+| Array Throughput (MB/sec)  |  |
+| Used Space (TB)  |  |
+| Optimal Controller Statuses (%)  |  |
 
-**SVMs**
+**Dynamic Disk Pools**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Volume Used Capacity (%)  | Percentage of capacity used by volumes on each svm |
-| Volume Used Capacity (TB) |  Terabytes of capacity used by volumes on each svm |
-| Volume Total Capacity (TB) |  The total terabytes of volumes on each svm  |
-| Volume Read Latency (µs) |  Average read latency for volumes on each svm |
-| Volume Write Latency (µs) |  Average write latency for volumes on each svm |
-| Volume Read IOPS (ops/sec) |  Total IOPS for volumes on each svm |
-| Volume Write IOPS (ops/sec) |  Total write IOPS for volumes on each svm |
-| Inbound Network Throughput (MB/sec) |  The inbound network throughput for svms |
-| Outbound Network Throughput (MB/sec) |  The outbound network thoughput for svms  |
-| Inbound Network Errors (errors/sec) |  Number of inbound network errors per second on this svm  |
-| Outbound Network Errors (errors/sec) |  Number of outbound network errors per second on this svm  |
+| Total Combined IOPS (ops/sec)  |  |
+| IOPS Utilization (%) |  |
+| Average Combined Latency (ms) |  |
+| Average Combined Throughput (MB/sec) |  |
+| Average Cache Utilization (%) |  |
+| Used Space (TB) |  |
 
-**Systems**
+**Volume Groups**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| CPU Utilization (%)  | Percentage of cpu utilized by each system |
-| Processors |  Number of processors on each system  |
-| Data Disks |  Number of data disks on each system  |
-| Read Latency (µs) |  Read latency for each system  |
-| Write Latency (µs) |  Write latency for each system  |
-| Read IOPS (ops/sec) |  Total read IOPS for each system  |
-| Write IOPS (ops/sec) |  Total write IOPS for each system |
-| Inbound Network Throughput (MB/sec) |  Inbound network throughput for each system  |
-| Outbound Network Throughput (MB/sec) |  Outbound network throughput for each system  |
-| Failed Fans |  Number of failed fans on each system  |
-| Failed Power Supplies |  Number of failed power supplies on each system  |
-
-**Disks**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Used Capacity (%)  | Percentage of capacity used for each disk |
-| Used Capacity (TB) |  Terabytes of capacity used for each disk  |
-| Total Capacity (TB) | The total capacity of each disk in terabytes   |
-| Busy Time (%) |  Percentage of time in which the disk is busy  |
-| IOPS (ops/sec) |  Total IOPS for each disk  |
-
-**Aggregates**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Used Capacity (%)  |  Percentage of capacity used for each aggregate  |
-| Used Capacity (TB) |  Terabytes of capacity used for each aggregate  |
-| Total Capacity (TB) |  The total capacity of each aggregate in terabytes  |
-| Volume Read Latency (µs) |  Average read latency for volumes on each aggregate  |
-| Volume Write Latency (µs) |  Average write latency for volumes on each aggregate  |
-| Volume Read IOPS (ops/sec) |  Total IOPS for volumes on each aggregate  |
-| Volume Write IOPS (ops/sec) |  Total write IOPS for volumes on each aggregate  |
-| Volume Deduplication Space Savings (GB) |  Space saved by deduplication on volumes on each aggregate  |
-| Volume Compression Space Savings (GB) |  Space saved by compression on volumes on each aggregate  |
+| Total Combined IOPS (ops/sec)  |  |
+| IOPS Utilization (%) |  |
+| Average Combined Latency (ms) |  |
+| Average Combined Throughput (MB/sec) |  |
+| Average Cache Utilization (%) |  |
+| Used Space (TB) |  |
 
 **Volumes**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Used Capacity (%)  |  Percentage of capacity used for each volume  |
-| Used Capacity (TB) |  Terabytes of capacity used for each volume  |
-| Total Capacity (TB) |  The total capacity of each volume in terabytes  |
-| Read Latency (µs) |  Read latency for each volume  |
-| Write Latency (µs) |  Write latency for each volume  |
-| Read IOPS (ops/sec) |  Read IOPS for each volume  |
-| Write IOPS (ops/sec) |  Write IOPS for each volume  |
-| LUN Read Throughput (MB/sec) |  Read throughput for LUNs on each volume  |
-| LUN Write Throughput (MB/sec) |  Write throughput for LUNs on each volume |
-| Deduplication Space Savings (GB) |  Space saved by deduplication on each volume  |
-| Compression Space Savings (GB) |  Space saved by compression on each volume  |
+| Combined IOPS (ops/sec)  |  |
+| IOPS Utilization (%)  |  | 
+| Read Latency (ms)  |  | 
+| Write Latency (ms)  |  | 
+| Combined Throughput (MB/sec)  |  | 
+| Physical IOPS (ops/sec)  |  | 
 
-**LUNs**
+**Drives**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Used Capacity (%)  |  Percentage of capacity used for each LUN  |
-| Used Capacity (TB) |  Terabytes of capacity used for each LUN  |
-| Total Capacity (TB) |  The total capacity of each LUN in terabytes  |
-| Read Latency (µs) |  Read latency for each LUN  |
-| Write Latency (µs) |  Write latency for each LUN  |
-| Read IOPS (ops/sec) |  Read IOPS for each LUN  |
-| Write IOPS (ops/sec) |  Write IOPS for each LUN  |
-| Read Throughput (MB/sec) |  Read throughput for each LUN  |
-| Write Throughput (MB/sec) |  Write throughput for each LUN  |
+| Combined IOPS (ops/sec)  |  |
+| IOPS Utilization (%)  |  | 
+| Read Latency (ms)  |  | 
+| Write Latency (ms)  |  | 
+| Combined Throughput (MB/sec)  |  | 
+| Physical IOPS (ops/sec)  |  | 
 
 **Summary**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| SVM Used Capacity (%)  | The percentage of svm capacity used |
-| System IOPS (ops/sec) |  Total IOPS for systems  |
-| System Latency (µs) |  Average Latency of systems  |
+| Avg. IOPS Utilization (%)  |  |
+| Avg. Space Utilization (%) |  |
+| Avg. Drive Latency (ms) |  |
+| Avg. Drive Throughput (bytes/second) |  |
 
 
