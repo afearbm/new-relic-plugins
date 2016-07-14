@@ -159,27 +159,53 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your New Relic VNX Block instance that will appear in the User Interface |
 | spa_host | The IP or domain name of storage processor A for the VNX Block array |
 | spb_host | The IP or domain name of storage processor B for the VNX Block array |
 | username | User name to connect to NaviSecCLI |
 | password | Password to connect to NaviSecCLI |
 | naviseccli_path | Full path to NaviSecCLI executable on the host where this target is being installed |
-| scope | An integer of `0` for global or `1` for local |
+| scope | Optional parameter, an integer of `0` for global or `1` for local |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_vnx_block`
+* `enable_insights_for_logical_unit`
+* `enable_insights_for_environment`
+* `enable_insights_for_disk`
+* `enable_insights_for_fast_cache`
+* `enable_insights_for_hba`
+* `enable_insights_for_port`
+* `enable_insights_for_storage_pool`
+* `enable_insights_for_storage_processor`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 60,
   "agents": [
     {
-      "instance_name": "Your VNX Block Instance",
+      "instance_name": "your_value_here",
       "spa_host": "your_value_here",
       "spb_host": "your_value_here",
       "username": "your_value_here",
       "password": "your_value_here",
-      "naviseccli_path": "/opt/Navisphere/bin",
-      "scope": 0
+      "naviseccli_path": "your_value_here",
+      "enable_insights": "true"
+    },
+    {
+      "instance_name": "local_scope_instance",
+      "spa_host": "your_value_here",
+      "spb_host": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "naviseccli_path": "your_value_here",
+      "scope": "1",
+      "enable_insights": "true"
     }
   ]
 }
@@ -206,17 +232,30 @@ For questions or issues regarding the Blue Medora EMC VNX Block Plugin for New R
 
 ## Metrics Source Documentation
 
-**LUNs**
+**System Overview**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Used Capacity (%) | Percentage of LUN used capacity for a given LUN |
-| Read IOPS (ops/sec) | The read IOPS per second of a LUN  |
-| Write IOPS (ops/sec) | The write IOPS per second of a LUN |
-| Read Throughput (MB/sec)  | The read throughput of a LUN |
-| Write Throughput (MB/sec)  | The write throughput of a LUN        |
-| Used Capacity (GB)  | The used capacity of a LUN in gigabytes |
-| Total Capacity (GB)  | The total capacity of a LUN in gigabytes |
+| LUN Used Capacity (%)     | The used capacity percentage of a LUN  |
+| Power (watts)     | Amount of power being used in watts |
+| LUN IOPS (ops/sec)     | The IOPS per second of a LUN  |
+| LUN Throughput (MB/sec)     | The throughput of a LUN in megabytes per second  |
+| Storage Pool Used Capacity (%)     | The used capacity of a storage pool |
+| Storage Processor Throughput (MB/sec)     | The throughput of a storage processor in megabytes per second |
+| Storage Processor Read Hit Ratio (%)   | The read hit ratio of a storage pool |
+| Storage Processor Write Hit Ratio (%)   | The write hit ratio of a storage pool |
+
+**Storage Processors**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| CPU Utilization (%) | The CPU utilization percentage of a storage processor |
+| Read Hit Ratio (%) | The read hit ratio percentage of a storage processor |
+| Write Hit Ratio (%)  | The write hit ratio percentage of a storage processor |
+| Read IOPS (ops/sec) | The read IOPS per second of a storage processor  |
+| Write IOPS (ops/sec)  | The write IOPS ratio of a storage processor |
+| Read Throughput (MB/sec)    | The read throughput of a storage processor |
+| Write Throughput (MB/sec) | The write throughput of a storage processor |
 
 **Storage Pools**
 
@@ -228,38 +267,37 @@ For questions or issues regarding the Blue Medora EMC VNX Block Plugin for New R
 | Subscribed Capacity (TB) | The subscribed capacity of a storage pool |
 | Oversubscribed Capacity (TB) | The oversubscribed capacity of a storage pool |
 
-**Storage Processors**
+**Disks**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Read IOPS (ops/sec) | The read IOPS per second of a storage processor  |
-| Write IOPS (ops/sec)  | The write IOPS ratio of a storage processor |
-| Read Hit Ratio (%) | The read hit ratio percentage of a storage processor |
-| Write Hit Ratio (%)  | The write hit ratio percentage of a storage processor |
-| Read Throughput (MB/sec)    | The read throughput of a storage processor |
-| Write Throughput (MB/sec) | The write throughput of a storage processor |
-| CPU Utilization (%) | The CPU utilization percentage of a storage processor |
-| Memory (gigabytes) | The memory of a storage processor in gigabytes |
+| Top 10 Capacity (GB) | The 10 Disks with the highest capacity |
+| Top 10 User Capacity (GB) | The 10 Disks with the highest user capacity |
+| Top 10 Read Throughput (MB/sec) | The 10 Disks with the highest read throughput |
+| Top 10 Write Throughput (MB/sec) | The 10 Disks with the highest Write throughput |
+| Top 10 Read IOPS (ops/sec) | The 10 Disks with the highest read IOPS |
+| Top 10 Write IOPS (ops/sec) | The 10 Disks with the highest write IOPS |
+| Top 10 Read Requests (ops/sec) | The 10 Disks with the highest read requests |
+| Top 10 Write Requests (ops/sec) | The 10 Disks with the highest write requests |
 
-**System Overview**
+**LUNs**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Power (watts)     | Amount of power being used in watts |
-| LUN Used Capacity (%)     | The used capacity percentage of a LUN  |
-| LUN IOPS (ops/sec)     | The IOPS per second of a LUN  |
-| LUN Throughput (MB/sec)     | The throughput of a LUN in megabytes per second  |
-| Storage Pool Used Capacity (%)     | The used capacity of a storage pool |
-| Storage Processor Throughput (MB/sec)     | The throughput of a storage processor in megabytes per second |
-| Storage Processor Read Hit Ratio (%)   | The read hit ratio of a storage pool |
-| Storage Processor Write Hit Ratio (%)   | The write hit ratio of a storage pool |
+| Used Capacity (%) | Percentage of LUN used capacity for a given LUN |
+| Used Capacity (GB)  | The used capacity of a LUN in gigabytes |
+| Total Capacity (GB)  | The total capacity of a LUN in gigabytes |
+| Read IOPS (ops/sec) | The read IOPS per second of a LUN  |
+| Write IOPS (ops/sec) | The write IOPS per second of a LUN |
+| Read Throughput (MB/sec)  | The read throughput of a LUN |
+| Write Throughput (MB/sec)  | The write throughput of a LUN        |
 
 **Summary**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Read Miss (%)     | Read miss ratio for VNX Block |
-| Write Miss Capacity (%)     | Write miss ration for VNX Block  |
+| Write Miss (%)     | Write miss ratio for VNX Block  |
 | Average LUN Utilization (%)     | Average LUN Utilization for VNX Block  |
 
 
