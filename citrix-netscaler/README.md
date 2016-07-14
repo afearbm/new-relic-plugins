@@ -163,30 +163,57 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
+| polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your New Relic Citrix NetScaler instance that will appear in the User Interface |
 | username | Username to make REST calls to your Citrix NetScaler Appliance |
 | password | Password to make REST calls to your Citrix NetScaler Appliance |
-| protocol | Protocol ("http" or "https") used to make REST calls to your Citrix NetScaler Appliance |
+| protocol | Protocol (`http` or `https`) used to make REST calls to your Citrix NetScaler Appliance |
 | netscaler_ip | IP address or fully qualified host name of your Citrix NetScaler Appliance |
+| validate_certificate_against_truststore | Optional paramter, if `protocol` is `https` this can be set to `true` to validate against truststore, or `false` to trust any certificate |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+
+**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
+Theses fields are listed below and valid values are `true` or `false`:
+
+* `enable_insights_for_appliance`
+* `enable_insights_for_virtual_server`
+* `enable_insights_for_service`
+* `enable_insights_for_gslb_site`
+* `enable_insights_for_gslb_service`
+* `enable_insights_for_target_server`
+* `enable_insights_for_gslb_virtual_server`
 
 **Example:**
 
 ```
 {
+  "polling_interval_seconds": 300,
   "agents": [
     {
-      "instance_name": "Your Citrix NetScaler Appliance collecting data via http",
+      "instance_name": "base_instance",
       "username": "your_value_here",
       "password": "your_value_here",
-      "protocol": "http"
+      "protocol": "http or https",
       "netscaler_ip": "your_value_here",
+      "enable_insights": "true"
     },
     {
-      "instance_name": "Your Citrix NetScaler Appliance collecting data via https",
+      "instance_name": "validate_against_trustore_instance",
       "username": "your_value_here",
       "password": "your_value_here",
-      "protocol": "https"
+      "protocol": "https",
       "netscaler_ip": "your_value_here",
+      "validate_certificate_against_truststore": "true",
+      "enable_insights": "true"
+    },
+    {
+      "instance_name": "dont_validate_against_trustore_instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "protocol": "http",
+      "netscaler_ip": "your_value_here",
+      "validate_certificate_against_truststore": "false",
+      "enable_insights": "true"
     }
   ]
 }
@@ -213,26 +240,15 @@ For questions or issues regarding the Blue Medora Citrix NetScaler Plugin for Ne
 
 ## Metrics Source Documentation
 
-**Summary Metrics**
-
-| Metric Name  |  Description |
-|:------------- |:-------------|
-| Rx Data Rate (bps) | Number of bits per second received by the NetScaler appliance |
-| Tx Data Rate (bps) | Number of bits per second sent by the NetScaler appliance |
-| Management CPU Usage (%) | Management CPU utilization percentage |
-| Memory Usage (%) | Percentage of memory utilization on NetScaler |
 
 **Appliance Overview**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Tx Throughput (bps) | Number of bits per second sent by the NetScaler appliance |
-| Rx Throughput (bps) | Number of bits per second received by the NetScaler appliance |
+| Throughput (bps) | Inbound and outbound throughput of appliance |
 | HTTP Compression Ratio | Ratio of the compressible data received from the server to the compressed data sent to the client |
-| Resident CPU Load (%) | Average CPU utilization percentage if more than 1 CPU is present |
-| Packet Engines CPU Load (%) | Average CPU utilization percentage for all packet engines excluding management PE |
-| Management CPU Load (%) | Management CPU utilization percentage |
-| Memory Load (%) | Percentage of memory utilization on NetScaler |
+| CPU Load (%) | Average CPU utilization for `Resident`, `Packet Engines`, and `Management` cpu of appliance |
+| Memory Load (%) | Percentage of memory utilization on applicance |
 
 **Virtual Servers**
 
@@ -255,3 +271,12 @@ For questions or issues regarding the Blue Medora Citrix NetScaler Plugin for Ne
 | Server Connections | Number of current connections to the actual servers behind the Virtual Server |
 | Latency (ms)  | Average time to first byte between the NetScaler appliance and the server |
 | Surge Queue Length (requests) | Number of requests in the surge queue |
+
+**Summary Metrics**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Inbound Data Rate (bps) | Inbound data rate of the NetScaler appliance |
+| Outbound Data Rate (bps) | Outbound data rate of the NetScaler appliance |
+| Management CPU Usage (%) | Management CPU utilization percentage |
+| Memory Usage (%) | Percentage of memory utilization on NetScaler |
