@@ -17,7 +17,7 @@ You can find the New Relic IBM DB2 plugin in the following locations:
 The IBM DB2 Plugin connects to a DB2 database using a JDBC connection. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **IBM DB2 Plugin Requirements**
 
@@ -78,7 +78,7 @@ From the extracted plugin folder you receive when downloading your plugin, you w
 		plugin.template.json 
     plugin_license.json
 ```
-The "template" .json files found in the config folder must be modified (i.e., customized) and renamed prior to setting up the plugin for monitoring.
+The "template" .json files found in the `config` folder must be modified (i.e., customized) and renamed prior to setting up the plugin for monitoring.
 
 ### Configuring the `newrelic.template.json` file
 
