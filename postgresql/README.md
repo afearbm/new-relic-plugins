@@ -22,7 +22,7 @@ The PostgreSQL plugin connects to the supported PostgreSQL instance via a host o
 
 **PostgreSQL Plugin Requirements**
 - **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
-- The plugin supports **PostgreSQL Version 9.0+**
+- The plugin supports **PostgreSQL versions 9.0+**
 
 **PostgreSQL Query Tracking Prerequisites**
 
