@@ -18,10 +18,10 @@ The PostgreSQL plugin connects to the supported PostgreSQL instance via a host o
 
 **New Relic Requirements**
 
-- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **PostgreSQL Plugin Requirements**
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 - The plugin supports **PostgreSQL Version 9.0+**
 
 **PostgreSQL Query Tracking Prerequisites**
