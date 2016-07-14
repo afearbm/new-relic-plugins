@@ -17,12 +17,12 @@ You can find the New Relic VMware vSphere plugin in the following locations:
 The VMware vSphere Plugin connects to VMware vSphere using the vSphere API. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **VMware vSphere Plugin Requirements**
 
 - **VMware vSphere:** This plugin requires VMware vSphere Version 5.0 or later
-- **A Blue Medora License:** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period. 
+- **A Blue Medora License:** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com. 
 
 ----
 
