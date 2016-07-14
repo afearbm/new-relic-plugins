@@ -17,7 +17,7 @@ The HP Rack plugin connects to the supported HP ProLiant server(s) via an HP iLO
 
 **New Relic Requirements**
 
-- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **HP Rack Plugin Requirements**
 
@@ -220,8 +220,8 @@ For questions or issues regarding the HP Rack Servers Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| CPU Temperature (C)  |  Temperature readings of the CPU in celsius |
-| Memory Temperature (C) |  Temperature readings of the memory in celsius |
+| CPU Temperature (C)  |  Temperature readings of the CPU in degrees Celsius |
+| Memory Temperature (C) |  Temperature readings of the memory in degrees Celsius |
 | Power Consumed (watts) |  Power reading throughout system in watts  |
 | Fan Status (%) |  Percentage of fans in a certain state  |
 | Network Adapter Status (%) |  Percentage of network adapters in a certain state  |
@@ -241,8 +241,8 @@ For questions or issues regarding the HP Rack Servers Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Max CPU Temperature (celsius)  |  Max Temperature readings of the CPU in celsius |
-| Max Memory Temperature (celsius) |  Max Temperature readings of the memory in celsius  |
+| Max CPU Temperature (C)  |  Max Temperature readings of the CPU in degrees Celsius |
+| Max Memory Temperature (C) |  Max Temperature readings of the memory in degrees Celsius  |
 | Healthy Ports (%)  |  Percentage of ports in an "Ok" state  |
-| Total Good Receives (frames/sec) |  Total number of Good Received frames received  |
+| Total Good Receives (frames/sec) |  Total number of Good Receives frames received  |
 | Total Good Transmits (frames/sec) |  Total number of Good Transmits frames transmitted |

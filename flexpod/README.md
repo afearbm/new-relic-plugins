@@ -17,7 +17,7 @@ You can find the New Relic Flexpod plugin in the following locations:
 The FlexPod plugin collects data from NetApp by making REST calls to OnCommand API Services.  It collects data from Cisco UCS by making REST calls to the Cisco UCS Manager, and connects to Cisco Nexus hardware via SNMP v2, v2c, or v3. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **FlexPod Plugin Requirements**
 - **NetApp OnCommand ApiServices:** NetApp OnCommand API Services version 1.0 or 1.1 is required to collect data.  

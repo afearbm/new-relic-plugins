@@ -244,64 +244,64 @@ For questions or issues regarding the Blue Medora NetApp E-Series Storage Plugin
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Resource Utilization (%)  |  |
-| Array IOPS (ops/sec)  |  |
-| Array Latency (ms)  |  |
-| Array Throughput (MB/sec)  |  |
-| Used Space (TB)  |  |
-| Optimal Controller Statuses (%)  |  |
+| Resource Utilization (%)  | The percentage of IOPS and used space utilization for the Array. |
+| Array IOPS (ops/sec)  | Average and total combined IOPS for related Volumes and Drives. |
+| Array Latency (ms)  | Average and total combined latency for related Volumes and Drives. |
+| Array Throughput (MB/sec)  | Average and total combined throughput for related Volumes and Drives. |
+| Used Space (TB)  | Total used space across all related Drives. |
+| Optimal Controller Statuses (%)  | The percentage of Controllers in an optimal status. |
 
 **Dynamic Disk Pools**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Total Combined IOPS (ops/sec)  |  |
-| IOPS Utilization (%) |  |
-| Average Combined Latency (ms) |  |
-| Average Combined Throughput (MB/sec) |  |
-| Average Cache Utilization (%) |  |
-| Used Space (TB) |  |
+| Total Combined IOPS (ops/sec)  | Total combined IOPS for all related Volumes and Drives. |
+| IOPS Utilization (%) | The percentage of maximum IOPS being used by the related Volumes and Drives in the pool. |
+| Average Combined Latency (ms) | The average combined latency by the related Volumes and Drives in the pool. |
+| Average Combined Throughput (MB/sec) | The average combined throughput by the related Volumes and Drives in the pool. |
+| Average Cache Utilization (%) | The average percentage of bytes written to and read from the flash cache by the related Volumes and Drives in the pool. |
+| Used Space (TB) | The total amount of space used by the related Volumes and Drives in the pool. |
 
 **Volume Groups**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Total Combined IOPS (ops/sec)  |  |
-| IOPS Utilization (%) |  |
-| Average Combined Latency (ms) |  |
-| Average Combined Throughput (MB/sec) |  |
-| Average Cache Utilization (%) |  |
-| Used Space (TB) |  |
+| Total Combined IOPS (ops/sec)  | The combined IOPS of the volume group |
+| IOPS Utilization (%) | The percentage of maximum IOPS being used by the volume group |
+| Average Combined Latency (ms) | The average combined latency of drives and volumes in the volume group |
+| Average Combined Throughput (MB/sec) | The average combined throughput of drives and volumes in the volume group |
+| Average Cache Utilization (%) | The average cache utilization of drives and volumes in the volume group |
+| Used Space (TB) | The space used by the volume group |
 
 **Volumes**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Combined IOPS (ops/sec)  |  |
-| IOPS Utilization (%)  |  | 
-| Read Latency (ms)  |  | 
-| Write Latency (ms)  |  | 
-| Combined Throughput (MB/sec)  |  | 
-| Physical IOPS (ops/sec)  |  | 
+| Combined IOPS (ops/sec)  | The combined IOPS of the volume |
+| IOPS Utilization (%)  | The percentage of maximum IOPS being used by the volume | 
+| Read Latency (ms)  | The read latency of the volume | 
+| Write Latency (ms)  | The write latency of the volume | 
+| Combined Throughput (MB/sec)  | The combined throughput of the volume | 
+| Physical IOPS (ops/sec)  | The physical IOPS of the volume | 
 
 **Drives**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Combined IOPS (ops/sec)  |  |
-| IOPS Utilization (%)  |  | 
-| Read Latency (ms)  |  | 
-| Write Latency (ms)  |  | 
-| Combined Throughput (MB/sec)  |  | 
-| Physical IOPS (ops/sec)  |  | 
+| Combined IOPS (ops/sec)  | The combined IOPS of the drive |
+| IOPS Utilization (%)  | The percentage of maximum IOPS being used by the drive | 
+| Read Latency (ms)  | The read latency of the drive | 
+| Write Latency (ms)  | The write latency of the drive | 
+| Combined Throughput (MB/sec)  | The combined throughput of the drive | 
+| Physical IOPS (ops/sec)  | The physical IOPS of the drive | 
 
 **Summary**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Avg. IOPS Utilization (%)  |  |
-| Avg. Space Utilization (%) |  |
-| Avg. Drive Latency (ms) |  |
-| Avg. Drive Throughput (bytes/second) |  |
+| Avg. IOPS Utilization (%)  | The average percentage of combined IOPS used on the Array. |
+| Avg. Space Utilization (%) | The average percentage of used space on the Array. |
+| Avg. Drive Latency (ms) | The average combined latency across all Drives on the Array. |
+| Avg. Drive Throughput (bytes/second) | The average combined throughput across all Drives on the Array. |
 
 

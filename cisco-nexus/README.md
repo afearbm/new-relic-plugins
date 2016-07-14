@@ -18,7 +18,7 @@ You can find the New Relic Cisco Nexus plugin in the following locations:
 The Cisco Nexus plugin connects to the Cisco Nexus hardware (switch) using SNMP v2, v2c, or v3.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Cisco Nexus Plugin Requirements**
 - SNMP v2, v2c, or v3 enabled **Cisco Nexus switch(es) 1k, 3k, 4k, 5k, 7k, and/or 9k**

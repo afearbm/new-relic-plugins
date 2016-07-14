@@ -1,6 +1,6 @@
 # New Relic Plugin for MS SQL
 
-The **Blue Medora New Relic Plugin for MS SQL** allows you to monitor your MS SQL performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
+The **Blue Medora New Relic Plugin for MS SQL** allows you to monitor your Microsoft SQL performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
 				
 This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for MS SQL.
 
@@ -18,11 +18,11 @@ The MS SQL plugin connects to a MS SQL database via JDBC connection. Before inst
 
 **New Relic Requirements**
 
-- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **MS SQL Plugin Requirements**
 - **MS SQL versions.** The plugin is compatible with MS SQL 2008 R2, 2012, & 2014.
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13,  2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 
@@ -160,14 +160,14 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| polling_interval_seconds | The number of seconds between each data collection. |
-| instance_name | Alias for the name of your Microsoft SQL Server instance that will appear in the User Interface |
+| polling_interval_seconds | The number of seconds between each data collection |
+| instance_name | Alias for the name of your Microsoft SQL Server instance that will appear in the user interface |
 | username | User name to log into Microsoft SQL Server |
 | password | Password to log into Microsoft SQL Server |
-| host | The hostname or ip address of Microsoft SQL Server |
+| host | The hostname or IP address of Microsoft SQL Server |
 | port | Port to connect to Microsoft SQL Server |
 | instance | Microsoft SQL Server instance to monitor |
-| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
+| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance |
 
 **NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
 Theses fields are listed below and valid values are `true` or `false`:

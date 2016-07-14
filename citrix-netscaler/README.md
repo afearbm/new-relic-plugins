@@ -18,7 +18,7 @@ You can find the New Relic Citrix NetScaler plugin in the following locations:
 The Citrix NetScaler plugin connects to the Citrix NetScaler Appliance using REST.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Citrix NetScaler Plugin Requirements**
 - **NetScaler Version:** The plugin requires Citrix NetScaler MPX or VPX, Version 10.x+

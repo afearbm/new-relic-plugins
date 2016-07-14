@@ -17,7 +17,7 @@ You can find the New Relic EMC VNX File plugin in the following locations:
 The VNX File plugin uses the SSH protocol to connect to the VNX File Control Station.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **EMC VNX File Plugin Requirements**
 - **File Software Version:** The plugin requires VNX File Software Version 8.1.3
