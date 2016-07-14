@@ -266,34 +266,34 @@ For questions or issues regarding the Blue Medora NetApp E-Series Storage Plugin
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Total Combined IOPS (ops/sec)  |  |
-| IOPS Utilization (%) |  |
-| Average Combined Latency (ms) |  |
-| Average Combined Throughput (MB/sec) |  |
-| Average Cache Utilization (%) |  |
-| Used Space (TB) |  |
+| Total Combined IOPS (ops/sec)  | The combined IOPS of the volume group |
+| IOPS Utilization (%) | The percentage of maximum IOPS being used by the volume group |
+| Average Combined Latency (ms) | The average combined latency of drives and volumes in the volume group |
+| Average Combined Throughput (MB/sec) | The average combined throughput of drives and volumes in the volume group |
+| Average Cache Utilization (%) | The average cache utilization of drives and volumes in the volume group |
+| Used Space (TB) | The space used by the volume group |
 
 **Volumes**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Combined IOPS (ops/sec)  |  |
-| IOPS Utilization (%)  |  | 
-| Read Latency (ms)  |  | 
-| Write Latency (ms)  |  | 
-| Combined Throughput (MB/sec)  |  | 
-| Physical IOPS (ops/sec)  |  | 
+| Combined IOPS (ops/sec)  | The combined IOPS of the volume |
+| IOPS Utilization (%)  | The percentage of maximum IOPS being used by the volume | 
+| Read Latency (ms)  | The read latency of the volume | 
+| Write Latency (ms)  | The write latency of the volume | 
+| Combined Throughput (MB/sec)  | The combined throughput of the volume | 
+| Physical IOPS (ops/sec)  | The physical IOPS of the volume | 
 
 **Drives**
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Combined IOPS (ops/sec)  |  |
-| IOPS Utilization (%)  |  | 
-| Read Latency (ms)  |  | 
-| Write Latency (ms)  |  | 
-| Combined Throughput (MB/sec)  |  | 
-| Physical IOPS (ops/sec)  |  | 
+| Combined IOPS (ops/sec)  | The combined IOPS of the drive |
+| IOPS Utilization (%)  | The percentage of maximum IOPS being used by the drive | 
+| Read Latency (ms)  | The read latency of the drive | 
+| Write Latency (ms)  | The write latency of the drive | 
+| Combined Throughput (MB/sec)  | The combined throughput of the drive | 
+| Physical IOPS (ops/sec)  | The physical IOPS of the drive | 
 
 **Summary**
 
