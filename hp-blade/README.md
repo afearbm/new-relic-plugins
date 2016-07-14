@@ -23,7 +23,7 @@ The HP Blade plugin connects to the supported HP ProLiant server(s) via an HP iL
 
 **HP Blade Plugin Requirements**
 
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 - **Enabled iLO REST Client.** Ensure the monitored Gen 8+ HP ProLiant Server has an iLO device with REST API enabled.
 
 ----
