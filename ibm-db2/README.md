@@ -22,7 +22,7 @@ The IBM DB2 Plugin connects to a DB2 database using a JDBC connection. Before in
 **IBM DB2 Plugin Requirements**
 
 - **IBM DB2 Version:** This plugin requires IBM DB2 Versions 9.5+
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period. 
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com. 
 
 ----
 
