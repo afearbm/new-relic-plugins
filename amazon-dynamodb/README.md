@@ -18,7 +18,7 @@ The Amazon DynamoDB plugin connects to a DynamoDB Region via account access keys
 
 **New Relic Requirements**
 
-- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+- A New Relic account. (Sign up for a free account [here](http://newrelic.com).)
 
 **Amazon DynamoDB Plugin Requirements**
 - **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
