@@ -17,7 +17,7 @@ You can find the New Relic Dell PowerEdge plugin in the following locations:
 The Dell plugin connects to the supported Dell server(s) via iDRAC IP address using SNMP v1, v2c, or v3.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Dell PowerEdge Plugin Requirements**
 - **Hardware:** The plugin supports the following R-, M-, and T-series generation Dell server types: **12g** and **13g**
