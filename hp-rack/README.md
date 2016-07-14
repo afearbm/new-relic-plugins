@@ -17,7 +17,7 @@ The HP Rack plugin connects to the supported HP ProLiant server(s) via an HP iLO
 
 **New Relic Requirements**
 
-- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **HP Rack Plugin Requirements**
 
