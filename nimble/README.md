@@ -18,12 +18,12 @@ You can find the New Relic Nimble Storage plugin in the following locations:
 The Nimble Storage plugin connects to the Nimble hardware using REST and optionally SNMP v2 for additional group metrics.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
-- A New Relic account
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Nimble Storage Plugin Requirements**
 - The plugin supports **Nimble 2.3+** through REST
 - **SNMP v2** can be used for additional group metrics 
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 
 ----
@@ -167,7 +167,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
-| instance_name | The name of your New Relic Nimble Storage instance that will appear in the User Interface. |
+| instance_name | The name of your New Relic Nimble Storage instance that will appear in the user interface. |
 | username | Username to make REST calls to your Nimble Storage device. |
 | password | Password to make REST calls to your Nimble Storage device. |
 | hostname | IP address or fully qualified host name of your Nimble Storage device. |
