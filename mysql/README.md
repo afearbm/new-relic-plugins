@@ -1,6 +1,6 @@
 # New Relic Plugin for MySQL
 
-The **Blue Medora New Relic Plugin for MySQL** allows you to monitor your Amazon DynamoDB performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
+The **Blue Medora New Relic Plugin for MySQL** allows you to monitor your MySQL performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
 				
 This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for MySQL.
 
@@ -18,11 +18,11 @@ The MySQL plugin connects to a MySQL or MariaDB instance via JDBC connection. Be
 
 **New Relic Requirements**
 
-- A New Relic account. Sign up for a free account [here](http://newrelic.com)
+- A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **MySQL Plugin Requirements**
 - **MySQL and Maria DB versions.** The plugin is compatible with MySQL versions 5.6 & 5.7 and MariaDB versions 10.0 and 10.1.
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 
@@ -333,7 +333,7 @@ For questions or issues regarding the MySQL Plugin for New Relic, visit http://s
 
 **Queries**
 
-Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall calls.
+**NOTE:** Only 10 queries are displayed at a time. The 10 that are displayed are the queries that have the highest number of overall calls.
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
