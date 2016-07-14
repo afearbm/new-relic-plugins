@@ -23,7 +23,7 @@ The Citrix NetScaler plugin connects to the Citrix NetScaler Appliance using RES
 **Citrix NetScaler Plugin Requirements**
 - **NetScaler Version:** The plugin requires Citrix NetScaler MPX or VPX, Version 10.x+
 - In the NetScaler user interface, you must create a user account for monitoring purposes that has a **System Command Policy** of read-only.
-- **A Blue Medora License.** A trial license will ship with the plugin. This license will remain effective for the duration of the Blue Medora beta trial period.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 
 ----
