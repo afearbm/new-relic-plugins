@@ -2,16 +2,10 @@
 
 The **Blue Medora Citrix NetScaler Plugin for New Relic** allows you to monitor your Citrix NetScaler load balancing performance data from within the New Relic platform by pulling in metrics from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.           
 
-This guide includes instructions for installing and configuring the Blue Medora Citrix NetScaler Plugin for New Relic.
+This guide includes instructions for installing and configuring the Blue Medora Citrix NetScaler Plugin for New Relic. If you’re having a bad experience with one of our plugins, please get in touch and we’ll be happy to help you out.
+
 
 ----
-
-
-## Obtaining the Plugin
-You can find the New Relic Citrix NetScaler plugin in the following locations:
-
-- [New Relic Storefront](http://newrelic.com/plugins/blue-medora/488)
-- [Plugin Central](https://rpm.newrelic.com/accounts/890835/plugins/directory/488)
 
 ## System Requirements
 
@@ -50,23 +44,6 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-### Installing the Plugin Manually
-
-#### Downloading and Extracting the Plugin
-
-The latest version of the plugin can be downloaded from the locations listed in the [Obtaining the Plugin](#obtaining-the-plugin) section.  Once the plugin is on your box, extract it to your preferred directory location.
-
-#### Configuring the Plugin
-
-Refer to the [Configuring the Plugin](#Configuring-the-Plugin) section, for details on setting up the plugin. 
-
-#### Running the Plugin
-
-To run the plugin, navigate to the directory where the plugin was extracted, then execute the following command from your terminal or command line window:
-
-```
-  java -jar plugin.jar
-```
  
 ----
     
@@ -97,8 +74,8 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 }
 ```
 
-**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`. For more information on where to find these fields, [refer to the New Relic Insights documentation]
-(https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/insert-custom-events-insights-api#register). Below are the fields needed to configure Insights access.
+**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`. You can find these fields in on [your New Relic API Keys page](https://rpm.newrelic.com/apikeys). 
+Below are the fields needed to configure Insights access.
 
 `insights_api_key` - The api key associated with your Insights account.
 
@@ -109,32 +86,33 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 **Logging Configuration** - By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
 
-`log\_level` - The log level. Valid values: [debug, info, warn, error, fatal]. Defaults to info.
+`log_level` - The log level. Valid values: [debug, info, warn, error, fatal]. Defaults to info.
 
-`log\_file\_name` - The log file name. Defaults to newrelic_plugin.log.
+`log_file_name` - The log file name. Defaults to newrelic_plugin.log.
 
-`log\_file\_path` - The log file path. Defaults to logs.
+`log_file_path` - The log file path. Defaults to logs.
 
-`log\_limit\_in\_kbytes` - The log file limit in kilobytes. Defaults to 25600 (25 MB). If limit is set to 0, the log file size would not be limited.
+`log_limit_in_kbytes` - The log file limit in kilobytes. Defaults to 25600 (25 MB). If limit is set to 0, the log file size would not be limited.
 
 ```
 {
   "license_key": "YOUR_LICENSE_KEY_HERE",
+  
   "log_level": "debug",
-
+  
   "log_file_path": "log_file_path": “logs"
 }
 ```
 
 **Proxy Configuration** - If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in your `newrelic.json` file:
 
-`proxy\_host` - The proxy host (e.g. webcache.example.com)
+`proxy_host` - The proxy host (e.g. webcache.example.com)
 
-`proxy\_port` - The proxy port (e.g. 8080). Defaults to 80 if a proxy_host is set
+`proxy_port` - The proxy port (e.g. 8080). Defaults to 80 if a proxy_host is set
 
-`proxy\_username` - The proxy username
+`proxy_username` - The proxy username
 
-`proxy\_password` - The proxy password
+`proxy_password` - The proxy password
 
 
 **Example:**
@@ -170,54 +148,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | protocol | Protocol (`http` or `https`) used to make REST calls to your Citrix NetScaler Appliance |
 | netscaler_ip | IP address or fully qualified host name of your Citrix NetScaler Appliance |
 | validate_certificate_against_truststore | Optional paramter, if `protocol` is `https` this can be set to `true` to validate against truststore, or `false` to trust any certificate |
-| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
-
-**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
-Theses fields are listed below and valid values are `true` or `false`:
-
-* `enable_insights_for_appliance`
-* `enable_insights_for_virtual_server`
-* `enable_insights_for_service`
-* `enable_insights_for_gslb_site`
-* `enable_insights_for_gslb_service`
-* `enable_insights_for_target_server`
-* `enable_insights_for_gslb_virtual_server`
-
-**Example:**
-
-```
-{
-  "polling_interval_seconds": 300,
-  "agents": [
-    {
-      "instance_name": "base_instance",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "protocol": "http or https",
-      "netscaler_ip": "your_value_here",
-      "enable_insights": "true"
-    },
-    {
-      "instance_name": "validate_against_trustore_instance",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "protocol": "https",
-      "netscaler_ip": "your_value_here",
-      "validate_certificate_against_truststore": "true",
-      "enable_insights": "true"
-    },
-    {
-      "instance_name": "dont_validate_against_trustore_instance",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "protocol": "http",
-      "netscaler_ip": "your_value_here",
-      "validate_certificate_against_truststore": "false",
-      "enable_insights": "true"
-    }
-  ]
-}
-```
+| send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
+| send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
