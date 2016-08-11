@@ -39,7 +39,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Sends Everything, if newrelic.json is configured. 
 - Otherwise, logs "Insights not configured. See User Guide to configure."
 
-  {  
+  ```{  
     "polling_interval_seconds": 60,  
     "agents": [  
       {  
@@ -64,7 +64,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
         }  
       }  
     ]  
-  }  
+  }  ``` 
 
 ----
 
