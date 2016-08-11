@@ -39,32 +39,32 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Sends Everything, if newrelic.json is configured. 
 - Otherwise, logs "Insights not configured. See User Guide to configure."
 
-  {
-    "polling_interval_seconds": 60,
-    "agents": [
-      {
-        "instance_name": "my-oracle",
-       "username": "oracle",
-        "password": "password",
-       "host": "my-oracle",
-        "port": 1521,
-        "send_to_plugin": {
-          "oracle_database": true,
-          "oracle_instance": true,
-         "oracle_table":    true,
-          "oracle_query":    true
-        },
-        "send_to_insights": {
-          "oracle_database": true,
-          "oracle_instance": true,
-          "oracle_table":    true,
-          "oracle_query":    true,
-          "notifications":   true,
-          "relationships":   true
-        }
-      }
-    ]
-  }
+  {  
+    "polling_interval_seconds": 60,  
+    "agents": [  
+      {  
+        "instance_name": "my-oracle",  
+       "username": "oracle",  
+        "password": "password",  
+       "host": "my-oracle",  
+        "port": 1521,  
+        "send_to_plugin": {  
+          "oracle_database": true,  
+          "oracle_instance": true,  
+         "oracle_table": true,  
+          "oracle_query": true  
+        },  
+        "send_to_insights": {  
+          "oracle_database": true,  
+          "oracle_instance": true,  
+          "oracle_table": true,  
+          "oracle_query": true,  
+          "notifications": true,  
+          "relationships": true  
+        }  
+      }  
+    ]  
+  }  
 
 ----
 
