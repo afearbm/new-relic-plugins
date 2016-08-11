@@ -2,8 +2,6 @@
 
 As a supplement to the README files specific to each Blue Medora New Relic Plugin, which help get a user up-and-running with a plugin, this "Knobs and Levers Behavior" README has been created to help guide you in fine-tuning the behavior of your plugin based on your needs/preferences.
 
-As always, please get in touch with us if...
-
 ----
 
 ##Summary of Expected Behavior 
@@ -43,31 +41,54 @@ As always, please get in touch with us if...
 
 ```{
   "polling_interval_seconds": 60,
+  
   "agents": [
+  
     {
+    
       "instance_name": "my-oracle",
+      
       "username": "oracle",
+      
       "password": "password",
+      
       "host": "my-oracle",
+      
       "port": 1521,
+      
       "send_to_plugin": {
+      
         "oracle_database": true,
+        
         "oracle_instance": true,
+        
         "oracle_table":    true,
+        
         "oracle_query":    true
+        
       },
+      
       "send_to_insights": {
+      
         "oracle_database": true,
+        
         "oracle_instance": true,
+        
         "oracle_table":    true,
+        
         "oracle_query":    true,
+        
         "notifications":   true,
+        
         "relationships":   true
+        
       }
+      
     }
+    
   ]
-}
-```
+  
+}```
 
 ----
 
