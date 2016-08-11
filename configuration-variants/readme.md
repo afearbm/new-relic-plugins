@@ -79,7 +79,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Does not attempt to collect data at all. 
 - Logs "Plugin is configured to send no data. No collection attempted."
 
-```{
+```
+{
   "polling_interval_seconds": 60,
   "agents": [
     {
@@ -105,7 +106,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
     }
   ]
 }
-```
+```
 
 ##"Mixed" Configuration
 - "send_to_plugin"  is fully defined. Some flags set to "true"
@@ -121,7 +122,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - If "notifications" is set to "true", sends Events that are attached to Resources whose flags are set to "true"
 - If "relationships" is set to "true", sends Relationships that involve a Resource whose flag is set to "true"
 
-```{
+```
+{
   "polling_interval_seconds": 60,
   "agents": [
     {
@@ -147,7 +149,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
     }
   ]
 }
-```
+```
 ----
 
 ##"Partial" Configuration
@@ -162,7 +164,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Omitted flags are assumed to be "true"
 - Behaves as "All True" or "Mixed" Configuration
 
-```{
+```
+{
   "polling_interval_seconds": 60,
   "agents": [
     {
@@ -180,7 +183,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
       }
     }
   ]
-}```
+}
+```
 ----
 
 ##"Empty" Configuration
@@ -195,7 +199,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Omitted flags are assumed to be "true"
 - Behaves as "All True" Configuration
 
-```{
+```
+{
   "polling_interval_seconds": 60,
   "agents": [
     {
@@ -208,7 +213,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
       "send_to_insights": { }
     }
   ]
-}```
+}
+```
 
 ----
 
@@ -224,7 +230,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - All flags take the value of the boolean
 - Behaves as "All True" or "All False" Configuration
 
-```{
+```
+{
   "polling_interval_seconds": 60,
   "agents": [
     {
@@ -237,7 +244,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
       "send_to_insights": false
     }
   ]
-}```
+}
+```
 ----
 
 ##"Mixed Simple" Configuration
@@ -252,7 +260,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - All flags take the value of the boolean
 - Behaves as "All True" or "All False" Configuration
 
-```{
+```
+{
   "polling_interval_seconds": 60,
   "agents": [
     {
@@ -272,7 +281,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
       }
     }
   ]
-}```
+}
+```
 
 ----
 
@@ -289,7 +299,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Behaves as "All True" Configuration
 
 plugin.json
-```{
+```
+{
   "polling_interval_seconds": 60,
   "agents": [
     {
@@ -300,7 +311,8 @@ plugin.json
       "port": 1521
     }
   ]
-}```
+}
+```
 
 ----
 
@@ -314,7 +326,8 @@ plugin.json
 ###Insights Behavior
 - Invalid configuration detected at process startup, logs "Invalid configuration..."
 
-```{
+```
+{
   "polling_interval_seconds": 60,
   "agents": [
     {
@@ -329,12 +342,14 @@ plugin.json
  }
     }
   ]
-}```
+}
+```
 
 ----
 
 ##Example newrelic.json with Insights configured
-```{
+```
+{
     "license_key": "483c8236c21480b52319ed9a2ebd950810670a3f",
     "log_level": "debug",
     "log_file_name": "newrelic_plugin.log",
@@ -342,4 +357,5 @@ plugin.json
     "insights_api_key": "w09iHADYuqAaTP9Mu76v5d7hF7tgZD0i",
     "insights_account_id": "1234567",
     "insights_use_ssl": true
-}```
+}
+```
