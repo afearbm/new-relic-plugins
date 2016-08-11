@@ -29,14 +29,14 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 ----
 
 ##"All True" ("Out-of-Box") Configuration
-- "send_to_plugin"  is fully defined. All flags set to "true"
-- "send_to_insights" is fully defined. All flags set to "true"
+- `send_to_plugin`  is fully defined. All flags set to "true"
+- `send_to_insights` is fully defined. All flags set to "true"
 
 ###Plugins Behavior
 - Sends Entire Whitelist
 
 ###Insights Behavior
-- Sends Everything, if newrelic.json is configured. 
+- Sends Everything, if `newrelic.json` is configured. 
 - Otherwise, logs "Insights not configured. See User Guide to configure."
 
   ```
@@ -71,8 +71,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 ----
 
 ##"All False" Configuration
-- "send_to_plugin"  is fully defined. All flags set to "false"
-- "send_to_insights" is fully defined. All flags set to "false"
+- `send_to_plugin`  is fully defined. All flags set to "false"
+- `send_to_insights` is fully defined. All flags set to "false"
 
 ###Behavior
 - Detects that all flags for both Plugins and Insights are "false"
@@ -109,14 +109,14 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 ```
 
 ##"Mixed" Configuration
-- "send_to_plugin"  is fully defined. Some flags set to "true"
-- "send_to_insights" is fully defined. Some flags set to "true"
+- `send_to_plugin`  is fully defined. Some flags set to "true"
+- `send_to_insights` is fully defined. Some flags set to "true"
 
 ###Plugins Behavior
 - Filters Whitelist. Sends only Resource Types whose flags are set to "true"
 
 ###Insights Behavior
-- If newrelic.json is not configured, logs "Insights not configured. See User Guide to configure."
+- If `newrelic.json` is not configured, logs "Insights not configured. See User Guide to configure."
 - Otherwise, filters everything.
 - Sends Resource Types whose flags are set to "true"
 - If "notifications" is set to "true", sends Events that are attached to Resources whose flags are set to "true"
@@ -153,8 +153,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 ----
 
 ##"Partial" Configuration
-- "send_to_plugin"  is partially defined. Some flags are omitted
-- "send_to_insights" is partially defined. Some flags are omitted
+- `send_to_plugin`  is partially defined. Some flags are omitted
+- `send_to_insights` is partially defined. Some flags are omitted
 
 ###Plugins Behavior
 - Omitted flags are assumed to be "true"
@@ -188,8 +188,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 ----
 
 ##"Empty" Configuration
-- "send_to_plugin"  is an empty hash
-- "send_to_insights" is an empty hash
+- `send_to_plugin`  is an empty hash
+- `send_to_insights` is an empty hash
 
 ###Plugins Behavior
 - Omitted flags are assumed to be "true"
@@ -219,8 +219,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 ----
 
 ##"Simple" Configuration
-- "send_to_plugin"  is a boolean
-- "send_to_insights" is a boolean
+- `send_to_plugin`  is a boolean
+- `send_to_insights` is a boolean
 
 ###Plugins Behavior
 - All flags take the value of the boolean
@@ -249,8 +249,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 ----
 
 ##"Mixed Simple" Configuration
-- "send_to_plugin"  is a boolean
-- "send_to_insights" is a hash with per resource type boolean
+- `send_to_plugin`  is a boolean
+- `send_to_insights` is a hash with per resource type boolean
 
 ###Plugins Behavior
 - All flags take the value of the boolean
@@ -287,8 +287,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 ----
 
 ##"Minimal" Configuration
-- "send_to_plugin"  omitted
-- "send_to_insights" omitted
+- `send_to_plugin`  omitted
+- `send_to_insights` omitted
 
 ###Plugins Behavior
 - Omitted flags are assumed to be "true"
@@ -298,7 +298,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Omitted flags are assumed to be "true"
 - Behaves as "All True" Configuration
 
-plugin.json
+`plugin.json`
 ```
 {
   "polling_interval_seconds": 60,
