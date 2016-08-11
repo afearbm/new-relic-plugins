@@ -298,7 +298,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Omitted flags are assumed to be "true"
 - Behaves as "All True" Configuration
 
-`plugin.json`
+`plugin.json`:
 ```
 {
   "polling_interval_seconds": 60,
@@ -317,8 +317,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 ----
 
 ##"Invalid" Configuration
-- "send_to_plugin"  is not a boolean or a hash, is a hash with non-boolean values
-- "send_to_insights" is not a boolean or a hash, is a hash with non-boolean values
+- `send_to_plugin`  is not a boolean or a hash, is a hash with non-boolean values
+- `send_to_insights` is not a boolean or a hash, is a hash with non-boolean values
 
 ###Plugins Behavior
 - Invalid configuration detected at process startup, logs "Invalid configuration..."
