@@ -3,14 +3,9 @@
 The **Blue Medora New Relic Plugin for MySQL** allows you to monitor your MySQL performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.
 				
 This guide includes instructions for installing and configuring the Blue Medora New Relic Plugin for MySQL.
+If you’re having a bad experience with one of our plugins, please get in touch and we’ll be happy to help you out.
 
 ----
-
-## Obtaining the Plugin
-You can find the New Relic Plugin for MySQL in the following locations:
-
-- [New Relic Storefront](//TODO Update)
-- [Plugin Central](//TODO Update)					
 
 ## System Requirements
 
@@ -22,22 +17,15 @@ The MySQL plugin connects to a MySQL or MariaDB instance via JDBC connection. Be
 
 **MySQL Plugin Requirements**
 - **MySQL and Maria DB versions.** The plugin is compatible with MySQL versions 5.6 & 5.7 and MariaDB versions 10.0 and 10.1.
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until September 13, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 
 ## Installing the Plugin
 
-This plugin can be installed one of the following ways:
+We recommend using the New Relic Platform Installer for installing and running your Blue Medora plugins for New Relic.
 
-- Using the New Relic Platform Installer
-- Installing the Plugin Manually
-
-### Using the New Relic Platform Installer
-
-The New Relic Platform Installer (NPI) is a command line tool that helps you easily download, configure and manage New Relic Platform Plugins.  For more information, refer to the [Installing an NPI-compatible plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/installing-plugins/installing-npi-compatible-plugin).
-
-**NOTE:** We recommend using the New Relic Platform Installer for installing and running your Blue Medora plugins for New Relic. Issues can arise by running a plugin directly in the foreground (e.g., when the machine reboots, the process will not be started again). The NPI automates much of these processes.
+The New Relic Platform Installer (NPI) is a command line tool that helps you easily download, configure, and manage New Relic Platform Plugins.  For more information, refer to the [Installing an NPI-compatible plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/installing-plugins/installing-npi-compatible-plugin).
 
 Once the NPI tool has been installed, run the following command:
 
@@ -45,27 +33,10 @@ Once the NPI tool has been installed, run the following command:
   ./npi install com.bluemedora.mysql
 ``` 
 
-**NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
+**Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-### Installing the Plugin Manually
-
-#### Downloading and Extracting the Plugin
-
-The latest version of the plugin can be downloaded from the locations listed in the [Obtaining the Plugin](#obtaining-the-plugin) section.  Once the plugin is on your box, extract it to your preferred directory location.
-
-#### Configuring the Plugin
-
-Refer to the [Configuring the Plugin](#Configuring-the-Plugin) section, for details on setting up the plugin. 
-
-#### Running the Plugin
-
-To run the plugin, navigate to the directory where the plugin was extracted, then execute the following command from your terminal or command line window:
-
-```
-  java -jar plugin.jar
-```
-
-----     
+----
+    
 ## Configuring the Plugin
 From the extracted plugin folder you receive when downloading your plugin, you will find the following files: 
 
@@ -88,14 +59,20 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 **New Relic License Key** - The only required field in the `newrelic.json` file is the License Key. This unique identifier informs New Relic about the specific account tied to the plugin. For more information on the License Key, [refer to the New Relic License key documentation](https://docs.newrelic.com/docs/accounts-partnerships/accounts/account-setup/license-key).
 
+**Example:**
+
 ```
 {
-   “license_key”: “YOUR_LICENSE_KEY_HERE”
+   “license_key”: “YOUR LICENSE KEY”
 }
 ```
 
-**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`. For more information on where to find these fields, [refer to the New Relic Insights documentation]
-(https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/insert-custom-events-insights-api#register). Below are the fields needed to configure Insights access.
+**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. 
+In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`. 
+You can find these fields in on [your New Relic API Keys page](https://rpm.newrelic.com/apikeys). 
+For more information, [refer to the New Relic Insights documentation](https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/insert-custom-events-insights-api#register).
+
+Below are the fields needed to configure Insights access.
 
 `insights_api_key` - The api key associated with your Insights account.
 
@@ -103,45 +80,54 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 
 `insights_use_ssl` - Signals whether to connect to Insights via SSL. Acceptable values are `true` or `false`.
 
-
-**Logging Configuration** - By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
-
-`log\_level` - The log level. Valid values: [debug, info, warn, error, fatal]. Defaults to info.
-
-`log\_file\_name` - The log file name. Defaults to newrelic_plugin.log.
-
-`log\_file\_path` - The log file path. Defaults to logs.
-
-`log\_limit\_in\_kbytes` - The log file limit in kilobytes. Defaults to 25600 (25 MB). If limit is set to 0, the log file size would not be limited.
+**Example:**
 
 ```
 {
-  "license_key": "YOUR_LICENSE_KEY_HERE",
-  "log_level": "debug",
-
-  "log_file_path": "log_file_path": “logs"
+    "license_key": "YOUR LICENSE KEY",
+    "insights_api_key": "YOUR INSIGHTS API KEY",
+    "insights_account_id": "YOUR INSIGHTS ACCOUNT ID",
+    "insights_use_ssl": true
 }
 ```
 
-**Proxy Configuration** - If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in your `newrelic.json` file:
+**Logging Configuration** - By default Platform plugins will have their logging turned on; however, you can modify these settings with the following configurations:
 
-`proxy\_host` - The proxy host (e.g. webcache.example.com)
+`log_level` - The log level. Valid values: [debug, info, warn, error, fatal]. Defaults to info.
 
-`proxy\_port` - The proxy port (e.g. 8080). Defaults to 80 if a proxy_host is set
+`log_file_name` - The log file name. Defaults to newrelic_plugin.log.
 
-`proxy\_username` - The proxy username
+`log_file_path` - The log file path. Defaults to logs.
 
-`proxy\_password` - The proxy password
-
+`log_limit_in_kbytes` - The log file limit in kilobytes. Defaults to 25600 (25 MB). If limit is set to 0, the log file size would not be limited.
 
 **Example:**
 
 ```
 {
-  "license_key": "YOUR_LICENSE_KEY_HERE",
+    "license_key": "YOUR LICENSE KEY",
+    "log_level": "info",
+    "log_file_name": "newrelic_plugin.log",
+    "log_file_path": "logs",
+}
+```
 
+**Proxy Configuration** - If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in your `newrelic.json` file:
+
+`proxy_host` - The proxy host (e.g. webcache.example.com)
+
+`proxy_port` - The proxy port (e.g. 8080). Defaults to 80 if a proxy_host is set
+
+`proxy_username` - The proxy username
+
+`proxy_password` - The proxy password
+
+**Example:**
+
+```
+{
+  "license_key": "YOUR LICENSE KEY",
   "proxy_host": "proxy.mycompany.com",
-
   "proxy_port": 9000
 }
 ```
@@ -170,70 +156,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | ssl_enable | Indicates whether ssl certification should be used to connect, valid values are `true` or `false` |
 | ssl_cert_path | Optional parameter, ff `ssl_enable` is `true` this should be the path to your MySQL cert |
 | database | Optional parameter, comma separated list of databases to monitor |
-| enable_insights | Indicates whether or not to send data to New Relic Insights for this instance. |
-
-**NOTE:** There are optional fields if `enable_insights` is `true` that allow specific event types to be toggled whether they send data to Insights. 
-Theses fields are listed below and valid values are `true` or `false`:
-
-* `enable_insights_for_mysql_instance`
-* `enable_insights_for_mysql_tablespace`
-* `enable_insights_for_mysql_table`
-* `enable_insights_for_mysql_database`
-* `enable_insights_for_mysql_index`
-* `enable_insights_for_mysql_query`
-
-**Example:**
-
-```
-{
-  "polling_interval_seconds": 60,
-  "agents": [
-    {
-      "instance_name": "ssl_disabled_instance",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "port": "your_value_here",
-      "host": "your_value_here",
-      "ssl_enable": "false",
-      "monitor_queries": "true",
-      "enable_insights": "true"
-    },
-    {
-      "instance_name": "ssl_enabled_instance",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "port": "your_value_here",
-      "host": "your_value_here",
-      "ssl_enable": "true",
-      "ssl_cert_path": "path_to_ssl_certificate",
-      "monitor_queries": "true",
-      "enable_insights": "true"
-    },
-    {
-      "instance_name": "single_database_no_queries_instance",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "port": "your_value_here",
-      "host": "your_value_here",
-      "ssl_enable": "false",
-      "database": "db_1",
-      "monitor_queries": "false",
-      "enable_insights": "true"
-    },
-    {
-      "instance_name": "mutli_database_instance",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "port": "your_value_here",
-      "host": "your_value_here",
-      "ssl_enable": "false",
-      "database": "db_1,db_2",
-      "monitor_queries": "true",
-      "enable_insights": "true"
-    },
-  ]
-}
-```
+| send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
+| send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
@@ -265,8 +189,12 @@ from mysql.slow_log
 **Query Data Not Populating.** The plugin will attempt to monitor queries by default. If query data is not populating, you must enable slow queries to be written to the `mysql.slow_log` table. 
 The size of this table must be limited or monitoring queries may severely affect system performance.
 
+----     
+
 ## Support Resources
 For questions or issues regarding the MySQL Plugin for New Relic, visit http://support.bluemedora.com. 
+
+----     
 
 ## Metrics Source Documentation
 
