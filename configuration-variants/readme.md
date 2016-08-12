@@ -1,9 +1,9 @@
 # Blue Medora's New Relic Knobs and Levers Readme
 
 Every Blue Medora Plugin for New Relic provides a similar set of configurable "Knobs and Levers" to ensure that each customer has control over the information reported to their Plugin instances and to their Insights account. 
-This document describes how these Knobs and Levers operate, and how you can use them to fine-tune the behavior of any Blue Medora Plugin.
+This document describes how these Knobs and Levers operate, and how you can use them to fine-tune the behavior of any Blue Medora Plugin for New Relic.
 
-For further details on the configuration of each individual Plugin, please refer to the README file associate with each Plugin.
+**Note:** For further details on the configuration of each individual Plugin, please refer to the README file associate with each Plugin.
 
 ----
 
@@ -13,7 +13,7 @@ As a general rule of thumb, every Blue Medora Plugin for New Relic will send all
 
 Each Blue Medora Plugin for New Relic can send data to Plugin instances, or to your Insights account, or to both.
 
-Because of New Relic's Plugin API limits the type and amount of data that can be transmitted, the specific types of data that can be sent to Plugin instances is restricted to a subset of what can be sent to Insights. The Knobs and Levers described in this document can allow you to constrict that data even further, if you wish.
+Because New Relic's `Plugin API` limits the type and amount of data that can be transmitted, the specific types of data that can be sent to Plugin instances is restricted to a subset of what can be sent to Insights. The Knobs and Levers described in this document can allow you to constrict that data even further.
 
 Sending data to Insights requires some additional configuration in the `newrelic.json`, but the amount and type of data is only limited by the fine-tuning you apply to your `plugin.json`. For more details, please refer to the README file that for any individual Blue Medora Plugin.
 
@@ -27,13 +27,13 @@ Data is collected and sent at a predefined interval, but can be customized in th
 
 - **polling_interval_seconds:** The amount of time, in seconds, between consecutive attempts to collect data from the monitored system. If this attribute is omitted or if it contains an invalid value, a hidden default is used (usually 60).
 
-- **"send_to_plugin"** refers to the data types that should be send to your Plugin instance. As explained above, this is usually a subset of what can be sent to Insights.
+- **send_to_plugin** refers to the data types that should be send to your Plugin instance. As explained above, this is usually a subset of what can be sent to Insights.
 
-- **"send_to_insights"** refers to the data types that should be send to your Insights account. As explained above, this is dependent on some additional configuration to your `newrelic.json`.
+- **send_to_insights** refers to the data types that should be send to your Insights account. As explained above, this is dependent on some additional configuration to your `newrelic.json`.
 
-- **“notifications”** refers to events reported by the monitored system. These can be reported as Insights events and will include severity information as well as a description of the event.
+- **notifications** refers to events reported by the monitored system. These can be reported as Insights events and will include severity information as well as a description of the event.
 
-- **“relationships”** refers to the dependence or interaction between objects. These are typically defined as parent-child relationships, and can be reported under the “blue_medora_relationships” event type in Insights.
+- **relationships** refers to the dependence or interaction between objects. These are typically defined as parent-child relationships, and can be reported under the “blue_medora_relationships” event type in Insights.
 
 ----
 
