@@ -1,30 +1,43 @@
-# New Relic Plugins: Knobs and Levers Behavior
+# Blue Medora's New Relic Knobs and Levers Readme
 
-As a supplement to the README files specific to each Blue Medora New Relic Plugin, which help get a user up-and-running with a plugin, this "Knobs and Levers Behavior" README has been created to help guide you in fine-tuning the behavior of your plugin based on your needs/preferences.
+Every Blue Medora Plugin for New Relic provides a similar set of configurable "Knobs and Levers" to ensure that each customer has control over the information reported to their Plugin instances and to their Insights account. 
+This document describes how these Knobs and Levers operate, and how you can use them to fine-tune the behavior of any Blue Medora Plugin.
+
+For further details on the configuration of each individual Plugin, please refer to the README file associate with each Plugin.
 
 ----
 
 ##Summary of Expected Behavior 
 
-- "Everything" is sent unless otherwise specified
-- For Plugins, "Everything" means all Resource Types and Metric Types defined in the "Whitelist"
-- For Insights, "Everything" means everything collected by the data collector, including all Resources, Metrics, Events, and Relationships
+As a general rule of thumb, every Blue Medora Plugin for New Relic will send all the information that it collects to your New Relic account. Specific types of data can be "turned off" using the flags described below. 
+
+Each Blue Medora Plugin for New Relic can send data to Plugin instances, or to your Insights account, or to both.
+
+Because of New Relic's Plugin API limits the type and amount of data that can be transmitted, the specific types of data that can be sent to Plugin instances is restricted to a subset of what can be sent to Insights. The Knobs and Levers described in this document can allow you to constrict that data even further, if you wish.
+
+Sending data to Insights requires some additional configuration in the `newrelic.json`, but the amount and type of data is only limited by the fine-tuning you apply to your `plugin.json`. For more details, please refer to the README file that for any individual Blue Medora Plugin.
+
+Each Blue Medora Plugin for New Relic comes packaged with a `plugin.template.json` file that includes a complete listing of all data types that can be turned off.
+
+Data is collected and sent at a predefined interval, but can be customized in the `plugin.json`, as described below.
 
 ----
 
-##Definitions
+##Common Flags in `plugin.json`
 
-- **plugin.json:** The configuration file for defining connections to monitored systems. All code examples below are of plugin.json, unless otherwise specified.
+- **polling_interval_seconds:** The amount of time, in seconds, between consecutive attempts to collect data from the monitored system. If this attribute is omitted or if it contains an invalid value, a hidden default is used (usually 60).
 
-- **newrelic.json:** The configuration file for defining account level information. The "insights_api_key", "insights_account_id", and "insights_use_ssl" attributes are defined by Blue Medora and are required for Insights functionality.
+- **"send_to_plugin"** refers to the data types that should be send to your Plugin instance. As explained above, this is usually a subset of what can be sent to Insights.
 
-- **Whitelist:** A list of specific Resource Types and Metric Types that may be sent to the New Relic Plugin. This list is defined by the developer and may not be expanded by the user. However, it can be restricted as shown below. This list has no effect on what is sent to Insights.
-
-- **Polling Interval:** The amount of time between consecutive attempts to collect data from the monitored system. This can be customized with the "polling_interval_seconds" attribute in plugin.json. If this attribute is omitted or if it contains an invalid value, a hidden default is used (usually 60).
+- **"send_to_insights"** refers to the data types that should be send to your Insights account. As explained above, this is dependent on some additional configuration to your `newrelic.json`.
 
 - **“notifications”** refers to events reported by the monitored system. These can be reported as Insights events and will include severity information as well as a description of the event.
 
 - **“relationships”** refers to the dependence or interaction between objects. These are typically defined as parent-child relationships, and can be reported under the “blue_medora_relationships” event type in Insights.
+
+----
+
+##Example Configurations
 
 ----
 
@@ -36,7 +49,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Sends Entire Whitelist
 
 ###Insights Behavior
-- Sends Everything, if `newrelic.json` is configured. 
+- Sends Everything, if `newrelic.json` is configured to send to Insights. 
 - Otherwise, logs "Insights not configured. See User Guide to configure."
 
   ```
@@ -45,14 +58,14 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
     "agents": [  
       {  
         "instance_name": "my-oracle",  
-       "username": "oracle",  
+        "username": "oracle",  
         "password": "password",  
-       "host": "my-oracle",  
+        "host": "my-oracle",  
         "port": 1521,  
         "send_to_plugin": {  
           "oracle_database": true,  
           "oracle_instance": true,  
-         "oracle_table": true,  
+          "oracle_table": true,  
           "oracle_query": true  
         },  
         "send_to_insights": {  
@@ -116,7 +129,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Filters Whitelist. Sends only Resource Types whose flags are set to "true"
 
 ###Insights Behavior
-- If `newrelic.json` is not configured, logs "Insights not configured. See User Guide to configure."
+- If `newrelic.json` is not configured to send to Insights, logs "Insights not configured. See User Guide to configure."
 - Otherwise, filters everything.
 - Sends Resource Types whose flags are set to "true"
 - If "notifications" is set to "true", sends Events that are attached to Resources whose flags are set to "true"
@@ -338,8 +351,8 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
       "port": 1521,
       "send_to_plugin":  12345,
       "send_to_insights": { 
-   "oracle_database": hi
- }
+        "oracle_database": hi
+      }
     }
   ]
 }
