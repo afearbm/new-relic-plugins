@@ -180,7 +180,7 @@ Each Vblock instance can be made up of several different components. Component o
 | username | User name to connect to NaviSecCLI |
 | password | Password to connect to NaviSecCLI |
 | naviseccli_path | Full path to NaviSecCLI executable on the host where this target is being installed |
-| scope | Optional parameter, an integer of `0` for global or `1` for local |
+| no_poll | Disables poll requests, significantly increasing performance in larger systems, but in exchange for returning cached data. |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
