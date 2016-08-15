@@ -37,7 +37,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 
 ###Insights Behavior
 - Sends Everything, if `newrelic.json` is configured. 
-- Otherwise, logs "Insights not configured. See User Guide to configure."
+- Otherwise, logs "Insights is not configured. If you'd like to use Insights, see the plugin documentation for instructions."
 
   ```
   {  
@@ -116,7 +116,7 @@ As a supplement to the README files specific to each Blue Medora New Relic Plugi
 - Filters Whitelist. Sends only Resource Types whose flags are set to "true"
 
 ###Insights Behavior
-- If `newrelic.json` is not configured, logs "Insights not configured. See User Guide to configure."
+- If `newrelic.json` is not configured, logs "Insights is not configured. If you'd like to use Insights, see the plugin documentation for instructions."
 - Otherwise, filters everything.
 - Sends Resource Types whose flags are set to "true"
 - If "notifications" is set to "true", sends Events that are attached to Resources whose flags are set to "true"
