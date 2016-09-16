@@ -49,8 +49,7 @@ Data is collected and sent at a predefined interval, but can be customized in th
 - Sends Entire Whitelist
 
 ###Insights Behavior
-- Sends Everything, if `newrelic.json` is configured to send to Insights. 
-- Otherwise, logs "Insights not configured. See User Guide to configure."
+- If `newrelic.json` is not configured to send to Insights, logs "Insights is not configured. If you'd like to use Insights, see the plugin documentation for instructions."
 
   ```
   {  
@@ -129,7 +128,7 @@ Data is collected and sent at a predefined interval, but can be customized in th
 - Filters Whitelist. Sends only Resource Types whose flags are set to "true"
 
 ###Insights Behavior
-- If `newrelic.json` is not configured to send to Insights, logs "Insights not configured. See User Guide to configure."
+- If `newrelic.json` is not configured to send to Insights, logs "Insights is not configured. If you'd like to use Insights, see the plugin documentation for instructions."
 - Otherwise, filters everything.
 - Sends Resource Types whose flags are set to "true"
 - If "notifications" is set to "true", sends Events that are attached to Resources whose flags are set to "true"
