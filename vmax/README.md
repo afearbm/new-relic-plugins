@@ -160,6 +160,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | request_timeout | Optional parameter, number of milliseconds to wait for HTTP Requests to timeout, `1` to `2147483647`. Defaults to `15000` if not present |
 | max_thread_count| Optional parameter, number of to use, `1` to `2147483647`. Defaults to `50` if not present |
 | ssl_trust_store_path | Optional parameter, path the the SSL Trust Store for example, `path/to/store`. Defaults to Trust all certificates if not present |
+| symmetrix_ids_whitelist | Optional parameter, comma separated list of Symmetrix IDs, for example, `first,second,third` |
+| comma_separated_event_blacklist | Optional parameter, comma separated list of Blacklisted Event words, for example, `first,second,third` |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 

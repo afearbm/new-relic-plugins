@@ -9,7 +9,7 @@ If you’re having a bad experience with one of our plugins, please get in touch
 
 ## System Requirements
 
-The MongoDB plugin collects data by ....... Before installing and configuring the plugin, ensure your system meets the following requirements:
+The MongoDB plugin collects data by connecting to the Java MongoDB Driver. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
 
@@ -149,8 +149,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | polling_interval_seconds | The number of seconds between each data collection. |
 | instance_name | The name of your New Relic MongoDB instance that will appear in the user interface |
 | validate_certificate_against_truststore | whether or not to promote Validate The Certificate Against the Trust Store, `true` or `false`. |
-| host | The hostname or ip address of the ..... |
-| connecting_to | The .................. example `mongos`, `mongod` |
+| host | The hostname(s) or ip address(es) of the Java MongoDB Driver, for example, `host` or `host1,host2:443` |
+| connecting_to | Specifies whether the connection is to a mongod or mongos, for example `mongos`, `mongod` |
 | ssl_mongos | Optional parameter, whether or not to use SSL for Mongos, `true` or `false`. |
 | auth_mongos | Optional parameter, Authentication Type `default` or `LDAP SASL`.|
 | username_mongos | Optional parameter, User name to log into the Mongos |
