@@ -28,9 +28,11 @@
  - Unexpired Undo Extents Size
  - Expired Undo Extents Size
  - Undo Tablespace Size
+ 
 **Control File**
  - Control File Name
  - Control File Size
+ 
 **Redo Log File**
  - Group #
  - Status
@@ -39,6 +41,7 @@
  - Size
  - Member Name
  - Status Extended
+ 
 **Tablespace**
  - Tablespace Name
  - Allocated Size
@@ -49,16 +52,19 @@
  - Tablespace Name
  - Status
  - Contents
+ 
 **PGA Advice Entry**
  - PGA Target Factor
  - PGA Aggregate Target
  - Estimated Extra R/W Data
  - Estimated Cache Hit
  - Estimated PGA Memory Over-Allocations
+ 
 **Memory Advice Entry**
  - Memory Size Factor
  - Memory Size
  - Estimated DB_TIME
+ 
 **SGA Advice Entry**
  - Name
  - SGA Size Factor
@@ -67,15 +73,18 @@
  - Estimated Buffer Cache Size
  - Estimated Shared Pool Size
  - Estimated Physical Reads
+ 
 **Shared Pool Advice Entry**
  - Shared Pool Size Factor
  - Cache Size
  - Estimated Elapsed Parse Time Saved
+ 
 **Cache Advice Entry**
  - Size Factor
  - Buffer Pool Name
  - Cache Size
  - Estimated Physical Reads
+ 
 **Database File**
  - File Name
  - Tablespace Name
@@ -109,6 +118,7 @@
  - Average Write Time
  - Max Read Time
  - Max Write Time
+ 
 **Instance**
  - Instance ID
  - Instance Name
@@ -349,6 +359,7 @@
  - Total PGA Allocated
  - Total PGA Used by SQL Workareas
  - Run Queue Processes
+ 
 **Query**
  - Instance ID
  - SQL ID
@@ -379,6 +390,7 @@
  - Total Locks
  - Total Pins
  - Last Load Time
+ 
 **Parameter**
  - Instance ID
  - Paramter Name
@@ -387,6 +399,7 @@
  - Parameter has not been Modified by Configuration File
  - Parameter has been Modified after Instance Startup
  - Parameter Value Type
+ 
 **Session**
  - Instance ID
  - Session ID
@@ -413,6 +426,7 @@
  - Time Since Last Wait
  - SQL Execution Start Time
  - SQL Text
+ 
 **Application**
  - Instance ID
  - Application
@@ -432,6 +446,7 @@
  - Blocked by Unknown User Sessions
  - Waiting User Sessions
  - Unknown Wait Time User Sessions
+ 
 **O/S User**
  - Instance ID
  - O/S Client User
@@ -451,6 +466,7 @@
  - Blocked by Unknown User Sessions
  - Waiting User Sessions
  - Unknown Wait Time User Sessions
+ 
 **Data Guard Destination**
  - Instance ID
  - Destination ID
