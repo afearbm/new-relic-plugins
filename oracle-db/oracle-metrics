@@ -1,0 +1,458 @@
+**Database**
+ - Host List
+ - Oracle DB Type
+ - Archive Log Mode
+ - Archive Logging Enabled Score
+ - Flashback Enabled Score
+ - Flashback Enabled
+ - Multiplexed Controlfile Score
+ - Controlfile Count
+ - Multiplexed Online Log Files Score
+ - Online Log Files Average Count
+ - Multiplexed Archive Log Files Score
+ - Archive Log Files Count
+ - Fast Recovery Area Configured Score
+ - Fast Recovery Area Configured
+ - OMF Configured Score
+ - OMF Configured
+ - Fast Recovery Area Usage Score
+ - Fast Recovery Area Usage
+ - Processes Limit Score
+ - Processes Usage
+ - Sessions Limit Score
+ - Sessions Usage
+ - RMAN Backup In Last 24 Hours Score
+ - Days Since Last RMAN Backup
+ - Average Datafile Read Time < 1ms Score
+ - Average Datafile Read Time
+ - Unexpired Undo Extents Size
+ - Expired Undo Extents Size
+ - Undo Tablespace Size
+**Control File**
+ - Control File Name
+ - Control File Size
+**Redo Log File**
+ - Group #
+ - Status
+ - Thread #
+ - Sequence #
+ - Size
+ - Member Name
+ - Status Extended
+**Tablespace**
+ - Tablespace Name
+ - Allocated Size
+ - Free Space
+ - Tablespace Name
+ - Allocated Size
+ - Free Space
+ - Tablespace Name
+ - Status
+ - Contents
+**PGA Advice Entry**
+ - PGA Target Factor
+ - PGA Aggregate Target
+ - Estimated Extra R/W Data
+ - Estimated Cache Hit
+ - Estimated PGA Memory Over-Allocations
+**Memory Advice Entry**
+ - Memory Size Factor
+ - Memory Size
+ - Estimated DB_TIME
+**SGA Advice Entry**
+ - Name
+ - SGA Size Factor
+ - SGA Size
+ - Estimated DB_TIME
+ - Estimated Buffer Cache Size
+ - Estimated Shared Pool Size
+ - Estimated Physical Reads
+**Shared Pool Advice Entry**
+ - Shared Pool Size Factor
+ - Cache Size
+ - Estimated Elapsed Parse Time Saved
+**Cache Advice Entry**
+ - Size Factor
+ - Buffer Pool Name
+ - Cache Size
+ - Estimated Physical Reads
+**Database File**
+ - File Name
+ - Tablespace Name
+ - Status
+ - Size
+ - Autoextensible
+ - Max Size
+ - File Name
+ - Physical Reads
+ - Physical Writes
+ - Physical Blocks Read
+ - Physical Blocks Written
+ - Single Blocks Read
+ - Read Time
+ - Write Time
+ - Average I/O Time
+ - Average Read Time
+ - Average Write Time
+ - Max Read Time
+ - Max Write Time
+ - File Name
+ - Physical Reads
+ - Physical Writes
+ - Physical Blocks Read
+ - Physical Blocks Written
+ - Single Blocks Read
+ - Read Time
+ - Write Time
+ - Average I/O Time
+ - Average Read Time
+ - Average Write Time
+ - Max Read Time
+ - Max Write Time
+**Instance**
+ - Instance ID
+ - Instance Name
+ - Host Name
+ - Version
+ - Startup Time
+ - Status
+ - Parallel
+ - Archiver
+ - Login Mode
+ - Shutdown Pending
+ - Database Status
+ - Instance Role
+ - Active State
+ - Blocked
+ - Instance ID
+ - Waits
+ - Timeouts
+ - Time Waited
+ - Instance ID
+ - Sessions Count
+ - Background Types
+ - User Types
+ - O/S Client Users
+ - O/S Machines
+ - Applications
+ - Active User Sessions
+ - Inactive User Sessions
+ - Killed User Sessions
+ - Cached User Sessions
+ - Sniped User Sessions
+ - Blocked User Sessions
+ - Unblocked User Sessions
+ - Non-Waiting User Sessions
+ - Blocked by Unknown User Sessions
+ - Waiting User Sessions
+ - Unknown Wait Time User Sessions
+ - Instance ID
+ - Physical Reads
+ - Physical Writes
+ - Physical Blocks Read
+ - Physical Blocks Written
+ - Single Blocks Read
+ - Read Time
+ - Write Time
+ - Average I/O Time
+ - Average Read Time
+ - Average Write Time
+ - Max Read Time
+ - Max Write Time
+ - Instance ID
+ - Latch Waits
+ - Latch Timeouts
+ - Latch Time Waited
+ - Instance ID
+ - Parallel Max Servers Current Utilization
+ - Parallel Max Servers Limit
+ - Instance ID
+ - Enqueue Locks Current Utilization
+ - Enqueue Locks Limit
+ - Instance ID
+ - Sessions Current Utilization
+ - Sessions Limit
+ - Instance ID
+ - Processes Current Utilization
+ - Processes Limit
+ - Instance ID
+ - Instance Name
+ - Fixed SGA Size
+ - Redo Buffers Size
+ - Buffer Cache Size
+ - Shared Pool Size
+ - Large Pool Size
+ - Java Pool Size
+ - Streams Pool Size
+ - Shared IO Pool Size
+ - Data Transfer Cache Size
+ - Granule Size
+ - Maximum SGA Size
+ - Startup overhead in Shared Pool
+ - Free SGA Memory Available
+ - Instance ID
+ - Instance Name
+ - Buffer Cache Hit Ratio
+ - Memory Sorts Ratio
+ - Redo Allocation Hit Ratio
+ - User Transactions
+ - Physical Reads
+ - Physical Reads Per Txn
+ - Physical Writes
+ - Physical Writes Per Txn
+ - Physical Reads Direct
+ - Physical Reads Direct Per Txn
+ - Physical Writes Direct
+ - Physical Writes Direct Per Txn
+ - Physical Reads Direct Lobs
+ - Physical Reads Direct Lobs Per Txn
+ - Physical Writes Direct Lobs
+ - Physical Writes Direct Lobs Per Txn
+ - Redo Generated
+ - Redo Generated Per Txn
+ - Logons
+ - Logons Per Txn
+ - Open Cursors
+ - Open Cursors Per Txn
+ - User Commits
+ - User Commits
+ - User Rollbacks
+ - User Rollbacks
+ - User Calls
+ - User Calls Per Txn
+ - Recursive Calls
+ - Recursive Calls Per Txn
+ - Logical Reads
+ - Logical Reads Per Txn
+ - DBWR Checkpoints
+ - Background Checkpoints
+ - Redo Writes
+ - Redo Writes Per Txn
+ - Long Table Scans
+ - Long Table Scans Per Txn
+ - Total Table Scans
+ - Total Table Scans Per Txn
+ - Full Index Scans
+ - Full Index Scans Per Txn
+ - Total Index Scans
+ - Total Index Scans Per Txn
+ - Total Parse Count
+ - Total Parse Count Per Txn
+ - Hard Parse Count
+ - Hard Parse Count Per Txn
+ - Parse Failure Count
+ - Parse Failure Count Per Txn
+ - Cursor Cache Hit Ratio
+ - Disk Sort
+ - Disk Sort Per Txn
+ - Rows Per Sort
+ - Execute Without Parse Ratio
+ - Soft Parse Ratio
+ - User Calls Ratio
+ - Host CPU Utilization
+ - Network Traffic Volume
+ - Enqueue Timeouts
+ - Enqueue Timeouts Per Txn
+ - Enqueue Waits
+ - Enqueue Waits Per Txn
+ - Enqueue Deadlocks
+ - Enqueue Deadlocks Per Txn
+ - Enqueue Requests
+ - Enqueue Requests Per Txn
+ - DB Block Gets
+ - DB Block Gets Per Txn
+ - Consistent Read Gets
+ - Consistent Read Gets Per Txn
+ - DB Block Changes
+ - DB Block Changes Per Txn
+ - Consistent Read Changes
+ - Consistent Read Changes Per Txn
+ - CPU Usage
+ - CPU Usage Per Txn
+ - CR Blocks Created
+ - CR Blocks Created Per Txn
+ - CR Undo Records Applied
+ - CR Undo Records Applied Per Txn
+ - User Rollback UndoRec Applied
+ - User Rollback Undo Records Applied Per Txn
+ - Leaf Node Splits
+ - Leaf Node Splits Per Txn
+ - Branch Node Splits
+ - Branch Node Splits Per Txn
+ - PX downgraded 1 to 25percent
+ - PX downgraded 25 to 50percent
+ - PX downgraded 50 to 75percent
+ - PX downgraded 75 to 99percent
+ - PX downgraded to serial
+ - Physical Read Total I/O Requests
+ - Physical Read Total
+ - GC CR Block Received
+ - GC CR Block Received Per Txn
+ - GC Current Block Received
+ - GC Current Block Received Per Txn
+ - Global Cache Average CR Get Time
+ - Global Cache Average Current Get Time
+ - Physical Write Total I/O Requests
+ - Global Cache Blocks Corrupted
+ - Global Cache Blocks Lost
+ - Current Logons Count
+ - Current Open Cursors Count
+ - User Limit
+ - SQL Service Response Time
+ - Database Wait Time Ratio
+ - Database CPU Time Ratio
+ - Response Time Per Txn
+ - Row Cache Hit Ratio
+ - Row Cache Miss Ratio
+ - Library Cache Hit Ratio
+ - Library Cache Miss Ratio
+ - Shared Pool Free
+ - PGA Cache Hit
+ - Process Limit
+ - Session Limit
+ - Executions Per Txn
+ - Executions
+ - Txns Per Logon
+ - Database Time
+ - Physical Write Total
+ - Physical Read I/O Requests
+ - Physical Read
+ - Physical Write I/O Requests
+ - Physical Write
+ - DB Block Changes Per User Call
+ - DB Block Gets Per User Call
+ - Executions Per User Call
+ - Logical Reads Per User Call
+ - Total Sorts Per User Call
+ - Total Table Scans Per User Call
+ - Current OS Processes Load
+ - Streams Pool Usage
+ - PQ QC Session Count
+ - PQ Slave Session Count
+ - Queries parallelized
+ - DML statements parallelized
+ - DDL statements parallelized
+ - PX operations not downgraded
+ - Session Count
+ - Average Synchronous Single-Block Read Latency
+ - I/O Throughput
+ - I/O Requests
+ - Average Active Sessions
+ - Active Serial Sessions
+ - Active Parallel Sessions
+ - Workload Capture and Replay status
+ - Background CPU Usage
+ - Background Time
+ - Host CPU Usage
+ - Cell Physical I/O Interconnect
+ - Temp Space Used
+ - Total PGA Allocated
+ - Total PGA Used by SQL Workareas
+ - Run Queue Processes
+**Query**
+ - Instance ID
+ - SQL ID
+ - SQL Text
+ - Child Count
+ - CPU Time
+ - Average Time
+ - Elapsed Time
+ - Executions
+ - Sharable Memory
+ - Users Executing
+ - Parse Calls
+ - Disk Reads
+ - Direct Writes
+ - Buffer Gets
+ - Runtime Memory Used
+ - Last Active Time
+ - Application Wait Time
+ - Concurrency Wait Time
+ - User I/O Wait Time
+ - Rows Processed
+ - I/O Interconnect Data
+ - Physical Read Requests
+ - Physical Read Data
+ - Physical Write Requests
+ - Physical Write Data
+ - Optimized Physical Read Requests
+ - Total Locks
+ - Total Pins
+ - Last Load Time
+**Parameter**
+ - Instance ID
+ - Paramter Name
+ - Parameter Value
+ - Parameter Description
+ - Parameter has not been Modified by Configuration File
+ - Parameter has been Modified after Instance Startup
+ - Parameter Value Type
+**Session**
+ - Instance ID
+ - Session ID
+ - Serial #
+ - Type
+ - Oracle User Name
+ - Schema Name
+ - O/S Machine
+ - Client Port
+ - O/S Client User Name
+ - Application
+ - Status
+ - Blocking Session Status
+ - Blocking Instance ID
+ - Blocking Session ID
+ - Final Blocking Session Status
+ - Final Blocking Instance ID
+ - Final Blocking Session ID
+ - Lock Address
+ - Wait State
+ - Wait Event
+ - Wait Time
+ - Wait Time Remaining
+ - Time Since Last Wait
+ - SQL Execution Start Time
+ - SQL Text
+**Application**
+ - Instance ID
+ - Application
+ - Background Types
+ - User Types
+ - Sessions Count
+ - O/S Machines
+ - O/S Client Users
+ - Active User Sessions
+ - Inactive User Sessions
+ - Killed User Sessions
+ - Cached User Sessions
+ - Sniped User Sessions
+ - Blocked User Sessions
+ - Unblocked User Sessions
+ - Non-Waiting User Sessions
+ - Blocked by Unknown User Sessions
+ - Waiting User Sessions
+ - Unknown Wait Time User Sessions
+**O/S User**
+ - Instance ID
+ - O/S Client User
+ - Background Types
+ - User Types
+ - Sessions Count
+ - O/S Machines
+ - Applications
+ - Active User Sessions
+ - Inactive User Sessions
+ - Killed User Sessions
+ - Cached User Sessions
+ - Sniped User Sessions
+ - Blocked User Sessions
+ - Unblocked User Sessions
+ - Non-Waiting User Sessions
+ - Blocked by Unknown User Sessions
+ - Waiting User Sessions
+ - Unknown Wait Time User Sessions
+**Data Guard Destination**
+ - Instance ID
+ - Destination ID
+ - Destination Name
+ - Status
