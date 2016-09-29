@@ -22,7 +22,7 @@ The Cloud Foundry plugin collects data by making requests to the Blue Medora Clo
 - **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15th, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 # Configuring the Blue Medora Firehose Nozzle
-The Blue Medora Firehose Nozzle is a Cloud Foundry component that collects metrics for the Loggregator Firehose  and exposes them via a RESTful API. Before the nozzle can be configured, it must be deployed.
+The Blue Medora Firehose Nozzle is a Cloud Foundry component that collects metrics from the Loggregator Firehose  and exposes them via a RESTful API. Before the nozzle can be configured, it must be deployed.
 
 There are multiple ways to deploy the nozzle:
 
