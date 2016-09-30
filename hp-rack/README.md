@@ -152,6 +152,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | username | HP iLO REST API Username used to connect to HP ProLiant device. |
 | password | HP iLO REST API Password used to connect to HP ProLiant device. |
 | host | IP address or hostname of HP iLO device |
+| collection_mode | Specifies the collection mode, `collection` or `discovery` |
 | port | Port used to connect to the HP iLO REST API.  |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
