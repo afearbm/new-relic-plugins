@@ -16,8 +16,50 @@ The Oracle Database plugin connects to a single Oracle Database Instance via a h
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Oracle Database Plugin Requirements**
+
 - The plugin supports **Oracle Database Version 11.2+**
 - **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+
+- **Access Rights.** The following list contains the minimum Oracle Database user privileges required for monitoring with the Blue Medora New Relic Plugin for Oracle Database. Ensure the Oracle Database user has these permissions granted:
+
+```
+create session
+connect
+select on dba_data_files
+select on dba_free_space
+select on dba_outstanding_alerts
+select on dba_tablespaces
+select on dba_temp_files
+select on dba_temp_free_space
+select on dba_undo_extents
+select on global_name
+select on gv_$archive_dest
+select on gv_$filestat
+select on gv_$instance
+select on gv_$parameter
+select on gv_$resource_limit
+select on gv_$session
+select on gv_$sgainfo
+select on gv_$sql
+select on gv_$sysmetric
+select on gv_$system_event
+select on gv_$system_wait_class
+select on gv_$tempstat
+select on v_$archive_dest
+select on v_$controlfile
+select on v_$database
+select on v_$datafile
+select on v_$filestat
+select on v_$instance
+select on v_$log
+select on v_$logfile
+select on v_$parameter
+select on v_$recovery_area_usage
+select on v_$resource_limit
+select on v_$rman_backup_job_details
+select on v_$tempfile
+select on v_$version
+```
 
 ----
 
