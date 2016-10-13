@@ -17,7 +17,7 @@ The Nimble Storage plugin connects to the Nimble hardware using REST and optiona
 **Nimble Storage Plugin Requirements**
 - The plugin supports **Nimble 2.3+** through REST
 - **SNMP v2** can be used for additional group metrics 
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 

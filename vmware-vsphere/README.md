@@ -17,7 +17,7 @@ The VMware vSphere Plugin connects to VMware vSphere using the vSphere API. Befo
 **VMware vSphere Plugin Requirements**
 
 - **VMware vSphere:** This plugin requires VMware vSphere Version 5.0 or later
-- **A Blue Medora License:** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com. 
+- **A Blue Medora License:** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 

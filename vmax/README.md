@@ -22,7 +22,7 @@ The Dell EMC VMAX plugin collects data by make REST calls to Unisphere for VMAX.
 - Unisphere REST API Version 8.1+
 - A least privieged user account of read-only
 
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15th, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 

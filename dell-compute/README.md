@@ -19,7 +19,7 @@ The Dell plugin connects to the supported Dell server(s) via iDRAC IP address us
 - **iDRAC Firmware:** Servers must be equipped with **iDRAC v7** or **v8** with **firmware version 1.57.57+**
 - **SNMP 1, 2c, or 3** must be configured on all Dell servers
 - **Credentials: SNMP read-only community string -or- SNMPv3 User Name and Password** (Least privileged user = read-only SNMP user)
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
  
 
 ----

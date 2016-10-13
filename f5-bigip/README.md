@@ -17,7 +17,7 @@ The F5 BIG-IP plugin connects to the supported F5 BIG-IP System via a management
 
 **F5 BIG-IP Plugin Requirements**
 - The plugin supports **F5 BIG-IP Version 11.5.0+** through REST
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 

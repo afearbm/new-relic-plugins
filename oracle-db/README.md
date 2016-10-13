@@ -18,7 +18,7 @@ The Oracle Database plugin connects to a single Oracle Database Instance via a h
 **Oracle Database Plugin Requirements**
 
 - The plugin supports **Oracle Database Version 11.2+**
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 - **Access Rights.** The following list contains the minimum Oracle Database user privileges required for monitoring with the Blue Medora New Relic Plugin for Oracle Database. Ensure the Oracle Database user has these permissions granted:
 

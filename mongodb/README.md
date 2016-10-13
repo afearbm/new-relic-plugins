@@ -18,7 +18,7 @@ The MongoDB plugin collects data by connecting to the Java MongoDB Driver. Befor
 **MongoDB Plugin Requirements**
 - MongoDB 3.0+ (3.0, 3.2)
 
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15th, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 

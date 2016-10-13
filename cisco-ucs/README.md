@@ -16,7 +16,7 @@ The Cisco UCS plugin collects data by making REST calls to the Cisco UCS Manager
 
 **Cisco UCS Plugin Requirements**
 - The plugin supports **Cisco UCS Manager 2.2+**
-- **A Blue Medora License.**A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com. 
+- **A Blue Medora License.**A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 

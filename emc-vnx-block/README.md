@@ -16,7 +16,7 @@ The VNX Block plugin connects to VNX using NaviSecCLI (Navisphere Secure Command
 **EMC VNX Block Plugin Requirements**
 - **Block Software Version:** This plugin requires Block Software Version 5.33+
 - **NaviSecCLI:** The host must have NaviSecCLI software installed
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 

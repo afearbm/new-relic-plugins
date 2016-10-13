@@ -18,7 +18,7 @@ The HP Rack plugin connects to the supported HP ProLiant server(s) via an HP iLO
 **HP Rack Plugin Requirements**
 
 - **Enabled iLO REST Client.** Ensure the monitored Gen 8+ HP ProLiant Server has an iLO device with REST API enabled.
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com. 
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 

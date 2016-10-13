@@ -17,7 +17,7 @@ The NetApp E-Series Storage plugin collects data using the SANtricity Web Servic
 **NetApp E-Series Storage Plugin Requirements**
 - **A NetApp E- or EF-Series storage system**
 - **API:** SANtricity Web Service for E-Series Proxy v1.3+.  
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 

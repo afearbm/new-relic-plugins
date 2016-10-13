@@ -19,7 +19,7 @@ The VCE Vblock Plugin connects to VNX Block using NaviSecCLI (Navisphere Secure 
 - **NaviSecCLI:** The host must have NaviSecCLI software installed
 - The plugin supports **Cisco UCS Manager 2.2+**
 - The plugin supports SNMP v2, v2c, or v3 enabled **Cisco Nexus switch(es) 1k, 3k, 4k, 5k, 7k, and/or 9k**
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until October 11, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com. 
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
 
 ----
 
