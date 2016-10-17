@@ -34,6 +34,10 @@ Once the NPI tool has been installed, run the following command:
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
+Downloading the plugin binary (only use this link if you are not installing via NPI)
+https://s3.amazonaws.com/bmibmtransfer/newrelic_cisco_ucs_plugin-2.0.0_20160912_154848.tar.gz
+
+
 ----
     
 ## Configuring the Plugin
