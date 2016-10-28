@@ -153,6 +153,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | host | The hostname or IP address of Microsoft SQL Server |
 | port | Port to connect to Microsoft SQL Server |
 | instance | Microsoft SQL Server instance to monitor |
+| query_count | Optional parameter, the number of queries to return for "Top X Queries" metrics |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 

@@ -176,6 +176,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | password | Password for PostgreSQL login. |
 | ssl_mode | Indicates if you wish to connect while using ssl. Acceptable values are `disable`, `verify-full`, `verify-ca`, or `require`. |
 | database | Optional parameter, comma separated list of databases to monitor |
+| query_count | Optional parameter, the number of queries to return for "Top X Queries" metrics |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 

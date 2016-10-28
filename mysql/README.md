@@ -154,6 +154,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | port | Port to connect to MySQL |
 | monitor_queries | Indicates whether or not to monitor queries, valid values are `true` or `false`. If `false` the `Queries` will not be populated |
 | ssl_enable | Indicates whether ssl certification should be used to connect, valid values are `true` or `false` |
+| query_count | Optional parameter, the number of queries to return for "Top X Queries" metrics |
 | ssl_cert_path | Optional parameter, ff `ssl_enable` is `true` this should be the path to your MySQL cert |
 | database | Optional parameter, comma separated list of databases to monitor |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
