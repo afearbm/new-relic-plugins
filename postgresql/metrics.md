@@ -1,0 +1,266 @@
+**PostgreSQL Instance**
+ - Server IP
+ - Server IP
+ - Server Port
+ - Scheduled Checkpoints Performed
+ - Requested Checkpoints Performed
+ - Time Writing Checkpoint Files to Disk
+ - Time Synchronizing Checkpoint Files to Disk
+ - Buffers Written During Checkpoint
+ - Buffers Written by Background Writer
+ - Times Background Writer Stopped Due to too Many Buffers
+ - Buffers Written by Backend
+ - Times Backend Executed Own fsync
+ - Buffers Allocated
+ - Last Time Stats Reset
+ - Version
+
+**PostgreSQL Configuration**
+ - Server IP
+ - Server Port
+ - Name
+ - Current value
+ - Unit
+ - Category
+ - Description
+ - Additional Info
+ - Context
+ - Value Type
+ - Source
+ - Min Value
+ - Max Value
+ - Boot Value
+ - Reset Value
+
+**PostgreSQL Database**
+ - Database ID
+ - Server IP
+ - Server Port
+ - Resource Name
+ - Database Name
+ - Tablespace Name
+ - Number of Active Connections
+ - Transaction Commits
+ - Transaction Rollbacks
+ - Block Reads/Buffer Misses
+ - Buffer Hits
+ - Buffer Hit Ratios
+ - Rows Returned
+ - Rows Fetched
+ - Rows Inserted
+ - Rows Updated
+ - Rows Deleted
+ - Canceled Queries Due to Conflicts
+ - Temporary Files Created
+ - Temporary Bytes Written
+ - Deadlock Count
+ - Time Spent Reading Data
+ - Time Spent Writing Data
+ - Database Size
+ - Last Timestamp Stats Reset
+ - Queries Canceled Due to Dropped Tablespaces
+ - Queries Canceled Due to Lock Timeouts
+ - Queries Canceled Due to Old Snapshot
+ - Queries Canceled Due to Pinned Buffers
+ - Queries Canceled Due to Deadlocks
+ - Database ID
+ - Server IP
+ - Server Port
+ - Database Name
+ - Tablespace Name
+ - Number of Active Connections
+ - Transaction Commits
+ - Transaction Rollbacks
+ - Block Reads/Buffer Misses
+ - Buffer Hits
+ - Buffer Hit Ratios
+ - Rows Returned
+ - Rows Fetched
+ - Rows Inserted
+ - Rows Updated
+ - Rows Deleted
+ - Database Size
+ - Database ID
+ - Server IP
+ - Server Port
+ - Active Sessions
+ - Waiting Sessions
+ - Idle Sessions
+ - Idle In Transaction Sessions
+ - Idle in Transaction (Aborted) Sessions
+ - Fastpath Function Call Sessions
+ - Disabled Sessions
+
+**PostgreSQL Tablespace**
+ - User Name
+ - Server IP
+ - Server Port
+ - Privileges
+ - Tablespace Name
+ - Tablespace Owner
+ - Tablespace Size
+ - Tablespace Location
+ - Tablespace Location
+
+**PostgreSQL Table**
+ - Table ID
+ - Table Size
+ - Server IP
+ - Server Port
+ - Table Schema
+ - Database Name
+ - Table Name
+ - Number of Sequential Scans
+ - Rows fetched by Sequential Scans
+ - Number of Index Scans
+ - Number of Rows Fetched by Index Scans
+ - Number of Rows Inserted
+ - Number of Rows Updated
+ - Number of Rows Deleted
+ - Number of Rows Hot Updated (No separate index update requried)
+ - Number of Live Rows
+ - Number of Dead Rows
+ - Number of Rows Modified Since Last Analyzed
+ - Last Time Table Manually Vacuumed
+ - Last Time Table Vacuumed by Auto Daemon
+ - Last Time Table Manually Analyzed
+ - Last Time Table Analyzed by Auto Daemon
+ - Number of Times Table Manually Vacuumed
+ - Number of Times Table Vacuumed By Auto Daemon
+ - Number of Times Table Manually Analyzed
+ - Number of Times Table Analyzed by Auto Daemon
+ - Number of Block Reads
+ - Number of Buffer Reads
+ - Number of Block Reads from Indexes
+ - Number of Buffer Hits from Indexes
+ - Number of Block Reads from TOAST Table
+ - Number of Buffer Hits from TOAST Table
+ - Number of Block Reads from TOAST Table Indexes
+ - Number of Buffer Hits from TOAST Table Indexes
+ - Tablespace Name
+
+**PostgreSQL Trigger**
+ - Trigger ID
+ - Server IP
+ - Server Port
+ - Trigger Name
+ - Table Name
+ - Table ID
+ - Function ID
+ - Function Name
+ - Type of Trigger Fire
+ - Trigger Enabled Status
+ - Arguments Passed to Trigger
+
+**PostgreSQL Index**
+ - Server IP
+ - Server Port
+ - Table ID
+ - Index ID
+ - Schema Name
+ - Table Name
+ - Index Name
+ - Number of Scans
+ - Number of Index Entries Returned
+ - Number of Table Rows Fetched by Scan
+ - Number of Block Reads
+ - Number of Buffer Hits
+
+**PostgreSQL Replication**
+ - Process ID
+ - Process ID
+ - Server IP
+ - Server Port
+ - User ID
+ - User name
+ - Client IP
+ - Client Host Name
+ - Client Port
+ - Process Start Time
+ - Application Name
+ - Oldest Transaction ID Seen for Process
+ - Current WAL Sender State
+ - Last Transaction Log Position Sent
+ - Last Transaction Log Position Written to Disk
+ - Last Transaction Log Position Flushed to Disk
+ - Last Transaction Log Position Replayed into Database
+ - Priority of Standby Server
+ - Synchronous State of Server
+ - Replication Delay
+
+**PostgreSQL Function**
+ - Rank
+ - Rank
+ - Rank
+ - Function ID
+ - Server IP
+ - Server Port
+ - Database Name
+ - Schema Name
+ - Function Name
+ - Times Called
+ - Total Time Spent Calling This and All Called Functions
+ - Time Spent on This Function Alone (not referenced functions)
+ - Average Total Call Time
+
+**PostgreSQL Sequence**
+ - Sequence ID
+ - Server IP
+ - Server Port
+ - Schema Name
+ - Sequence Name
+ - Number of Block Reads
+ - Number of Buffer Hits
+
+**PostgreSQL Session**
+ - Database ID
+ - Database Name
+ - Process ID
+ - Process ID
+ - User ID
+ - User Name
+ - Client Application Name
+ - Session Name
+ - Client IP Address
+ - Client Hostname
+ - Client port
+ - Time Backend Connected
+ - Time Current Transaction Started
+ - Current Query Start Time
+ - Time When State Changed Last
+ - True if Query Waiting for Lock
+ - Current State of Query
+ - Transaction ID of Backend
+ - Oldest Transaction ID Seen for Process
+ - Query Text
+ - Query Text
+
+**PostgreSQL Query**
+ - Query ID
+ - Query ID
+ - Rank
+ - Rank
+ - Rank
+ - User Name
+ - Server IP
+ - Server Port
+ - Database Name
+ - Query
+ - Query ID
+ - Query ID
+ - Number of Calls
+ - Total Time
+ - Rows Returned
+ - Shared Block Cache Hits
+ - Shared Block Reads
+ - Shared Blocks Dirty Read
+ - Shared Blocks Written
+ - Local Block Cache Hits
+ - Local Block Reads
+ - Local Blocks Dirty Read
+ - Local Blocks Written
+ - Total Time Spent Reading Blocks
+ - Total Time Spent Writing Blocks
+ - Average Time Spent Per Call
+
+241
