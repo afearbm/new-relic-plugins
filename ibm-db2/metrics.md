@@ -11,6 +11,7 @@
  - State
  - Sync Mode
  - Timeout
+ 
 **DB2 Tablespace**
  - Extent Size
  - Number of Containers
@@ -25,6 +26,7 @@
  - Tablespace Utilization
  - Number of Ranges
  - Bufferpool Identifier
+ 
 **DB2 Bufferpool**
  - Logical Data Reads
  - Logical Index Reads
@@ -41,6 +43,7 @@
  - Pool Read Time
  - Pool Write Time
  - Individual Buffer Pool Hit Ratio
+ 
 **DB2 Top-N**
  - Average Execution Time
  - Average User CPU Time
@@ -49,8 +52,10 @@
  - Rows Written
  - Number of Executions
  - Query Statement
+ 
 **DB2 Memory Pool**
  - Memory Pool Utilization
+ 
 **DB2 Database**
  - Current Database Size
  - Allocated Database Size
@@ -201,4 +206,3 @@
  - Average Hash Loops Rate
  - Average Piped Sorts Rejected Rate
  - Average Sorts Rate
-197
