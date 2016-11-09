@@ -16,6 +16,7 @@
  - Average CPU Nice Level Utilization
  - Average CPU Soft Interrupt Request Utilization
  - Average CPU Stolen Utilization
+ 
 **Disk**
  - Disk Kind
  - Disk Name
@@ -25,6 +26,7 @@
  - Disk Free
  - Disk In-use
  - Disk Reserved
+ 
 **SSL-Certificate**
  - SSL-Certificate Name
  - SSL-Certificate Kind
@@ -33,6 +35,7 @@
  - Expiration Date
  - SSL-Certificate Issuer
  - Key Type
+ 
 **F5 BIG-IP Pool**
  - Pool Kind
  - Pool Name
@@ -51,6 +54,7 @@
  - Enabled State
  - Status Reason
  - Requests
+ 
 **F5 BIG-IP Pool Member**
  - Pool Member Kind
  - Pool Member Name
@@ -73,6 +77,7 @@
  - Status Reason
  - Enabled State
  - Requests
+ 
 **F5 BIG-IP Node**
  - Node Kind
  - Node Name
@@ -93,6 +98,7 @@
  - Status Reason
  - Enabled State
  - Requests
+ 
 **F5 BIG-IP Virtual Server**
  - Virtual Server Kind
  - Virtual Server Name
@@ -110,11 +116,13 @@
  - Enabled State
  - Status Reason
  - Requests
+ 
 **F5 BIG-IP Module**
  - Module Kind
  - Module Name
  - Module Full Path
  - Provisioning Level
+ 
 **F5 BIG-IP Device**
  - Device Kind
  - Device Name
@@ -130,6 +138,7 @@
  - Self Device
  - Version
  - Device Sync State
+ 
 **F5 BIG-IP Device Group**
  - Device Group Kind
  - Device Group Name
@@ -139,6 +148,7 @@
  - Device Group Sync State
  - Device Group Auto Sync
  - Device Group Network Failover
+ 
 **F5 BIG-IP Application Service**
  - Self Link
  - Application Kind
@@ -149,4 +159,3 @@
  - Pool to Use
  - Template Modified
  - Traffic Group
-140
