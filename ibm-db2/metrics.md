@@ -1,0 +1,204 @@
+**DB2 HADR**
+ - Status
+ - Connect Status
+ - Connection Time
+ - Heartbeat
+ - Local Host
+ - Remote Host
+ - Remote Instance
+ - Remote Service
+ - Role
+ - State
+ - Sync Mode
+ - Timeout
+**DB2 Tablespace**
+ - Extent Size
+ - Number of Containers
+ - Page Size
+ - Prefetch Size
+ - Tablespace Free Pages
+ - Tablespace State
+ - Tablespace Total Pages
+ - Tablespace Type
+ - Tablespace Usable Pages
+ - Tablespace Used Pages
+ - Tablespace Utilization
+ - Number of Ranges
+ - Bufferpool Identifier
+**DB2 Bufferpool**
+ - Logical Data Reads
+ - Logical Index Reads
+ - Physical Data Reads
+ - Physical Index Reads
+ - Pool Asynchronous Data Reads
+ - Pool Asynchronous Index Reads
+ - Pool Asynchronous Data Writes
+ - Pool Asynchronous Index Writes
+ - Pool Asynchronous Read Time
+ - Pool Asynchronous Write Time
+ - Pool Data Writes
+ - Pool Index Writes
+ - Pool Read Time
+ - Pool Write Time
+ - Individual Buffer Pool Hit Ratio
+**DB2 Top-N**
+ - Average Execution Time
+ - Average User CPU Time
+ - Average System CPU Time
+ - Rows Read
+ - Rows Written
+ - Number of Executions
+ - Query Statement
+**DB2 Memory Pool**
+ - Memory Pool Utilization
+**DB2 Database**
+ - Current Database Size
+ - Allocated Database Size
+ - Maximum Active Applications
+ - Log Space Utilization
+ - Total Log Used
+ - Logical Location of Database
+ - Pool Asynchronous Writes
+ - Number of Applications Waiting on Locks
+ - Buffer Pool Data Hit Ratio
+ - Buffer Pool Hit Ratio
+ - Buffer Pool Index Hit Ratio
+ - Logical Data Reads
+ - Logical Index Reads
+ - Physical Data Reads
+ - Physical Index Reads
+ - Active Applications
+ - Applications Connected
+ - Total Connections
+ - Time of Last Backup
+ - Catalogue Cache Inserts
+ - Catalogue Cache Lookups
+ - Catalogue Cache Overflows
+ - Package Cache Inserts
+ - Package Cache Lookups
+ - Package Cache Max Used
+ - Package Cache Overflows
+ - Cleans for Steals
+ - Cleans for Thresholds
+ - Log Reads
+ - Log Writes
+ - Locklist
+ - Average Direct Write Rate
+ - Average Direct Read Rate
+ - Direct Read Requests
+ - Direct Read Time
+ - Direct Reads
+ - Direct Write Requests
+ - Direct Write Time
+ - Direct Writes
+ - Percentage of Applications Waiting on Locks
+ - Average Lock Wait Time
+ - Commit SQL Statements
+ - Connection Time
+ - Physical Disk Location of Database
+ - Number of Deadlocks
+ - Dynamic SQL Statements
+ - Failed SQL Statements
+ - Number of Exclusive Lock Escalations
+ - Number of Internal Rollbacks
+ - Number of Internal Deadlock Rollbacks
+ - Last Reset
+ - Number of Lock Escalations
+ - Lock List in Use
+ - Number of Lock Timeouts
+ - Total Lock Wait Time
+ - Number of Locks Held
+ - Number of Lock Waits
+ - Pool Asynchronous Data Reads
+ - Pool Asynchronous Data Writes
+ - Pool Asynchronous Index Reads
+ - Pool Asynchronous Index Writes
+ - Pool Asynchronous Read Time
+ - Pool Asynchronous Write Time
+ - Pool Synchronous Data Reads
+ - Pool Synchronous Data Writes
+ - Pool Synchronous Index Reads
+ - Pool Synchronous Index Writes
+ - Pool Asynchronous Read Time
+ - Pool Asynchronous Write Time
+ - Pool Data Writes
+ - Pool Index Writes
+ - Pool Read Time
+ - Pool Write Time
+ - Rollback SQL Statements
+ - Static SQL Statements
+ - Active Sorts
+ - Post Threshold Hash Joins
+ - Post Threshold Sorts
+ - Sort Heap Pages Allocated
+ - Sort Overflows
+ - Total Hash Joins
+ - Total Hash Loops
+ - Total Hash Join Overflows
+ - Total Hash Join Small Overflow
+ - Total Sort Time
+ - Total Sorts
+ - Small Overflow Hash Joins to Total Hash Joins Ratio
+ - Status
+ - Agent Created due to Empty Pool
+ - Agent Waiting Top
+ - Agents Registered
+ - Coordination Agents Top
+ - Idle Agents
+ - Pool Agents
+ - Agents Created to Assigned Ratio
+ - Active Local Connections
+ - Active Remote Connections
+ - Local Connections
+ - Remote Connections
+ - Startup Time
+ - Status
+ - Registered Agents
+ - Allocated Sort Heap Memory
+ - Communication Private Memory
+ - Number of Current Connections
+ - Average Post Threshold Joins Rate
+ - Average Post Threshold Sorts Rate
+ - Piped Sorts Accepted
+ - Piped Sorts Requested
+ - Piped Sorts Rejected
+ - Agents Assignment Rate
+ - Agent Creation Rate
+ - Days Since Last Backup
+ - Catalog Cache Hit Ratio
+ - Catalogue Cache Heapfull
+ - Package Cache Hit Ratio
+ - Sort Heap Threshold
+ - Sort Heap Utilization
+ - Deadlock Rate
+ - Space Utilization
+ - Number of Active Current Connections
+ - Commit SQL Statements Rate
+ - Dynamic SQL Statements Rate
+ - Exclusive Lock Escalation Rate
+ - Failed SQL Statements Rate
+ - Internal Deadlock Rollbacks Rate
+ - Lock Escalation Rate
+ - Lock Timeouts Rate
+ - Rollback SQL Statements Rate
+ - Static SQL Statements Rate
+ - Average Data Write Rate
+ - Average Index Write Rate
+ - Average Page Read Rate
+ - Average Page Write Rate
+ - Logical Data Read Rate
+ - Logical Index Read Rate
+ - Physical Data Read Rate
+ - Physical Index Read Rate
+ - Synchronous Data Read Rate
+ - Synchronous Data Write Rate
+ - Synchronous Index Read Rate
+ - Synchronous Index Write Rate
+ - Average Active Sorts Rate
+ - Average Hash Join Overflow Rate
+ - Average Hash Join Rate
+ - Average Hash Join Small Overflow Rate
+ - Average Hash Loops Rate
+ - Average Piped Sorts Rejected Rate
+ - Average Sorts Rate
+197
