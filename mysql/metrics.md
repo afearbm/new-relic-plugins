@@ -1,0 +1,500 @@
+**MySQL Instance**
+ - Hostname
+ - Port
+ - Total Allocated Memory
+ - Hostname
+ - Port
+ - Max Connections
+ - Hostname
+ - Port
+ - Instance Name
+ - Version
+ - Adaptive Hash Pages Added
+ - Adaptive Hash Pages Removed
+ - Adaptive Hash Rows Added
+ - Adaptive Hash Rows Deleted With No Hash Entry
+ - Adaptive Hash Rows Removed
+ - Adaptive Hash Rows Updated
+ - Adaptive Hash Searches
+ - Adaptive Hash B-tree Searches
+ - Buffer Pages Read
+ - Buffer Pool Read Ahead
+ - Buffer Pool Bytes Dirty
+ - Buffer Pool Reads
+ - Buffer Pool Pages Misc
+ - Buffer Pages Written
+ - Buffer Pool Wait Free
+ - Buffer Pool Pages Dirty
+ - Buffer Data Written
+ - Buffer Pool Pages Total
+ - Buffer Pages Created
+ - Buffer Pool Write Requests
+ - Buffer Pool Bytes Data
+ - Buffer Data Reads
+ - Buffer Pool Read Ahead Evicted
+ - Buffer Pool Pages Free
+ - Buffer Pool Read Requests
+ - Buffer Pool Pages Data
+ - Buffer Flush Batch Scanned
+ - Buffer Flush Batch Num Scan
+ - Buffer Flush Batch Scanned Per Call
+ - Buffer Flush Batch Rescan
+ - Buffer Flush Batch Total Pages
+ - Buffer Flush Batches
+ - Buffer Flush Batch Pages
+ - Buffer Flush Neighbor Total Pages
+ - Buffer Flush Neighbor
+ - Buffer Flush Neighbor Pages
+ - Buffer Flush Num To Flush Requested
+ - Buffer Flush Average Page Rate
+ - Buffer Flush LSN Average Rate
+ - Buffer Flush Percent For Dirty
+ - Buffer Flush Percent For LSN
+ - Buffer Flush Sync Waits
+ - Buffer Flush Adaptive Total Pages
+ - Buffer Flush Adaptive
+ - Buffer Flush Adaptive Pages
+ - Buffer Flush Sync Total Pages
+ - Buffer Flush Background
+ - Buffer Flush Background Pages
+ - Buffer LRU Batch Scanned
+ - Buffer LRU Batch Number Scanned
+ - Buffer LRU Batch Scanned Per Call
+ - Buffer LRU Batch Total Pages
+ - Buffer LRU Batch Evict Total Pages
+ - Buffer LRU Batch Flush Total Pages
+ - Buffer LRU Batches
+ - Buffer LRU Batches Evict
+ - Buffer LRU Batches Flush
+ - Buffer LRU Batch Pages
+ - Buffer LRU Batch Evict Pages
+ - Buffer LRU Batch Flush Pages
+ - Buffer LRU Single Flush Scanned
+ - Buffer LRU Single Flush Number Scan
+ - Buffer LRU Single Flush Scanned Per Call
+ - Buffer LRU Get Free Search
+ - Buffer LRU Search Scanned
+ - Buffer LRU Search Number Scan
+ - Buffer LRU Search Scanned Per Call
+ - Buffer LRU Unzip Search Scanned
+ - Buffer LRU Unzip Search Number Scan
+ - Buffer LRU Unzip Search Scanned Per Call
+ - Buffer Page Read Index Leaf
+ - Buffer Page Read Index Non Leaf
+ - Buffer Page Read Index Insert Buffer Leaf
+ - Buffer Page Read Index Insert Buffer Non Leaf
+ - Buffer Page Read Undo Log
+ - Buffer Page Read Index Inode
+ - Buffer Page Read Insert Buffer Free List
+ - Buffer Page Read Insert Buffer Bitmap
+ - Buffer Page Read System Page
+ - Buffer Page Read Transaction System
+ - Buffer Page Read File Space Header
+ - Buffer Page Read Extent Descriptor
+ - Buffer Page Read Uncompressed BLOB
+ - Buffer Page Read First Compressed BLOB
+ - Buffer Page Read Subsequent Compressed BLOB
+ - Buffer Page Read Other
+ - Buffer Page Written Index Leaf
+ - Buffer Page Written Index Non Leaf
+ - Buffer Page Written Index Insert Buffer Leaf
+ - Buffer Page Written Index Insert Buffer Non Leaf
+ - Buffer Page Written Undo Log
+ - Buffer Page Written Index Inode
+ - Buffer Page Written Insert Buffer Free List
+ - Buffer Page Written Insert Buffer Bitmap
+ - Buffer Page Written System Page
+ - Buffer Page Written Transaction System
+ - Buffer Page Written File Space Header
+ - Buffer Page Written Extent Descriptor
+ - Buffer Page Written Uncompressed BLOB
+ - Buffer Page Written First Compressed BLOB
+ - Buffer Page Written Subsequent Compressed BLOB
+ - Buffer Page Written Other
+ - Change Buffer Deleted Records Merged
+ - Change Buffer Deleted Merged Operations Discarded
+ - Change Buffer Inserted Records Merged
+ - Change Buffer Size
+ - Change Buffer Insert Merged Operations Discarded
+ - Change Buffer Number Merges
+ - Change Buffer Purge Records Merged
+ - Change Buffer Purge Merged Records Discarded
+ - Number of Pages Compressed
+ - Number of Pages Decompressed
+ - Number of Padding Increments Due To Compression
+ - Number of Padding Decrements Due To Compression
+ - Indexes Waiting To Drop
+ - Tables Waiting To Drop
+ - Indexes Being Created Online
+ - ALTER TABLE's, CREATE INDEX's, DROP INDEX's In Progress
+ - Rows Inserted
+ - Rows Read
+ - Rows Updated
+ - Rows Deleted
+ - Files Currently Open
+ - Index Push-Down Condition Check Attempts
+ - Index Push-Down Conditions No Match
+ - Index Push-Down Conditions Out Of Range
+ - Index Push-Down Conditions Match
+ - Index Page Splits
+ - Index Page Merge Attempts
+ - Index Page Merge Successes
+ - Index Page Reorganization Attempts
+ - Index Page Reorganization Successes
+ - Index Page Discards
+ - Deadlocks
+ - Row Lock Waits
+ - Row Lock Time Max
+ - Row Lock Time
+ - Lock Timeouts
+ - Row Lock Time Average
+ - Row Lock Current Waits
+ - Record Lock Requests
+ - Record Locks Created
+ - Record Locks Removed
+ - Record Locks
+ - Table Locks Created
+ - Table Locks Removed
+ - Table Locks
+ - Memory Pool Size
+ - Table Handles Opened
+ - Table Handles Closed
+ - Table Reference Count
+ - Log Bytes Written
+ - Data Writes
+ - Log Pending Writes
+ - Data Reads
+ - Log Pending fsync Writes
+ - Log fsync Writes
+ - fsync() Calls Count
+ - Pending Reads
+ - Pending Writes
+ - Log Bytes Written
+ - Purge Delete Marked Records
+ - Purge Update Existing Or External Records
+ - Purge Invoked
+ - Purge Undo Log Pages
+ - Purge DML Delay Time
+ - Purge Stop Count
+ - Purge Resume Count
+ - Log Write Requests
+ - Log Waits
+ - Log Writes
+ - Log Checkpoints
+ - Log LSN of Last Flush
+ - Log LSN at Last Checkpoint
+ - Log Current LSN
+ - Log LSN Checkpoint Age
+ - Log Oldest LSN in Buffer Pool
+ - Max Modified LSN Age For ASYNC Preflush
+ - Max Modified LSN Age For SYNC Preflush
+ - Log Pending Log Writes
+ - Log Pending Checkpoint Writes
+ - Log Number Log IO
+ - Buffer Pool Size
+ - OS Waits From Shared Latch Request
+ - rwlock Spin Waits From Shared Latch Request
+ - rwlock Spin Loop Rounds From Exclusive Latch Request
+ - Page Size
+ - rwlock Spin Loop Rounds From Shared Latch Request
+ - Doublewrite Operation Pages Written
+ - OS Waits From Exclusive Latch Request
+ - Server Activity Count
+ - rwlock Spin Waits From Exclusive Latch Request
+ - Doublewrite Writes
+ - Master Thread Sleep Time
+ - Master Active Loops
+ - Master Idle Loops
+ - Background Drop Table Time
+ - Change Buffer Merge Time
+ - Log Flush Time
+ - Memory Validation Time
+ - Master Purge Time
+ - DICT LRU Processing Time
+ - Checkpoint Time
+ - TRX_RSEG_HISTORY List Length
+ - Read Write Transaction Commits
+ - Read Only Transaction Commits
+ - Non-Locking Auto-Commit Read Only Commits
+ - Insert And Update Commits
+ - Transaction Rollbacks
+ - Transactions Rolled Back To Savepoint
+ - Active Transactions Rolled Back
+ - Active Transactions
+ - Undo Slots Used
+ - Undo Slots Cached
+ - Current Rollback Size (Pages)
+ - Hostname
+ - Port
+ - Connections
+ - Aborted Connections
+ - Max Used Connections
+ - Threads Connected
+ - SSL Client Connections
+ - SSL Connection Renegotiates
+ - SSL Finished Connections
+ - Hostname
+ - Port
+ - Connections
+ - Aborted Connections
+ - Max Used Connections
+ - Threads Connected
+ - SSL Client Connections
+ - SSL Connection Renegotiates
+ - SSL Finished Connections
+
+**MySQL Tablespace**
+ - Tablespace ID
+ - Tablespace Name
+ - Hostname
+ - Port
+ - Tablespace Flag Settings
+ - File Format
+ - Row Format
+ - Page Size
+ - Zip Page Size
+ - Maximum File Size
+ - Current File Size
+ - Space Type
+ - Compression Type
+
+**MySQL Replication**
+ - Slave Hostname
+ - Slave Port
+ - Slave I/O State
+ - Master Host
+ - Master User
+ - Master Port
+ - Connect Retry Time
+ - Slave I/O Running
+ - Slave SQL Running
+ - Master SSL Allowed
+ - Master SSL Verify Server Cert
+ - Last SQL Error Number
+ - Last SQL Error
+ - Last I/O Error Number
+ - Last I/O Error
+ - SQL Delay
+ - Slave SQL Running State
+ - Master Retry Count
+ - Last I/O Error Time
+ - Last SQL Error Timestamp
+ - Auto Position
+
+**MySQL Database**
+ - Hostname
+ - Port
+ - Database Name
+ - Connected Threads
+ - Misc Threads
+ - Binlog Dump Threads
+ - Change User Threads
+ - Close Stmt Threads
+ - Connect Threads
+ - Connect Out Threads
+ - Create DB Threads
+ - Daemon Threads
+ - Debug Threads
+ - Delayed Insert Threads
+ - Error Threads
+ - Drop DB Threads
+ - Execute Threads
+ - Fetch Threads
+ - Field List Threads
+ - Init DB Threads
+ - Kill Threads
+ - Long Data Threads
+ - Ping Threads
+ - Prepare Threads
+ - Processlist Threads
+ - Query Threads
+ - Quit Threads
+ - Refresh Threads
+ - Register Slave Threads
+ - Reset Stmt Threads
+ - Set Option Threads
+ - Shutdown Threads
+ - Sleep Threads
+ - Statistics Threads
+ - Table Dump Threads
+ - Hostname
+ - Port
+ - Database Name
+ - Database Total Size
+ - Database Data Size
+ - Database Index Size
+ - Hostname
+ - Port
+ - Database Name
+ - Unused Indexes
+ - Hostname
+ - Port
+ - Database Name
+ - I/O Read Requests
+ - I/O Read
+ - I/O Read Latency
+ - I/O Write Requests
+ - I/O Write
+ - I/O Write Latency
+ - I/O Misc Requests
+ - I/O Misc Latency
+ - Hostname
+ - Port
+ - Database Name
+ - Rows Read/Written
+ - R/W Total Wait Time
+ - R/W Min Wait Time
+ - R/W Average Wait Time
+ - R/W Max Wait Time
+ - Rows Read
+ - Read Total Wait Time
+ - Read Min Wait Time
+ - Read Average Wait Time
+ - Read Max Wait Time
+ - Rows Written
+ - Write Total Wait Time
+ - Write Min Wait Time
+ - Write Average Wait Time
+ - Write Max Wait Time
+ - Rows Fetched
+ - Fetch Total Wait Time
+ - Fetch Min Wait Time
+ - Fetch Average Wait Time
+ - Fetch Max Wait Time
+ - Rows Inserted
+ - Insert Total Wait Time
+ - Insert Min Wait Time
+ - Insert Average Wait Time
+ - Insert Max Wait Time
+ - Rows Updated
+ - Update Total Wait Time
+ - Update Min Wait Time
+ - Update Average Wait Time
+ - Update Max Wait Time
+ - Rows Deleted
+ - Delete Total Wait Time
+ - Delete Min Wait Time
+ - Delete Average Wait Time
+ - Delete Max Wait Time
+
+**MySQL Query**
+ - Hostname
+ - Port
+ - SQL ID
+ - Rank
+ - SQL Text
+ - Database
+ - Calls
+ - Average Time
+ - Total Time
+ - Average Lock Time
+ - Total Lock Time
+ - Average Rows Sent
+ - Average Rows Examined
+ - Hostname
+ - Port
+ - SQL ID
+ - Rank
+ - SQL Text
+ - Database
+ - Calls
+ - Average Time
+ - Total Time
+ - Average Lock Time
+ - Total Lock Time
+ - Average Rows Sent
+ - Average Rows Examined
+ - Hostname
+ - Port
+ - SQL ID
+ - Rank
+ - SQL Text
+ - Database
+ - Calls
+ - Average Time
+ - Total Time
+ - Average Lock Time
+ - Total Lock Time
+ - Average Rows Sent
+ - Average Rows Examined
+
+**MySQL Table**
+ - Hostname
+ - Port
+ - Table Name
+ - Database Name
+ - Rows Read/Written
+ - R/W Total Wait Time
+ - R/W Min Wait Time
+ - R/W Average Wait Time
+ - R/W Max Wait Time
+ - Rows Read
+ - Read Total Wait Time
+ - Read Min Wait Time
+ - Read Average Wait Time
+ - Read Max Wait Time
+ - Rows Written
+ - Write Total Wait Time
+ - Write Min Wait Time
+ - Write Average Wait Time
+ - Write Max Wait Time
+ - Rows Fetched
+ - Fetch Total Wait Time
+ - Fetch Min Wait Time
+ - Fetch Average Wait Time
+ - Fetch Max Wait Time
+ - Rows Inserted
+ - Insert Total Wait Time
+ - Insert Min Wait Time
+ - Insert Average Wait Time
+ - Insert Max Wait Time
+ - Rows Updated
+ - Update Total Wait Time
+ - Update Min Wait Time
+ - Update Average Wait Time
+ - Update Max Wait Time
+ - Rows Deleted
+ - Delete Total Wait Time
+ - Delete Min Wait Time
+ - Delete Average Wait Time
+ - Delete Max Wait Time
+ - Hostname
+ - Port
+ - Table Name
+ - Database Name
+ - Table Total Size
+ - Table Data Size
+ - Table Index Size
+ - Hostname
+ - Port
+ - Table Name
+ - Database Name
+ - Full Rows Scanned
+ - Hostname
+ - Port
+ - Table Name
+ - Database Name
+ - I/O Read Requests
+ - I/O Read
+ - I/O Read Latency
+ - I/O Write Requests
+ - I/O Write
+ - I/O Write Latency
+ - I/O Misc Requests
+ - I/O Misc Latency
+
+**MySQL Index**
+ - Hostname
+ - Port
+ - Index Name
+ - Table Schema
+ - Table Name
+ - Is Used
+ - Rows Selected
+ - Select Latency
+ - Rows Inserted
+ - Insert Latency
+ - Rows Updated
+ - Update Latency
+ - Rows Deleted
+ - Delete Latency
