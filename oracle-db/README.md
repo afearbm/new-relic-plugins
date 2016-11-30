@@ -18,7 +18,8 @@ The Oracle Database plugin connects to a single Oracle Database Instance via a h
 **Oracle Database Plugin Requirements**
 
 - The plugin supports **Oracle Database Version 11.2+**
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 - **Access Rights.** The following list contains the minimum Oracle Database user privileges required for monitoring with the Blue Medora New Relic Plugin for Oracle Database. Ensure the Oracle Database user has these permissions granted:
 
@@ -290,3 +291,4 @@ For questions or issues regarding the Oracle Database Plugin for New Relic, visi
 | Waits (waits/sec)  | The total number of waits per second across all instances  |
 | Average CPU Usage (centiseconds/sec)  | The average CPU usage across all instaces  |
 | Active Sessions (sessions)  | The total number of active sessions across all instaces  |
+| Average Query Execution Time (seconds) | The average query execution time across all queries |

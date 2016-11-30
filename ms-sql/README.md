@@ -16,8 +16,10 @@ The MS SQL plugin connects to a MS SQL database via JDBC connection. Before inst
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **MS SQL Plugin Requirements**
+
 - **MS SQL versions.** The plugin is compatible with MS SQL 2008 R2, 2012, & 2014.
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15,  2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -203,6 +205,7 @@ For questions or issues regarding the MS SQL Plugin for New Relic, visit http://
 | Recompilations (compilations/sec) | The number of re-compilations per second on the instance |
 | Processes (processes) | The number of `Preconnect`, `Background`, `Dormant`, `Runnable`, `Suspended`, `Running`, `Blocked`, and `Sleeping` processes on the instance |
 | Total Wait Time Across Instance (ms/sec) | The number of milliseconds spent ever second waiting across the instance |
+| Disk Space (GB) | The amount of Disk Space on the instance |
 | Runnable Tasks (tasks) | The number of runnable tasks on the instance |
 | Transactions (transactions/sec) | The number of transactions per second on the instance |
 | Page Splits (splits/sec) | The number of page splits per second on the instance |
@@ -222,12 +225,23 @@ For questions or issues regarding the MS SQL Plugin for New Relic, visit http://
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Buffer Pool Size (GB) | The size of the buffer pool per database |
-| Read Delay (ms/sec) | The number of milliseconds per second that a read is delayed per database |
-| Write Delay (ms/sec) | The number of milliseconds per second that a write is delayed per database |
-| Read Throughput (MB/sec) | The read throughput per database |
-| Write Throughput (MB/sec) | The write throughput per database |
-| Read IOPS (operations/sec) | The number of read operations per second on a database |
-| Write IOPS (operations/sec) | The number of write operations per second on a database |
+| Top 10 Read Delay (ms/sec) | The 10 databases with the highest milliseconds per second that a read is delayed per database |
+| Top 10 Write Delay (ms/sec) | The 10 databases with the highest milliseconds per second that a write is delayed per database |
+| Top 10 Read Throughput (MB/sec) | The 10 databases with the highest read throughput |
+| Top 10 Write Throughput (MB/sec) | The 10 databases with the highest write throughput |
+| Top 10 Read IOPS (operations/sec) | The 10 databases with the highest number of read operations per second |
+| Top 10 Write IOPS (operations/sec) | The 10 databases with the highest number of write operations per second |
+
+**Database Objects**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Top 10 Average Page Lock Wait (sec) | The 10 Database Objects with the highest Average Page Lock Wait |
+| Top 10 Page Locks | The 10 Database Objects with the highest Page Locks |
+| Top 10 Page Lock Waits | The 10 Database Objects with the highest Page Lock Waits |
+| Top 10 Average Row Lock Waits | The 10 Database Objects with the highest Average Row Lock Waits |
+| Top 10 Row Locks | The 10 Database Objects with the highest Row Locks |
+| Top 10 Row Lock Waits | The 10 Database Objects with the highest Row Lock Waits |
 
 **Queries**
 
@@ -245,4 +259,4 @@ For questions or issues regarding the MS SQL Plugin for New Relic, visit http://
 | Compilations (compilations/sec) | The number of compilations per second on the instance |
 | Recompilations (compilations/sec) | The number of re-compilations per second on the instance |
 | Total IOPS (operations/sec) | The total number of IOPS across the instance |
-| Total Throughput (bytes/sec) | The total throughput across the instance |
+| Average Query Execution Time (seconds) | The average query execution time across all queries |

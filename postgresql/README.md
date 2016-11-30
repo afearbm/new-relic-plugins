@@ -16,8 +16,10 @@ The PostgreSQL plugin connects to the supported PostgreSQL instance via a host o
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **PostgreSQL Plugin Requirements**
+
 - The plugin supports **PostgreSQL versions 9.0+**
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 **PostgreSQL Query Tracking Prerequisites**
 
@@ -272,3 +274,4 @@ Only 20 functions are displayed at a time. The 20 that are displayed are the fun
 | Active Sessions (sessions) | The sum of active sessions across all databases being monitored |
 | Waiting Sessions (sessions) | The sum of waiting sessions across all databases being monitored |
 | Total Deadlocks (deadlocks/minute) | The sum of deadlocks across all databases being monitored |
+| Average Query Execution Time (seconds) | The average query execution time across all queries |

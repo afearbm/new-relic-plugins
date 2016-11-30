@@ -359,6 +359,39 @@ Data is collected and sent at a predefined interval, but can be customized in th
 
 ----
 
+##"Custom Notifications Level" Configuration
+- `send_to_insights` is a hash with per resource type boolean
+- `notifications` is set to `error`, `warning`, `info`, or `debug`
+
+### Behavior
+- Notifications are filtered according to their severity level. Notifications of equal or greater severity to the custom level will be sent to Insights. (error > warning > info > debug)
+- Behaves as would otherwise be expected
+
+```
+{
+  "polling_interval_seconds": 60,
+  "agents": [
+    {
+      "instance_name": "my-oracle",
+      "username": "oracle",
+      "password": "password",
+      "host": "my-oracle",
+      "port": 1521,
+      "send_to_insights": {
+        "oracle_database": true,
+        "oracle_instance": false,
+        "oracle_table":    false,
+        "oracle_query":    true,
+        "notifications":   "debug",
+        "relationships":   false
+      }
+    }
+  ]
+}
+```
+
+----
+
 ##Example newrelic.json with Insights configured
 ```
 {

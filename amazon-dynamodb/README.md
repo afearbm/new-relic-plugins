@@ -16,7 +16,9 @@ The Amazon DynamoDB plugin connects to a DynamoDB Region via account access keys
 - A New Relic account. (Sign up for a free account [here](http://newrelic.com).)
 
 **Amazon DynamoDB Plugin Requirements**
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -220,8 +222,8 @@ For questions or issues regarding the Amazon DynamoDB Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Total Size (bytes) | Total size of all tables within region |
-| Total Provisioned Read Capacity (units) | Total provisioned read capacity across all tables within region |
-| Total Remaining Read Capacity (units) | Total remaining read capacity across all tables within region |
-| Total Provisioned Write Capacity (units) | Total provisioned write capacity across all tables within region |
-| Total Remaining Write Capacity (units) | Total remaining write capacity across all tables within region |
+| Read Throttle Events | The number of recent read throttle events |
+| Write Throttle Events | The number of recent write throttle events |
+| Read Capacity Usage | The percentage of read capacity used |
+| Write Capacity Usage | The percentage of write capacity used |
+

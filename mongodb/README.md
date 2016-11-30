@@ -16,9 +16,10 @@ The MongoDB plugin collects data by connecting to the Java MongoDB Driver. Befor
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **MongoDB Plugin Requirements**
-- MongoDB 3.0+ (3.0, 3.2)
 
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- MongoDB 3.0+ (3.0, 3.2)
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -198,6 +199,7 @@ For questions or issues regarding the Blue Medora MongoDB Plugin for New Relic, 
 
 
 **Mongo Mongods**
+
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Current Connections (connections)  | The Number of Current Connections for each monitored Mongo Mongod |
@@ -210,6 +212,7 @@ For questions or issues regarding the Blue Medora MongoDB Plugin for New Relic, 
 | Page Faults (faults/second) | The Page Faults for each monitored Mongo Mongod |
 
 **Mongos Instances**
+
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Inbound Network Throughput (bytes/second) | The Inbound Network Throughput for each monitored Mongo Mongos |
@@ -220,3 +223,13 @@ For questions or issues regarding the Blue Medora MongoDB Plugin for New Relic, 
 | Virtual Memory (MB) | The Virtual Memory for each monitored Mongo Mongos |
 | Current Connections (connections)  | The Number of Current Connections for each monitored Mongo Mongos |
 | Available Connections (connections)  | The Number of Available Connections for each monitored Mongo Mongos |
+
+
+**Summary**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Average Uptime | The average up time across all mongods |
+| Total Current Connections | The total number of current connections |
+| Total Extents | The total number of Extents across all mongo databases | 
+| Total Indexes | The total number of Indexes across all mongo databases | 

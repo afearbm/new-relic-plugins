@@ -12,12 +12,14 @@ If you’re having a bad experience with one of our plugins, please get in touch
 The IBM DB2 Plugin connects to a DB2 database using a JDBC connection. Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
+
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **IBM DB2 Plugin Requirements**
 
 - **IBM DB2 Version:** This plugin requires IBM DB2 versions 9.5+
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -273,3 +275,4 @@ For questions or issues regarding the Blue Medora IBM DB2 plugin for New Relic, 
 | Average Buffer Pool Hit Ratio (%) | The average hit ratio across all buffer pools on the instance |
 | Total Connections (connections) | The total number of connections to the instance |
 | Total Deadlocks (deadlocks/minute) | The total number of deadlocks per minutes on the instance |
+| Total Active Applications | The total number of Active Applications across all db2 Databases | 

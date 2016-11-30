@@ -16,8 +16,10 @@ The MySQL plugin connects to a MySQL or MariaDB instance via JDBC connection. Be
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **MySQL Plugin Requirements**
+
 - **MySQL and Maria DB versions.** The plugin is compatible with MySQL versions 5.6 & 5.7 and MariaDB versions 10.0 and 10.1.
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -274,6 +276,8 @@ For questions or issues regarding the MySQL Plugin for New Relic, visit http://s
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Instance Size (GB) | The size of the MySQL instance |
-| Connections (connections/minute) | The number of connections per minute to the MySQL instance |
+| Average I/O Read Latency (ms) | The average read latency across all databases |
+| Average I/O Write Latency (ms) | The average write latency across all databases |
 | Deadlocks (deadlocks/minute) | The number of deadlocks per minute to the MySQL instance |
+| Average Query Execution Time (ms) | The average query execution time across all queries |
+| Connections (connections/minute) | The number of connections per minute to the MySQL instance |
