@@ -12,11 +12,14 @@ If you’re having a bad experience with one of our plugins, please get in touch
 The Cisco UCS plugin collects data by making REST calls to the Cisco UCS Manager.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
+
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Cisco UCS Plugin Requirements**
+
 - The plugin supports **Cisco UCS Manager 2.2+**
-- **A Blue Medora License.**A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -278,7 +281,7 @@ For questions or issues regarding the Blue Medora Cisco UCS Plugin for New Relic
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Average Load (%) | The average load percentage across fabric interconnects |
-| Average Inbound per IO Module (bits/sec) | The average IO module inbound throughput |
-| Average Outbound per IO Module (bits/sec) | The average IO module outbound throughput |
+| Average IO Module Temperature | The average temperature of the IO modules |
+| Average Chassis Power | The average power of the chassis |
 | Average Inbound per Fabric Interconnect (bits/sec) | The average Fabric Interconnect inbound throughput |
 | Average Outbound per Fabric Interconnect (bits/sec) | The average Fabric Interconnect outbound throughput |

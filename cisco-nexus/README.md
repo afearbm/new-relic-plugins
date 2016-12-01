@@ -12,11 +12,14 @@ If you’re having a bad experience with one of our plugins, please get in touch
 The Cisco Nexus plugin connects to the Cisco Nexus hardware (switch) using SNMP v2, v2c, or v3.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
+
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Cisco Nexus Plugin Requirements**
+
 - SNMP v2, v2c, or v3 enabled **Cisco Nexus switch(es) 1k, 3k, 4k, 5k, 7k, and/or 9k**
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -187,8 +190,8 @@ For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Rel
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Total Throughput (MB/sec) | The total throughput in megabytes per second   |
-| Total Packets (Packets/sec)  | The total amount of packets per second |
+| Total Throughput (MB/sec) | The total throughput in megabytes per second |
+| Total Packets (Packets/sec) | The total amount of packets per second |
 | Port Status Count  | The number of ports per status (Down, Up, or In Error) |
 
 **Port**
@@ -196,8 +199,8 @@ For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Rel
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Inbound Throughput (MB/sec) | The inbound throughput of a port in megabytes per second  |
-| Outbound Throughput (MB/sec)  | The outbound throughput of a port in megabytes per second |
-| Inbound Packets (Packets/sec)  | The amount of inbound packets per second of a port  |
+| Outbound Throughput (MB/sec) | The outbound throughput of a port in megabytes per second |
+| Inbound Packets (Packets/sec) | The amount of inbound packets per second of a port |
 | Outbound Packets (Packets/sec) | The amount of outbound packets per second of a port |
 
 **L3 Interface**
@@ -205,8 +208,8 @@ For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Rel
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Inbound Throughput (MB/sec) | The inbound throughput of an L3 Interface in megabytes per second  |
-| Outbound Throughput (MB/sec)  | The outbound throughput of an L3 Interface in megabytes per second |
-| Inbound Packets (Packets/sec)  | The amount of inbound packets per second of an L3 Interface  |
+| Outbound Throughput (MB/sec) | The outbound throughput of an L3 Interface in megabytes per second |
+| Inbound Packets (Packets/sec) | The amount of inbound packets per second of an L3 Interface |
 | Outbound Packets (Packets/sec) | The amount of outbound packets per second of an L3 Interface |
 
 **Summary**
@@ -214,7 +217,7 @@ For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Rel
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Inbound (bytes/sec) | The total inbound throughput in bytes per second |
-| Outbound (bytes/sec)  | The total outbound throughput in bytes per second |
-| Ports in Error (%)  | Percentage of ports in which the status is "In Error" |
+| Outbound (bytes/sec) | The total outbound throughput in bytes per second |
+| Ports in Error (%) | Percentage of ports in which the status is "In Error" |
 | Ports Up (%) | Percentage of ports in which the status is "Up" |
 | Ports Down (%) | Percentage of ports in which the status is "Down" |

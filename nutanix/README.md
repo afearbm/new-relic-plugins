@@ -20,8 +20,8 @@ The Nutanix plugin collects data by making requests to the Prism Element or Pris
 - Hardware: NX 1000+
 - Nutanix REST API version 1+
 - A least privieged user account of read-only
-
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 

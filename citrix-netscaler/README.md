@@ -1,7 +1,6 @@
 # Blue Medora Citrix NetScaler Plugin for New Relic
 
 The **Blue Medora Citrix NetScaler Plugin for New Relic** allows you to monitor your Citrix NetScaler load balancing performance data from within the New Relic platform by pulling in metrics from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.           
-
 This guide includes instructions for installing and configuring the Blue Medora Citrix NetScaler Plugin for New Relic. 
 If you’re having a bad experience with one of our plugins, please get in touch and we’ll be happy to help you out.
 
@@ -12,12 +11,15 @@ If you’re having a bad experience with one of our plugins, please get in touch
 The Citrix NetScaler plugin connects to the Citrix NetScaler Appliance using REST.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
+
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Citrix NetScaler Plugin Requirements**
+
 - **NetScaler Version:** The plugin requires Citrix NetScaler MPX or VPX, Version 10.x+
 - In the NetScaler user interface, you must create a user account for monitoring purposes that has a **System Command Policy** of read-only.
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -214,8 +216,9 @@ For questions or issues regarding the Blue Medora Citrix NetScaler Plugin for Ne
 
 **Summary Metrics**
 
+| Metric Name  |  Description |
 |:------------- |:-------------|
 | Inbound Data Rate (bps) | Inbound data rate of the NetScaler appliance |
 | Outbound Data Rate (bps) | Outbound data rate of the NetScaler appliance |
-| Management CPU Usage (%) | Management CPU utilization percentage |
-| Memory Usage (%) | Percentage of memory utilization on NetScaler |
+| Average Service Client Connections| Average number of client connections per Service |
+| Average Service Server Connections| Average number of server connections per Service |
