@@ -36,6 +36,8 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-hp-rack/newrelic_hp_rack_plugin-3.0.0_20161202_192323.tar.gz) 
+
 ----
     
 ## Configuring the Plugin
@@ -208,8 +210,8 @@ For questions or issues regarding the HP Rack Servers Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Max CPU Temperature (C)  |  Max Temperature readings of the CPU in degrees Celsius |
-| Max Memory Temperature (C) |  Max Temperature readings of the memory in degrees Celsius  |
-| Healthy Ports (%)  |  Percentage of ports in an "Ok" state  |
-| Total Good Receives (frames/sec) |  Total number of Good Receives frames received  |
-| Total Good Transmits (frames/sec) |  Total number of Good Transmits frames transmitted |
+| Unhealthy Fans (%)  |  Percentage of "Enabled" fans that are not in an "OK" state |
+| Unhealthy Network Adapters (%)  |  Percentage of "Enabled" network adapters that are not in an "OK" state |
+| Unhealthy Ports (%)  |  Percentage of "Enabled" ports that are not in an "OK" state |
+| Bad Receives Rate (frames/sec)  |  Number of frames unsuccessfully received  |
+| Bad Transmits Rate (frames/sec)  |  Number of frames unsuccessfully transmitted  |
