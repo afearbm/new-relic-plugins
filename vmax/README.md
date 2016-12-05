@@ -21,8 +21,8 @@ The Dell EMC VMAX plugin collects data by make REST calls to Unisphere for VMAX.
 - EMC VMAX3 or EMC VMAX AFA
 - Unisphere REST API Version 8.1+
 - A least privieged user account of read-only
-
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -39,6 +39,8 @@ Once the NPI tool has been installed, run the following command:
 ``` 
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
+
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-emc-vmax/newrelic_emc_vmax_plugin-2.0.0_20161205_194749.tar.gz)
 
 ----
     
@@ -238,6 +240,8 @@ For questions or issues regarding the Blue Medora Dell EMC VMAX Plugin for New R
 
 **Front End Directors**
 
+| Metric Name  |  Description |
+|:------------- |:-------------|
 | Busy Time (%)  | The Busy Time for each monitored Front End Director |
 | Total Latency (milliseconds)  | The Total Latency for each monitored Front End Director |
 | Cache Hit Ratio (%)  | The Cache Hit Ratio for each monitored Front End Director |
