@@ -1,0 +1,122 @@
+# ![Blue Medora Logo](http://www.bluemedora.com/favicon.ico) Blue Medora Hadoop Plugin For New Relic 
+
+The Blue Medora Hadoop Plugin for New Relic allows you to monitor your Hadoop cluster environment within the New Relic platform by collecting metrics fromt the system and displaying them in an arrangement of intuitive, graphical based monitoring dashboards. 
+
+This guide includes the proper installation and configuration needed to setup the Blue Medora Hadoop Plugin for New Relic. 
+____________________________________________________________________
+
+## System Requirements 
+
+The Hadoop plugin connects to a... 
+
+### New Relic Requirements
+
+- A New Relic account.
+	- If you do not have an existing account you can sign up for a free account [here](https://newrelic.com/signup/). 
+
+## Hadoop Plugin Requirements 
+- Hadoop 2.7.x+ with HDFS & YARN
+- **A Blue Medora License**. A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact <sales@bluemedora.com>  
+ 
+ ## Installing the Plugin 
+ We advise using the New Relic Platform Installer for properly installing and running your Blue Medora plugins for New Relic. 
+ 
+ The New Relic Platform Installer (NPI) is a command line tool that helps you easily download, configure, and manage New Relic Platform Plugins. For more information, please refer to the [Installing an NPI-compatible plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/installing-plugins/installing-npi-compatible-plugin). 
+
+Once the NPI tool has been installed, run the following command: 
+
+```./npi install com.bluemedora.hadoop```
+
+**Note:** This command will take care of the creation of ```newrelic.json``` and ```plugin.json``` files described in the [Configuring the Plugin](https://github.com/BlueMedora/new-relic-plugins/tree/master/cisco-nexus#Configuring-the-Plugin) section.  
+
+[Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-cisco-nexus/newrelic_cisco_nexus_plugin-3.0.0_20161201_174855.tar.gz)
+ 
+## Configuring the Plugin 
+
+From the extracted plugin folder you will receive when downloading your plugin, you will find the following files 
+
+ 	plugin.jar
+  	eula.txt
+  	oss_attribution.txt
+  	[config folder]
+    	newrelic.template.json
+    	plugin.template.json 
+    	plugin_license.json
+    
+   
+The "template" .json files found in the config folder must be modified (i.e., customized) and renamed prior to setting up the plugin for monitoring.
+
+## Configuring the ```newrelic.template.json``` File 
+The first file, ```newrelic.template.json```, contains configurations used by all Platform plugins (e.g., license key, logging information, proxy settings) and can be shared across your plugins. Make a copy of this template and rename it to newrelic.json. Listed below are the configurable fields within the newrelic.json file:
+
+**New Relic License Key** - The only requried field int the ```newrelic.json``` file is the License Key. This unique identifier informs New Relic about the specific acccoutn tied to the plugin. For more information on the License Key, [refer to the New Relic License key documentation](https://docs.newrelic.com/docs/accounts-partnerships/accounts/account-setup/license-key). 
+
+
+**Example:**
+
+``` 
+{
+	"license_key": "YOUR LICENSE KEY" 	
+} 
+
+```
+
+**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. In order to acheive this you need to supply your ```insights_api_key``` and ```insights_accounts_id```. You can find these fields in [your New Relic API Keys page](https://rpm.newrelic.com/apikeys). For more information, [refer to the New Relics Insights documentation](https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/insert-custom-events-insights-api#register).
+
+Below are the fields needed to configure Insights access. 
+
+```insights_api_key``` - The api key associated with you Insights account.
+
+```insights_account_id``` - The ID associated with you Insights account. 
+
+  ```insights_use_ssl``` -  Signals whether to connect to Insights via SSL. Acceptable values are ```true``` or ```false```
+  
+  **Example**: 
+  
+  	{	
+  		"license_key": "YOUR LICENSE KEY",
+    	"insights_api_key": "YOUR INSIGHTS API KEY",
+   	 	"insights_account_id": "YOUR INSIGHTS ACCOUNT ID",
+    	"insights_use_ssl": true  		
+	}
+	
+**Logging Configuration** - By default, platform plugins will have their logging turned on; however, you can modify these settigs with following configurations. 
+
+```log_level``` - The log level. Valid values: [debut, info, warn, error, fatal]. Defaults to info. 
+
+```log_file_name``` - The log file name. Defaults inot newrelic_plugin.log. 
+
+```log_file_path``` - The log file limit in kilobytes. Defaults to 25600 (25 MB). If limit is set to 0, the log file size would not be limited. 
+
+**Example** 
+	
+	{ 
+		 "license_key": "YOUR LICENSE KEY",
+    	"log_level": "info",
+    	"log_file_name": "newrelic_plugin.log",
+   		"log_file_path": "logs",
+	}
+
+**Proxy Configuration** - If you are running your plugin from a machine that runs outbound traffic through a proxy, you can use the following optional configurations in you ```newrelic.json``` file: 
+
+```proxy_host``` - The proxy host (e.g. webcache.example.com)
+
+```proxy_port``` - The proxy port (e.g. 8080). Defaults to 80 if a proxy_host is set
+
+```proxy_username``` - The proxy username
+
+```proxy_password``` - The proxy password
+
+**Example:**
+
+	{
+		"license_key": "YOUR LICENSE KEY",
+  		"proxy_host": "proxy.mycompany.com",
+  		"proxy_port": 9000
+	}
+
+**Configuring the ```plugin.template.json``` file:**
+
+The second file, ```plugin.template.json```, contains data specific to each plugin (e.g., a list of hosts and port combinations for what you are monitoring). Templates for both of these files should be located in the ‘config’ directory in your extracted plugin folder.
+
+Make a copy of this template and rename it to ```plugin.json.``` Shown below is an example of the ```plugin.json``` file’s contents.
