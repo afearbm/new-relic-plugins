@@ -19,7 +19,8 @@ The Cloud Foundry plugin collects data by making requests to the Blue Medora Clo
 
 - Cloud Foundry
 - Blue Medora Nozzle
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 # Configuring the Blue Medora Firehose Nozzle
 The Blue Medora Firehose Nozzle is a Cloud Foundry component that collects metrics from the Loggregator Firehose  and exposes them via a RESTful API. Before the nozzle can be configured, it must be deployed.
@@ -35,7 +36,7 @@ There are multiple ways to deploy the nozzle:
 - Install the Cloud Foundry Command Line Interface (cf-cli) available at: https://github.com/cloudfoundry/cli
 - To deploy the nozzle, configure manifest.yml and run cf push to install the cf app as described  here: https://github.com/BlueMedora/bluemedora-firehose-nozzle#deploying-as-cf-app
 
-**Cloning deployment method**
+**Cloning Deployment Method**
 
 - Install the Go programming language (version 1.6+) on a box that can connect to the Traffic Controller
 - To deploy the nozzle, run the following command, which clones the nozzle files and dependencies from the github repository and sets them up them in your Go environment:
@@ -43,7 +44,7 @@ There are multiple ways to deploy the nozzle:
 go get github.com/BlueMedora/bluemedora-firehose-nozzle
 ```
 
-**BOSH CLI deployment method**
+**BOSH CLI Deployment Method**
 
 - Install the BOSH Command Line Interface (CLI) using the BOSH release available at: https://github.com/BlueMedora/bluemedora-firehose-nozzle-release
 - Deploy the nozzle as instructed in the following tutorial: https://docs.cloudfoundry.org/loggregator/nozzle-tutorial.html
@@ -58,9 +59,7 @@ NOTE: For more information on how metrics are pulled from th
 “Webserver”.
 
 **Configuring the UAA User**
-Ensure the Cloud Foundry UAA user you plan to use is authorized to access the loggregator firehose and
-has doppler.firehose permissions. An example of one way to modify the UAA user involves editing your Cloud Foundry BOSH manifest under the properties.uaa.clients section.
-
+Ensure the Cloud Foundry UAA user you plan to use is authorized to access the loggregator firehose and has doppler.firehose permissions. An example of one way to modify the UAA user involves editing your Cloud Foundry BOSH manifest under the properties.uaa.clients section.
 
 An example configuration would look similar to the following:
 ```
@@ -77,11 +76,12 @@ properties:
 ```
 
 **Configuring the Nozzle**
-To configure the nozzle itself, which connects to the Cloud Foundry firehose and exposes a RESTful API,  modify and re-save the configuration file, bluemedora-firehose-nozzle.json, located in the config
-folder of the nozzle files as follows:
+To configure the nozzle itself, which connects to the Cloud Foundry firehose and exposes a RESTful API, modify and re-save the configuration file, bluemedora-firehose-nozzle.json, located in the config folder of the nozzle files as follows:
 
 **Blue Medora Firehose Nozzle Configuration Fields**
-| FIELD | DESCRIPTION |
+
+| Field Name | Description |
+|:------------- |:-------------|
 | UAAURL | The UAA login URL of the Cloud Foundry deployment. |
 | UAAUsername | The UAA username that has access to read from Loggregator Firehose. |
 | UAAPassword | Password for the UAA Username. |
@@ -125,12 +125,38 @@ go run main.go
 
 **Webserver**
 The webserver is how metrics are pulled out of the Blue Medora Firehose Nozzle. It provides a RESTful API that  requires an authentication token.
-Token Request
+
+**Token Request**
 A token can be requested from the /token endpoint. A token times out after 60 seconds. In order to request a  token, send a GET request with the two header pairs username and password with values that correspond to the  UAA user in the bluemedora-firehose-nozzle.json config file. If a successful login occurs, the response will  contain a header pair of token and the value will be your token. 
 Metric Endpoints
+
 Once a valid token is acquired, a GET request with the header pair token and value of your token can be sent to  one of the following endpoints:
-• /metron_agents • /syslog_drains • /tps_watchers • /tps_listeners • /stagers • /ssh_proxies • /senders • /route_emitters • /reps • /receptors • /nsync_listeners • /nsync_bulkers • /garden_linuxs • /file_servers • /fetchers • /convergers • /cc_uploaders • /bbs • /auctioneers • /etcds • /doppler_servers • /cloud_controllers • /traffic_controllers
-• /gorouters
+
+- /metron_agents 
+- /syslog_drains 
+- /tps_watchers 
+- /tps_listeners 
+- /stagers 
+- /ssh_proxies 
+- /senders 
+- /route_emitters 
+- /reps 
+- /receptors 
+- /nsync_listeners 
+- /nsync_bulkers 
+- /garden_linuxs 
+- /file_servers 
+- /fetchers 
+- /convergers 
+- /cc_uploaders 
+- /bbs 
+- /auctioneers 
+- /etcds 
+- /doppler_servers 
+- /cloud_controllers 
+- /traffic_controllers
+- /gorouters
+
 A JSON response will be sent in the following form:
 ```
 [    
@@ -166,6 +192,8 @@ Once the NPI tool has been installed, run the following command:
 ``` 
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
+
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-cloudfoundry/newrelic_cloudfoundry_plugin-2.0.0_20161206_212224.tar.gz) 
 
 ----
     

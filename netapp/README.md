@@ -12,11 +12,14 @@ If you’re having a bad experience with one of our plugins, please get in touch
 The NetApp Storage plugin collects data by making REST calls to OnCommand API Services.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
+
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **NetApp Storage Plugin Requirements**
+
 - **NetApp OnCommand ApiServices:** NetApp OnCommand API Services version 1.0 or 1.1 is required to collect data.  
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -33,6 +36,8 @@ Once the NPI tool has been installed, run the following command:
 ```	
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
+
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-netapp-apiservices/newrelic_netapp_apiservices_plugin-3.0.0_20161206_184732.tar.gz)
 
 ----
     
