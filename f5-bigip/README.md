@@ -16,8 +16,10 @@ The F5 BIG-IP plugin connects to the supported F5 BIG-IP System via a management
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **F5 BIG-IP Plugin Requirements**
+
 - The plugin supports **F5 BIG-IP Version 11.5.0+** through REST
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -34,6 +36,8 @@ Once the NPI tool has been installed, run the following command:
 ``` 
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
+
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-f5bigip/newrelic_f5_bigip_plugin-2.0.0_20161207_152510.tar.gz)
 
 ----
     
@@ -260,6 +264,9 @@ For questions or issues regarding the F5 BIG-IP Plugin for New Relic, visit http
 
 | Metric Name | Description |
 |:------------- |:-------------|
-| Memory Usage (%) | Total memory usage across BIG-IP System |
 | Total Received Throughput (bytes/sec) | Total received throughput across BIG-IP System |
 | Total Transmitted Throughput (bytes/sec) | Total transmitted throughput across BIG-IP System |
+| Average Connections per Node | The average number of current connections per node | 
+| Average Pool Request Rate (requests/second) | The average request rate per Pool
+| Average Connections per Pool | The average number of connections per pool |
+

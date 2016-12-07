@@ -1,6 +1,7 @@
 # Blue Medora EMC VNX Block Plugin for New Relic
 
 The **Blue Medora EMC VNX Block Plugin for New Relic** allows you to monitor your VNX Block performance data from within the New Relic platform by pulling in metrics from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.						
+
 This guide includes instructions for installing and configuring the Blue Medora EMC VNX Block Plugin for New Relic.
 If you’re having a bad experience with one of our plugins, please get in touch and we’ll be happy to help you out.
 
@@ -11,12 +12,15 @@ If you’re having a bad experience with one of our plugins, please get in touch
 The VNX Block plugin connects to VNX using NaviSecCLI (Navisphere Secure Command Line Interface).  This allows a network connection to the VNX storage processors to be made.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
+
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **EMC VNX Block Plugin Requirements**
+
 - **Block Software Version:** This plugin requires Block Software Version 5.33+
 - **NaviSecCLI:** The host must have NaviSecCLI software installed
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -33,6 +37,8 @@ Once the NPI tool has been installed, run the following command:
 ``` 
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
+
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-emc-vnxblock/newrelic_emc_vnx_block_plugin-3.0.0_20161207_175233.tar.gz)
 
 ----
     

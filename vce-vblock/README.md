@@ -1,6 +1,7 @@
 # Blue Medora VCE Vblock Plugin for New Relic
 
 The **Blue Medora VCE Vblock Plugin for New Relic** allows you to monitor your Vblock performance data from within the New Relic platform by pulling metrics in from the system and displaying them in a set of intuitive, graph-based monitoring dashboards.						
+
 This guide includes instructions for installing and configuring the Blue Medora VCE Vblock Plugin for New Relic.
 If you’re having a bad experience with one of our plugins, please get in touch and we’ll be happy to help you out.
 
@@ -11,6 +12,7 @@ If you’re having a bad experience with one of our plugins, please get in touch
 The VCE Vblock Plugin connects to VNX Block using NaviSecCLI (Navisphere Secure Command Line Interface). This allows a connection to VNX sotrage processors to be made.  It connects to VNX File using SSH protocol to connect to the VNX File Control Station. It collects data from Cisco UCS by making REST calls to the Cisco UCS Manager, and connects to Cisco Nexus hardware via SNMP v2, v2c, or v3.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
+
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **VCE Vblock Plugin Requirements**
@@ -19,7 +21,8 @@ The VCE Vblock Plugin connects to VNX Block using NaviSecCLI (Navisphere Secure 
 - **NaviSecCLI:** The host must have NaviSecCLI software installed
 - The plugin supports **Cisco UCS Manager 2.2+**
 - The plugin supports SNMP v2, v2c, or v3 enabled **Cisco Nexus switch(es) 1k, 3k, 4k, 5k, 7k, and/or 9k**
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 ----
 
@@ -37,9 +40,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-Downloading the plugin binary (only use this link if you are not installing via NPI)
-https://s3.amazonaws.com/bmibmtransfer/newrelic_vce_vblock_plugin-2.0.0_20160912_180607.tar.gz
-
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-vce-vblock/newrelic_vce_vblock_plugin-3.0.0_20161207_204256.tar.gz)
 
 ----
     
