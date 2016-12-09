@@ -12,14 +12,17 @@ If you’re having a bad experience with one of our plugins, please get in touch
 The Dell plugin connects to the supported Dell server(s) via iDRAC IP address using SNMP v1, v2c, or v3.  Before installing and configuring the plugin, ensure your system meets the following requirements:
 
 **New Relic Requirements**
+
 - A New Relic account (Sign up for a free account [here](http://newrelic.com).)
 
 **Dell PowerEdge Plugin Requirements**
+
 - **Hardware:** The plugin supports the following R-, M-, and T-series generation Dell server types: **12g** and **13g**
 - **iDRAC Firmware:** Servers must be equipped with **iDRAC v7** or **v8** with **firmware version 1.57.57+**
 - **SNMP 1, 2c, or 3** must be configured on all Dell servers
 - **Credentials: SNMP read-only community string -or- SNMPv3 User Name and Password** (Least privileged user = read-only SNMP user)
-- **A Blue Medora License.** A trial license will ship with the plugin that is valid until November 15, 2016. To obtain a production license or get pricing information for the plugin, contact sales@bluemedora.com.
+- Java 1.7 or higher
+- **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
  
 
 ----
@@ -37,6 +40,8 @@ Once the NPI tool has been installed, run the following command:
 ``` 
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
+
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-dell-poweredge/newrelic_dell_compute_plugin-3.0.0_20161209_153718.tar.gz)
 
 ----
     
