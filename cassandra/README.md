@@ -1,26 +1,25 @@
-# ![Blue Medora Logo](http://www.bluemedora.com/favicon.ico) Blue Medora Hadoop Plugin For New Relic 
+# ![Blue Medora Logo](http://www.bluemedora.com/favicon.ico) Blue Medora Cassandra Plugin For New Relic 
 
-The **Blue Medora Apache Hadoop Plugin for New Relic** allows you to monitor your Hadoop cluster environment within the New Relic platform by collecting metrics from the system and displaying them in an arrangement of intuitive, graphical based monitoring dashboards. 
+The **Blue Medora Apache Cassandra Plugin for New Relic** allows you to monitor your Cassandra databases within the New Relic platform by collecting metrics from the system and displaying them in an arrangement of intuitive, graphical based monitoring dashboards. 
 
-This guide includes the proper installation and configuration needed to setup the Blue Medora Apache Hadoop Plugin for New Relic. 
+This guide includes the proper installation and configuration needed to setup the Blue Medora Apache Cassandra Plugin for New Relic. 
 
 ----
 
 ## System Requirements 
 
-The Apache Hadoop plugin connects to the Apache Hadoop cluster using read-only JMX managed beans formatted in JSON over HTTP.
+The Apache Cassandra plugin connects to the Apache Cassandra database using JMX.
 
 **New Relic Requirements**
 
 - A New Relic account. (Sign up for a free account [here](https://newrelic.com/signup/). 
 
-**Apache Hadoop Plugin Requirements**
+**Apache Cassandra Plugin Requirements**
 
-- Hadoop 2.7.x+ with HDFS & YARN
+- **Cassandra versions.** The plugin is compatible with Cassandra versions 3.9+
 - Java 1.7 or higher
 - **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact <sales@bluemedora.com>.
 
-For more detailed system requirements, please refer [here](https://ambari.apache.org/1.2.3/installing-hadoop-using-ambari/content/ambari-chap1-2.html).
 
 ## Installing the Plugin 
 
@@ -31,12 +30,12 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command: 
 
 ```
-	./npi install com.bluemedora.apache.hadoop
+	./npi install com.bluemedora.apache.cassandra
 ```
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section. 
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-apache-hadoop/newrelic_apache_hadoop_plugin-1.0.0_20161214_193053.tar.gz)
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-apache-cassandra/newrelic_apache_cassandra_plugin-1.0.0_20161214_210033.tar.gz)
 
 ----     
 
@@ -145,7 +144,7 @@ The second file, `plugin.template.json`, contains data specific to each plugin (
 
 Make a copy of this template and rename it to `plugin.json`. Shown below is an example of the `plugin.json` file’s contents.
 
-**NOTE** You can add multiple objects to the “agents” array to monitor multiple Hadoop instances.
+**NOTE** You can add multiple objects to the “agents” array to monitor multiple Cassandra instances.
 
 **NOTE:** Each object in the "agents" array should have a unique `instance_name`.
 
@@ -153,13 +152,12 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | polling_interval_seconds | The number of seconds between each data collection. |
 | downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
-| instance_name | Alias for the name of your Hadoop instance that will appear in the User Interface |
-| name_node_host | Comma separated list of Name Nodes |
-| name_node_port | Port on which to connect to Name Nodes |
-| resource_manager_host | Comma separated list of Resource Managers | 
-| resource_manager_port | Port on which to connect to Resource Managers |
-| timeout | Number of seconds to wait before timing out |
-| max_threads | The maximum number of threads that will be used in data collection |
+| instance_name | Alias for the name of your Cassandra instance that will appear in the User Interface |
+| host | The hostname or IP address of any node in the Cassandra cluster |
+| port | The port on which to communicate with the node |
+| username | The username of a read-only database user |
+| password | The password of the read-only database user |
+
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
@@ -180,7 +178,7 @@ When running a plugin, a `java.lang.OutOfMemoryError` may occur if too much data
 ----     
 
 ## Support Resources
-For questions or issues regarding the Apache Hadoop Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the Apache Cassandra Plugin for New Relic, visit http://support.bluemedora.com. 
 
 ----
 
@@ -191,10 +189,10 @@ For questions or issues regarding the Apache Hadoop Plugin for New Relic, visit 
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
-| Node Managers Lost | The number of Node Managers currently down |
-| Data Nodes Dead | The number of Data Nodes currently dead |
-| Volume Failures | The number of Volumes failures |
-| Containers Failures | The number of Containers failures |
+| Average Read Latency | The average read latency among all Nodes |
+| Average Write Latency | The average write latency among all Nodes |
+| Total Used Heap Memory | The total used heap memory among all Nodes |
+| Total Used Non Heap Memory | The total used non-heap memory among all Nodes |
 
 
 
