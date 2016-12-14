@@ -59,7 +59,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-postgres/newrelic_Postgres_plugin-2.0.0_20161130_173355.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-postgres/newrelic_Postgres_plugin-2.1.0_20161213_144017.tar.gz) 
 
 ----
     
@@ -173,6 +173,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
+| downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
 | instance_name | Alias for the name of your PostgreSQL instance that will appear in the User Interface. |
 | host | IP address or hostname of PostgreSQL instance. |
 | port | Port used to connect to the PostgreSQL instance. Default is `443`. |
@@ -272,7 +273,7 @@ Only 20 functions are displayed at a time. The 20 that are displayed are the fun
 
 | Metric Name | Description |
 |:------------- |:-------------|
-| Total Database Size (bytes) | The sum of the size of all databases being monitored |
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
 | Active Sessions (sessions) | The sum of active sessions across all databases being monitored |
 | Waiting Sessions (sessions) | The sum of waiting sessions across all databases being monitored |
 | Total Deadlocks (deadlocks/minute) | The sum of deadlocks across all databases being monitored |

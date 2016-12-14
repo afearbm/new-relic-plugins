@@ -78,7 +78,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-oracle-database/newrelic_oracle_database_plugin-2.0.0_20161130_172453.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-oracle-database/newrelic_oracle_database_plugin-2.1.0_20161213_143934.tar.gz) 
 
 ----
     
@@ -192,6 +192,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
+| downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
 | instance_name | Alias for the name of your Oracle Database instance that will appear in the User Interface |
 | host | IP address or hostname of Oracle Database instance. |
 | port | Port used to connect to the Oracle Database instance. Default is `1521` for when `ssl_enabled` is `false`, and `2484` for when `ssl_enabled` is `true`. |
@@ -290,6 +291,7 @@ For questions or issues regarding the Oracle Database Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
 | Waits (waits/sec)  | The total number of waits per second across all instances  |
 | Average CPU Usage (centiseconds/sec)  | The average CPU usage across all instaces  |
 | Active Sessions (sessions)  | The total number of active sessions across all instaces  |

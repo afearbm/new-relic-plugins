@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mysql/newrelic_mysql_plugin-2.0.0_20161130_165913.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mysql/newrelic_mysql_plugin-2.1.0_20161213_143218.tar.gz) 
 
 ----
     
@@ -151,6 +151,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
+| downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
 | instance_name | Alias for the name of your MySQL instance that will appear in the User Interface |
 | username | User name to log into MySQL |
 | password | Password to log into MySQL |
@@ -278,8 +279,8 @@ For questions or issues regarding the MySQL Plugin for New Relic, visit http://s
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
-| Average I/O Read Latency (ms) | The average read latency across all databases |
-| Average I/O Write Latency (ms) | The average write latency across all databases |
-| Deadlocks (deadlocks/minute) | The number of deadlocks per minute to the MySQL instance |
-| Average Query Execution Time (ms) | The average query execution time across all queries |
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
 | Connections (connections/minute) | The number of connections per minute to the MySQL instance |
+| Deadlocks (deadlocks/minute) | The number of deadlocks per minute to the MySQL instance |
+| Average I/O Read Latency (ms) | The average read latency across all databases |
+| Average Query Execution Time (ms) | The average query execution time across all queries |

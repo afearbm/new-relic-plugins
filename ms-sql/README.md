@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.0.0_20161130_170101.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.1.0_20161213_143851.tar.gz) 
 
 ----
     
@@ -151,6 +151,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection |
+| downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
 | instance_name | Alias for the name of your Microsoft SQL Server instance that will appear in the user interface |
 | username | User name to log into Microsoft SQL Server |
 | password | Password to log into Microsoft SQL Server |
@@ -257,8 +258,8 @@ For questions or issues regarding the MS SQL Plugin for New Relic, visit http://
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
 | Buffer Pool Hit (%) | The percentage of buffer pools hits on the instance |
 | Compilations (compilations/sec) | The number of compilations per second on the instance |
 | Recompilations (compilations/sec) | The number of re-compilations per second on the instance |
-| Total IOPS (operations/sec) | The total number of IOPS across the instance |
 | Average Query Execution Time (seconds) | The average query execution time across all queries |

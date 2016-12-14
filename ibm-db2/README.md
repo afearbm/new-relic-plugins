@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-ibm-db2/newrelic_ibm_db2_plugin-2.0.0_20161130_184002.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-ibm-db2/newrelic_ibm_db2_plugin-2.1.0_20161213_144310.tar.gz) 
 
 ----
     
@@ -146,7 +146,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 
 | Field Name  |  Description |
 |:------------- |:-------------|
-| polling_interval_seconds | The number of seconds between each data collection. |
+| polling_interval_seconds | The number of seconds between each data collection |
+| downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
 | instance_name | Alias for the name of your IBM DB2 instance that will appear in the User Interface |
 | username | User name to log into DB2 instance |
 | password | Password to log into DB2 instance |
@@ -274,6 +275,7 @@ For questions or issues regarding the Blue Medora IBM DB2 plugin for New Relic, 
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
 | Average Buffer Pool Hit Ratio (%) | The average hit ratio across all buffer pools on the instance |
 | Total Connections (connections) | The total number of connections to the instance |
 | Total Deadlocks (deadlocks/minute) | The total number of deadlocks per minutes on the instance |

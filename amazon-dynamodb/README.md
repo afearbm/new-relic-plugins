@@ -36,7 +36,7 @@ Once the NPI tool has been installed, run the following command:
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-amazon-dynamodb/newrelic_amazon_dynamodb_plugin-2.0.0_20161130_182110.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-amazon-dynamodb/newrelic_amazon_dynamodb_plugin-2.1.0_20161213_144052.tar.gz) 
 
 ----     
 
@@ -150,6 +150,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
+| downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
 | instance_name | Alias for the name of your Amazon DynamoDB instance that will appear in the User Interface |
 | access_key_id | Amazon AWS Access Key ID can be found by following [this guide](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) |
 | secret_access_key | Amazon AWS Secret Access Key can be found by following [this guide](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) |
@@ -178,9 +179,9 @@ When running a plugin, a `java.lang.OutOfMemoryError` may occur if too much data
 ## Support Resources
 For questions or issues regarding the Amazon DynamoDB Plugin for New Relic, visit http://support.bluemedora.com. 
 
-## Metrics Source Documentation
+----
 
-----     
+## Metrics Source Documentation     
 
 **System Overview**
 
@@ -224,6 +225,7 @@ For questions or issues regarding the Amazon DynamoDB Plugin for New Relic, visi
 
 | Metric Name  |  Description |
 |:------------- |:-------------|
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
 | Read Throttle Events | The number of recent read throttle events |
 | Write Throttle Events | The number of recent write throttle events |
 | Read Capacity Usage | The percentage of read capacity used |
