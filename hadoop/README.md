@@ -193,12 +193,65 @@ For questions or issues regarding the Apache Hadoop Plugin for New Relic, visit 
 | Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
 | Node Managers Lost | The number of Node Managers currently down |
 | Data Nodes Dead | The number of Data Nodes currently dead |
-| Volume Failures | The number of Volumes failures |
+| Volume Failures | The number of Volume failures |
 | Containers Failures | The number of Containers failures |
 
+**Overview**
 
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Cluster Node Managers | The number of Node Managers in each state (Decommissioned, Unhealthy, Rebooted, Lost, Active) |
+| Active Users | The total number of Active Users|
+| Applications Failed | The number of Application failures |
+| Data Nodes Dead | The number of Data Nodes currently dead |
+| Volume Failures | The number of Volume failures |
+| Containers Failures | The number of Containers failures |
 
+**Data Nodes**
 
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Blocks Read (blocks/second) | The number of Blocks per second Read on each Data Node |
+| Blocks Removed (blocks/second) | The number of Blocks per second Removed on each Data Node |
+| Blocks Replicated (blocks/second) | The number of Blocks per second Replicated on each Data Node |
+| Blocks Written (blocks/second) | The number of Blocks per second Written on each Data Node |
+| Read Throughput (GB/second) | The amount of data Read for each Data Node |
+| Write Throughput (GB/second) | The amount of data Written for each Data Node |
+| Disk Space Remaining (GB) | The amount of Disk Space Remaining on each Data Node |
+| Volumes Failed | The number of Volume failures |
 
+**Name Nodes**
 
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Capacity Used (GB) | The Capacity currently being used by each Name Node |
+| Capacity Remaining (GB) | The Capacity currently remaining for each Name Node |
+| Blocks Missing | The number of Blocks Missing on each Name Node |
+| Data Nodes Dead | The number of Data Nodes currently dead |
+| Volumes Failed | The number of Volume failures |
 
+**Node Managers**
+
+| Metric Name  |  Description |
+| :------------- |:-------------|
+| Containers Allocated | The amount of Containers currently Allocated |
+| Containers Completed | The amount of Containers currently Completed |
+| Containers Failed | The amount of Containers currently Failed |
+| Containers Launched | The amount of Containers currently Launched |
+| Memory Allocated (GB) | The amount of Allocated Memory on each Node Manager |
+| Memory Available (GB) | The amount of Available Memory on each Node Manager |
+| Virtual Cores Allocated | The amount of Virtual Cores Allocated for each Node Manager |
+| Virtual Cores Allocated Ratio | The percent of Virtual Cores Allocated among Virtual Cores Total for each Node Manager |
+| Virtual Cores Available | The amount of Virtual Cores Available for each Node Manager |
+| Virtual Cores Total | The amount of Virtual Cores Total for each Node Manager |
+
+**Resource Managers**
+
+| Metric Name  |  Description |
+| :------------- |:-------------|
+| Applications Failed | The number of Application failures |
+| Applications Complete | The number of Application completions |
+| Applications Running | The number of Applications running |
+| Users Active | The total number of Active Users |
+| Queue Memory Allocated (GB)| The amount of Queue Memory Allocated for each Resource Manager |
+| Queue Memory Available (GB)| The amount of Queue Memory Available for each Resource Manager |

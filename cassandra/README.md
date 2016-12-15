@@ -189,14 +189,79 @@ For questions or issues regarding the Apache Cassandra Plugin for New Relic, vis
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
-| Average Read Latency | The average read latency among all Nodes |
-| Average Write Latency | The average write latency among all Nodes |
-| Total Used Heap Memory | The total used heap memory among all Nodes |
-| Total Used Non Heap Memory | The total used non-heap memory among all Nodes |
+| Average Read Latency (ms) | The average read latency among all Nodes |
+| Average Write Latency (ms) | The average write latency among all Nodes |
+| Total Used Heap Memory (bytes) | The total used heap memory among all Nodes |
+| Total Used Non Heap Memory (bytes) | The total used non-heap memory among all Nodes |
 
+**Clusters**
 
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Activity Count | The number of current Activities across all Nodes |
+| Average Range Slice Latency (ms) | The average range slice latency among all Nodes |
+| Average Read Latency (ms) | The average read latency among all Nodes |
+| Average Write Latency (ms) | The average write latency among all Nodes |
+| Total Pending Compaction Executor Tasks | The amount of Compaction Executor Tasks among all Nodes |
+| Total Pending Gossip Stage Tasks | The amount of Gossip Stage Tasks among all Nodes |
+| Total Pending Read Stage Tasks | The amount of Read Stage Tasks among all Nodes |
+| Total Pending Mutation Stage Tasks | The amount of Mutation Stage Tasks among all Nodes |
+| Total Used Heap Memory (bytes) | The total used heap memory among all Nodes |
+| Total Used Non Heap Memory (bytes) | The total used non-heap memory among all Nodes |
+| Par New Collections (collections/second) | The rate of Par New Collections per second |
+| Total Par New Collection Time (seconds) | The time of Par New Collections among all Nodes |
+| Total Concurrent Mark Sweep Collections (collections/second) | The rate of Total Concurrent Mark Sweep Collections per second |
+| Total Concurrent Mark Sweep Collections Time (seconds) | The time of Total Concurrent Mark Sweep Collections among all Nodes |
+| Node Count | The number of Nodes in the Cluster |
 
+**Nodes**
 
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Read Latency (ms) | The read latency for each Node |
+| Write Latency (ms) | The write latency for each Node |
+| CAS Read Latency (ms) | The CAS read latency for each Node |
+| CAS Write Latency (ms) | The CAS write latency for each Node |
+| Range Slice (ms) | The range slice latency for each Node |
+| View Write Latency (ms) | The view write latency for each Node |
 
+**Keyspaces**
 
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Average Read Latency (ms) | The average read latency for each Node Keyspace |
+| Average Write Latency (ms) | The average write latency for each Node Keyspace |
+| Average Range Latency (ms) | The average range slice latency for each Node Keyspace |
+| Total Disk Space Used (MB) | The amount of Disk Space Used by each Node Keyspace |
 
+**Node Keyspaces**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Read Latency (ms) | The read latency for each Node Keyspace |
+| Write Latency (ms) | The write latency for each Node Keyspace |
+| Range Latency (ms) | The range latency for each Node Keyspace |
+| CAS Commit Latency (ms) | The CAS Commit latency for each Node Keyspace |
+| CAS Prepare Latency (ms) | The CAS Prepare latency for each Node Keyspace |
+| CAS Propose Latency (ms) | The CAS Propose latency for each Node Keyspace |
+
+**Tables**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Average Read Latency (ms) | The average read latency for each Node Table |
+| Average Write Latency (ms) | The average write latency for each Node Table |
+| Average Range Latency (ms) | The average range slice latency for each Node Table |
+| Total Disk Space Used (MB) | The amount of Disk Space Used by each Node Table |
+
+**Node Tables**
+
+| Metric Name  |  Description |
+|:------------- |:-------------|
+| Read Latency (ms) | The read latency for each Node Table |
+| Write Latency (ms) | The write latency for each Node Table |
+| Range Latency (ms) | The range latency for each Node Table |
+| CAS Commit Latency (ms) | The CAS Commit latency for each Node Table |
+| CAS Prepare Latency (ms) | The CAS Prepare latency for each Node Table |
+| CAS Propose Latency (ms) | The CAS Propose latency for each Node Table |
+| Total Disk Space Used (GB) | The amount of Disk Space Used by each Node Table |
