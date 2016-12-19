@@ -32,13 +32,13 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-  ./npi install com.bluemedora.microsoft.sqlserver
+  ./npi install com.bluemedora.sap.hana
 ``` 
 
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.1.0_20161213_143851.tar.gz) 
+###### [Download Plugin for Manual Installation]() 
 
 **Note:** This plugin requires some manual setup due to Blue Medora not being able to distribute the JDBC depdendency. The user will have to follow the steps below before running the plugin.
 
