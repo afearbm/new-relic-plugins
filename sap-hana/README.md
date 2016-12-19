@@ -38,8 +38,6 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation]() 
-
 This plugin has JDBC depdendency that must be obtained from SAP directly. The user will have to follow the steps below before running the plugin:
 
 1. Go to [launchpad.support.sap.com](launchpad.support.sap.com) and login with your account.
