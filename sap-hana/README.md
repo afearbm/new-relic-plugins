@@ -55,7 +55,7 @@ This plugin has JDBC depdendency that must be obtained from SAP directly. The us
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.1.0_20161213_143851.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-sap-hana/newrelic_sap_hana_plugin-1.0.0_20161219_181208.tar.gz) 
 
 
 ----
