@@ -34,13 +34,9 @@ Once the NPI tool has been installed, run the following command:
 ```
   ./npi install com.bluemedora.microsoft.sqlserver
 ``` 
+### Manual Installation Step 
 
-
-**Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
-
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.1.0_20161213_143851.tar.gz) 
-
-**Note:** This plugin requires some manual setup due to Blue Medora not being able to distribute the JDBC depdendency. The user will have to follow the steps below before running the plugin.
+This plugin has JDBC depdendency that must be obtained from SAP directly. The user will have to follow the steps below before running the plugin:
 
 1. Go to [launchpad.support.sap.com](launchpad.support.sap.com) and login with your account.
 2. Search for `SAP HANA Client 1.00`
@@ -52,6 +48,11 @@ Once the NPI tool has been installed, run the following command:
 8. Execute `cd SAP_HANA_CLIENT/client/`
 9. Execute `tar -xvf JDBC.TGZ`
 10. Copy the `ngdbc.jar` to `lib` folder within the SAP HANA plugin directory structure.
+
+**Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
+
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.1.0_20161213_143851.tar.gz) 
+
 
 ----
     
