@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.1.0_20161213_143851.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.1.1_20161220_184503.tar.gz) 
 
 ----
     
@@ -161,6 +161,73 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | query_count | Optional parameter, the number of queries to return for "Top X Queries" metrics |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
+
+**Examples**
+
+```
+{
+  "polling_interval_seconds": 300,
+  "downtime_tracking_minutes": 60,
+  ""
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "instance": "your_value_here",
+      "port": 1433,
+      "query_count": 10,
+      "send_to_plugin": {
+        "query": true,
+        "instance": true,
+        "database": true,
+        "disk": true,
+        "object": true
+      },
+      "send_to_insights": {
+        "query": true,
+        "instance": true,
+        "database": true,
+        "availability_group": true,
+        "cluster_node": true,
+        "hard_replica": true,
+        "object": true,
+        "disk": true,
+        "relationships": true,
+        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    },
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "instance": "your_value_here",
+      "query_count": 10,
+      "send_to_plugin": {
+        "query": true,
+        "instance": true,
+        "database": true,
+        "disk": true,
+        "object": true
+      },
+      "send_to_insights": {
+        "query": true,
+        "instance": true,
+        "database": true,
+        "availability_group": true,
+        "cluster_node": true,
+        "hard_replica": true,
+        "object": true,
+        "disk": true,
+        "relationships": true,
+        "notifications": false   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    }
+  ]
+}
+```
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.

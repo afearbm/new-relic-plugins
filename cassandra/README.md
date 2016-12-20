@@ -35,7 +35,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section. 
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-apache-cassandra/newrelic_apache_cassandra_plugin-1.0.0_20161214_210033.tar.gz)
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-apache-cassandra/newrelic_apache_cassandra_plugin-1.0.1_20161220_184812.tar.gz)
 
 ----     
 
@@ -158,6 +158,41 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | username | The username of a read-only database user |
 | password | The password of the read-only database user |
 
+**Example**
+
+```
+{
+  "polling_interval_seconds": 60,
+  "downtime_tracking_minutes": 60, 
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "host": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": 7199,
+      "send_to_plugin": {
+        "cluster": true,
+        "keyspace": true,
+        "node": true,
+        "nodeKeyspace": true,
+        "nodeTable": true,
+        "table": true
+      },
+      "send_to_insights": {
+        "cluster": true,
+        "keyspace": true,
+        "node": true,
+        "nodeKeyspace": true,
+        "nodeTable": true,
+        "table": true,
+        "relationships": true,
+        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    }
+  ]
+}
+```
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.

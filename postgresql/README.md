@@ -59,7 +59,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-postgres/newrelic_Postgres_plugin-2.1.0_20161213_144017.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-postgres/newrelic_Postgres_plugin-2.1.1_20161220_184549.tar.gz) 
 
 ----
     
@@ -184,6 +184,140 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | query_count | Optional parameter, the number of queries to return for "Top X Queries" metrics |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
+
+**Examples**
+
+```
+{
+  "polling_interval_seconds": 60,
+  "downtime_tracking_minutes": 60,
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "database": "database1",
+      "ssl_mode": "disable",
+      "port": 5432,
+      "show_query_text": true,
+      "query_count": "your_value_here",
+      "session_count": "your_value_here",
+      "function_count": "your_value_here",
+      "monitor_tables": "your_value_here",
+      "order_queries_by": "your_value_here",
+      "order_functions_by": "your_value_here",
+      "send_to_plugin": {
+        "postgresql_instance": true,
+        "postgresql_query": true,
+        "postgresql_database": true,
+        "postgresql_function": true,
+        "postgresql_index": true,
+        "postgresql_table": true,
+        "postgresql_tablespace": true
+      },
+      "send_to_insights": {
+        "postgresql_instance": true,
+        "postgresql_query": true,
+        "postgresql_database": true,
+        "postgresql_function": true,
+        "postgresql_index": true,
+        "postgresql_table": true,
+        "postgresql_tablespace": true,
+        "postgresql_configuration": true, 
+        "postgresql_trigger": true, 
+        "postgresql_replication": true,
+        "postgresql_sequence": true, 
+        "postgresql_session": true, 
+        "relationships": true,
+        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    },
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "database": "database1, database2",
+      "ssl_mode": "require",
+      "port": 5432,
+      "show_query_text": true,
+      "query_count": 10,
+      "session_count": 20,
+      "function_count": 20,
+      "monitor_tables": true,
+      "order_queries_by": "calls",
+      "order_functions_by": "calls",
+      "send_to_plugin": {
+        "postgresql_instance": true,
+        "postgresql_query": true,
+        "postgresql_database": true,
+        "postgresql_function": true,
+        "postgresql_index": true,
+        "postgresql_table": true,
+        "postgresql_tablespace": true
+      },
+      "send_to_insights": {
+        "postgresql_instance": true,
+        "postgresql_query": true,
+        "postgresql_database": true,
+        "postgresql_function": true,
+        "postgresql_index": true,
+        "postgresql_table": true,
+        "postgresql_tablespace": true,
+        "postgresql_configuration": true,
+        "postgresql_trigger": true,
+        "postgresql_replication": true,
+        "postgresql_sequence": true,
+        "postgresql_session": true,
+        "relationships": true,
+        "notifications": "ERROR"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    },
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "database": "your_value_here",
+      "ssl_mode": "prefer",
+      "port": 5432,
+      "show_query_text": true,
+      "query_count": 20,
+      "session_count": 20,
+      "function_count": 20,
+      "monitor_tables": false,
+      "order_queries_by": "total_time",
+      "order_functions_by": "calls",
+      "send_to_plugin": {
+        "postgresql_instance": true,
+        "postgresql_query": true,
+        "postgresql_database": true,
+        "postgresql_function": true,
+        "postgresql_index": true,
+        "postgresql_table": true,
+        "postgresql_tablespace": true
+      },
+      "send_to_insights": {
+        "postgresql_instance": true,
+        "postgresql_query": true,
+        "postgresql_database": true,
+        "postgresql_function": true,
+        "postgresql_index": true,
+        "postgresql_table": true,
+        "postgresql_tablespace": true,
+        "postgresql_configuration": true,
+        "postgresql_trigger": true,
+        "postgresql_replication": true,
+        "postgresql_sequence": true,
+        "postgresql_session": true,
+        "relationships": true,
+        "notifications": false   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    }
+  ]
+}
+```
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.

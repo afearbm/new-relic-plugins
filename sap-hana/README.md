@@ -34,26 +34,10 @@ Once the NPI tool has been installed, run the following command:
 ```
   ./npi install com.bluemedora.sap.hana
 ``` 
-### Manual Installation Step 
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-This plugin has JDBC depdendency that must be obtained from SAP directly. The user will have to follow the steps below before running the plugin:
-
-1. Go to [launchpad.support.sap.com](launchpad.support.sap.com) and login with your account.
-2. Search for `SAP HANA Client 1.00`
-3. Download `IMDB_CLIENT100_112_7-10009663.SAR`
-4. Search for `SAPCAR` on the aunchpad.support.sap.com page.
-5. Download 7.21
-6. Make sure both downloads are on a linux box. Give SAPCAR execution permissions by running `chmod +x SAPCAR_721-20010450.EXE`
-7. Execute `./SAPCAR_721-20010450.EXE -xvf IMDB_CLIENT100_112_7-10010439.SAR` command
-8. Execute `cd SAP_HANA_CLIENT/client/`
-9. Execute `tar -xvf JDBC.TGZ`
-10. Copy the `ngdbc.jar` to `lib` folder within the SAP HANA plugin directory structure.
-
-**Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
-
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-sap-hana/newrelic_sap_hana_plugin-1.0.0_20161219_181208.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-sap-hana/newrelic_sap_hana_plugin-1.0.1_20161220_192740.tar.gz) 
 
 
 ----
@@ -176,11 +160,50 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | password | Password to log into SAP HANA System |
 | host | The hostname or IPv4 address of SAP HANA System |
 | port | Port to connect to SAP HANA System |
+| ssl_config | Optional parameter, valid values are `No SSL`, `No Verify` to use SSL but trust the server certificate, or `Verify` to use SSL and verify against the server certificate |
 | failover_hosts | Optional parameter, Comma seperated list of SAP HANA hosts to failer over for monitoring if connection to main host fails. Ex: [10.6.5.101,10.6.5.102:30015] |
 | collect_events | Optional parameter, toggle events on/off acceptable values are `true` or `false` |
 | excluded_queries | Optional parameter, comma separated list of queries. If a query is in this list the plugin will not run the query while monitoring your SAP HANA System |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
+
+**Example**
+
+```
+{
+  "polling_interval_seconds": 60,
+  "downtime_tracking_minutes": 60,
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "host": "your_value_here",
+      "port": "your_value_here",
+      "failover_hosts": "your_value_here",
+      "collect_events": true,
+      "send_to_plugin": {
+        "system": true,
+        "host": true,
+        "disk": true,
+        "service": true,
+        "service_shared_memory": true,
+        "volume": true
+      },
+      "send_to_insights": {
+        "system": true,
+        "host": true,
+        "disk": true,
+        "service": true,
+        "service_shared_memory": true,
+        "volume": true,
+        "relationships": true,
+        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    }
+  ]
+}
+```
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.

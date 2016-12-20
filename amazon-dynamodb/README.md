@@ -36,7 +36,7 @@ Once the NPI tool has been installed, run the following command:
 
 **NOTE:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-amazon-dynamodb/newrelic_amazon_dynamodb_plugin-2.1.0_20161213_144052.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-amazon-dynamodb/newrelic_amazon_dynamodb_plugin-2.1.1_20161220_184716.tar.gz) 
 
 ----     
 
@@ -157,6 +157,39 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | region | Amazon AWS region where DynamoDB instance resides. Acceptable values are `U_WEST_1`, `SA_EAST_1`, `AP_NORTHEAST_2`, `US_EAST_1`, `AP_NORTHEAST_1`, `CN_NORTH_1`, `EU_CENTRAL_1`, `AP_SOUTHEAST_1`, `AP_SOUTHEAST_2`, `US_WEST_2`, `GovCloud`, `US_WEST_1` |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
+
+**Example**
+
+```
+{
+  "polling_interval_seconds": 60,
+  "downtime_tracking_minutes": 60, 
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "access_key_id": "your_value_here",
+      "secret_access_key": "your_value_here",
+      "region": "US_WEST_1"      // Valid Values: "US_WEST_1", "SA_EAST_1", "AP_NORTHEAST_2", "US_EAST_1", "AP_NORTHEAST_1", "CN_NORTH_1", "EU_CENTRAL_1", "AP_SOUTHEAST_1", "AP_SOUTHEAST_2", "US_WEST_2", "GovCloud", "US_WEST_1",
+      "send_to_plugin": {
+        "dynamo_connection": true,
+        "table": true,
+        "global_secondary_index": true,
+        "local_secondary_index": true,
+        "key_schema": true,
+      },
+      "send_to_insights": {
+        "dynamo_connection": true,
+        "table": true,
+        "global_secondary_index": true,
+        "local_secondary_index": true,
+        "key_schema": true,
+        "relationships": true,
+        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    }
+  ]
+}
+```
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.

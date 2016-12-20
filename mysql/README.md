@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mysql/newrelic_mysql_plugin-2.1.0_20161213_143218.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mysql/newrelic_mysql_plugin-2.1.1_20161220_184408.tar.gz) 
 
 ----
     
@@ -164,6 +164,116 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | database | Optional parameter, comma separated list of databases to monitor |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
+
+**Examples**
+
+```
+{
+  "polling_interval_seconds": 60,
+  "downtime_tracking_minutes": 60,
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": 3306,
+      "host": "your_value_here",
+      "database": "your_value_here",
+      "ssl_enable": false,
+      "ssl_cert_path": "your_value_here",
+      "monitor_queries": true,
+      "query_count": 10,
+      "query_history_interval": 24,
+      "monitor_tables": true,
+      "order_queries_by": "average_time",
+      "send_to_plugin": {
+        "mysql_instance": true,
+        "mysql_tablespace": true,
+        "mysql_table": true,
+        "mysql_database": true,
+        "mysql_index": true,
+        "mysql_query": true
+      },
+      "send_to_insights": {
+        "mysql_instance": true,
+        "mysql_tablespace": true,
+        "mysql_table": true,
+        "mysql_database": true,
+        "mysql_index": true,
+        "mysql_query": true,
+        "relationships": true,
+        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    },
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": 3306,
+      "host": "your_value_here",
+      "database": "database_name",
+      "ssl_enable": true,
+      "ssl_cert_path": "/Path/to/ssl_cert/mycert.crt",
+      "monitor_queries": false,
+      "query_count": 100,
+      "query_history_interval": 5,
+      "monitor_tables": false,
+      "order_queries_by": "calls",
+      "send_to_plugin": {
+        "mysql_instance": true,
+        "mysql_tablespace": true,
+        "mysql_table": true,
+        "mysql_database": true,
+        "mysql_index": true,
+        "mysql_query": true
+      },
+      "send_to_insights": {
+        "mysql_instance": true,
+        "mysql_tablespace": true,
+        "mysql_table": true,
+        "mysql_database": true,
+        "mysql_index": true,
+        "mysql_query": true,
+        "relationships": true,
+        "notifications": "ERROR"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    },
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "port": 3306,
+      "host": "your_value_here",
+      "database": "database1,database2",
+      "ssl_enable": true,
+      "ssl_cert_path": "/Path/to/ssl_cert/mycert.crt",
+      "monitor_queries": true,
+      "query_count": 100,
+      "query_history_interval": 5,
+      "monitor_tables": true,
+      "order_queries_by": "total_time",
+      "send_to_plugin": {
+        "mysql_instance": true,
+        "mysql_tablespace": true,
+        "mysql_table": true,
+        "mysql_database": true,
+        "mysql_index": true,
+        "mysql_query": true
+      },
+      "send_to_insights": {
+        "mysql_instance": true,
+        "mysql_tablespace": true,
+        "mysql_table": true,
+        "mysql_database": true,
+        "mysql_index": true,
+        "mysql_query": true,
+        "relationships": true,
+        "notifications": false  // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    }
+  ]
+}
+```
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.

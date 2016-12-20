@@ -36,7 +36,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section. 
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-apache-hadoop/newrelic_apache_hadoop_plugin-1.0.0_20161214_193053.tar.gz)
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-apache-hadoop/newrelic_apache_hadoop_plugin-1.0.1_20161220_184748.tar.gz)
 
 ----     
 
@@ -160,6 +160,43 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | resource_manager_port | Port on which to connect to Resource Managers |
 | timeout | Number of seconds to wait before timing out |
 | max_threads | The maximum number of threads that will be used in data collection |
+
+**Example**
+
+```
+{
+  "polling_interval_seconds": 60,
+  "downtime_tracking_minutes": 60,
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "name_node_host": "name_node1, name_node2",
+      "name_node_port": 50070,
+      "resource_manager_host": "resourcemgr-1, resourcemgr-2",
+      "resource_manager_port": 8088,
+      "collection_mode": "Standard or Light",
+      "timeout": 5,
+      "max_threads": 30,
+      "send_to_plugin": {
+        "cluster": true,
+        "data_node": true,
+        "name_node": true,
+        "node_manager": true,
+        "resource_manager": true
+      },
+      "send_to_insights": {
+        "cluster": true,
+        "data_node": true,
+        "name_node": true,
+        "node_manager": true,
+        "resource_manager": true,
+        "relationships": true,
+        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    }
+  ]
+}
+```
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.

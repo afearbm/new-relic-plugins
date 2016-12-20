@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mongo/newrelic_mongo_mongodb_plugin-2.1.0_20161213_144202.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mongo/newrelic_mongo_mongodb_plugin-2.1.1_20161220_184654.tar.gz) 
 
 ----
     
@@ -165,6 +165,81 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | password_mongod | Optional parameter, Password to log into the Mongod |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
+
+**Example**
+
+```
+{
+  "polling_interval_seconds": 60,
+  "downtime_tracking_minutes": 60,
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "host": "your_value_here",
+      "connecting_to": "mongos",  // Valid valids: "mongos", "mongod"
+      "validate_certificate_against_truststore": false,
+      "ssl_mongos": false,
+      "auth_mongos": "your_value_here",
+      "username_mongos": "your_value_here",
+      "password_mongos": "your_value_here",
+      "ssl_mongod": true,
+      "auth_mongod": "default",
+      "username_mongod": "your_value_here",
+      "password_mongod": "your_value_here",
+      "send_to_plugin": {
+        "mongo_summary": true,
+        "mongo_database": true,
+        "mongod": true,
+        "mongos": true
+      },
+      "send_to_insights": {
+        "mongo_summary": true,
+        "mongo_database": true,
+        "mongod": true,
+        "mongos": true,
+        "cluster": true,
+        "config_server": true,
+        "replica_set": true,
+        "shard": true,
+        "relationships": true,
+        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    },
+    {
+      "instance_name": "your_value_here",
+      "host": "host1,host2:443",
+      "connecting_to": "mongod",  // Valid valids: "mongos", "mongod"
+      "validate_certificate_against_truststore": false,
+      "ssl_mongos": false,
+      "auth_mongos": "",
+      "username_mongos": "",
+      "password_mongos": "",
+      "ssl_mongod": true,
+      "auth_mongod": "ldap sasl",
+      "username_mongod": "your_value_here",
+      "password_mongod": "your_value_here",
+      "send_to_plugin": {
+        "mongo_summary": true,
+        "mongo_database": true,
+        "mongod": true,
+        "mongos": true
+      },
+      "send_to_insights": {
+        "mongo_summary": true,
+        "mongo_database": true,
+        "mongod": true,
+        "mongos": true,
+        "cluster": true,
+        "config_server": true,
+        "replica_set": true,
+        "shard": true,
+        "relationships": true,
+        "notifications": false   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+      }
+    }
+  ]
+}
+```
 
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
