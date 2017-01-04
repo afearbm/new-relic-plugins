@@ -163,6 +163,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 ```
 {
   "polling_interval_seconds": 60,
+  "downtime_tracking_minutes": 60,
   "agents": [
     {
       "instance_name": "your_value_here",
