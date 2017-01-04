@@ -164,13 +164,14 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 ```
 {
   "polling_interval_seconds": 300,
+  "downtime_tracking_minutes": 60,
   "agents": [
     {
       "instance_name": "your_value_here",
       "username": "your_value_here",
       "password": "your_value_here",
       "netscaler_ip": "your_value_here",
-      "protocol": "https",
+      "protocol": "http or https",
       "validate_certificate_against_truststore": "true or false",
       "send_to_plugin": {
         "appliance": true,
