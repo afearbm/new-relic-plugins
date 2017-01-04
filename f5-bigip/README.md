@@ -197,7 +197,43 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "relationships": true,
         "notifications": "true or false or ERROR or WARNING or INFO or DEBUG"
       }
-    }
+    },
+    {
+      "instance_name": "your_value_here",
+      "host": "your_value_here",
+      "port": 443,
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "exclude_nodes_and_pool_members": "true or false",
+      "exclude_relationships": "true or false",
+      "timeout": 30,
+      "send_to_plugin": {
+        "big_ip_system": true,
+        "disk": true,
+        "module": true,
+        "node": true,
+        "pool": true,
+        "pool_member": true,
+        "virtual_server": true,
+        "application": true,
+        "device": true,
+        "device_group": true
+      },
+      "send_to_insights": {
+        "big_ip_system": true,
+        "disk": true,
+        "module": true,
+        "node": true,
+        "pool": true,
+        "pool_member": true,
+        "virtual_server": true,
+        "application": true,
+        "device": true,
+        "device_group": true,
+        "ssl-certificate": true,
+        "relationships": true,
+        "notifications": "true or false or ERROR or WARNING or INFO or DEBUG"
+      }
   ]
 }
 ```
