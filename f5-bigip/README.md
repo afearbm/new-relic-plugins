@@ -159,6 +159,49 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
+**Examples**
+```
+{
+  "polling_interval_seconds": 60,
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "host": "your_value_here",
+      "port": 443,
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "send_to_plugin": {
+        "big_ip_system": true,
+        "disk": true,
+        "module": true,
+        "node": true,
+        "pool": true,
+        "pool_member": true,
+        "virtual_server": true,
+        "application": true,
+        "device": true,
+        "device_group": true
+      },
+      "send_to_insights": {
+        "big_ip_system": true,
+        "disk": true,
+        "module": true,
+        "node": true,
+        "pool": true,
+        "pool_member": true,
+        "virtual_server": true,
+        "application": true,
+        "device": true,
+        "device_group": true,
+        "ssl-certificate": true,
+        "relationships": true,
+        "notifications": "true or false or ERROR or WARNING or INFO or DEBUG"
+      }
+    }
+  ]
+}
+```
+
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
