@@ -160,6 +160,44 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
+**Examples**
+```
+{
+  "polling_interval_seconds": 300,
+  "downtime_tracking_minutes": 60,
+  "agents": [
+    {
+      "instance_name": "your_value_here",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "netscaler_ip": "your_value_here",
+      "protocol": "http or https",
+      "validate_certificate_against_truststore": "true or false",
+      "send_to_plugin": {
+        "appliance": true,
+        "gslb_site": true,
+        "gslb_service": true,
+        "target_server": true,
+        "service": true,
+        "virtual_server": true,
+        "gslb_virtual_server": true
+      },
+      "send_to_insights": {
+        "appliance": true,
+        "gslb_site": true,
+        "gslb_service": true,
+        "target_server": true,
+        "service": true,
+        "virtual_server": true,
+        "gslb_virtual_server": true,
+        "relationships": true,
+        "notifications": "true or false or ERROR or WARNING or INFO or DEBUG"
+      }
+    }
+  ]
+}
+```
+
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
@@ -222,5 +260,6 @@ For questions or issues regarding the Blue Medora Citrix NetScaler Plugin for Ne
 |:------------- |:-------------|
 | Inbound Data Rate (bps) | Inbound data rate of the NetScaler appliance |
 | Outbound Data Rate (bps) | Outbound data rate of the NetScaler appliance |
-| Average Service Client Connections| Average number of client connections per Service |
-| Average Service Server Connections| Average number of server connections per Service |
+| Average Service Client Connections | Average number of client connections per Service |
+| Average Service Server Connections | Average number of server connections per Service |
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
