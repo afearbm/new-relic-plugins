@@ -163,6 +163,71 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
+**Examples**
+```
+{
+  "polling_interval_seconds": 60,
+  "downtime_tracking_minutes": 60,
+  "agents": [
+    {
+      "instance_name": "Your SNMP Version 2 Instance",
+      "version": "v2 or v2c",
+      "management_ip": "your_value_here",
+      "community_string": "your_value_here",
+      "snmp_port": 161,
+      "protocol": "http or https",
+      "validate_certificate_against_truststore": "true or false",
+      "send_to_plugin": {
+        "cisco_nexus_switch": true,
+        "cisco_nexus_port": true,
+        "cisco_nexus_l3_interface": true
+      },
+      "send_to_insights": {
+        "cisco_nexus_hsrp_group": true,
+        "cisco_nexus_hsrp_group_member": true,
+        "cisco_nexus_fan": true,
+        "cisco_nexus_power_module": true,
+        "cisco_nexus_sensor": true,
+        "cisco_nexus_switch": true,
+        "cisco_nexus_port": true,
+        "cisco_nexus_l3_interface": true,
+        "relationships": true,
+        "notifications": "true or false or ERROR or WARNING or INFO or DEBUG"
+      }
+    },
+    {
+      "instance_name": "Your SNMP Version 3 Instance",
+      "version": "v3",
+      "management_ip": "your_value_here",
+      "user": "your_value_here",
+      "auth_password": "your_value_here",
+      "privacy_password": "your_value_here",
+      "authentication_type": "authSHA or authMD5",
+      "privacy_type": "privAES256 or privAES192 or privAES128 or privDES or priv3DES",
+      "security_level": "auth_priv or auth_nopriv or noauth_nopriv",
+      "send_to_plugin": {
+        "cisco_nexus_switch": true,
+        "cisco_nexus_port": true,
+        "cisco_nexus_l3_interface": true
+      },
+      "send_to_insights": {
+        "cisco_nexus_hsrp_group": true,
+        "cisco_nexus_hsrp_group_member": true,
+        "cisco_nexus_fan": true,
+        "cisco_nexus_power_module": true,
+        "cisco_nexus_sensor": true,
+        "cisco_nexus_switch": true,
+        "cisco_nexus_port": true,
+        "cisco_nexus_l3_interface": true,
+        "relationships": true,
+        "notifications": "true or false or ERROR or WARNING or INFO or DEBUG"
+      }
+    }
+
+  ]
+}
+```
+
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
@@ -221,5 +286,5 @@ For questions or issues regarding the Blue Medora Cisco Nexus Plugin for New Rel
 | Inbound (bytes/sec) | The total inbound throughput in bytes per second |
 | Outbound (bytes/sec) | The total outbound throughput in bytes per second |
 | Ports in Error (%) | Percentage of ports in which the status is "In Error" |
-| Ports Up (%) | Percentage of ports in which the status is "Up" |
 | Ports Down (%) | Percentage of ports in which the status is "Down" |
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
