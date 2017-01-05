@@ -260,6 +260,6 @@ For questions or issues regarding the Blue Medora Citrix NetScaler Plugin for Ne
 |:------------- |:-------------|
 | Inbound Data Rate (bps) | Inbound data rate of the NetScaler appliance |
 | Outbound Data Rate (bps) | Outbound data rate of the NetScaler appliance |
-| Management CPU Usage | CPU Usage of the NetScaler appliance |
-| Memory Usage | Memory Usage of the NetScaler appliance |
+| Average Service Client Connections | Average number of client connections per Service |
+| Average Service Serverr Connections | Average number of server connections per Service |
 | Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
