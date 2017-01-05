@@ -321,3 +321,4 @@ For questions or issues regarding the Blue Medora VMware vSphere plugin for New 
 | Distressed VMs | The number of virtual machines that are in a `Warning` or `Critical` state |
 | Distressed Clusters | The number of clusters that are in a `Warning` or `Critical` state |
 | Distressed Datastores | The number of datastores that are in a `Warning` or `Critical` state |
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |

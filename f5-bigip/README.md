@@ -347,6 +347,6 @@ For questions or issues regarding the F5 BIG-IP Plugin for New Relic, visit http
 | Total Received Throughput (bytes/sec) | Total received throughput across BIG-IP System |
 | Total Transmitted Throughput (bytes/sec) | Total transmitted throughput across BIG-IP System |
 | Average Connections per Node | The average number of current connections per node | 
-| Average Pool Request Rate (requests/second) | The average request rate per Pool
 | Average Connections per Pool | The average number of connections per pool |
+| Downtime (%) | The percentage of times during the downtime tracking window during which the system has been unavailable |
 
