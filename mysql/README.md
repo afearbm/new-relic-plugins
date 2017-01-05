@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mysql/newrelic_mysql_plugin-2.1.1_20161220_184408.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mysql/newrelic_mysql_plugin-2.1.2_20170105_194840.tar.gz) 
 
 ----
     
@@ -181,10 +181,10 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "database": "your_value_here",
       "ssl_enable": false,
       "ssl_cert_path": "your_value_here",
-      "monitor_queries": true,
+      "monitor_tables": false,
+      "monitor_queries": false,
       "query_count": 10,
       "query_history_interval": 24,
-      "monitor_tables": true,
       "order_queries_by": "average_time",
       "send_to_plugin": {
         "mysql_instance": true,
@@ -214,10 +214,10 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "database": "database_name",
       "ssl_enable": true,
       "ssl_cert_path": "/Path/to/ssl_cert/mycert.crt",
-      "monitor_queries": false,
+      "monitor_tables": true,
+      "monitor_queries": true,
       "query_count": 100,
       "query_history_interval": 5,
-      "monitor_tables": false,
       "order_queries_by": "calls",
       "send_to_plugin": {
         "mysql_instance": true,
@@ -247,10 +247,10 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "database": "database1,database2",
       "ssl_enable": true,
       "ssl_cert_path": "/Path/to/ssl_cert/mycert.crt",
-      "monitor_queries": true,
+      "monitor_tables": true,
+      "monitor_queries": false,
       "query_count": 100,
       "query_history_interval": 5,
-      "monitor_tables": true,
       "order_queries_by": "total_time",
       "send_to_plugin": {
         "mysql_instance": true,
