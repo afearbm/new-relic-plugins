@@ -33,16 +33,16 @@ Once the NPI tool has been installed, run the following command:
 
 ```
 	./npi install com.bluemedora.netapp.apiservices
-```	
+```
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-netapp-apiservices/newrelic_netapp_apiservices_plugin-3.0.0_20161206_184732.tar.gz)
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-netapp-apiservices/newrelic_netapp_apiservices_plugin-3.1.0_20170109_151856.tar.gz)
 
 ----
-    
+
 ## Configuring the Plugin
-From the extracted plugin folder you receive when downloading your plugin, you will find the following files: 
+From the extracted plugin folder you receive when downloading your plugin, you will find the following files:
 
 ```
   plugin.jar
@@ -50,7 +50,7 @@ From the extracted plugin folder you receive when downloading your plugin, you w
   oss_attribution.txt
   [config folder]
     newrelic.template.json
-    plugin.template.json 
+    plugin.template.json
     plugin_license.json
 ```
 
@@ -71,9 +71,9 @@ Make a copy of this template and rename it to `newrelic.json`. Listed below are 
 }
 ```
 
-**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights. 
-In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`. 
-You can find these fields in on [your New Relic API Keys page](https://rpm.newrelic.com/apikeys). 
+**Insights Configuration** - Blue Medora plugins support reporting events to New Relic Insights.
+In order to achieve this you need to supply your `insights_api_key` and `insights_account_id`.
+You can find these fields in on [your New Relic API Keys page](https://rpm.newrelic.com/apikeys).
 For more information, [refer to the New Relic Insights documentation](https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/insert-custom-events-insights-api#register).
 
 Below are the fields needed to configure Insights access.
@@ -136,7 +136,7 @@ Below are the fields needed to configure Insights access.
 }
 ```
 
-### Configuring the `plugin.template.json` file: 
+### Configuring the `plugin.template.json` file:
 
 The second file, `plugin.template.json`, contains data specific to each plugin (e.g., a list of hosts and port combinations for what you are monitoring). Templates for both of these files should be located in the ‘config’ directory in your extracted plugin folder.
 
@@ -151,6 +151,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
+| downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
 | instance_name | The name of your New Relic NetApp Storage instance that will appear in the user interface |
 | username | User name to log into NetApp Storage API Services |
 | password | Password to log into NetApp Storage API Services |
@@ -160,26 +161,76 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
+**Example**
+
+```
+{
+  "polling_interval_seconds": 360,
+	"downtime_tracking_minutes": 60,
+  "agents": [
+    {
+      "instance_name": "Your NetApp Instance",
+      "username": "your_value_here",
+      "password": "your_value_here",
+      "server": "your_value_here",
+      "protocol": "https" //Valid values: http, https ,
+			"port": "your_custom_port",
+      "send_to_plugin": {
+        "disk": false,
+        "aggregate": true,
+        "volume": true,
+        "lun": true,
+        "vserver": true,
+        "system": true,
+        "cluster": true
+      },
+      "send_to_insights": {
+        "summary_vserver": true,
+        "summary_system": true,
+        "aggregate": true,
+        "cluster": true,
+        "disk": false,
+        "lun": true,
+        "qtree": true,
+        "system": true,
+        "volume": true,
+        "vserver": true,
+        "relationships": true,        
+        "notifications": "INFO" //Valid values: true, false, ERROR, WARNING, INFO, DEBUG
+      }
+    }
+  ]
+}
+```
+
 ## Using the Plugin
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Troubleshooting/Known Issues
+#### java.lang.OutOfMemoryError
+
 When running a plugin, a `java.lang.OutOfMemoryError` may occur if too much data is being processed for the system to handle. If that issues arises, you will need to modify the `java_args` field of the “master” `newrelic.json` file located in the npi base `config` directory.
 
 `java_args` - `-Xmx128m` (-Xmxn specifies the maximum size, in bytes, of the memory allocation pool. This value must a multiple of 1024 greater than 2 MB. Append the letter k or K to indicate kilobytes, or m or M to indicate megabytes. The default value is chosen at runtime based on system configuration.)
 
-**Examples:**
+- **Examples:**
 
-`-Xmx83886080`
+- `-Xmx83886080`
 
-`-Xmx81920k`
+- `-Xmx81920k`
 
-`-Xmx80m`
+- `-Xmx80m`
 
-----     
+
+
+#### FATAL ERROR: JS Allocation failed - process out of memory
+
+If you see `FATAL ERROR: JS Allocation failed - process out of memory` during installation, edit newrelic-npi/npi replacing `bin/node npi.js "$@"` with `bin/node --max-old-space-size=4096 npi.js "$@" #modified for 4gb memory`
+
+----
 
 ## Support Resources
-For questions or issues regarding the Blue Medora NetApp Storage Plugin for New Relic, visit http://support.bluemedora.com. 
+For questions or issues regarding the Blue Medora NetApp Storage Plugin for New Relic, visit http://support.bluemedora.com.
 
 ----     
 
@@ -291,5 +342,3 @@ For questions or issues regarding the Blue Medora NetApp Storage Plugin for New 
 | SVM Used Capacity (%)  | The percentage of svm capacity used |
 | System IOPS (ops/sec) |  Total IOPS for systems  |
 | System Latency (ms) |  Average Latency of systems  |
-
-

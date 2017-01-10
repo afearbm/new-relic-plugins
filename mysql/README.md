@@ -289,18 +289,27 @@ from mysql.slow_log
 ```
 
 ## Troubleshooting/Known Issues
+#### java.lang.OutOfMemoryError
 
-**Java Memory Error.** When running a plugin, a `java.lang.OutOfMemoryError` may occur if too much data is being processed for the system to handle. If that issues arises, you will need to modify the `java_args` field of the “master” `newrelic.json` file located in the npi base `config` directory.
+When running a plugin, a `java.lang.OutOfMemoryError` may occur if too much data is being processed for the system to handle. If that issues arises, you will need to modify the `java_args` field of the “master” `newrelic.json` file located in the npi base `config` directory.
 
 `java_args` - `-Xmx128m` (-Xmxn specifies the maximum size, in bytes, of the memory allocation pool. This value must a multiple of 1024 greater than 2 MB. Append the letter k or K to indicate kilobytes, or m or M to indicate megabytes. The default value is chosen at runtime based on system configuration.)
 
-**Examples:**
+- **Examples:**
 
-`-Xmx83886080`
+- `-Xmx83886080`
 
-`-Xmx81920k`
+- `-Xmx81920k`
 
-`-Xmx80m`
+- `-Xmx80m`
+
+
+
+#### FATAL ERROR: JS Allocation failed - process out of memory
+
+If you see `FATAL ERROR: JS Allocation failed - process out of memory` during installation, edit newrelic-npi/npi replacing `bin/node npi.js "$@"` with `bin/node --max-old-space-size=4096 npi.js "$@" #modified for 4gb memory`
+
+----
 
 **Query Data Not Populating.** The plugin will attempt to monitor queries by default. If query data is not populating, you must enable slow queries to be written to the `mysql.slow_log` table. 
 The size of this table must be limited or monitoring queries may severely affect system performance.

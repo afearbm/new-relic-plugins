@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-f5bigip/newrelic_f5_bigip_plugin-2.0.0_20161207_152510.tar.gz)
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-f5bigip/newrelic_f5_bigip_plugin-2.1.0_20170109_174629.tar.gz)
 
 ----
     
@@ -151,11 +151,15 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | Field Name  |  Description |
 |:------------- |:-------------|
 | polling_interval_seconds | The number of seconds between each data collection. |
+| downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
 | instance_name | Alias for the name of your F5 BIG-IP instance that will appear in the User Interface |
 | host | IP address or hostname of F5 BIG-IP Management IP |
 | port | Port used to connect to the F5 BIG-IP REST API. Default is `443` |
 | username | User Name for F5 BIG-IP login. |
 | password | Password for F5 BIG-IP login. |
+| exclude_nodes_and_pool_members | Indicates whether or not to collect node and pool member data. |
+| exclude_relationships | Indicates whether or not to collect relationship data. |
+| timeout | Length of time in seconds to attempt data collection at a given resource. |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
@@ -171,42 +175,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "port": 443,
       "username": "your_value_here",
       "password": "your_value_here",
-      "send_to_plugin": {
-        "big_ip_system": true,
-        "disk": true,
-        "module": true,
-        "node": true,
-        "pool": true,
-        "pool_member": true,
-        "virtual_server": true,
-        "application": true,
-        "device": true,
-        "device_group": true
-      },
-      "send_to_insights": {
-        "big_ip_system": true,
-        "disk": true,
-        "module": true,
-        "node": true,
-        "pool": true,
-        "pool_member": true,
-        "virtual_server": true,
-        "application": true,
-        "device": true,
-        "device_group": true,
-        "ssl-certificate": true,
-        "relationships": true,
-        "notifications": "true or false or ERROR or WARNING or INFO or DEBUG"
-      }
-    },
-    {
-      "instance_name": "your_value_here",
-      "host": "your_value_here",
-      "port": 443,
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "exclude_nodes_and_pool_members": "true or false",
-      "exclude_relationships": "true or false",
+      "exclude_nodes_and_pool_members": "false" // Valid values: true, false ,
+      "exclude_relationships": "false" //Valid values: true, false ,
       "timeout": 30,
       "send_to_plugin": {
         "big_ip_system": true,
@@ -233,8 +203,9 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "device_group": true,
         "ssl-certificate": true,
         "relationships": true,
-        "notifications": "true or false or ERROR or WARNING or INFO or DEBUG"
+        "notifications": "INFO" //true, false, ERROR, WARNING, INFO, DEBUG
       }
+    }
   ]
 }
 ```
@@ -243,19 +214,27 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 For more information about navigating New Relic’s user interface, refer to their [Using a plugin documentation](https://docs.newrelic.com/docs/plugins/plugins-new-relic/using-plugins/using-plugin) section.
 
 ## Troubleshooting/Known Issues
+#### java.lang.OutOfMemoryError
+
 When running a plugin, a `java.lang.OutOfMemoryError` may occur if too much data is being processed for the system to handle. If that issues arises, you will need to modify the `java_args` field of the “master” `newrelic.json` file located in the npi base `config` directory.
 
 `java_args` - `-Xmx128m` (-Xmxn specifies the maximum size, in bytes, of the memory allocation pool. This value must a multiple of 1024 greater than 2 MB. Append the letter k or K to indicate kilobytes, or m or M to indicate megabytes. The default value is chosen at runtime based on system configuration.)
 
-**Examples:**
+- **Examples:**
 
-`-Xmx83886080`
+- `-Xmx83886080`
 
-`-Xmx81920k`
+- `-Xmx81920k`
 
-`-Xmx80m`
+- `-Xmx80m`
 
-----
+
+
+#### FATAL ERROR: JS Allocation failed - process out of memory
+
+If you see `FATAL ERROR: JS Allocation failed - process out of memory` during installation, edit newrelic-npi/npi replacing `bin/node npi.js "$@"` with `bin/node --max-old-space-size=4096 npi.js "$@" #modified for 4gb memory`
+
+----    
 
 ## Support Resources
 For questions or issues regarding the F5 BIG-IP Plugin for New Relic, visit http://support.bluemedora.com. 
