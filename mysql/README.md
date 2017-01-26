@@ -17,7 +17,8 @@ The MySQL plugin connects to a MySQL or MariaDB instance via JDBC connection. Be
 
 **MySQL Plugin Requirements**
 
-- **MySQL and Maria DB versions.** The plugin is compatible with MySQL versions 5.6 & 5.7 and MariaDB versions 10.0 and 10.1.
+- **MySQL and Maria DB versions.** The plugin is compatible with MySQL versions 5.6+ and MariaDB versions 10.0 and 10.1.
+- For MySQL versions prior to 5.7.7 the `sys` schema must be installed before installing the plugin in order to collect query information 
 - Java 1.7 or higher
 - **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
@@ -156,11 +157,14 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | username | User name to log into MySQL |
 | password | Password to log into MySQL |
 | host | The hostname or ip address of MySQL |
-| port | Port to connect to MySQL |
-| monitor_queries | Indicates whether or not to monitor queries, valid values are `true` or `false`. If `false` the `Queries` will not be populated |
-| ssl_enable | Indicates whether ssl certification should be used to connect, valid values are `true` or `false` |
-| query_count | Optional parameter, the number of queries to return for "Top X Queries" metrics |
-| ssl_cert_path | Optional parameter, ff `ssl_enable` is `true` this should be the path to your MySQL cert |
+| port | Optional parameter, Port to connect to MySQL. If not supplied 3306 will be used. |
+| monitor_queries | Optional Parameter, indicates whether or not to monitor queries, valid values are `true` or `false`. If `false` the `Queries` will not be populated. If not supplied 'true' will be used. |
+| monitor_tables| Optional Parameter, indicates whether or not to monitor tables, valid values are `true` or `false`. If `false` the `Queries` will not be populated. If not supplied 'true' will be used. |
+| ssl_enable | Optional Parameter, indicates whether ssl certification should be used to connect, valid values are `true` or `false`. If not supplied 'false' will be used. |
+| query_count | Optional parameter, the number of queries to return for "Top X Queries" metrics. If not supplied 10 will be used. |
+| query_history_interval | Optional Parameter, indicates the number of hours query history will be collected for. If not supplied 24 will be used. |
+| order_queries_by | Optional Parameter, indicates how queries will be ordered, valid valus are `lock_latency_avg`, `total_latency`, `avg_latency`, `rows_sent_avg`, `tmp_tables_avg`, `sort_merge_passes_avg`, `rows_examined_avg`, `rows_sorted_avg`, `rows_affected_avg`, `exec_count`, `max_latency`, `err_count_avg`, `tmp_disk_tables_avg`, `warn_count_avg`. If not supplied `avg_latency` will be used.|
+| ssl_cert_path | Optional parameter, ff `ssl_enable` is `true` this should be the path to your MySQL cert. |
 | database | Optional parameter, comma separated list of databases to monitor |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
@@ -185,7 +189,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "monitor_queries": false,
       "query_count": 10,
       "query_history_interval": 24,
-      "order_queries_by": "average_time",
+      "order_queries_by": "avg_latency",   // Valid values: lock_latency_avg, total_latency, avg_latency, rows_sent_avg, tmp_tables_avg, sort_merge_passes_avg, rows_examined_avg, rows_sorted_avg, rows_affected_avg, exec_count, max_latency, err_count_avg, tmp_disk_tables_avg, warn_count_avg
       "send_to_plugin": {
         "mysql_instance": true,
         "mysql_tablespace": true,
@@ -218,7 +222,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "monitor_queries": true,
       "query_count": 100,
       "query_history_interval": 5,
-      "order_queries_by": "calls",
+      "order_queries_by": "exec_count",   // Valid values: lock_latency_avg, total_latency, avg_latency, rows_sent_avg, tmp_tables_avg, sort_merge_passes_avg, rows_examined_avg, rows_sorted_avg, rows_affected_avg, exec_count, max_latency, err_count_avg, tmp_disk_tables_avg, warn_count_avg
       "send_to_plugin": {
         "mysql_instance": true,
         "mysql_tablespace": true,
@@ -391,8 +395,8 @@ For questions or issues regarding the MySQL Plugin for New Relic, visit http://s
 | Metric Name  |  Description |
 |:------------- |:-------------|
 | Execution Time (ms) | The execution time of a query |
-| Average Execution Time (ms) | The average execution time of a query |
-| Calls (calls) | The number of calls to a query |
+| Average Latency (ms) | The average latency of a query |
+| Executions (executions/second) | The number of executions per second for a query |
 
 **Summary**
 
@@ -402,4 +406,4 @@ For questions or issues regarding the MySQL Plugin for New Relic, visit http://s
 | Connections (connections/minute) | The number of connections per minute to the MySQL instance |
 | Deadlocks (deadlocks/minute) | The number of deadlocks per minute to the MySQL instance |
 | Average I/O Read Latency (ms) | The average read latency across all databases |
-| Average Query Execution Time (ms) | The average query execution time across all queries |
+| Average Query Latency (ms) | The average query latency across all queries |
