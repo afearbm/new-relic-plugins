@@ -193,7 +193,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-cloudfoundry/newrelic_cloudfoundry_plugin-2.0.0_20161206_212224.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-cloudfoundry/newrelic_cloudfoundry_plugin-2.0.0_20170417_145033.tar.gz)
 
 ----
     
