@@ -78,7 +78,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-oracle-database/newrelic_oracle_database_plugin-2.1.1_20161220_184527.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-oracle-database/newrelic_oracle_database_plugin-2.1.2_20170426_164510.tar.gz) 
 
 ----
     
@@ -199,6 +199,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | username | User Name for Oracle Database login. |
 | password | Password for Oracle Database login. |
 | ssl_enabled | Indicates if you wish to connect while using ssl. Acceptable values are `true` and `false`. |
+| show_query_text | Optional parameter, shows query text, if false, field will default to the SQL ID. |
 | sid | Optional parameter, SID or Service Name. |
 | truststore_path | Optional parameter, only used if `ssl_enabled` is `true`. Location of truststore. |
 | truststore_password | Optional parameter, only used if `ssl_enabled` is `true`. Password for the truststore. |
@@ -220,6 +221,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "port": 1521,
       "sid": "your_value_here",
       "ssl_enable": false,
+      "show_query_text": true,
       "truststore_path": "your_value_here",
       "truststore_password": "your_value_here",
       "send_to_plugin": {
