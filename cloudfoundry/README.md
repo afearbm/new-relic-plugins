@@ -19,7 +19,7 @@ The Cloud Foundry plugin collects data by making requests to the Blue Medora Clo
 
 - Cloud Foundry
 - Blue Medora Nozzle
-- Java 1.7 or higher
+- Java 1.7 or higher (NOTE: Java 1.8 is required if using Pivotal Cloud Foundry version 1.10 and deploying the Blue Medora Nozzle for PCF using version 1.2.1 of the Tile. See: https://docs.pivotal.io/partners/blue-medora/index.html.)
 - **A Blue Medora License.** A trial license will ship with the plugin that is valid for 14 days. To obtain a production license or get pricing information for the plugin, please contact sales@bluemedora.com.
 
 # Configuring the Blue Medora Firehose Nozzle
@@ -27,9 +27,14 @@ The Blue Medora Firehose Nozzle is a Cloud Foundry component�
 
 There are multiple ways to deploy the nozzle:
 
+- Blue Medora Nozzle for PCF Tile method (requires Pivotal Cloud Foundry)
 - Installing the nozzle via the Cloud Foundry Command Line Interface (cf-cli)
 - Cloning the nozzle from the github repo and running it on any box that can connect to the Traffic Controller
 - Installing the nozzle via the BOSH Command Line Interface (CLI)
+
+**Prerequisites Blue Medora Nozzle for PCF Tile method**
+
+- Download the Blue Medora Nozzle for PCF Tile from the Pivotal Network at: https://network.pivotal.io/, then follow the instructions for installing, configuring, and using the nozzle as documented on the Pivotal web site at: https://docs.pivotal.io/blue-medora/index.html
 
 **Prerequisites CF App method**
 
