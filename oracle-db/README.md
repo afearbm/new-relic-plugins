@@ -78,7 +78,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-oracle-database/newrelic_oracle_database_plugin-2.1.4_20170524_133758.tar.gz)
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-oracle-database/newrelic_oracle_database_plugin-2.1.5_20170609_172404.tar.gz)
 
 ----
     
@@ -202,7 +202,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | password | Password for Oracle Database login. |
 | order_queries_by | Optional paramter, specifies the metric to order query resources by. By default, the queries with the highest number of overall executions are returned. |
 | ssl_enabled | Indicates if you wish to connect while using ssl. Acceptable values are `true` and `false`. |
-| show_query_text | Optional parameter, shows query text, if false, field will default to the SQL ID. |
+| show_query_text | Optional parameter, shows query text. If false, this field will default to the SQL ID. |
+| show_monitoring_queries | Optional parameter, specifies whether or not to return data for queries made by the Blue Medora data collector. |
 | sid | Optional parameter, SID or Service Name. |
 | truststore_path | Optional parameter, only used if `ssl_enabled` is `true`. Location of truststore. |
 | truststore_password | Optional parameter, only used if `ssl_enabled` is `true`. Password for the truststore. |
@@ -223,9 +224,10 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "host": "your_value_here",
       "port": 1521,
       "order_queries_by": "executions", // Valid values: "elapsed_time", "cpu_time", "user_i/o_wait_time", "buffer_gets", "executions", "parse_calls", "sharable_memory", "child_count", "average_time", "physical_read_bytes", "physical_read_requests", "physical_write_bytes", "physical_write_requests"
+      "show_query_text": true,
+      "show_monitoring_queries": true,
       "sid": "your_value_here",
       "ssl_enable": false,
-      "show_query_text": true,
       "truststore_path": "your_value_here",
       "truststore_password": "your_value_here",
       "send_to_plugin": {
