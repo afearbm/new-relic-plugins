@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-vmware-vcenter/newrelic_vmware_vcenter_plugin-2.0.0_20161201_143510.tar.gz) 
+###### [Download Plugin for Manual Installation](http://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-vmware-vcenter/newrelic_vmware_vcenter_plugin-2.0.1_20170612_152141.tar.gz)
 
 ----
     
