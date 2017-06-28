@@ -32,8 +32,8 @@ The New Relic Platform Installer (NPI) is a command line tool that helps you eas
 Once the NPI tool has been installed, run the following command:
 
 ```
-	./npi install com.bluemedora.vmware.vcenter
-```	
+  ./npi install com.bluemedora.vmware.vcenter
+```
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
@@ -190,7 +190,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "vsphere": true,
         "resource_pool": true,
         "relationships": true,
-        "notifications": "true or false or ERROR or WARNING or INFO or DEBUG"
+        "notifications": "INFO"
       }
     }
   ]

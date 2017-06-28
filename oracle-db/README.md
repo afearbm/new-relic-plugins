@@ -78,7 +78,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-oracle-database/newrelic_oracle_database_plugin-2.1.6_20170621_193226.tar.gz)
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-oracle-database/newrelic_oracle_database_plugin-2.1.7_20170628_164655.tar.gz)
 
 ----
     
@@ -200,7 +200,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | port | Port used to connect to the Oracle Database instance. Default is `1521` for when `ssl_enabled` is `false`, and `2484` for when `ssl_enabled` is `true`. |
 | username | User Name for Oracle Database login. |
 | password | Password for Oracle Database login. |
-| order_queries_by | Optional paramter, specifies the metric to order query resources by. By default, the queries with the highest number of overall executions are returned. |
+| order_queries_by | Optional paramter, specifies the metric to order query resources by. By default, the queries with the highest number of overall executions are returned. The following are valid values for this field: `elapsed_time`, `cpu_time`, `user_i/o_wait_time`, `buffer_gets`, `executions`, `parse_calls`, `sharable_memory`, `child_count`, `average_time`, `physical_read_bytes`, `physical_read_requests`, `physical_write_bytes`, `physical_write_requests`. |
 | ssl_enabled | Indicates if you wish to connect while using ssl. Acceptable values are `true` and `false`. |
 | show_query_text | Optional parameter, shows query text. If false, this field will default to the SQL ID. |
 | show_monitoring_queries | Optional parameter, specifies whether or not to return data for queries made by the Blue Medora data collector. |
@@ -223,7 +223,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "password": "your_value_here",
       "host": "your_value_here",
       "port": 1521,
-      "order_queries_by": "executions", // Valid values: "elapsed_time", "cpu_time", "user_i/o_wait_time", "buffer_gets", "executions", "parse_calls", "sharable_memory", "child_count", "average_time", "physical_read_bytes", "physical_read_requests", "physical_write_bytes", "physical_write_requests"
+      "order_queries_by": "executions",
       "show_query_text": true,
       "show_monitoring_queries": true,
       "sid": "your_value_here",
@@ -259,7 +259,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "control_file": true,
         "tablespace": true,
         "relationships": true,
-        "notifications": "INFO" // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+        "notifications": "INFO"
       }
     }
   ]

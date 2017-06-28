@@ -33,7 +33,7 @@ Once the NPI tool has been installed, run the following command:
 
 ```
   ./npi install com.bluemedora.microsoft.sqlserver
-``` 
+```
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
@@ -170,7 +170,6 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 {
   "polling_interval_seconds": 300,
   "downtime_tracking_minutes": 60,
-  ""
   "agents": [
     {
       "instance_name": "your_value_here",
@@ -197,7 +196,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "object": true,
         "disk": true,
         "relationships": true,
-        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+        "notifications": "INFO"
       }
     },
     {
@@ -224,7 +223,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "object": true,
         "disk": true,
         "relationships": true,
-        "notifications": false   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+        "notifications": false
       }
     }
   ]
