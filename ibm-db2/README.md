@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-ibm-db2/newrelic_ibm_db2_plugin-2.1.1_20161220_184614.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-ibm-db2/newrelic_ibm_db2_plugin-2.1.2_20170628_204242.tar.gz) 
 
 ----
     
@@ -186,7 +186,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "db2_tablespace": true,
         "db2_top_n": true,
         "relationships": true,
-        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+        "notifications": "INFO"
       }
     }
   ]
