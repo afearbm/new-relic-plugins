@@ -38,7 +38,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mysql/newrelic_mysql_plugin-3.0.1_20170621_194643.tar.gz)
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-mysql/newrelic_mysql_plugin-3.0.2_20170629_132613.tar.gz)
 
 ----
     
@@ -189,7 +189,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
       "monitor_queries": false,
       "query_count": 10,
       "query_history_interval": 24,
-      "order_queries_by": "avg_latency",   // Valid values: lock_latency_avg, total_latency, avg_latency, rows_sent_avg, tmp_tables_avg, sort_merge_passes_avg, rows_examined_avg, rows_sorted_avg, rows_affected_avg, exec_count, max_latency, err_count_avg, tmp_disk_tables_avg, warn_count_avg
+      "order_queries_by": "avg_latency",
       "send_to_plugin": {
         "mysql_instance": true,
         "mysql_tablespace": true,
@@ -206,73 +206,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "mysql_index": true,
         "mysql_query": true,
         "relationships": true,
-        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
-      }
-    },
-    {
-      "instance_name": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "port": 3306,
-      "host": "your_value_here",
-      "database": "database_name",
-      "ssl_enable": true,
-      "ssl_cert_path": "/Path/to/ssl_cert/mycert.crt",
-      "monitor_tables": true,
-      "monitor_queries": true,
-      "query_count": 100,
-      "query_history_interval": 5,
-      "order_queries_by": "exec_count",   // Valid values: lock_latency_avg, total_latency, avg_latency, rows_sent_avg, tmp_tables_avg, sort_merge_passes_avg, rows_examined_avg, rows_sorted_avg, rows_affected_avg, exec_count, max_latency, err_count_avg, tmp_disk_tables_avg, warn_count_avg
-      "send_to_plugin": {
-        "mysql_instance": true,
-        "mysql_tablespace": true,
-        "mysql_table": true,
-        "mysql_database": true,
-        "mysql_index": true,
-        "mysql_query": true
-      },
-      "send_to_insights": {
-        "mysql_instance": true,
-        "mysql_tablespace": true,
-        "mysql_table": true,
-        "mysql_database": true,
-        "mysql_index": true,
-        "mysql_query": true,
-        "relationships": true,
-        "notifications": "ERROR"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
-      }
-    },
-    {
-      "instance_name": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "port": 3306,
-      "host": "your_value_here",
-      "database": "database1,database2",
-      "ssl_enable": true,
-      "ssl_cert_path": "/Path/to/ssl_cert/mycert.crt",
-      "monitor_tables": true,
-      "monitor_queries": false,
-      "query_count": 100,
-      "query_history_interval": 5,
-      "order_queries_by": "total_time",
-      "send_to_plugin": {
-        "mysql_instance": true,
-        "mysql_tablespace": true,
-        "mysql_table": true,
-        "mysql_database": true,
-        "mysql_index": true,
-        "mysql_query": true
-      },
-      "send_to_insights": {
-        "mysql_instance": true,
-        "mysql_tablespace": true,
-        "mysql_table": true,
-        "mysql_database": true,
-        "mysql_index": true,
-        "mysql_query": true,
-        "relationships": true,
-        "notifications": false  // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+        "notifications": "INFO"
       }
     }
   ]
