@@ -176,7 +176,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
     {
       "instance_name": "your_value_here",
       "host": "your_value_here",
-      "connecting_to": "mongos",  // Valid valids: "mongos", "mongod"
+      "connecting_to": "mongos",
       "validate_certificate_against_truststore": false,
       "ssl_mongos": false,
       "auth_mongos": "your_value_here",
@@ -202,13 +202,13 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "replica_set": true,
         "shard": true,
         "relationships": true,
-        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+        "notifications": "INFO"
       }
     },
     {
       "instance_name": "your_value_here",
       "host": "host1,host2:443",
-      "connecting_to": "mongod",  // Valid valids: "mongos", "mongod"
+      "connecting_to": "mongod",
       "validate_certificate_against_truststore": false,
       "ssl_mongos": false,
       "auth_mongos": "",
@@ -234,7 +234,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "replica_set": true,
         "shard": true,
         "relationships": true,
-        "notifications": false   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+        "notifications": false
       }
     }
   ]
