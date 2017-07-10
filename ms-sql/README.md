@@ -37,7 +37,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.1.5_20170628_162341.tar.gz)
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-microsoft-sqlserver/newrelic_microsoft_sqlserver_plugin-3.1.6_20170710_175950.tar.gz)
 
 ----
     
@@ -161,6 +161,8 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | port | Port to connect to Microsoft SQL Server |
 | instance | Microsoft SQL Server instance to monitor |
 | query_count | Optional parameter, the number of queries to return for "Top X Queries" metrics |
+| use_ntlm_v2 | Optional parameter, specifies whether or not to use NTLMv2 authentication. Default is false. |
+| request_ssl | Optional parameter, specifies whether or not to request SSL certification. Default is false. |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
