@@ -59,7 +59,7 @@ Once the NPI tool has been installed, run the following command:
 
 **Note:** This command will take care of the creation of `newrelic.json` and `plugin.json` files described in the [Configuring the Plugin](#Configuring-the-Plugin) section.
 
-###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-postgres/newrelic_Postgres_plugin-2.1.2_20170106_212812.tar.gz) 
+###### [Download Plugin for Manual Installation](https://newrelic-bluemedora.s3.amazonaws.com/com-bluemedora-postgres/newrelic_Postgres_plugin-2.1.3_20170712_165720.tar.gz) 
 
 ----
     
@@ -175,13 +175,19 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
 | polling_interval_seconds | The number of seconds between each data collection. |
 | downtime_tracking_minutes | The number of minutes into the past that will be considered when calculating downtime |
 | instance_name | Alias for the name of your PostgreSQL instance that will appear in the User Interface. |
-| host | IP address or hostname of PostgreSQL instance. |
-| port | Port used to connect to the PostgreSQL instance. Default is `443`. |
 | username | User Name for PostgreSQL login. |
 | password | Password for PostgreSQL login. |
+| host | IP address or hostname of PostgreSQL instance. |
+| database | Optional parameter, comma separated list of databases to monitor. When this field is omitted from `plugin.json`, the plugin will auto-discover all databases on the system. |
 | ssl_mode | Indicates if you wish to connect while using ssl. Acceptable values are `disable`, `verify-full`, `verify-ca`, or `require`. |
-| database | Optional parameter, comma separated list of databases to monitor |
+| port | Port used to connect to the PostgreSQL instance. Default is `5432`. |
+| show_query_text | Optional parameter, shows query text. If false, this field will default to the SQL ID. |
 | query_count | Optional parameter, the number of queries to return for "Top X Queries" metrics |
+| session_count | Optional parameter, the number of sessions to return metrics for |
+| function_count | Optional parameter, the number of functions to return metrics for |
+| monitor_tables | Optional parameter, specifies whether or not to return table metrics |
+| order_queries_by | Optional Parameter, indicates how queries will be ordered. Acceptable values are `calls`, `average_time`, and `total_time`. |
+| order_functions_by | Optional Parameter, indicates how functions will be ordered. Acceptable values are `calls`, `average_time`, and `total_time`. |
 | send_to_plugin | Indicates whether or not to send data to New Relic Plugins. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 | send_to_insights | Indicates whether or not to send data to New Relic Insights. See [Blue Medora's New Relic Knobs and Levers Readme](https://github.com/BlueMedora/new-relic-plugins/blob/master/configuration-variants/readme.md) for more details |
 
@@ -230,89 +236,7 @@ Make a copy of this template and rename it to `plugin.json`. Shown below is an e
         "postgresql_sequence": true, 
         "postgresql_session": true, 
         "relationships": true,
-        "notifications": "INFO"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
-      }
-    },
-    {
-      "instance_name": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "host": "your_value_here",
-      "database": "database1, database2",
-      "ssl_mode": "require",
-      "port": 5432,
-      "show_query_text": true,
-      "query_count": 10,
-      "session_count": 20,
-      "function_count": 20,
-      "monitor_tables": true,
-      "order_queries_by": "calls",
-      "order_functions_by": "calls",
-      "send_to_plugin": {
-        "postgresql_instance": true,
-        "postgresql_query": true,
-        "postgresql_database": true,
-        "postgresql_function": true,
-        "postgresql_index": true,
-        "postgresql_table": true,
-        "postgresql_tablespace": true
-      },
-      "send_to_insights": {
-        "postgresql_instance": true,
-        "postgresql_query": true,
-        "postgresql_database": true,
-        "postgresql_function": true,
-        "postgresql_index": true,
-        "postgresql_table": true,
-        "postgresql_tablespace": true,
-        "postgresql_configuration": true,
-        "postgresql_trigger": true,
-        "postgresql_replication": true,
-        "postgresql_sequence": true,
-        "postgresql_session": true,
-        "relationships": true,
-        "notifications": "ERROR"   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
-      }
-    },
-    {
-      "instance_name": "your_value_here",
-      "username": "your_value_here",
-      "password": "your_value_here",
-      "host": "your_value_here",
-      "database": "your_value_here",
-      "ssl_mode": "prefer",
-      "port": 5432,
-      "show_query_text": true,
-      "query_count": 20,
-      "session_count": 20,
-      "function_count": 20,
-      "monitor_tables": false,
-      "order_queries_by": "total_time",
-      "order_functions_by": "calls",
-      "send_to_plugin": {
-        "postgresql_instance": true,
-        "postgresql_query": true,
-        "postgresql_database": true,
-        "postgresql_function": true,
-        "postgresql_index": true,
-        "postgresql_table": true,
-        "postgresql_tablespace": true
-      },
-      "send_to_insights": {
-        "postgresql_instance": true,
-        "postgresql_query": true,
-        "postgresql_database": true,
-        "postgresql_function": true,
-        "postgresql_index": true,
-        "postgresql_table": true,
-        "postgresql_tablespace": true,
-        "postgresql_configuration": true,
-        "postgresql_trigger": true,
-        "postgresql_replication": true,
-        "postgresql_sequence": true,
-        "postgresql_session": true,
-        "relationships": true,
-        "notifications": false   // Valid values: true, false, "ERROR", "WARNING", "INFO", "DEBUG"
+        "notifications": "INFO"
       }
     }
   ]
